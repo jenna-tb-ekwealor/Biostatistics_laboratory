@@ -1,2 +1,2 @@
 # Biostatistics_laboratory
-These is a webpage created to have CSULB BIOL260 lab modules freely available.
+This is a webpage created for California State University-Long Beach Biostatistics Lab Manual.
