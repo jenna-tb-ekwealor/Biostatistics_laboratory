@@ -407,7 +407,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <hr />
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> Introduction </span> <br></p>
 <p>In this lab we will examine hypotheses about population proportions using <em>binomial probabilities</em> in order to identify important drivers of landscapes of fear in Amazonian bird flocks. The landscape of fear is an ecological concept that defines the level of fear of predation a prey experiences across its home range (Laundré <em>et al</em>.; Fig 1). This concept assumes that animals have the ability or can learn to differentiate dangerous habitats from safer ones. Thus, the landscape of fear could be an important biological model explaining the evolution of population distributions in space.</p>
-<p>For many bird species, the major factor affecting their landscape of fear are not their visual senses, but their ability to interpret alarm calls. This is significant for eavesdropping birds that use the behavioral cues of other neighbors to mitigate risk without the cost of gathering information by themselves. An important behavioral cue used by eavesdropping birds are alarm calls made by sentinel birds. Interpreting these calls allows them to distinguish the presence of particular predators with direct consequences on survival and population fitness.</p>
+<p>For many bird species, the major factor affecting their landscape of fear are not their visual senses, but their ability to interpret alarm calls. This is significant for eavesdropping birds that use the behavioral cues of other neighbors to mitigate risk without the cost of gathering information by themselves. An important behavioral cue used by eavesdropping birds are alarm calls made by sentinel birds. Interpreting these calls allows them to distinguish the presence of particular predators with direct consequences on survival and fitness.</p>
 <p>Today, we will examine hypotheses about population proportions in order to estimate the probability of sentinel birds to produce an alarm call and distinguish predators. For this, we will use CSULB Avian Ecology Lab data from field experiments lead by Dr. Ari Martínez on Amazonian birds (Fig. 1A, 1B, 1C). In his experiments, Dr. Martínez used trained raptors to examine the extent to which different alarm calling birds produced alarm calls in their presence and evaluated different predator contexts ( <a href>watch the Hawk Trial</a> ). So, let’s explore the binomial distribution and how the <em>binomial test</em> and <em>χ2 goodness-of-fit</em> are useful statistical tools for testing whether the relative frequency of alarm calls produced - or <em>successes</em> - in the presence of a raptor matches a null expectation or if we can indeed conclude that the presence of a raptor drives the frequency of alarm calls.</p>
 <p><br></p>
 <div class="figure" style="text-align: left">
@@ -452,13 +452,20 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </center>
 <p><br></p>
 <p>where <em>X</em> is the number of successes, <em>n</em> is the number of independent trials, and <em>p</em> is the probability of success in every single trial.</p>
-<p>Keep in mind that the binomial coefficient <span class="math inline">\(\frac{n!}{X!(n-X)!}\)</span> represents the number of combinations in which we can get <em>X</em> successes from <em>n</em> trials. Let’s say we randomly sample <em>n</em> = 4 salamanders from a population. There are 16 possible combinations of successes (represented by 1) and failures (represented by 0) we can obtain with 4 trials: <br></p>
+<p>Keep in mind that the binomial coefficient <span class="math inline">\(\frac{n!}{X!(n-X)!}\)</span> represents the number of combinations in which we can get <em>X</em> successes from <em>n</em> trials. Let’s say we randomly sample <em>n</em> = 4 salamanders from a population. There are 16 possible combinations of successes (represented by 1) and failures (represented by 0) we can obtain with 4 trials:</p>
+<p><br></p>
 <center>
 [<strong>1111</strong>; <strong>0111</strong>; <strong>1011</strong>; <strong>0011</strong>; <strong>1101</strong>; <strong>0101</strong>; <strong>1001</strong>; <strong>0001</strong>; <strong>1110</strong>; <strong>0110</strong>; <strong>1010</strong>; <strong>0010</strong>; <strong>1100</strong>; <strong>0100</strong>; <strong>1000</strong>; <strong>0000</strong>]
 </center>
-<p><br> If we define success here as body color = red, the number of combinations in which we can get exactly 1 success, or 1 red salamander, out of 4 independent trials is 4 [<strong>0001</strong>; <strong>0010</strong>; <strong>0100</strong>; <strong>1000</strong>]. Thus, the binomial coefficient when <em>X</em> = 1 and <em>n</em> = 4 is 4 or <span class="math inline">\(\frac{4!}{1!(4-1)!}\)</span>. From the binomial formula above, is obvious that binomial probabilities also depend on <em>p</em>, or the probability of success in each trial. Assuming there is 65% chance that an individual salamander is red in any given trial (<em>p</em> = 0.65), then we can say that the probability that exactly 1 of the salamanders in our sample population is red is <br><br></p>
+<p><br></p>
+<p>If we define success here as body color = red, the number of combinations in which we can get exactly 1 success, or 1 red salamander, out of 4 independent trials is 4 [<strong>0001</strong>; <strong>0010</strong>; <strong>0100</strong>; <strong>1000</strong>]. Thus, the binomial coefficient when <em>X</em> = 1 and <em>n</em> = 4 is 4 or <span class="math inline">\(\frac{4!}{1!(4-1)!}\)</span>. From the binomial formula above, is obvious that binomial probabilities also depend on <em>p</em>, or the probability of success in each trial. Assuming there is 65% chance that an individual salamander is red in any given trial (<em>p</em> = 0.65), then we can say that the probability that exactly 1 of the salamanders in our sample population is red is <br><br></p>
 <center>
-<span class="math inline">\(\Pr[1\ red\ salamander] = \frac{4!}{1!(4-1)!}(0.65)^1(1-0.65)^{4-1} = 0.1115\)</span>
+<span class="math display">\[
+\begin{aligned}
+ \Pr[1\ red\ salamander]&amp;=\frac{4!}{1!(4-1)!}(0.65)^1(1-0.65)^{4-1}\\\\
+ &amp;=0.1115
+\end{aligned}
+\]</span>
 </center>
 <p><br></p>
 </div>
@@ -483,9 +490,14 @@ Figure 2. Probability distribution of successes for sample size <em>n</em> = 4 a
 </center>
 For our example,
 <center>
-<span class="math inline">\(\hat{p}=\frac{3}{4}=0.75\)</span>
-</center>
 <p><br></p>
+<span class="math display">\[
+\begin{aligned}
+ \hat{p}&amp;=\frac{3}{4}\\\\
+ &amp;=0.75
+\end{aligned}
+\]</span>
+</center>
 <p>where <span class="math inline">\(\hat{p}\)</span> represents the <em>sample</em> proportion, in contrast to the true proportion in the population. We often do not know <em>p</em> but we can approximate the standard error using <span class="math inline">\(\hat{p}\)</span> in the following way:</p>
 <br>
 <center>
@@ -493,7 +505,12 @@ For our example,
 </center>
 For our example,
 <center>
-<span class="math inline">\(SE_\hat{p}=\sqrt{\frac{0.75(1-0.75)}{4}}=0.217\)</span>
+<span class="math display">\[
+\begin{aligned}
+ SE_\hat{p}&amp;=\sqrt{\frac{0.75(1-0.75)}{4}}\\\\
+ &amp;=0.217
+\end{aligned}
+\]</span>
 </center>
 <p><br></p>
 <p>Thus, the standard error of the estimate of the proportion who are red is 0.217. Remember from Chapter 4 that the SE is a measure of spread (the standard deviation of the sampling distribution). In other words, our sample estimate (<span class="math inline">\(\hat{p}\)</span>) on average is 0.217 from the population proportion (<em>p</em>).</p>
@@ -503,13 +520,24 @@ For our example,
 <h3>4. Testing hypotheses: the binomial test and the χ2 goodness-of-fit</h3>
 <p>We can also use the binomial distribution to test whether the relative frequency of successes in the population (<em>p</em>) matches a null expectation <span class="math inline">\(p_{0}\)</span>. For this, we follow the same steps to estimate the binomial formula but assuming <em>p</em> = <span class="math inline">\(p_{0}\)</span> and testing whether the resulting <em>p</em>-value is below the conventional significance level of <span class="math inline">\(\alpha\)</span> = 0.05.</p>
 <p>For example, say we expect color to be equally distributed in salamanders and thus we expect 50% of the salamanders to be red by chance and the other 50% to be <em>not red</em>. Following the example above were we found 3 red salamanders out of 4 independent trials, the probability of getting <em>3 or more</em> red salamanders assuming the null hypothesis is true is the sum over these mutually exclusive binomial probabilities of having <em>3 or more</em> red salamanders in a trial of 4:</p>
+<p><br></p>
 <center>
-<span class="math inline">\(\Pr[number\ of\ succsesses \ge 3]=Pr[3]+Pr[4]=0.380\)</span>
+<span class="math display">\[
+\begin{aligned}
+ Pr[number\ of\ succsesses \ge 3]&amp;=Pr[3]+Pr[4]\\\\
+ &amp;=0.380
+\end{aligned}
+\]</span>
 </center>
 <p><br></p>
 Because this is a two-tailed test, we account for all extreme values at both tails by doubling this probability to get the <em>p</em>-value:
 <center>
-<span class="math inline">\(P=2*0.380=0.759\)</span>
+<span class="math display">\[
+\begin{aligned}
+ P&amp;=(2)(0.380)\\\\
+ &amp;=0.759
+\end{aligned}
+\]</span>
 </center>
 <p><br></p>
 <p>The <em>p</em>-value is well above the significance level and thus we do not reject the null hypothesis and conclude that the probability that a salamander is red is 50%.</p>
@@ -572,7 +600,12 @@ Total
 <p>Keep in mind that our null hypothesis is that 50% of the population of salamanders is red. Thus, the expected proportion of red salamanders out of 4 trials is 4 * 0.50 = 2 red salamanders.</p>
 Thus,
 <center>
-<span class="math inline">\(X^2=\frac{(3-2)^2}{2}=0.5\)</span>
+<span class="math display">\[
+\begin{aligned}
+ X^2&amp;=\frac{(3-2)^2}{2}\\\\
+ &amp;=0.5
+\end{aligned}
+\]</span>
 </center>
 <p><br></p>
 <p>From the table of χ2 critical values, a significance level of <span class="math inline">\(\alpha=0.05\)</span> with 1 degree of freedom (<em>df</em> = number of categories - 1 = 1), requires a critical value higher than 3.84 to reject our null hypothesis that the proportion of red salamanders in 50%. Thus, χ2 of 0.5 are not rare under the null hypothesis and we don’t reject the null hypothesis (same conclusions as the binomial test).</p>
