@@ -427,13 +427,13 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> Worked example </span> <br></p>
 <p>This example should work as a step-by-step introduction to basic skills you will be implementing in each laboratory chapter. For this Worked example, we will be using the dataset “anole” from <a href="https://cpb-us-w2.wpmucdn.com/sites.wustl.edu/dist/6/1127/files/2018/12/Donihue-et-al.-2018-2e1xqw4.pdf">Donihue et al. 2018</a>. Download it to your computer.</p>
 <p><br></p>
-<div id="creating-a-working-directory-folder" class="section level3">
-<h3>1. Creating a working directory folder</h3>
+<div id="creating-a-working-directory-folder." class="section level3">
+<h3>1. Creating a working directory folder.</h3>
 <p>In your computer, create a folder named “working_directory” and save the downloaded file “anole” in it.</p>
 <p><br></p>
 </div>
-<div id="creating-and-saving-your-r-script" class="section level3">
-<h3>2. Creating and saving your R script</h3>
+<div id="creating-and-saving-your-r-script." class="section level3">
+<h3>2. Creating and saving your R script.</h3>
 <p>Open <strong>RStudio</strong>, not R. The first step when carrying out a new analysis is to open a new script and save it. Go to File-&gt;New File-&gt;R script and save it with a useful name in your working_directory folder. A useful name could be “Chapter1”. An R script is where you will be saving your codes and the progress of your work.</p>
 <p><br></p>
 </div>
@@ -445,8 +445,8 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <p><strong>Note:</strong> Remember to do annotations before any line of code so that later you can come back to your script and remember what those lines of code mean.</p>
 <p><br></p>
 </div>
-<div id="importing-data-files-to-rstudio" class="section level3">
-<h3>4. Importing data files to RStudio**</h3>
+<div id="importing-data-files-to-rstudio." class="section level3">
+<h3>4. Importing data files to RStudio.</h3>
 <p>There are several ways to import data to RStudio and it depends on the type of file the data is (i.e., csv, RData). You may use the one that works best for you. Below are three ways:</p>
 <p><br></p>
 <p><strong>A. From RStudio with a .csv file</strong>: In the bottom right window, click File and search for your working_directory folder in your computer. Right click on the anole.csv file and import it using the drop down menu. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
@@ -458,8 +458,8 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <p><strong>C. From an R object with an .RData file</strong>: If the data file is an R object (file extension = .RData), then right click it and open it with RStudio. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
 <p><br></p>
 </div>
-<div id="exploring-the-imported-dataset" class="section level3">
-<h3>5. Exploring the imported dataset</h3>
+<div id="exploring-the-imported-dataset." class="section level3">
+<h3>5. Exploring the imported dataset.</h3>
 <p>At the beginning of any analysis, we first need to check the data and understand its attributes. What kind of data we have; how can we “treat” it in R?</p>
 <p>Let’s start looking into the structure of “anole” by using the function <strong>str()</strong>. This function gives us information about the class of the object (in this case the object “anole”), what class of variables are in the object, how many observations we have in the object.</p>
 <pre class="r"><code># data structure
@@ -493,8 +493,8 @@ View(anole)</code></pre>
 </ol>
 <p><br></p>
 </div>
-<div id="managing-data" class="section level3">
-<h3>6. Managing data</h3>
+<div id="managing-data." class="section level3">
+<h3>6. Managing data.</h3>
 <p>Many functions like <strong>str()</strong> come built into R. However, packages give you additional useful functions. We will be using some functions from the package <em>tidyverse</em> to manage our data (e.g., filtering columns, selecting columns). Before you use a package for the first time you need to install it, then you should load it using <strong>library()</strong> in every subsequent R session whenever you need it.</p>
 <pre class="r"><code># installing tidyverse
 install.packages(&quot;tidyverse&quot;,repos='http://cran.us.r-project.org')
@@ -527,8 +527,8 @@ femurs_10mm</code></pre>
 </ol>
 <p><br></p>
 </div>
-<div id="descriptive-stats" class="section level3">
-<h3>7. Descriptive stats</h3>
+<div id="descriptive-stats." class="section level3">
+<h3>7. Descriptive stats.</h3>
 <p>Finally, keep in mind that R is a language in which we can define our own mathematical functions. Therefore, it also works as a calculator. Let’s employ the simple descriptive stats functions, including <strong>mean()</strong>, <strong>min()</strong>, <strong>max()</strong>, <strong>range()</strong>. Note the use of the <strong>$</strong> sign!</p>
 <pre class="r"><code># mean femur length
 mean(anole$Femur)
