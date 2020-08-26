@@ -414,12 +414,16 @@ Figure 1. Left panel: <em>Escherichia coli</em> under a high magnification of 21
 <li>Read and interpret graphs.</li>
 </ul>
 <p><br></p>
-<p><strong>External resources</strong></p>
+<p><strong>External study resources:</strong></p>
+<ul>
+<li><a href="https://www.nature.com/articles/nmeth.2807.pdf?origin=ppub">Streit and Gehlenborg, 2014</a></li>
+</ul>
+<p><br></p>
+<p><strong>References:</strong></p>
 <ul>
 <li><a href="https://patricbrc.org">Pathosystems Resource Integration Center (PATRIC)</a></li>
 <li><a href="https://serialmentor.com/dataviz/">Fundamentals of Data Visualization</a></li>
 <li><a href="http://www.cookbook-r.com/Graphs/">Cookbook for R</a></li>
-<li><a href="https://www.nature.com/articles/nmeth.2807.pdf?origin=ppub">Streit and Gehlenborg, 2014</a></li>
 </ul>
 <hr />
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> Worked example </span> <br></p>
@@ -522,12 +526,15 @@ div.creme { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 <p>To examine data for a single variable, we use <strong>frequency distributions</strong>, which are the number of occurrences of each value in the data.</p>
 <p><br></p>
 <p><strong>A. When displaying categorical data, use a bar graph</strong>.</p>
-<p>A bar graph uses the <em>height</em> of the bars to display the frequency distribution of categorical variables. Say we are interested in exploring the claw size distribution of the <em>Uca</em> crab. Are there size classes with more representation in the population? To answer this question, we can generate a frequency distribution for the different claw size classes (categorical variables; i.e., small, medium, large) using a bar graph.</p>
-<pre class="r"><code># revising the data frame by checking the first rows of the data frame using head()
-head(uca)
+<p>A bar graph uses the <em>height</em> of the bars to display the frequency distribution of categorical variables. Say we are interested in exploring the claw size distribution of the <em>Uca</em> crab. Are there size classes with more representation in the population? To answer this question, we can generate a frequency distribution for the different claw size classes (categorical variables; i.e., small, medium, large) using a bar graph. As we did in Chapter 1, before you use a package for the first time you need to install it, then you should load it using library() in every subsequent R session whenever you need it.</p>
+<pre class="r"><code># installing ggplot2
+install.packages(&quot;ggplot2&quot;,repos='http://cran.us.r-project.org')
 
 # loading package ggplot2
 library(ggplot2)
+
+# revising the data frame by checking the first rows of the data frame using head()
+head(uca)
 
 # frequency of claw size classes
 p1 &lt;- ggplot(data=uca,aes(x=claw_size)) +
