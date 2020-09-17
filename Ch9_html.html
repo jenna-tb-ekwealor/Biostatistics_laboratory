@@ -681,11 +681,11 @@ F&amp;=\frac{0.131}{0.002}=65.5.\\\\
 <p><br></p>
 <p>For our example, <span class="math display">\[
 \begin{aligned}
-R^2&amp;=\frac{SS_{groups}}{SS_{total}}=\frac{0.131}{0.309}=0.424.
+R^2&amp;=\frac{SS_{groups}}{SS_{total}}=\frac{0.262}{0.309}=0.848.
 \end{aligned}
 \]</span></p>
 <p><br></p>
-<p>Thus, 42.4% of the variation in the data is explained by differences among treatment groups.</p>
+<p>Thus, 84.8% of the variation in the data is explained by differences among treatment groups.</p>
 <hr />
 <p><br></p>
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> Materials and Methods</span></p>
@@ -758,6 +758,16 @@ summary(gene_aov)</code></pre>
 <p><br></p>
 <p>**Slight differences do to rounding may be present.</p>
 </div>
+<p><br></p>
+<p>Finally, let’s estimate the <span class="math inline">\(R^2\)</span>.</p>
+<pre class="r"><code># R squared
+r2 &lt;- 10.32/(10.32+27.41)
+r2</code></pre>
+<p><br></p>
+<p><strong>Question:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><em>How much variation in the data is explained by differences among treatment groups?</em></li>
+</ol>
 <p><br></p>
 <p><span style="color:red; font-size:150%; font-weight:600"> Challenge.</span> Plot your data. Add all components for a good visualization.</p>
 <p><br></p>
