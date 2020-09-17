@@ -644,7 +644,7 @@ SE &lt;- sqrt((p_hat*(1-p_hat))/n)
 SE</code></pre>
 <p>According to this, a mean proportion of sentinel birds of 0.30±0.03 (mean±SE) produce an alarm call in the presence of raptors.</p>
 <p><br></p>
-<p><strong>D. Testing hypotheses: the binomial test and the χ2 goodness-of-fit</strong>.</p>
+<p><strong>D. Testing hypotheses: the binomial test</strong>.</p>
 <p>We estimated the binomial probabilities given <em>X</em>, <em>n</em>, and <em>p</em>. This is different from testing a hypothesis, which requires a null probability of success <span class="math inline">\(p_0\)</span> and a <em>p</em>-value.</p>
 <p><br></p>
 <p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think:</strong> </span> In this case, we have information about the proportion of sentinel birds producing an alarm call during a control trial. During a control trial, a researcher would stand at the same distance as in a raptor trial from the bird flock and carry out the same gesture as if he/she was releasing a trained raptor. However, there was no raptor involved in the trial. <strong>Stop</strong> and review the definition of a null hypothesis. <strong>Think</strong> about why the researcher would simulate the same gesture in a control trial.</p>
@@ -679,7 +679,8 @@ binom.test(X, n, p_null)</code></pre>
 <p><br></p>
 <hr />
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> Take-home exercise </span> <br></p>
-<p><strong>Task.</strong> In order to address the second research question, we need to also estimate binomial probabilities for the large raptor trials. Following your exercise on small raptor trials, filter your data by large raptor size and properly address question #2. <strong>Keep in mind that you should use the same null hypothesis as above, no need to estimate <em>p</em>_null again</strong>. Create an annotated R script that includes the following steps; (1) data import, (2) package loading, (3) codes for each step (A-D) using both the small and large raptor size datasets. Accompany your R script with a concluding paragraph summarizing your results. Use the Info-Box as a guide to report results in your paragraph. Your assignment should include two files; (1) a .doc file with the figures and paragraph, (2) an .R file containing your annotated R script.</p>
+<p><strong>Task.</strong> In order to address the second research question, we need to also estimate binomial probabilities for the large raptor trials. Following your exercise on small raptor trials, filter your data by large raptor size and properly address question #2. <strong>Keep in mind that you should use the same null hypothesis as above, no need to estimate <em>p</em>_null again</strong>.</p>
+<p>Create an annotated R script that includes the following steps; (1) data import, (2) package loading, (3) codes for each step (A-D) using both the small and large raptor size datasets. Accompany your R script with a concluding paragraph summarizing your results. Use the Info-Box as a guide to report results in your paragraph. Your assignment should include two files; (1) a .doc file with the figures and paragraph, (2) an .R file containing your annotated R script.</p>
 </div>
 
 
