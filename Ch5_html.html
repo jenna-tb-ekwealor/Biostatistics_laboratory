@@ -1189,18 +1189,7 @@ Probability
 <li><em>Do we reject the null hypothesis? Explain.</em></li>
 </ul>
 <p><br></p>
-<p>Now, from plot p4 we saw that the presence of <em>L. latifolium</em> when <strong>flowering</strong> may have an effect on the abundance of soil invertebrates. Let’s test for that. But first, let’s visualize the data.</p>
-<pre class="r"><code># filtering soil by stage_lep = flowering or NA (native plants)
-soil2 &lt;- filter(soil,
-                stage_lep==&quot;flowering&quot; | is.na(stage_lep))
-
-soil2
-
-# plotting abundance in the presence of flowering L. latifolium and native plants
-p5 &lt;- ggplot(soil2,aes(x=plant,y=n)) +
-  geom_boxplot()
-
-p5</code></pre>
+<p>Now, from plot p4 we saw that the presence of <em>L. latifolium</em> when <strong>flowering</strong> may have an effect on the abundance of soil invertebrates. Let’s test for that.</p>
 <p><br></p>
 <p><strong>Questions:</strong></p>
 <ul>
@@ -1209,21 +1198,21 @@ p5</code></pre>
 </ul>
 <p><br></p>
 <p>Keep in mind that we already have the null distribution in Figure 3. To test whether the abundance of soil invertebrates is affected by the presence of flowering <em>L. latifolium</em>, we need to estimate the test statistic.</p>
-<pre class="r"><code># filtering by L. latifolium flowering stage
-s_flo &lt;- filter(soil2, plant==&quot;Lep&quot;)
+<pre class="r"><code># filtering soil by stage_lep = flowering or NA (native plants)
+soil2 &lt;- filter(soil,stage_lep==&quot;flowering&quot;)
 
-s_flo 
+soil2
 
 # mean abundance per plot in the presence of flowering L. latifolium
-m_s_flo &lt;- mean(s_flo$n)
-m_s_flo</code></pre>
+m_flo &lt;- mean(soil2$n)
+
+m_flo</code></pre>
 <p><br></p>
 <p>In this case, we say that the test statistic is 60 soil invertebrates per plot. If we inspect the null distribution in Figure 3, the probability of such an extreme statistic (an average of 60 soil invertebrates per plot) under the null hypothesis is very low (at least less than 0.002). Thus, we can say with confidence that the <em>p</em>-value is less than 0.05.</p>
 <p><br></p>
 <p><strong>Question:</strong></p>
 <ul>
 <li><em>Do we reject the null hypothesis?</em></li>
-<li><em>Do we have information about the direction of the difference (higher or lower soil invertebrate abundance in the presence of flowering L. latifolium? Explain.</em></li>
 </ul>
 <p><br></p>
 <p><strong>2. Research question:</strong> Does the presence of <em>L. Latifolium</em> in the rosette stage affect the abundance of soil invertebrates?</p>
