@@ -564,8 +564,6 @@ z_mean
   a. *What is the probability of obtaining a mean disc width lower than 15 cm from a sample of 10 stingrays?* 
   b. *How may your conclusions change if the sample size increases to n = 100?*
   c. *Can you explain mathematically the relationship between precision and sample size?*
-  d. *Based on the analysis carried out, did the population of round stingray shift towards a particular size?*
-  e. *What biases may have affected the results?*
 
 <br>
 
