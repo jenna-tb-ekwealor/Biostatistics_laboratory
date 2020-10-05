@@ -597,10 +597,40 @@ lprob+sprob+mprob
 <span style='color:#66023C; font-size:150%; font-weight:600'> Take-home exercise </span> 
 <br> 
 
-**Task.** Does the size structure of round stingrays at Seal Beach, California, changes annually? Following today's exercise, do separate analyses for each year available. **Hint**: use **levels(as.factor(ray$year))** to know the years of data collection. Present the observed and the normally fitted size structure for each year. Create an annotated R script that includes the following steps; (1) data import, (2) package loading, and (3) codes for each step in the analysis, including figures. Accompany your R script with a concluding paragraph summarizing and interpreting your results. Your assignment should include two files; (1) a .doc file with the figures and paragraph, (2) an .R file containing your annotated R script. **Stick to the question and do not add unnecessary steps to your R script.**
+**Task.** Does the size structure of round stingrays at Seal Beach, California, changes annually? Do separate analyses for each year available. **Hint**: use **levels(as.factor(ray$year))** to know the years of data collection. Present the observed and the normally fitted size structure for each year. Create an annotated R script that includes the following steps; (1) data import, (2) package loading, and (3) codes for each step in the analysis, including figures. Accompany your R script with a concluding paragraph summarizing and interpreting your results. Your assignment should include two files; (1) a .doc file with the figures and paragraph, (2) an .R file containing your annotated R script. **Stick to the question and do not add unnecessary steps to your R script.**
 
 **Guided questions for writing the concluding paragraph:**
 
-a. *What did you find for each year?*
-b. *How do you explain - biologically - your results on the annual size structure of round stingrays in Seal Beach?*
-c. *What sources of bias may be present in the study (think about the study system and the methodology)?*
+a. *What did you find for each year?* 
+b. *How did the test statistic change and why do you think it did (if it did)?*
+c. *How do you explain - biologically - your results on the annual size structure of stingrays in Seal Beach?*
+d. *What sources of bias may be present in the study (think about the study system and the methodology)?*
+
+```{r,echo=FALSE,eval=FALSE}
+y1=filter(ray, year=="2000")
+m1=mean(y1$disc_width)
+s1=sd(y1$disc_width)
+y2=filter(ray, year=="2001")
+m2=mean(y2$disc_width)
+s2=sd(y2$disc_width)
+y3=filter(ray, year=="2002")
+m3=mean(y3$disc_width)
+s3=sd(y3$disc_width)
+
+#example for y1
+p <- ggplot(y1,aes(x=y1$disc_width)) +
+geom_density()
+
+# fitting a normal distribution
+p1 <- p + stat_function(fun = dnorm, n = 1349, args = list(mean = m1, sd = s1),colour="red") 
+
+#example for y2
+p <- ggplot(y2,aes(x=y2$disc_width)) +
+geom_density()
+
+# fitting a normal distribution
+p1 <- p + stat_function(fun = dnorm, n = 970, args = list(mean = m2, sd = s2),colour="red") 
+
+
+```
+
