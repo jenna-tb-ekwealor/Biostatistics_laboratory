@@ -82,7 +82,7 @@ grid.raster(img)
 <span style='color:#66023C; font-size:150%; font-weight:600'> Worked example </span> 
 <br>
 
-So far, we have seen several probability distributions. In Chapter 4, we introduced the population and sampling distributions, and in Chapter 5 we discussed the null probability distribution. If we look closer, all these probability distributions discussed so far have a bell shape centered in a mean value. 
+So far, we have seen several probability distributions. In Chapter 4, we introduced the population and sampling distributions, and in Chapter 5 we discussed the null probability distribution. If we look closer, all these probability distributions have a bell shape centered in a mean value. 
 
 Let's explore this type of distribution commonly observed in biological data.
 
@@ -276,7 +276,7 @@ $$
 </center>
 
 
-That is, 100 mmHg occurs at 3 standard deviations above the mean. To know Pr[Z > 3] or the area under the standard normal curve for Z values > 3, we use the statistical table which indicates a probability of Pr[Z > 3] = 0.00135. In other words, 0.135% of adults have a diastolic blood pressure higher than 100 mmHg. 
+That is, 100 mmHg occurs at 3 standard deviations above the mean. To know Pr[Z > 3] or the area under the standard normal curve for Z values > 3, we use the statistical table which indicates a probability of Pr[Z > 3] = 1 - 0.9987 = 0.0013. In other words, 0.13% of adults have a diastolic blood pressure higher than 100 mmHg. 
 
 Similarly for 40 mmHg, we standardize it and obtain the area under the curve using the statistical table:
 
@@ -291,21 +291,23 @@ $$
 </center>
 
 
-In this case, 40 mmHg occurs at 3 standard deviations below the mean. Keep in mind that the normal distribution is simetrical and thus, the probability of being 3 standard deviations *below* the mean is the same as 3 standard deviations *above* the mean. When looking at the statistical table, that is a probability of 0.00135. 
+In this case, 40 mmHg occurs at 3 standard deviations below the mean. Keep in mind that the normal distribution is simetrical and thus, the probability of being 3 standard deviations *below* the mean is the same as 3 standard deviations *above* the mean. When looking at the statistical table, that is a probability of Pr[Z < 3] = 0.0013. 
 
-Thus,
+<br>
+
+Thus, 
 
 <br>
 
 $$
 \begin{aligned}
  Pr[DBP < 40\ mmHg\ or\ DBP>100\ mmHg]&=Pr[DBP<40\ mmHg]+Pr[DBP>100\ mmHg]\\\\
- &=0.0027.
+ &=0.0026.
 \end{aligned}
 $$
 
 
-For our example, 0.27% of adults could suffer severe adverse effects from the new drug.
+For our example, 0.26% of adults could suffer severe adverse effects from the new drug.
 
 <br>
 
