@@ -625,9 +625,9 @@ SE_{\overline{Y}_1-\overline{Y}_2}=\sqrt{s^2_p (\frac{1}{n_1} + \frac{1}{n_2})},
 <p><br></p>
 <p>The sample variance <span class="math inline">\(s^2_p\)</span> is defined as: <span class="math display">\[
 \begin{aligned}
-s_p^2=\frac{{df_1s^2_1+df_2s^2_2}}{df_1+df_2}
+s_p^2=\frac{{df_1s^2_1+df_2s^2_2}}{df_1+df_2},
 \end{aligned} 
-\]</span></p>
+\]</span> where <span class="math inline">\(df_1\)</span> and <span class="math inline">\(df_2\)</span> are the degrees of freedom of groups 1 and 2, respectively, and <span class="math inline">\(s^2_1\)</span> and <span class="math inline">\(s^2_2\)</span> are the variances of groups 1 and 2, respectively.</p>
 <p><br></p>
 <p>Let’s say a lab is developing a new drug to treat hypercholesterolemia patients whose cholesterol levels are &gt; 240 mg/dL. To test any medicine, it is standard to compare the new drug against a placebo (no drug). Thus, the lab makes two pills; one being the new drug and one being a placebo. They gather 20 test subjects with hypercholesterolemia and randomly divide them in two groups of ten subjects; group 1 receives the placebo treatment (Drug A) and group 2 receives the drug treatment (Drug B). Since they are interested in knowing if this new drug can lower cholesterol, they can use a two-sample <em>t</em>-test to compare both group means.</p>
 <p><br></p>
@@ -785,7 +785,7 @@ p1</code></pre>
 <p>Let’s check the assumption that our data is normally distributed by plotting its frequency distribution. To test for normality we can use a histogram.</p>
 <pre class="r"><code># histogram of body lengths
 p2 &lt;- ggplot(mydata,aes(x=length)) +
-  geom_histogram()
+  geom_histogram(binwidth = .5)
 p2</code></pre>
 <p>Recall that a small sample size is expected to have more deviations from a normal distribution, whether it is normally distributed or not.</p>
 <p><br></p>
