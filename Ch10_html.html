@@ -425,7 +425,7 @@ Figure 1.Uca pugilator combat (left), and Uca crab aggregation in mudflat (right
 <p><br></p>
 <p><strong>Upon completion of this lab, you should be able to:</strong></p>
 <ul>
-<li>analyze factorial desings with a two way ANOVA;</li>
+<li>analyze factorial designs with a two way ANOVA;</li>
 <li>identify and quantify interactions between two factors;</li>
 <li>interpret the R model output (ANOVA table).</li>
 </ul>
@@ -443,16 +443,16 @@ Figure 1.Uca pugilator combat (left), and Uca crab aggregation in mudflat (right
 <p><br></p>
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> Worked example </span> <br></p>
 <p>In Chapter 9, we used a one-way ANOVA to compare the mean of more than two groups. However, when comparing the mean differences between groups of two or more categorical variables (factors) we use an extension of the one-way ANOVA; the two-way ANOVA. Basically, the two-way ANOVA is multivariate analysis that examines whether there are interactions between the two explanatory variables on the response variable. As expected, the two-way ANOVA follows the same assumptions as the one-way ANOVA.</p>
-<p>The two-way analysis of variance is a linear model (as the one-way anova) used in factorial desings. Factorial designs are experiments in which all combinations of the values of two - or more - explanatory variables are tested. In this case, the explanatory variables are called <em>factors</em>. In Chapter 9, we estimated a one-way ANOVA step-by-step. A two-way ANOVA becomes more complicated given the potential large number of combinations among factors that may result, together with the number of replicates. So for our purpose, let’s just define the two-way ANOVA in its linear form.</p>
+<p>The two-way analysis of variance is a linear model (as the one-way anova) used in factorial designs. Factorial designs are experiments in which all combinations of the values of two - or more - explanatory variables are tested. In this case, the explanatory variables are called <em>factors</em>. In Chapter 9, we estimated a one-way ANOVA step-by-step. A two-way ANOVA becomes more complicated given the potential large number of combinations among factors that may result, together with the number of replicates. So, for our purpose, let’s just define the two-way ANOVA in its linear form.</p>
 <p>When testing the effects of two categorical variables, the linear model can be defined as:</p>
 <p><span class="math display">\[
 \begin{aligned}
 Y=\mu+A+B+A*B,
 \end{aligned}
 \]</span></p>
-<p>where <span class="math inline">\(\mu\)</span> is the mean or intercept, and <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are the two categorical explanatory variables. <span class="math inline">\(A*B\)</span> is the interaction term.</p>
+<p>where <span class="math inline">\(\mu\)</span> is the mean or intercept, and <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are the two categorical explanatory variables representing the main effects. <span class="math inline">\(A*B\)</span> is the interaction term. Here, the degrees of freedom for a main effect are defined as # of levels-1, where levels are the different groups within each factor. The degrees of freedom for the interaction term are defined as the product of the main effect df values.</p>
 <p><br></p>
-<p>Say we are interested in testing whether the is difference in mean territory size of reptiles species differs between diet types (carnivore vs herbivore) and climatic seasons (summer vs winter). Here, our model can be defined as:</p>
+<p>Say we are interested in testing whether the difference in mean territory size of reptiles species differs between diet types (carnivore vs herbivore) and climatic seasons (summer vs winter). Here, our model can be defined as:</p>
 <p><span class="math display">\[
 \begin{aligned}
 TERRITORY=\mu+DIET+SEASON+DIET*SEASON.
