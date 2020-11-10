@@ -450,7 +450,7 @@ Figure 1. Illustration of potential correlations between two numerical variables
 <p><br></p>
 <div id="correlation-coefficient-r" class="section level2">
 <h2>Correlation coefficient <span class="math inline">\(r\)</span></h2>
-<p>The linear correlation coefficient, <em>r</em>, measures the tendency of two numerical variables to change together along a line. <span class="math display">\[
+<p>The linear correlation coefficient, <em>r</em>, measures the tendency of two numerical variables to change together along a line and is defined as: <span class="math display">\[
 \begin{aligned}
 r=\frac{\sum_{i}(X_i-\overline{X})(Y_i-\overline{Y})}{\sqrt{\sum_{i}(X_i-\overline{X})^2}\sqrt{\sum_{i}(Y_i-\overline{Y})^2}},
 \end{aligned}
@@ -673,7 +673,7 @@ t=\frac{1.471-0}{0.154}=9.552
 <p><br></p>
 <p>Let’s explore the available data “genomics”.</p>
 <pre class="r"><code># importing the gene dataset
-gene &lt;- read.table(&quot;gene.txt&quot;,header=TRUE,sep=&quot;\t&quot;)
+gene &lt;- read.table(&quot;genomics.txt&quot;,header=TRUE,sep=&quot;\t&quot;)
 
 gene</code></pre>
 <p><br></p>
