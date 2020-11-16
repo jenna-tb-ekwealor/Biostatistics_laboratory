@@ -711,8 +711,8 @@ p1</code></pre>
 </ol>
 <p><br> 1. Correlation. We can estimate the correlation between the number of DNA polymerase III alpha subunit genes and the genome length using the function <strong>cor()</strong>, where the first two arguments are the variables of interest and the third argument is the method. Here, we will apply Pearson’s correlation coefficient.</p>
 <pre class="r"><code># Pearson correlation
-cor1 &lt;- cor(gene$DNApol_III_a_sub,gene$N_Gene_tot, method=&quot;pearson&quot;) 
-cor1</code></pre>
+r &lt;- cor(gene$DNApol_III_a_sub,gene$N_Gene_tot, method=&quot;pearson&quot;) 
+r</code></pre>
 <p><br></p>
 <p>The R package <em>corrplot</em> has many visualizations for correlation matrices where we can plot all correlations from a dataset for more efficient visual explorations. For that, let’s convert “gene” into a matrix using the function <strong>as.matrix()</strong> and unselecting non-numeric columns (i.e., Strain) from “gene”.</p>
 <pre class="r"><code># converting gene into a matrix
@@ -731,6 +731,24 @@ library(corrplot)
 corrplot(gene3, method = &quot;circle&quot;)
 corrplot(gene3, method = &quot;color&quot;)
 corrplot(gene3, method = &quot;color&quot;,type=&quot;lower&quot;)</code></pre>
+<p><br></p>
+<p>Let’s now estimate the precision of <em>r</em>, or its standard error.</p>
+<pre class="r"><code># sample size
+n &lt;- 1351
+n
+
+# standard error of r
+r_se &lt;- sqrt((1-r^2)/(n-2))
+r_se</code></pre>
+<p><br></p>
+<p>Finally, let’s test our hypothesis with the student’s <em>t</em>-test.</p>
+<pre class="r"><code># t-test for r
+t &lt;- r/r_se
+t</code></pre>
+<p><strong>Question:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><em>Do you reject the null hypothesis?</em></li>
+</ol>
 <p><br> 2. Linear regression. We can also fit a linear regression to test whether the number of genes encoding DNA polymerase III alpha subunit can be predicted by the length of the genome. For this, we use the function <strong>lm()</strong> where the first argument is the response variable, followed by the explanatory variable (separated by “~”).</p>
 <pre class="r"><code># linear regression
 lm1 &lt;- lm(DNApol_III_a_sub~N_Gene_tot, data=gene) 
