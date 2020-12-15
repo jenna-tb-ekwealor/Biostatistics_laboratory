@@ -362,9 +362,9 @@ summary {
 
 
 <h1 class="title toc-ignore"><center>
-Biostatistics - BIOL 260</h1>
+Introduction to R and RStudio</h1>
 <h4 class="author"><center>
-<em>Lab 1: Introduction to R and RStudio</em></h4>
+<em>Chapter 1</em></h4>
 
 </div>
 
@@ -393,90 +393,81 @@ text-align: justify}
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class="blue">
-<p>Transparency, easy reproducibility, and full understanding of your own data are key attributes of science. Modern science is about sharing, and sharing your results in a scientific paper is no longer enough. In an effort to advance science across fields, published results now need to be accompanied by the data analyzed and the analysis carried out. Because of this - among many other reasons - <em>programming languages</em> have become popular in science. In fact, one can argue that biologists have been moving relatively faster in the incorporation of programming skills to their daily tasks. Today, we will explore the popular R programming language. We will be using R during the semester to manage biological data and address research questions with appropriate statistical tools.</p>
+<p>Transparency and reproducibility are key attributes of scientific studies. In an effort to advance science across fields, primary literature now need to be accompanied by the data analyzed and the analysis carried out. Because of this, <em>programming languages</em> have become popular in science. They support easy work with data and allow us to reproduce a statistical analysis in its entirety. Today, we will explore the popular R programming language. We will be using R and its integrated development environment, RStudio, to manage biological data and address research questions with the goal to practice transparency and reproducibility in statistical analyses.</p>
 </div>
 <hr />
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> Introduction </span> <br></p>
-<p>In this lab we will explore R, a <em>programming language</em> and free software environment for statistical computing and graphics. First developed in the 1990’s, R has become a popular tool among biologists in recent years and nearly an essential skill among students, supporting national calls to promote and enhance quantitative literacy. In particular, the popularity of R in biology is partly due to its quality as a statistical software and its ability to manage large datasets. Besides, R is relatively user-friendly. Being free, one can contribute to new functions and many other tools within R that can be shared to the public. One of these developments is <em>RStudio</em>, an integrated development environment for R that makes it easier to navigate certain aspects of the language. So, let’s explore both R and RStudio and learn some of the basic codes we will be implementing in our Biostatistics laboratory.</p>
+<p>In this lab we will introduce R, a <em>programming language</em> and free software environment for statistical computing and graphics. First developed in the 1990’s, R has become a popular tool among biologists in recent years and nearly an essential skill among students, supporting national calls to promote and enhance quantitative literacy. In particular, the popularity of R in biology is partly due to its quality as a statistical software and its ability to manage large datasets. Besides being free, one can contribute to new functions and many other tools within R that can be shared to the public. One of these developments is <em>RStudio</em>, an integrated development environment for R that makes it easier to navigate certain aspects of the language. So, let’s explore both R and RStudio and learn some of its basic attributes and codes.</p>
 <p><br></p>
 <p><strong>Upon completion of this lab, you should be able to:</strong></p>
 <ul>
-<li>Identify the principal components of RStudio;</li>
-<li>Import data to RStudio;</li>
-<li>Identify the class of an R object (e.g., data frame, tibble);</li>
-<li>Identify the structure of an R object (e.g., # variables, # observations, levels of each variable);</li>
-<li>Manage an R object by selecting and filtering columns.</li>
+<li>Familiarize with the layout of RStudio;</li>
+<li>Import data to R using RStudio;</li>
+<li>Identify the structure of a data object;</li>
+<li>Manage a data object by selecting and filtering columns.</li>
 </ul>
 <p><br></p>
-<p><strong>External study resources</strong></p>
-<ul>
-<li><a href="https://www.nature.com/news/programming-tools-adventures-with-r-1.16609">Programming tools: Adventures with R</a></li>
-<li><a href="https://www.youtube.com/watch?v=5YmcEYTSN7k">Intro to RStudio</a></li>
-<li><a href="https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html">Data Carpentry: What is R and RStudio?</a></li>
-<li><a href="https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html">Data Carpentry: Intro to R</a></li>
-</ul>
-<p><br> <span style="color:#66023C; font-size:150%; font-weight:600"> Materials and Methods </span> <br></p>
+<p><br> <span style="color:#66023C; font-size:150%; font-weight:600"> Materials </span> <br></p>
 <ul>
 <li>R and RStudio</li>
 <li>anole.csv</li>
-<li>anole.RData</li>
 <li>lizards.csv</li>
-<li>lizards.RData</li>
 </ul>
 <hr />
-<p><span style="color:#66023C; font-size:150%; font-weight:600"> Worked example </span> <br></p>
-<p>This example should work as a step-by-step introduction to basic skills you will be implementing in each laboratory chapter. For this Worked example, we will be using the dataset “anole” from <a href="https://cpb-us-w2.wpmucdn.com/sites.wustl.edu/dist/6/1127/files/2018/12/Donihue-et-al.-2018-2e1xqw4.pdf">Donihue et al. 2018</a>. Download it to your computer.</p>
+<p><span style="color:#66023C; font-size:150%; font-weight:600"> In-class activity </span> <br></p>
+<p>This example should work as a step-by-step introduction to some basic skills you will be implementing in the following chapters. For this activity, we will be using the dataset “anole” from <a href="https://cpb-us-w2.wpmucdn.com/sites.wustl.edu/dist/6/1127/files/2018/12/Donihue-et-al.-2018-2e1xqw4.pdf">Donihue et al. 2018</a>.</p>
 <p><br></p>
-<div id="creating-a-working-directory-folder." class="section level3">
-<h3>1. Creating a working directory folder.</h3>
-<p>In your computer, create a folder named “working_directory” and save the downloaded file “anole” in it.</p>
+<div id="creating-and-setting-a-working-directory." class="section level3">
+<h3>1. Creating and setting a working directory.</h3>
+<p>In your computer, create a folder named “working_directory” and save the downloaded file “anole” in it. Open RStudio. Go to the bottom right window and search for your working_directory folder. Note that this window in RStudio allows you to navigate folders in your computer. Once in your working_directory folder, click More -&gt; Set As Working Directory. <strong>Note:</strong> for R to read the files of interest, you need to indicate where in your computer is the file (i.e., your working directory).</p>
 <p><br></p>
 </div>
 <div id="creating-and-saving-your-r-script." class="section level3">
 <h3>2. Creating and saving your R script.</h3>
-<p>Open <strong>RStudio</strong>, not R. The first step when carrying out a new analysis is to open a new script and save it. Go to File-&gt;New File-&gt;R script and save it with a useful name in your working_directory folder. A useful name could be “Chapter1”. An R script is where you will be saving your codes and the progress of your work.</p>
+<p>An R script is where you will be saving your codes and the progress of your work. The first step when carrying out a new analysis is to open a new script and save it. Go to File -&gt; New File -&gt; R script. Once open, save it with a useful name in your working_directory folder. For that, go to File -&gt; Save.</p>
 <p><br></p>
 </div>
 <div id="annotating-your-r-script." class="section level3">
 <h3>3. Annotating your R script.</h3>
-<p>This step is very important. Think about your R script as your notebook with the codes and annotations indicating what those codes are for. Open your script and write a description of the codes you will be employing. <strong>Use a “#” before any line of text you want R to interpret as an annotation and not as code</strong>.</p>
-<p>For example, in the beginning of today’s script you may add:</p>
+<p>Annotating your script is a very important step that help you to keep track of your work and facilitates reproducibility. The R script serves as your notebook. There, you save your codes together with associated annotations indicating what those codes are for. In your script, write a description of the codes you will be employing in this activity. <strong>Use a “#” before any line of text you want R to interpret as an annotation and not as code</strong>.</p>
+<p>For example, in the beginning of this activity’s script, you may add:</p>
 <pre class="r"><code># Chapter 1: Intro to R and RStudio</code></pre>
-<p><strong>Note:</strong> Remember to do annotations before any line of code so that later you can come back to your script and remember what those lines of code mean.</p>
+<p><strong>Note:</strong> Remember to do annotations before any line of code so that you or others can understand the meaning of the code.</p>
 <p><br></p>
 </div>
-<div id="importing-data-files-to-rstudio." class="section level3">
-<h3>4. Importing data files to RStudio.</h3>
-<p>There are several ways to import data to RStudio and it depends on the type of file the data is (i.e., csv, RData). You may use the one that works best for you. Below are three ways:</p>
+<div id="importing-data-files-to-r-using-rstudio." class="section level3">
+<h3>4. Importing data files to R using RStudio.</h3>
+<p>There are several ways to import data to R using RStudio and it depends on the type of file the data is (i.e., .csv, .RData). You may use the one that works best for you. Below are three ways to import data:</p>
 <p><br></p>
-<p><strong>A. From RStudio with a .csv file</strong>: In the bottom right window, click File and search for your working_directory folder in your computer. Right click on the anole.csv file and import it using the drop down menu. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
+<p><strong>A. Importing a .csv data file using the RStudio drop down menu</strong>: In the bottom right window of RStudio, click File and search for your working_directory folder. Once there, click on the anole.csv file and import it using the drop down menu. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
 <p><br></p>
-<p><strong>B. From codes with a .csv file</strong>: In the bottom right window of RStudio, click File and search for your working_directory folder in your computer. Once in your folder, click More -&gt; Set As Working Directory. <strong>Note:</strong> for R to read the files of interest, you need to indicate where in your computer is the file (your working directory). In the console, use the function <strong>read.csv()</strong> to import the anole.csv file. See the example below, you may copy and paste it in your script.</p>
-<pre class="r"><code>anole &lt;- read.csv(&quot;anole.csv&quot;,header=TRUE)</code></pre>
-<p>To run the line of codes, highlight it and click “Run” in the upper side of the script. If it worked, you should see the line of codes in your console and “anole” in the RStudio Global Environment (upper right window).</p>
+<p><strong>B. Importing a .csv data file using codes</strong>: After setting your working directory (Step 1), use the function <strong>read.csv()</strong> to import the anole.csv file. See the example below, you may copy and paste it in your script.</p>
+<pre class="r"><code># importing the anole data
+anole &lt;- read.csv(&quot;anole.csv&quot;,header=TRUE)</code></pre>
+<p>To run the line of codes, highlight it and click “Run”, which is located in the upper side of the script. If it worked, you should see the line of codes in your console and “anole” in the RStudio Global Environment (upper right window).</p>
 <p><br></p>
-<p><strong>C. From an R object with an .RData file</strong>: If the data file is an R object (file extension = .RData), then right click it and open it with RStudio. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
+<p><strong>C. Using an .RData file</strong>: If the data file is an R object (file extension = .RData), right click it and open it with RStudio. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
 <p><br></p>
 </div>
 <div id="exploring-the-imported-dataset." class="section level3">
 <h3>5. Exploring the imported dataset.</h3>
-<p>At the beginning of any analysis, we first need to check the data and understand its attributes. What kind of data we have; how can we “treat” it in R?</p>
-<p>Let’s start looking into the structure of “anole” by using the function <strong>str()</strong>. This function gives us information about the class of the object (in this case the object “anole”), what class of variables are in the object, how many observations we have in the object.</p>
+<p>Before any analysis, we first need to check the data and understand its attributes.</p>
+<p>Let’s start looking into the structure of “anole” by using the function <strong>str()</strong>. This function gives us information about the <em>class</em> of the data object (i.e., “anole”), what <em>variables</em> are in the data object, and how many <em>observations</em> we have in the data object.</p>
 <pre class="r"><code># data structure
 str(anole)</code></pre>
 <p><br></p>
 <p><strong>Questions</strong></p>
 <ol style="list-style-type: lower-alpha">
-<li><p><em>What is the class of the dataset anole (e.g., dataframe, table, tibble)?</em></p></li>
-<li><p><em>How many observations and variables the dataset anole has?</em></p></li>
-<li><p><em>What is the class of each variable in the dataset anole (e.g., character, factor, numeric, integer)?</em></p></li>
+<li><p><em>What is the class of the dataset “anole” (e.g., dataframe, table, tibble)?</em></p></li>
+<li><p><em>How many observations and variables does the dataset “anole” have?</em></p></li>
+<li><p><em>What is the class of each variable in the dataset “anole” (e.g., character, factor, numeric, integer)?</em></p></li>
 </ol>
 <p><br></p>
-<p>Other useful exploratory functions are <strong>levels()</strong>, which tells us the unique values of a variable whether it is of class numeric or factor; <strong>summary()</strong>, which summarizes each variable in the dataset whether it is of class numeric or factor; <strong>head()</strong>, which tells us the first rows in our dataset just to remind us how the data looks like and what variables we have, and <strong>View()</strong> which opens the dataset as a spreadsheet.</p>
-<pre class="r"><code># variable levels, the $ sign means &quot;within&quot;
+<p>Other useful exploratory functions are <strong>levels()</strong>, which returns the unique values of a variable whether it is of class numeric or factor; <strong>summary()</strong>, which summarizes each variable in the dataset; <strong>head()</strong>, which returns the first rows in our dataset to explore the variables, and <strong>View()</strong> which opens the dataset as a spreadsheet. Note that R language is case-sensitive.</p>
+<pre class="r"><code># levels of the variable Sex, the $ sign means &quot;within&quot;
 levels(anole$Sex)
 
-# summary for each variable
+# summary of each variable
 summary(anole)
 
 # first rows of anole
@@ -487,22 +478,21 @@ View(anole)</code></pre>
 <p><br></p>
 <p><strong>Questions</strong></p>
 <ol style="list-style-type: lower-alpha">
-<li><p><em>What levels can we find in the variable Sex?</em></p></li>
-<li><p><em>What is the mean femur length of anoles?</em></p></li>
-<li><p><em>What are the first three variables in anole?</em></p></li>
+<li><p><em>How many levels does the variable Sex have?</em></p></li>
+<li><p><em>What is the mean Femur length of “anole”?</em></p></li>
+<li><p><em>What are the first three variables in “anole”?</em></p></li>
 </ol>
 <p><br></p>
 </div>
 <div id="managing-data." class="section level3">
 <h3>6. Managing data.</h3>
-<p>Many functions like <strong>str()</strong> come built into R. However, packages give you additional useful functions. We will be using some functions from the package <em>tidyverse</em> to manage our data (e.g., filtering columns, selecting columns). Before you use a package for the first time you need to install it, then you should load it using <strong>library()</strong> in every subsequent R session whenever you need it.</p>
+<p>Many functions like <strong>str()</strong> come built into R. However, R packages give you additional useful functions. You will be using some functions from the package <em>tidyverse</em> to manage your data (e.g., filtering columns, selecting columns). Before you use a package for the first time you need to install it in R. After installation, you should load it using <strong>library()</strong> in every subsequent R session as needed.</p>
 <pre class="r"><code># installing tidyverse
 install.packages(&quot;tidyverse&quot;,repos=&quot;http://cran.us.r-project.org&quot;)
 
 # loading tidiverse
 library(tidyverse)</code></pre>
-<p><br></p>
-<p>Now, let’s say we are interested only in the column “femur” and we would like to create a new object named “femurs” with only that column. To select columns of a dataframe, we use <strong>select()</strong>. The first argument to this function is the data object (anole), and the subsequent argument is the column to keep. Let’s select column “femur”:</p>
+<p><br> Now, let’s say you are interested only in the column “Femur” within “anole” and you would like to create a new object named <em>femurs</em> with only that column. To select columns of a dataframe, use <strong>select()</strong>. The first argument to this function is the data object, and the subsequent argument is the column to keep.</p>
 <pre class="r"><code># selecting the column femur
 femurs &lt;- select(anole, Femur)
 
@@ -514,9 +504,9 @@ femurs</code></pre>
 <li><em>Is the new object in the Global Environment?</em></li>
 </ol>
 <p><br></p>
-<p>Now, say we are interested only in femurs of length higher than 10 mm. To filter by row, we use <strong>filter()</strong>. The first argument in this function is the dataframe (anole), and the subsequent arguments are the column name and the condition. Let’s filter the column femur by length higher than 10 mm.</p>
-<pre class="r"><code># filtering femur by length
-femurs_10mm &lt;- filter(anole, Femur&gt;10)
+<p>Now, say you are interested only in femurs of length higher than 10 mm. To filter by row, use <strong>filter()</strong>. The first argument in this function is the data object, and the subsequent arguments are the column name and the condition.</p>
+<pre class="r"><code># filtering femur length by rows &gt; 10mm
+femurs_10mm &lt;- filter(femurs, Femur&gt;10)
 
 # checking the new object created
 femurs_10mm</code></pre>
@@ -524,14 +514,18 @@ femurs_10mm</code></pre>
 <p><strong>Questions:</strong></p>
 <ol style="list-style-type: lower-alpha">
 <li><em>What’s the longest femur length in femurs_10mm?</em></li>
+<li><em>How many observations femurs_10mm has?</em></li>
 </ol>
 <p><br></p>
 </div>
-<div id="descriptive-stats." class="section level3">
-<h3>7. Descriptive stats.</h3>
-<p>Finally, keep in mind that R is a language in which we can define our own mathematical functions. Therefore, it also works as a calculator. Let’s employ the simple descriptive stats functions, including <strong>mean()</strong>, <strong>min()</strong>, <strong>max()</strong>, <strong>range()</strong>. Note the use of the <strong>$</strong> sign!</p>
+<div id="descriptive-statistics" class="section level3">
+<h3>7. Descriptive statistics</h3>
+<p>Finally, keep in mind that R is a language in which we can define our own mathematical functions. Therefore, it also works as a calculator. Let’s employ descriptive stats functions for Femur, including <strong>mean()</strong>, <strong>median()</strong>, <strong>min()</strong>, <strong>max()</strong>, and <strong>range()</strong> to estimate the mean, median, minimum, maximum and range of femur length values, respectively. Note the use of the <strong>$</strong> sign!</p>
 <pre class="r"><code># mean femur length
 mean(anole$Femur)
+
+# median femur length
+median(anole$Femur)
 
 # minimum femur length
 min(anole$Femur)
@@ -547,7 +541,15 @@ range(anole$Femur)</code></pre>
 <li><em>Did you get the same results from the summary() function?</em></li>
 </ol>
 <p><br></p>
-<p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think, Do:</strong> </span> Now, it is your turn to practice what we have done with dataset “lizards”. <strong>Stop</strong> and review the steps 1-7 you just did. <strong>Think</strong> about how you could manipulate such codes in order to do the same analysis for “lizards”. <strong>Do</strong> the analysis and answer the questions!</p>
+<p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think, Do:</strong> </span> Now, it is your turn to practice what we have done with dataset “lizards”. <strong>Stop</strong> and review the steps 1-7 you just did. <strong>Think</strong> about how you could manipulate such codes in order to do the same analysis for “lizards”. <strong>Do</strong> the analysis and answer the questions! <em>Hint</em>: give an appropriate name to the new objects you will create for “lizards”. Such names should not overwrite the ones used for “anole” in your script. Do the analysis and be ready to present it!</p>
+<p><br></p>
+<p><span style="color:#2724ed; font-size:150%; font-weight:600"> Discussion questions </span></p>
+<ol style="list-style-type: lower-alpha">
+<li><em>Now that you are more familiarized with RStudio, can you describe its layout including its four principal components (windows)?</em></li>
+<li><em>Mention three benefits of annotating your script.</em></li>
+<li><em>How do you set a path between R and the location of your files in your computer?</em></li>
+<li><em>Why would you use the str() function?</em></li>
+</ol>
 <p><br></p>
 <center>
 <strong>Great Work!</strong>
