@@ -407,7 +407,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <li>Manage a data object by selecting and filtering columns.</li>
 </ul>
 <p><br></p>
-<p><strong>References:</strong></p>
+<p><strong>Reference:</strong></p>
 <ul>
 <li><a href="https://cpb-us-w2.wpmucdn.com/sites.wustl.edu/dist/6/1127/files/2018/12/Donihue-et-al.-2018-2e1xqw4.pdf">C.M. Donihue, et al. Hurricane-induced selection on the morphology of an island lizard. Nature, 560 (2018), pp.88-91</a></li>
 </ul>
@@ -421,26 +421,26 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> In-class activity </span> <br></p>
 <p>This example should work as a step-by-step introduction to some basic skills you will be implementing in the following chapters. For this activity, we will be using the dataset “anole” from <a href="https://cpb-us-w2.wpmucdn.com/sites.wustl.edu/dist/6/1127/files/2018/12/Donihue-et-al.-2018-2e1xqw4.pdf">Donihue et al. 2018</a>.</p>
 <p><br></p>
-<div id="creating-and-setting-a-working-directory." class="section level3">
-<h3>1. Creating and setting a working directory.</h3>
+<div id="creating-and-setting-a-working-directory" class="section level3">
+<h3>1. Creating and setting a working directory</h3>
 <p>In your computer, create a folder named “working_directory” and save the downloaded file “anole” in it. Open RStudio. Go to the bottom right window and search for your working_directory folder. Note that this window in RStudio allows you to navigate folders in your computer. Once in your working_directory folder, click More -&gt; Set As Working Directory. <strong>Note:</strong> for R to read the files of interest, you need to indicate where in your computer is the file (i.e., your working directory).</p>
 <p><br></p>
 </div>
-<div id="creating-and-saving-your-r-script." class="section level3">
-<h3>2. Creating and saving your R script.</h3>
+<div id="creating-and-saving-your-r-script" class="section level3">
+<h3>2. Creating and saving your R script</h3>
 <p>An R script is where you will be saving your codes and the progress of your work. The first step when carrying out a new analysis is to open a new script and save it. Go to File -&gt; New File -&gt; R script. Once open, save it with a useful name in your working_directory folder. For that, go to File -&gt; Save.</p>
 <p><br></p>
 </div>
-<div id="annotating-your-r-script." class="section level3">
-<h3>3. Annotating your R script.</h3>
+<div id="annotating-your-r-script" class="section level3">
+<h3>3. Annotating your R script</h3>
 <p>Annotating your script is a very important step that help you to keep track of your work and facilitates reproducibility. The R script serves as your notebook. There, you save your codes together with associated annotations indicating what those codes are for. In your script, write a description of the codes you will be employing in this activity. <strong>Use a “#” before any line of text you want R to interpret as an annotation and not as code</strong>.</p>
 <p>For example, in the beginning of this activity’s script, you may add:</p>
 <pre class="r"><code># Chapter 1: Intro to R and RStudio</code></pre>
 <p><strong>Note:</strong> Remember to do annotations before any line of code so that you or others can understand the meaning of the code.</p>
 <p><br></p>
 </div>
-<div id="importing-data-files-to-r-using-rstudio." class="section level3">
-<h3>4. Importing data files to R using RStudio.</h3>
+<div id="importing-data-files-to-r-using-rstudio" class="section level3">
+<h3>4. Importing data files to R using RStudio</h3>
 <p>There are several ways to import data to R using RStudio and it depends on the type of file the data is (i.e., .csv, .RData). You may use the one that works best for you. Below are three ways to import data:</p>
 <p><br></p>
 <p><strong>A. Importing a .csv data file using the RStudio drop down menu</strong>: In the bottom right window of RStudio, click File and search for your working_directory folder. Once there, click on the anole.csv file and import it using the drop down menu. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
@@ -453,8 +453,8 @@ anole &lt;- read.csv(&quot;anole.csv&quot;,header=TRUE)</code></pre>
 <p><strong>C. Using an .RData file</strong>: If the data file is an R object (file extension = .RData), right click it and open it with RStudio. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
 <p><br></p>
 </div>
-<div id="exploring-the-imported-dataset." class="section level3">
-<h3>5. Exploring the imported dataset.</h3>
+<div id="exploring-the-imported-dataset" class="section level3">
+<h3>5. Exploring the imported dataset</h3>
 <p>Before any analysis, we first need to check the data and understand its attributes.</p>
 <p>Let’s start looking into the structure of “anole” by using the function <strong>str()</strong>. This function gives us information about the <em>class</em> of the data object (i.e., “anole”), what <em>variables</em> are in the data object, and how many <em>observations</em> we have in the data object.</p>
 <pre class="r"><code># data structure
@@ -488,8 +488,8 @@ View(anole)</code></pre>
 </ol>
 <p><br></p>
 </div>
-<div id="managing-data." class="section level3">
-<h3>6. Managing data.</h3>
+<div id="managing-data" class="section level3">
+<h3>6. Managing data</h3>
 <p>Many functions like <strong>str()</strong> come built into R. However, R packages give you additional useful functions. You will be using some functions from the package <em>tidyverse</em> to manage your data (e.g., filtering columns, selecting columns). Before you use a package for the first time you need to install it in R. After installation, you should load it using <strong>library()</strong> in every subsequent R session as needed.</p>
 <pre class="r"><code># installing tidyverse
 install.packages(&quot;tidyverse&quot;,repos=&quot;http://cran.us.r-project.org&quot;)
