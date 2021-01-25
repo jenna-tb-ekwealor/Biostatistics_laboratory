@@ -445,10 +445,10 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <p><br></p>
 <p><strong>A. Importing a .csv data file using the RStudio drop down menu</strong>: In the bottom right window of RStudio, click File and search for your working_directory folder. Once there, click on the anole.csv file and import it using the drop down menu. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
 <p><br></p>
-<p><strong>B. Importing a .csv data file using codes</strong>: After setting your working directory (Step 1), use the function <strong>read.csv()</strong> to import the anole.csv file. See the example below, you may copy and paste it in your script.</p>
+<p><strong>B. Importing a .csv data file using codes</strong>: After setting your working directory (Step 1), use the function <strong>read.csv()</strong> to import the anole.csv file. See the example below. Note the use of the commands <strong>header=TRUE</strong> in order to treat the first row of the data frame as a header and <strong>stringsASFactors=TRUE</strong> to indicate that strings in the data frame should be treated as factor variable.</p>
 <pre class="r"><code># importing the anole data
-anole &lt;- read.csv(&quot;anole.csv&quot;,header=TRUE)</code></pre>
-<p>To run the line of codes, highlight it and click “Run”, which is located in the upper side of the script. If it worked, you should see the line of codes in your console and “anole” in the RStudio Global Environment (upper right window).</p>
+anole &lt;- read.csv(&quot;anole.csv&quot;,header=TRUE,stringsAsFactors=TRUE)</code></pre>
+<p>To run the line of codes, copy it and paste it in your R script. You may highlight it and click “Run”, which is located in the upper side of the script. If it worked, you should see the line of codes in your console and “anole” in the RStudio Global Environment (upper right window).</p>
 <p><br></p>
 <p><strong>C. Using an .RData file</strong>: If the data file is an R object (file extension = .RData), right click it and open it with RStudio. If it worked, you should see “anole” in the RStudio Global Environment (upper right window).</p>
 <p><br></p>
@@ -462,7 +462,7 @@ str(anole)</code></pre>
 <p><br></p>
 <p><strong>Questions</strong></p>
 <ol style="list-style-type: lower-alpha">
-<li><p><em>What is the class of the dataset “anole” (e.g., dataframe, table, tibble)?</em></p></li>
+<li><p><em>What is the class of the dataset “anole” (e.g., data frame, table, tibble)?</em></p></li>
 <li><p><em>How many observations and variables does the dataset “anole” have?</em></p></li>
 <li><p><em>What is the class of each variable in the dataset “anole” (e.g., character, factor, numeric, integer)?</em></p></li>
 </ol>
@@ -496,7 +496,8 @@ install.packages(&quot;tidyverse&quot;,repos=&quot;http://cran.us.r-project.org&
 
 # loading tidyverse
 library(tidyverse)</code></pre>
-<p><br> Now, let’s say you are interested only in the column “Femur” within “anole” and you would like to create a new object named <em>femurs</em> with only that column. To select columns of a dataframe, use <strong>select()</strong>. The first argument to this function is the data object, and the subsequent argument is the column to keep.</p>
+<p><br></p>
+<p>Now, let’s say you are interested only in the column “Femur” within “anole” and you would like to create a new object named <em>femurs</em> with only that column. To select columns of a data frame, use <strong>select()</strong>. The first argument to this function is the data object, and the subsequent argument is the column to keep.</p>
 <pre class="r"><code># selecting the column femur
 femurs &lt;- select(anole, Femur)
 
