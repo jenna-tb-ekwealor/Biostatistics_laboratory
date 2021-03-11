@@ -618,25 +618,26 @@ t.test(bmi, mu=25, data=bmi)</code></pre>
 <p><span style="color:red; font-size:150%; font-weight:600"> Challenge:</span> Check your work using the <strong>t.test()</strong> function in R.</p>
 <p><br></p>
 <p><strong>4. Visualize the data</strong></p>
-<p>First, let’s learn how to create a table of descriptive statistics using R package <em>Rmisc</em>. For this, we use the function <strong>summarySE()</strong> where the first argument is the dataframe, the second argument is the response variable we want to summarize (e.g., body length), and the third argument is the categorical variable that groups the response variable (e.g., sex).</p>
-<pre class="r"><code># installing Rmisc
-install.packages(&quot;Rmisc&quot;,repos=&quot;http://cran.us.r-project.org&quot;)
+<p>First, let’s learn how to create a table of descriptive statistics using R package <em>rstatix</em>. For this, we use the function <strong>get_summary_stats()</strong> where the first argument is the response variable, the second argument is the response variable we want to summarize (e.g., body length), and the third argument is the categorical variable that groups the response variable (e.g., sex).</p>
+<pre class="r"><code># installing the package
+install.packages(&quot;rstatix&quot;)
 
 # loading package
-library(Rmisc)
+library(rstatix)
 
 # summary statistics
-sum &lt;- summarySE(mydata,&quot;length&quot;,&quot;sex&quot;)
-sum</code></pre>
+sum &lt;- mydata %&gt;% 
+      group_by(sex) %&gt;% 
+      get_summary_stats(length)  </code></pre>
 <p><br></p>
 <p>Now, let’s learn how to use the newly created table of descriptive statistic in ggplot2. For this plot, we will use the function <strong>geom_errorbar()</strong>.</p>
 <pre class="r"><code># loading package
 library(ggplot2)
 
-# barplot with error bars for standard error
+# bar plot with error bars for standard error
 p1 &lt;- ggplot(sum,aes(x=sex,y=length)) +
     geom_bar(stat=&quot;identity&quot;) +
-    geom_errorbar(ymin=sum$length-sum$se,ymax=sum$length+sum$se) +
+    geom_errorbar(aes(min=mean-se, max=mean+se), width=0.2) +
     theme_classic(15) +
     ylab(&quot;Body length (cm)&quot;) +
     xlab(&quot;Sex&quot;)
