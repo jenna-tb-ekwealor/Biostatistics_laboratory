@@ -620,7 +620,7 @@ t.test(bmi, mu=25, data=bmi)</code></pre>
 <p><strong>4. Visualize the data</strong></p>
 <p>First, let’s learn how to create a table of descriptive statistics using R package <em>rstatix</em>. For this, we use the function <strong>get_summary_stats()</strong> where the first argument is the response variable, the second argument is the response variable we want to summarize (e.g., body length), and the third argument is the categorical variable that groups the response variable (e.g., sex).</p>
 <pre class="r"><code># installing the package
-install.packages(&quot;rstatix&quot;)
+install.packages(&quot;rstatix&quot;,repos=&quot;http://cran.us.r-project.org&quot;)
 
 # loading package
 library(rstatix)
