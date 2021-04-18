@@ -485,7 +485,7 @@ t=\frac{1.471-0}{0.154}=9.552
 <p><span style="color:#66023C; font-size:150%; font-weight:600"> Materials and Methods</span></p>
 <ul>
 <li>R and RStudio</li>
-<li>package <em>ggplot2</em>, <em>corrplot</em></li>
+<li>package <em>ggplot2</em>, <em>corrplot</em>, and <em>rstatix</em></li>
 <li>genomics.txt</li>
 </ul>
 <p><br></p>
@@ -520,9 +520,12 @@ gene</code></pre>
 </ol>
 <p><br></p>
 <p><strong>3. Estimate the correlation coefficient</strong></p>
-<p>We can estimate the correlation coefficient between the number of DNA polymerase III alpha subunit genes and the genome length using the function <strong>cor()</strong>, where the first two arguments are the variables of interest and the third argument is the method. Here, we will apply Pearson’s correlation coefficient.</p>
+<p>We can estimate the correlation coefficient between the number of DNA polymerase III alpha subunit genes and the genome length using the function <strong>cor_test()</strong>, where the first two arguments are the variables of interest and the third argument is the data. Here, we will apply Pearson’s correlation coefficient.</p>
 <pre class="r"><code># Pearson correlation
-r &lt;- cor(gene$DNApol_III_a_sub,gene$N_Gene_tot, method=&quot;pearson&quot;) 
+gene1_cor &lt;- cor_test(DNApol_III_a_sub, N_Gene_tot, data=gene)
+
+#correlation coefficient
+r &lt;- gene1_cor$cor
 
 r</code></pre>
 <p><br></p>
@@ -555,10 +558,9 @@ r_se &lt;- sqrt((1-r^2)/(n-2))
 r_se</code></pre>
 <p><br></p>
 <p><strong>5. Test the hypothesis using the <span class="math inline">\(t\)</span>-test</strong></p>
-<p>Finally, let’s test our hypothesis with the student’s <em>t</em>-test.</p>
-<pre class="r"><code># t-test for r
-t &lt;- r/r_se
-t</code></pre>
+<p>Finally, let’s test our hypothesis with the student’s <em>t</em>-test using the previos correlation analysis done with the function <strong>cor_test()</strong>.</p>
+<pre class="r"><code># t-test for correlation analysis
+gene1_cor</code></pre>
 <p><br></p>
 <p><strong>Question:</strong></p>
 <ol style="list-style-type: lower-alpha">
