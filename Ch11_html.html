@@ -404,11 +404,11 @@ b=\frac{\sum_i(x_i-\overline{x})(y_i-\overline{y})}{\sum_i(x_i-\overline{x})^2},
 <p>For our data in Figure 2A, the slope equals to:</p>
 <p><span class="math display">\[
 \begin{aligned}
-b=\frac{46.618}{31.683}=1.471
+b=\frac{46.618}{76.04}=0.613
 \end{aligned}
 \]</span></p>
 <p><br></p>
-<p>In our example from Figure 2A, <span class="math inline">\(y\)</span> increases by 1.471 <em>per one unit increase</em> of <span class="math inline">\(x\)</span>. The units of the slope are <span class="math inline">\(y\)</span>-units per <span class="math inline">\(x\)</span>-units.</p>
+<p>In our example from Figure 2A, <span class="math inline">\(y\)</span> increases by 0.613 <em>per one unit increase</em> of <span class="math inline">\(x\)</span>. The units of the slope are <span class="math inline">\(y\)</span>-units per <span class="math inline">\(x\)</span>-units.</p>
 <p><br></p>
 </div>
 <div id="b.-estimating-the-intercept-a" class="section level5">
@@ -421,11 +421,11 @@ a&amp;=\overline{y}-b\overline{x}
 \]</span> This equation can be used given the fact that any linear regression crosses both <span class="math inline">\(\overline{x}\)</span> and <span class="math inline">\(\overline{y}\)</span> or the point (<span class="math inline">\(\overline{x},\overline{y}\)</span>).</p>
 <p>For our example, <span class="math display">\[
 \begin{aligned}
-a&amp;=8.34-(1.471)(5.425)=0.36
+a&amp;=5.425-(0.613)(8.342)=0.311
 \end{aligned}
 \]</span></p>
 <p><br></p>
-<p>Thus, the formula predicting <span class="math inline">\(y\)</span> from <span class="math inline">\(x\)</span> in our example is <span class="math inline">\(y=0.36+1.471x\)</span>.</p>
+<p>Thus, the formula predicting <span class="math inline">\(y\)</span> from <span class="math inline">\(x\)</span> in our example is <span class="math inline">\(y=0.311+0.613x\)</span>.</p>
 <p><br></p>
 </div>
 </div>
@@ -450,17 +450,17 @@ MS_{residuals}=\frac{\sum_i{(y_i-\overline{y})^2-b\sum_i({x_i-\overline{x})(y_i-
 <p><br></p>
 <p><span class="math display">\[
 \begin{aligned}
-MS_{residuals}=\frac{76.049-(1.471)(46.618)}{10}=0.747
+MS_{residuals}=\frac{31.683-(0.613)(46.618)}{10}=0.311
 \end{aligned}
 \]</span></p>
 <p><br></p>
 <p>Thus, <span class="math inline">\(SE_b\)</span> is <span class="math display">\[
 \begin{aligned}
-SE_b=\sqrt{\frac{0.747}{31.683}}=0.154
+SE_b=\sqrt{\frac{0.311}{76.04}}=0.064
 \end{aligned}
 \]</span></p>
 <p><br></p>
-<p>For our example in Figure 2A, <span class="math inline">\(b=1.471\pm0.154\)</span> <span class="math inline">\(y\)</span>-units per <span class="math inline">\(x\)</span>-units.</p>
+<p>For our example in Figure 2A, <span class="math inline">\(b=0.613\pm0.064\)</span> <span class="math inline">\(y\)</span>-units per <span class="math inline">\(x\)</span>-units.</p>
 <p><br></p>
 </div>
 <div id="testing-the-hypothesis-of-the-slope" class="section level2">
@@ -475,7 +475,7 @@ t=\frac{b-\beta_0}{SE_b}
 <p><br></p>
 <p>Because our null hypothesis is that the slope of the regression is zero, then <span class="math inline">\(\beta=0\)</span>: <span class="math display">\[
 \begin{aligned}
-t=\frac{1.471-0}{0.154}=9.552
+t=\frac{0.613-0}{0.064}=9.58
 \end{aligned}
 \]</span></p>
 <p><br></p>
