@@ -1,15 +1,11 @@
-::: {.container-fluid .main-container}
-::: {#header}
-Visualizing data
+---
+title: Visualizing data
+output:
+  html_document: default
+  pdf_document: default
+---
 
-*Chapter 3*
-:::
-
-\
-\
-
-::: blue
-**Today's investigation.** Displaying data using appropriate *graphing
+**Data visualization** Displaying data using appropriate *graphing
 tools* is one of the most important jobs we have as scientists. Good
 *data visualization* brings us the opportunity to show the newly
 discovered trends and relationships between variables. That is, through
@@ -19,13 +15,10 @@ from the type of data we have and the research question we want to
 answer using two different datasets of marine invertebrates from CSULB
 Marine Ecology Lab and of microbial genomics from CSULB Comparative
 Microbial Genomics Lab.
-:::
 
 ------------------------------------------------------------------------
 
-[ Introduction
-]{style="color:#66023C; font-size:150%; font-weight:600"}\
-
+## Introduction 
 In this lab, we will generate multiple graphs to identify good data
 visualization practices, which include making data displays that are
 clear, easy-to-interpret, and unbiased. When we carry out an experiment,
