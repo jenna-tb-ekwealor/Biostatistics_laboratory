@@ -1,5 +1,5 @@
 ---
-title: Data sampling, accuracy, and precision
+title: Chapter 2 Data sampling, accuracy, and precision
 output:
   html_document: default
   pdf_document: default

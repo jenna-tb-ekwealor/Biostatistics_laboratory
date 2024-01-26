@@ -1,5 +1,5 @@
 ---
-title: Visualizing data
+title: Chapter 3 Visualizing data
 output:
   html_document: default
   pdf_document: default
