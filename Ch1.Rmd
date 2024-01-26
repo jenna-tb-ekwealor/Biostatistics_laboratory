@@ -255,7 +255,7 @@ femurs_10mm
 ```
 
 
-**Questions:**
+### *Questions*
 
 a.  *What's the longest femur length in femurs_10mm?*
 b.  *How many observations does femurs_10mm have?*
