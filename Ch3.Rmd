@@ -19,6 +19,7 @@ Microbial Genomics Lab.
 ------------------------------------------------------------------------
 
 ## Introduction 
+
 In this lab, we will generate multiple graphs to identify good data
 visualization practices, which include making data displays that are
 clear, easy-to-interpret, and unbiased. When we carry out an experiment,
