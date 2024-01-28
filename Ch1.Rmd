@@ -314,7 +314,7 @@ d.  *Why would you use the str() function?*
 
 **Great Work!**
 
-
+------------------------------------------------------------------------
 
 This activity was adapted from the [Biostatistics using R: A Laboratory Manual](https://qubeshub.org/publications/2213/supportingdocs/1) by Raisa Hernández-Pacheco and Alexis A Diaz of California State University, Long Beach by Jenna T. B. Ekwealor for San Francisco State University. 
 
