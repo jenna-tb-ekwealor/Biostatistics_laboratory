@@ -1,0 +1,39 @@
+---
+title: "Lab Name"
+author: "Author Name"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(openintro)
+```
+
+### Question or Discussion Question or Challenge or Stop/Think/Do etc. 
+### Outside a code chunk, ### indicates a header
+
+Insert human-readable text here. This is where you can introduce a code chunk (following this) or sometimes the answer will not need code.
+
+```{r}
+# Insert code for Question 1 here
+# Inside a code chunk, a # indicates a comment and will not run
+```
+
+You can add more text for Question 1 here if you want to. Make sure you show all your work/code. 
+
+
+### Question or Discussion Question or Challenge or Stop/Think/Do etc. 
+
+Insert human-readable text here. 
+
+```{r}
+# Insert code for Question 2 here
+```
+
+You can add more text here. 
+
+### Repeat these blocks of headers (with ###), text, and code chunks for each Question on the Lab Manual. To add another code chunk, you can either copy paste a previous empty one, or by pressing the green +C button in the top right corner. 
+
