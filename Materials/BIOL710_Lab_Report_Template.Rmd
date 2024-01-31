@@ -37,3 +37,4 @@ You can add more text here.
 
 ### Repeat these blocks of headers (with ###), text, and code chunks for each Question on the Lab Manual. To add another code chunk, you can either copy paste a previous empty one, or by pressing the green +C button in the top right corner. 
 
+When you are done (or just to check how it is looking), you can click the Knit button at the top. Default is usually to Knit to html---this is how you can turn your project into a website! To submit your Lab Report, instead Knit to PDF using the triangle drop-down and submit on Canvas. 
