@@ -95,7 +95,7 @@ as your notebook. There, you save your codes together with associated
 annotations indicating what those codes are for. In your script, write a
 description of the codes you will be employing in this activity. **Use a
 "#" before any line of text you want R to interpret as an annotation and
-not as code**. In Markdown, "#" also indicates a header. Click the "Knit" button at the top frequently to see how your document is looking. 
+not as code**. In Markdown, "#" outside a code chunk indicates a header. Click the "Knit" button at the top frequently to see how your document is looking. 
 
 For example, in the beginning of this activity's script, you may add:
 
