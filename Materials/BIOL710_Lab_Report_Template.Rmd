@@ -1,6 +1,6 @@
 ---
-title: "Lab Name"
-author: "Author Name"
+title: "Insert the Chapter or Lab Report name here"
+author: "Insert your name(s) here"
 date: "`r Sys.Date()`"
 output:
   pdf_document: default
