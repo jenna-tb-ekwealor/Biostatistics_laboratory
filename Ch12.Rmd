@@ -338,7 +338,7 @@ One of the most basic ways to create a raster from lidar point clouds is called 
 
 -   R and RStudio
 -   package *ggplot2*, *raster*, *sf*, and *rgeos*
--   DATA
+-   [Download data here.](https://drive.google.com/file/d/1Fh68nMIRnhso9QOFW-BkBwszfOYaPuQz/view?usp=sharing) Unzip it and put it in your working directory. 
 
 To work with raster data in `R`, you can use the `raster` and `sf` packages.
 
@@ -353,7 +353,7 @@ You use the `raster("path-to-raster-here")` function to open a raster dataset in
 
 ``` r
 # open raster data
-lidar_dem <- raster(x = "BLDR_LeeHill/pre-flood/lidar/pre_DTM.tif")
+lidar_dem <- raster(x = "spatial/BLDR_LeeHill/pre-flood/lidar/pre_DTM.tif")
 
 # plot raster data
 plot(lidar_dem,
@@ -568,7 +568,7 @@ Or you can simply include the entire path to the shp file in the path argument. 
 
 ``` r
 # Import a polygon shapefile: read_sf("path","fileName")
-sjer_plot_locations <- read_sf(dsn = "california/SJER/vector_data",
+sjer_plot_locations <- read_sf(dsn = "spatial/california/SJER/vector_data",
                                "SJER_plot_centroids")
 ```
 
@@ -860,7 +860,7 @@ Let’s import that data and perform any cleanup that is required.
 
 ``` r
 # import points layer
-sjer_plots <- read_sf("california/SJER/vector_data",
+sjer_plots <- read_sf("spatial/california/SJER/vector_data",
                       "SJER_plot_centroids")
 # given you want to plot 2 layers together, let's check the crs before going any further
 crs(sjer_plots)
