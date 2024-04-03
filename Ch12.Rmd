@@ -8,13 +8,19 @@ When you are done with your report, use knitr to convert it to .PDF format to su
 It is important that you document each step of your workflow using comments and that you break up the sections of your analysis into SEPARATE code chunks.
 
 
-**Today's investigation.** In this chapter you will learn about collection, wrangling, and visualization of spatial data.
+# **Today's investigation.** 
+
+In this chapter you will learn about collection, wrangling, and visualization of spatial data.
+
+&nbsp; 
 
 ##### [Materials and Methods]{style="color:#66023C; font-size:150%; font-weight:600"}
 
 -   R and RStudio
 -   package *ggplot2*, *raster*, *sf*, and *rgeos*
 -   [Download data here.](https://drive.google.com/file/d/1Fh68nMIRnhso9QOFW-BkBwszfOYaPuQz/view?usp=sharing) Unzip it and put it in your working directory. 
+
+&nbsp; 
 
 ------------------------------------------------------------------------
 
@@ -374,8 +380,7 @@ plot(lidar_dem,
 
 Next, let’s discuss some of the important spatial attributes associated with raster data.
 
-
-##### [Coordinate Reference System]{style="color:#66023C; font-size:150%; font-weight:600"}
+<p style="text-align: center;">[Coordinate Reference System]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
 
 The coordinate reference system (`CRS`) of a spatial object tells `R` where the raster is located in geographic space. It also tells `R` what method should be used to “flatten” or project the raster in geographic space.
 
@@ -517,7 +522,9 @@ Notice that you are using the `xlab` and `ylab` arguments in your plot to label 
 
 &nbsp; 
 
-#### [Vector Data]{style="color:#66023C; font-size:150%; font-weight:600"}
+--------------------------------------------------------------------------------
+
+<p style="text-align: center;">[Vector Data]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
 
 Vector data are composed of discrete geometric locations (x,y values) known as vertices that define the “shape” of the spatial object. The organization of the vertices determines the type of vector that you are working with: point, line or polygon.
 
