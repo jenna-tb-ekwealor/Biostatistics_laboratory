@@ -2,13 +2,16 @@
 
 <p style="text-align: center;">[*Chapter 12*]{style="font-size:120%; font-weight:400"}</p>
 
+&nbsp; 
+
 As in previous weeks, for today's lab you are to create a new `RMarkdown` document using the class lab report template. Within your `.Rmd` document, include all you code, resulting plots, and answers to questions below. 
 
 When you are done with your report, use knitr to convert it to .PDF format to submit on Canvas. 
 It is important that you document each step of your workflow using comments and that you break up the sections of your analysis into SEPARATE code chunks.
 
+&nbsp; 
 
-# **Today's investigation.** 
+# **Today's investigation** 
 
 In this chapter you will learn about collection, wrangling, and visualization of spatial data.
 
