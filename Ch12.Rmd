@@ -805,7 +805,7 @@ library(broom)
 library(RColorBrewer)
 library(dplyr)
 # to add a north arrow and a scale bar to the map
-library(ggsn)
+
 # set factors to false
 options(stringsAsFactors = FALSE)
 ```
@@ -842,7 +842,7 @@ unique(sjer_roads$RTTYP)
 ``` r
 # plot the lines data
 ggplot() +
-  geom_path(data = sjer_roads_df, aes(x = long, y = lat, group = group)) +
+  geom_sf(data = sjer_roads) +
   labs(title = "ggplot map of roads")
 ```
 
