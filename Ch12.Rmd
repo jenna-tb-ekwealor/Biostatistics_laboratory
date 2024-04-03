@@ -8,7 +8,13 @@ When you are done with your report, use knitr to convert it to .PDF format to su
 It is important that you document each step of your workflow using comments and that you break up the sections of your analysis into SEPARATE code chunks.
 
 
-**Today's investigation.** In this chapter you will learn about collection, wrangling, and visualization of spatial data
+**Today's investigation.** In this chapter you will learn about collection, wrangling, and visualization of spatial data.
+
+##### [Materials and Methods]{style="color:#66023C; font-size:150%; font-weight:600"}
+
+-   R and RStudio
+-   package *ggplot2*, *raster*, *sf*, and *rgeos*
+-   [Download data here.](https://drive.google.com/file/d/1Fh68nMIRnhso9QOFW-BkBwszfOYaPuQz/view?usp=sharing) Unzip it and put it in your working directory. 
 
 ------------------------------------------------------------------------
 
@@ -142,7 +148,7 @@ Most lidar data points will have:
 
 &nbsp; 
 
-##### [Classified Lidar Point Clouds]{style="color:#66023C; font-size:150%; font-weight:600"}
+#### [Classified Lidar Point Clouds]{style="color:#66023C; font-size:150%; font-weight:600"}
 
 Some lidar point cloud data will also be “classified”. Classification refers to tagging each point with the object that it reflected off of. So if a pulse reflects off of a tree branch, you would assign it to the class “vegetation.” If the pulse reflects off of the ground, you would assign it to the class “ground.” Classification of lidar point clouds is an additional processing step. Classification simply represents the type of object that the laser return reflected off of. So if the light energy reflected off of a tree, it might be classified as “vegetation”. And if it reflected off of the ground, it might be classified as “ground”.
 
@@ -188,13 +194,13 @@ Remember that not all lidar data are created equally. Different lidar data may h
 
 &nbsp; 
 
-### 1. Open a .las File in plas.io
+### 1. Open a .las File in `plas.io`
 
-- If you haven’t already, download the week 3 dataset - linked at the top of this page. It contains several .laz format point cloud datasets that you will use in this lesson.
-- When the download is complete, drag one of the .laz files into the plas.io website. window.
+- If you haven’t already, download this week's dataset, *spatial.zip*. It contains several `.laz` format point cloud datasets that you will use in this lesson.
+- When the download is complete, drag one of the `.laz` files into the `plas.io` website. window.
 - Zoom and pan around the data.
-- Use the particle size slider to adjust the size of each individual lidar point. *NOTE*: the particle size slider is located a little more than half way down the plas.io toolbar in the “Data” section
-If the data imported into the plas.io viewer correctly, you should see something similar to the screenshot below:
+- Use the particle size slider to adjust the size of each individual lidar point. *NOTE*: the particle size slider is located a little more than half way down the `plas.io` toolbar in the “Data” section
+If the data imported into the `plas.io` viewer correctly, you should see something similar to the screenshot below:
 
 &nbsp; 
 
@@ -277,7 +283,7 @@ In this case, these data are classified as either ground, or non-ground. To view
 &nbsp; 
 ------------------------------------------------------------------------
 
-##### [Gridded or Raster Lidar Data Products]{style="color:#66023C; font-size:150%; font-weight:600"}
+#### [Gridded or Raster Lidar Data Products]{style="color:#66023C; font-size:150%; font-weight:600"}
 
 Point clouds provide a lot of information, scientifically. However, they can be difficult to work with given the size of the data and tools that are available to handle large volumns of points. Lidar data products are often created and stored in a gridded or raster data format. The raster format can be easier for many people to work with and also is supported by many different commonly used software packages.
 
@@ -333,12 +339,6 @@ One of the most basic ways to create a raster from lidar point clouds is called 
 - Within each 1m x 1m cell, you calculate a value to be applied to that cell, using the lidar points found within that cell. The simplest method of doing this is to take the max, min or mean height value of all lidar points found within the 1m cell. If you use this approach, you might have cells in the raster that don’t contain any lidar points. These cells will have a “no data” value if you process your raster in this way.
 
 &nbsp; 
-
-##### [Materials and Methods]{style="color:#66023C; font-size:150%; font-weight:600"}
-
--   R and RStudio
--   package *ggplot2*, *raster*, *sf*, and *rgeos*
--   [Download data here.](https://drive.google.com/file/d/1Fh68nMIRnhso9QOFW-BkBwszfOYaPuQz/view?usp=sharing) Unzip it and put it in your working directory. 
 
 To work with raster data in `R`, you can use the `raster` and `sf` packages.
 
@@ -439,7 +439,7 @@ Next, let’s discuss spatial extent. The spatial extent of a raster or spatial 
 
 ![The spatial extent of raster data. Notice that the spatial extent represents the rectangular area that the data cover. Thus, if the data are not rectangular (i.e. points OR an image that is rotated in some way) the spatial extent covers portions of the dataset where there are no data. Image Source: National Ecological Observatory Network (NEON).](images/raster-spatial-extent-coordinates.png)
 
-![The spatial extent of vector data which you will learn next week. Notice that the spatial extent represents the rectangular area that the data cover. Thus, if the data are not rectangular (i.e. points OR an image that is rotated in some way) the spatial extent covers portions of the dataset where there are no data. Image Source: National Ecological Observatory Network (NEON)](images/spatial-extent.png)
+![The spatial extent of vector data which you will learn later in this chapter. Notice that the spatial extent represents the rectangular area that the data cover. Thus, if the data are not rectangular (i.e. points OR an image that is rotated in some way) the spatial extent covers portions of the dataset where there are no data. Image Source: National Ecological Observatory Network (NEON)](images/spatial-extent.png)
 
 </center>
 
@@ -517,7 +517,7 @@ Notice that you are using the `xlab` and `ylab` arguments in your plot to label 
 
 &nbsp; 
 
-<p style="text-align: center;">[Vector Data]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
+#### [Vector Data]{style="color:#66023C; font-size:150%; font-weight:600"}
 
 Vector data are composed of discrete geometric locations (x,y values) known as vertices that define the “shape” of the spatial object. The organization of the vertices determines the type of vector that you are working with: point, line or polygon.
 
@@ -646,7 +646,7 @@ title("SJER Plot Locations\nMadera County, CA")
 
 &nbsp; 
 
-##### [Coordinate Reference System and Spatial Projection]{style="color:#66023C; font-size:150%; font-weight:600"}
+#### [Coordinate Reference System and Spatial Projection]{style="color:#66023C; font-size:150%; font-weight:600"}
 
 A coordinate reference system (CRS) refers to the way in which spatial data that represent the earth’s surface (which is round / 3 dimensional) are flattened so that you can “Draw” them on a 2-dimensional surface. However each using a different (sometimes) mathematical approach to performing the flattening resulting in different coordinate system grids (discussed below). These approaches to flattening the data are specifically designed to optimize the accuracy of the data in terms of length and area (more on that later too).
 
