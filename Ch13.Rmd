@@ -518,6 +518,7 @@ graphics::mtext("Time (myrs)", side = 1, line = 2, at = max(get("last_plot.phylo
 Produce a chronogram, with italicized names on the tips, of a group of interest. This can be related to your study organism, or another organism, just for fun. 
 
 - Play around with different taxon sets to find an appropriate group so that your tree is not too big or too small (aim for 20-60 tips or so). 
+- In a few sentences, describe some things you can learn about relationships in your figure. Explain why. 
 
 &nbsp;
 
