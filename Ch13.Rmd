@@ -93,7 +93,27 @@ This shows you what version of `R` itself you're using, as well as what packages
 
 <p style="text-align: center;">[Open Tree of Life Taxonomy]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
 
+&nbsp; 
+
+<center> 
+
+![Open Tree of Life logo.](images/otl.png){width=50%}
+
+</center>
+
+&nbsp; 
+
 The [https://tree.opentreeoflife.org/about/taxonomy-version/ott3.2](Open Tree of Life Taxonomy) (OTT from now on) synthesizes taxonomic information from different sources and assigns each taxon a unique numeric identifier, which we refer to as the OTT id. To interact with the OTT (and any other Open Tree of Life services) using `R`, we will learn how to use the functions from the `rotl` package.
+
+&nbsp; 
+
+<center> 
+
+![R Open Tree of Life logo.](images/rotl.png){width=30%}
+
+</center>
+
+&nbsp; 
 
 To deal with synonyms and scientific name misspellings, the Open Tree Taxonomy uses the [https://tnrs.biendata.org](Taxonomic Name Resolution Servic)e (TNRS from now on), that allows linking scientific names to a unique OTT id, while dealing with misspellings, synonyms and scientific name variants. The functions from rotl that interact with OTT’s TNRS start with “tnrs_”.
 
@@ -158,6 +178,17 @@ Now we know what kind of data is retrieved by the `tnrs_match_names()` function.
 Now that we know about classes and the data structure of the `tnrs_match_names` output, we will learn how to use the `tnrs_match_names` function for multiple taxa. In this case, you will have to create a character vector with your taxon names and use it as input for `tnrs_match_names`:
 
 Do a `tnrs_match_names()` run for the amphibians (Amphibia), the genus of the cat (*Felis*), the family of dolphins (Delphinidae), and the class of birds (Aves). Save the output to an object named `resolved_names.`
+
+&nbsp;
+
+<center> 
+
+![](images/animals.png){width=50%}
+
+</center>
+
+&nbsp;
+
 Again, you can try different misspellings and synonyms of your taxa to see TNRS in action.
 
 ``` r
