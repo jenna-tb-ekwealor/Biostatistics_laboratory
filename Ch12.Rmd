@@ -918,7 +918,7 @@ Create a map of Madera County roads with a legend:
 
 Import the `california/madera-county-roads/tl_2013_06039_roads.shp` layer located in this week's data download.
 
-Create a map that shows the madera roads layer and the `sjer` plot locations.  Use the `sjer_aoi` boundary (`sjer_crop.shp`) to crop your map. Recall using `extent()` to find the extent of a layer. 
+Create a map that shows the madera roads layer and the `sjer` plot locations.  Use the `sjer_crop` boundary (`sjer_crop.shp`) to crop your map. Recall using `extent()` to find the extent of a layer. 
 
 Plot the roads so different road types are represented using unique symbology.
 Map the plot locations by the attribute plot type using unique symbology for each “type”.
