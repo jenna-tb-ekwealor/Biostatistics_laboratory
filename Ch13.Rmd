@@ -91,7 +91,7 @@ This shows you what version of `R` itself you're using, as well as what packages
 
 &nbsp;
 
-<p style="text-align: center;">Open Tree of Life Taxonomy]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
+<p style="text-align: center;">[Open Tree of Life Taxonomy]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
 
 The [https://tree.opentreeoflife.org/about/taxonomy-version/ott3.2](Open Tree of Life Taxonomy) (OTT from now on) synthesizes taxonomic information from different sources and assigns each taxon a unique numeric identifier, which we refer to as the OTT id. To interact with the OTT (and any other Open Tree of Life services) using `R`, we will learn how to use the functions from the `rotl` package.
 
@@ -215,7 +215,7 @@ Now you know how to get OTT ids from a bunch of taxa of interest. Next, we'll ex
 
 ------------------------------------------------------------------------
 
-<p style="text-align: center;">The Synthetic Open Tree of Life]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
+<p style="text-align: center;">[The Synthetic Open Tree of Life]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
 
 The synthetic Open Tree of Life (**synthetic OpenTree** from now on) summarizes information from trees from peer-reviewed and published studies that have been uploaded to the OpenTree database (the Phylesystem) through a [https://tree.opentreeoflife.org/curator](curator system).
 
