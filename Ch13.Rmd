@@ -368,8 +368,13 @@ This is a large tree! We will have a hard time plotting it.
 We can extract and plot a subtree for the genus *Felis* It should be way smaller!
 
 ``` r
-subtree <- rotl::tol_subtree(resolved_names["Felis",]$ott_id)
-ape::plot.phylo(subtree)
+# retrieve the felis ott id
+felis_ott_id <- resolved_names %>% dplyr::filter(unique_name == "Felis") %>% select(ott_id)
+felis_ott_id
+
+# use the felis ott id to build a subtree
+felis_subtree <- rotl::tol_subtree(felis_ott_id$ott_id)
+ape::plot.phylo(felis_subtree)
 ```
 
 &nbsp;
