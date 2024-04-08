@@ -116,9 +116,9 @@ This shows you what version of `R` itself you're using, as well as what packages
 
 &nbsp; 
 
-The [https://tree.opentreeoflife.org/about/taxonomy-version/ott3.2](Open Tree of Life Taxonomy) (OTT from now on) synthesizes taxonomic information from different sources and assigns each taxon a unique numeric identifier, which we refer to as the OTT id. To interact with the OTT (and any other Open Tree of Life services) using `R`, we will learn how to use the functions from the `rotl` package.
+The <a href="https://tree.opentreeoflife.org/about/taxonomy-version/ott3.2">Open Tree of Life Taxonomy</a> (OTT from now on) synthesizes taxonomic information from different sources and assigns each taxon a unique numeric identifier, which we refer to as the OTT id. To interact with the OTT (and any other Open Tree of Life services) using `R`, we will learn how to use the functions from the `rotl` package.
 
-&nbsp; 
+&nbsp;
 
 <center> 
 
@@ -128,7 +128,7 @@ The [https://tree.opentreeoflife.org/about/taxonomy-version/ott3.2](Open Tree of
 
 &nbsp; 
 
-To deal with synonyms and scientific name misspellings, the Open Tree Taxonomy uses the [https://tnrs.biendata.org](Taxonomic Name Resolution Servic)e (TNRS from now on), that allows linking scientific names to a unique OTT id, while dealing with misspellings, synonyms and scientific name variants. The functions from rotl that interact with OTT’s TNRS start with “tnrs_”.
+To deal with synonyms and scientific name misspellings, the Open Tree Taxonomy uses the <a href="https://tnrs.biendata.org">Taxonomic Name Resolution Service</a>, that allows linking scientific names to a unique OTT id, while dealing with misspellings, synonyms and scientific name variants. The functions from rotl that interact with OTT’s TNRS start with “tnrs_”.
 
 &nbsp;
 
@@ -182,7 +182,7 @@ You should have a good idea by now of what type of data is stored in the `ott_id
 
 The column `approximate_match` tells us whether the unique name was inferred from the search string using approximate matching (TRUE) or not (FALSE).
 
-Finally, the `flags` column tells us if our unique name has been flagged in the OTT (TRUE) or not (FALSE). It also indicates the type of flag associated to the taxon. Flags are markers that indicate if the taxon in question is problematic and should be included in further analyses of the Open Tree workflow. You can read more about flags in the [https://github.com/OpenTreeOfLife/reference-taxonomy/wiki/Taxon-flags](Open Tree wiki).
+Finally, the `flags` column tells us if our unique name has been flagged in the OTT (TRUE) or not (FALSE). It also indicates the type of flag associated to the taxon. Flags are markers that indicate if the taxon in question is problematic and should be included in further analyses of the Open Tree workflow. You can read more about flags in the <a href="https://github.com/OpenTreeOfLife/reference-taxonomy/wiki/Taxon-flags">Open Tree wiki</a>.
 
 Now we know what kind of data is retrieved by the `tnrs_match_names()` function. Pretty cool!
 
@@ -270,7 +270,7 @@ Now you know how to get OTT ids from a bunch of taxa of interest. Next, we'll ex
 
 &nbsp;
 
-The synthetic Open Tree of Life (**synthetic OpenTree** from now on) summarizes information from trees from peer-reviewed and published studies that have been uploaded to the OpenTree database (the Phylesystem) through a [https://tree.opentreeoflife.org/curator](curator system).
+The synthetic Open Tree of Life (**synthetic OpenTree** from now on) summarizes information from trees from peer-reviewed and published studies that have been uploaded to the OpenTree database (the Phylesystem) through a <a href="https://tree.opentreeoflife.org/curator">curator system</a>.
 
 Functions from the `rotl` package that interact with the synthetic OpenTree start with `tol_`.
 
@@ -571,9 +571,9 @@ Produce a tree, with names on the tips, of a group of interest. This can be rela
 
 ------------------------------------------------------------------------
 
-This lab activity was originally written by Luna L. Sanchez Reyes and Emily Jane McTavish (see  [https://github.com/McTavishLab/R_OpenTree_tutorials/tree/gh-pages](https://github.com/McTavishLab/R_OpenTree_tutorials/tree/gh-pages)) and modified by Jenna Ekwealor. 
+This lab activity was originally written by Luna L. Sanchez Reyes and Emily Jane McTavish (see <a href="https://github.com/McTavishLab/R_OpenTree_tutorials/tree/gh-pages">https://github.com/McTavishLab/R_OpenTree_tutorials/tree/gh-pages</a>) and modified by Jenna Ekwealor. 
 
-**Open Tree of Life** aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. The project is a collaborative effort between 11 PIs across 10 institutions. Funded by NSF ABI #1759838, NSF AVAToL #1208809. More information and tutorials at [opentreeoflife.org](opentreeoflife.org)
+**Open Tree of Life** aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. The project is a collaborative effort between 11 PIs across 10 institutions. Funded by NSF ABI #1759838, NSF AVAToL #1208809. More information and tutorials at <a href="opentreeoflife.org">opentreeoflife.org</a>.
 
 
 
