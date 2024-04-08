@@ -209,7 +209,7 @@ Do a `tnrs_match_names()` run for the amphibians (Amphibia), the genus of the ca
 Again, you can try different misspellings and synonyms of your taxa to see TNRS in action.
 
 ``` r
-my_taxa <- c("amphibians", "felis", "canis, "delphinidae", "aves", "primates")
+my_taxa <- c("amphibian", "felis", "canis, "delphinidae", "aves", "primates")
 resolved_names <- rotl::tnrs_match_names(names = my_taxa, context_name = "All life")
 resolved_names
 ```
