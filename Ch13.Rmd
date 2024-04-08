@@ -21,7 +21,6 @@ In this chapter you will experiment with using the Open Tree of Life in `R`. Thi
 
 -   R and RStudio
 -   package *rotl*, *ape*, *devtools*, *stringr*, *phytools*, and *tidyverse*
--   [Download data here.](https://drive.google.com/file/d/1Fh68nMIRnhso9QOFW-BkBwszfOYaPuQz/view?usp=sharing) Unzip it and put it in your working directory. 
 
 &nbsp;
 
@@ -41,19 +40,28 @@ This implies more typing, but gives more clarity to reproduce the workflow later
 
 An exception to this, are functions from packages that are “preloaded” –such as `library()` from base, or `install.packages()` from `utils`; all these can simply be called by their name.
 
-``` r
+First install these packages by running the following command in the *console* (usually in the botom left panel in RStudio). 
+
+```
 packages <- c("rotl", "ape", "devtools", "stringr")
 install.packages(packages)
-library(rotl)
-library(devtools)
-library(stringr)
 devtools::install_github("phylotastic/datelife")
 devtools::install_github("phylotastic/datelifeplot")
+```
+
+&nbsp;
+
+``` r
+library(rotl)
+library(stringr)
 library(datelife)
 library(datelifeplot)
 library(tidyverse)
 library(phytools)
 ```
+
+&nbsp;
+
 ##### Scientific reproducibility
 
 Scientific reproducibility is key for the advancement of Science. In this first episode, we will check that you have the same package versions that we will use throughout the tutorial.
@@ -70,6 +78,8 @@ packageVersion("datelifeplot")
 packageVersion("phytools")
 ```
 
+&nbsp;
+
 Alternatively, you can create a character vector of package names and use an `lapply` to get versions of all packages at once:
 
 ``` r 
@@ -78,14 +88,17 @@ names(packages) <- packages
 
 lapply(packages, packageVersion)
 ```
-
 You'll want to keep track of versions for your own purposes and also for reporting which version you used when you share your methods and results. 
+
+&nbsp;
 
 It is also useful to also print the `R` session info with `sessionInfo`:
 
 ``` r
 sessionInfo()
 ```
+
+&nbsp;
 
 This shows you what version of `R` itself you're using, as well as what packages are loaded. 
 
@@ -97,7 +110,7 @@ This shows you what version of `R` itself you're using, as well as what packages
 
 <center> 
 
-![Open Tree of Life logo.](images/otl.png){width=50%}
+![sss](images/otl.png){width=50%}
 
 </center>
 
@@ -109,7 +122,7 @@ The [https://tree.opentreeoflife.org/about/taxonomy-version/ott3.2](Open Tree of
 
 <center> 
 
-![R Open Tree of Life logo.](images/rotl.png){width=30%}
+![](images/rotl.png){width=30%}
 
 </center>
 
@@ -126,14 +139,15 @@ To get OTT ids for a `taxon` or set of `taxa` (e.g a species, genus, family, or 
 Do a `tnrs_match_names()` run for the amphibians (Amphibia). Save the output to an object named `resolved_name.`
 Try different misspellings and synonyms of your taxon to see TNRS in action.
 
-&nbsp;
-
 ``` r
-resolved_name <- rotl::tnrs_match_names(names = "amphibians")
+resolved_name <- rotl::tnrs_match_names(names = "amphibian")
 resolved_name
 ```
+&nbsp;
 
 Once you are comfortable with running the function `tnrs_match_names`, move on to explore the structure of the output.
+
+&nbsp;
 
 #### The ‘match_names’ object
 
@@ -142,10 +156,11 @@ As we can tell from the data printed to screen, the output of the `tnrs_match_na
 ``` r
 class(resolved_name)
 ```
-
 As you can see, an object can belong to one or more classes.
 
 Indeed, R is telling us that the output of `tnrs_match_names()` is a data frame (a type of table) and a ‘match_names’ object, which is in turn a data frame with exactly 7 named columns: `search_string`, `unique_name`, `approximate_match`, `ott_id`, `is_synonym`, `flags`, and `number_matches.`
+
+&nbsp;
 
 Next, we will explore the kinds of data that are stored in each of the columns of a ‘match_names’ object.
 
@@ -177,6 +192,8 @@ Now we know what kind of data is retrieved by the `tnrs_match_names()` function.
 
 Now that we know about classes and the data structure of the `tnrs_match_names` output, we will learn how to use the `tnrs_match_names` function for multiple taxa. In this case, you will have to create a character vector with your taxon names and use it as input for `tnrs_match_names`:
 
+&nbsp;
+
 Do a `tnrs_match_names()` run for the amphibians (Amphibia), the genus of the cat (*Felis*), the family of dolphins (Delphinidae), and the class of birds (Aves). Save the output to an object named `resolved_names.`
 
 &nbsp;
@@ -192,7 +209,7 @@ Do a `tnrs_match_names()` run for the amphibians (Amphibia), the genus of the ca
 Again, you can try different misspellings and synonyms of your taxa to see TNRS in action.
 
 ``` r
-my_taxa <- c("amphibians", "felis", "delphinidae", "aves")
+my_taxa <- c("amphibians", "felis", "canis, "delphinidae", "aves", "primates")
 resolved_names <- rotl::tnrs_match_names(names = my_taxa, context_name = "All life")
 resolved_names
 ```
@@ -200,6 +217,8 @@ resolved_names
 &nbsp;
 
 You should get a matched named for all the taxa in this example. If you do not get a match for all your taxa, and you get an unexpected warning message, it means that the `tnrs_match_names` function might not be working as expected. 
+
+&nbsp;
 
 Next, we are going to learn how to extract specific pieces of data from a ‘match_names’ object to use in other functions and workflows.
 
@@ -213,40 +232,43 @@ It is easy to access elements from a ‘match_names’ object using it's column 
 resolved_names$unique_name
 ```
 
-&nbsp;
-
 The ‘match_names’ object has a relatively simple structure that is easy to explore and mine. We will see later that the outputs of other `rotl` functions are more complicated and accessing their elements requires a lot of hacking. Fortunately, the rotl creators have added some functions that allow interacting with these complicated outputs. The functions `unique_name()`, `ott_id()`, and `flags()` extract values from the respective columns of a ‘match_names’ object, in the form of a list instead of a vector. To extract data from the other columns there are no specialized functions, so you will have to index.
 
 &nbsp;
 
 [Challenge 1]{style="color:#66023C; font-size:150%; font-weight:600"}
 
-You now have a ‘match_names’ object that we called `resolved_names.` There are at least two ways to extract the OTT ids from it. Can you figure them out? Store them in an object we will call `my_ott_ids`.
+You now have a ‘match_names’ object that we called `resolved_names.` Extract the OTT ids from it and store them in an object we will call `my_ott_ids`.
 
-Hint: You can find one solution by browsing the rotl package documentation by running `??rotl` in the console to read the documentation and to find a function that will do this for a ‘match_names’ object.
-
-You will find a second solution by using your knowledge on data frames and tables to extract the data from the `ott_id` column.
+*Hint:* use your knowledge on data frames and tables to extract the data from the `ott_id` column.
 
 &nbsp;
 
-There are no specialized functions to extract values from a row of a ‘match_names’ object, but we can achieve this with some functions from the `tidyverse` package.
+If you just want to look a partiular row, you can use the `inspect()` function from rotl
 
-# insert here
+``` r
+rotl::inspect(resolved_names, taxon_name = "Delphinidae")
+```
+
+&nbsp;
+
+[Challenge 2]{style="color:#66023C; font-size:150%; font-weight:600"}
+
+Can you think of another way to extract the *Delphinidae* row? 
+
+*Hint:* consider using data frame wrangling from the `tidyverse` package. 
+
+&nbsp;
 
 Now you know how to get OTT ids from a bunch of taxa of interest. Next, we'll explore what exactly you can do with these. 
 
 &nbsp;
 
-**Key Points:**
-- Open Tree of Life Taxonomy ids, or OTT ids are unique numeric identifiers for individual taxa that the Open Tree of Life project uses to handle taxonomy.
-- You can go from a scientific name to an OTT id using TNRS matching.
-- You can not go from a common name to OTT id using the Open Tree of Life tools.
-
-&nbsp;
-
 ------------------------------------------------------------------------
 
-<p style="text-align: center;">[The Synthetic Open Tree of Life]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
+<p style="text-align: center;">[Building a Synthetic Tree]{style="color:darkblue; font-size:300%; font-weight:400"}</p>
+
+&nbsp;
 
 The synthetic Open Tree of Life (**synthetic OpenTree** from now on) summarizes information from trees from peer-reviewed and published studies that have been uploaded to the OpenTree database (the Phylesystem) through a [https://tree.opentreeoflife.org/curator](curator system).
 
@@ -266,9 +288,7 @@ rotl::tol_about()
 
 &nbsp;
 
-The tree is huge! So, what if we just want a small piece of the whole synthetic OpenTree?
-
-Well, now that we have some interesting taxon OTT ids, we can easily do this.
+The tree is huge! So, what if we just want a small piece of the whole synthetic OpenTree? Well, now that we have some interesting taxon OTT ids, we can easily do this.
 
 &nbsp;
 
@@ -293,8 +313,6 @@ my_tree
 
 `R` is telling us that we have a rooted tree with no branch lengths and 5 tips. If we check the class of the output, we will verify that it is a **‘phylo’ object**.
 
-&nbsp;
-
 ``` r
 class(my_tree)
 ```
@@ -317,14 +335,15 @@ Now, *what if you want a piece of the synthetic OpenTree containing all descenda
 
 #### Subtree of one taxon
 
-We can extract a subtree of all descendants of one taxon at a time using the function `tol_subtree()` and an OTT id of your choosing.
+We can extract a subtree of all descendants of one taxon at a time using the function `tol_subtree()` and an OTT id of your choosing. Let’s extract a subtree of all amphibians.
 
-Let’s extract a subtree of all amphibians.
+&nbsp;
 
 First, get its OTT id. It is already stored in our `resolved_names` object:
 
 ``` r
-amphibia_ott_id <- resolved_names["Amphibia",]$ott_id
+amphibia_ott_id <- resolved_names %>% dplyr::filter(unique_name == "Amphibia") %>% select(ott_id)
+amphibia_ott_id
 ```
 
 &nbsp;
@@ -332,7 +351,7 @@ amphibia_ott_id <- resolved_names["Amphibia",]$ott_id
 Now, extract the subtree from the synthetic OpenTree using `tol_subtree()`.
 
 ``` r
-amphibia_subtree <- rotl::tol_subtree(ott_id = resolved_names["Amphibia",]$ott_id)
+amphibia_subtree <- rotl::tol_subtree(ott_id = amphibia_ott_id$ott_id)
 ```
 
 &nbsp;
@@ -342,7 +361,6 @@ Let’s look at the output:
 ``` r
 amphibia_subtree
 ```
-
 This is a large tree! We will have a hard time plotting it.
 
 &nbsp;
@@ -360,31 +378,43 @@ ape::plot.phylo(subtree)
 
 There is not a specific function in the package `rotl` that gets all taxa from a given taxonomic rank. We will now shift to the `datelife` package and use the `get_ott_children()` function, that extracts OTT ids of all taxa from a rank specified by the argument `ott_rank.`
 
-Let’s get all amphibian families.
-
 &nbsp;
 
+Let’s get all amphibian families.
+
 ``` r 
-amphibia_families <- datelife::get_ott_children(ott_ids = resolved_names["Amphibia",]$ott_id, ott_rank = "family")
+amphibia_families <- datelife::get_ott_children(ott_ids = amphibia_ott_id$ott_id, ott_rank = "family")
+class(amphibia_families)
+```
+Note that amphibia_families (resulting from `datelife::get_ott_children()`) is a list. One good way to explore lists is to view it in RStudio. Enter the following `View()` command into the console. 
+
+``` 
+View(amphibia_families)
 ```
 
 &nbsp;
 
-Now, get the induced subtree using the amphibian families’ OTT ids.
+Now we can get the induced subtree using the amphibian families’ OTT ids.
+
+&nbsp;
+
+[Challenge 3]{style="color:#66023C; font-size:150%; font-weight:600"}
+
+Explore `View(amphibia_families)` and you'll see that the OTT IDs are nested in the list structure. There are at least two different ways to extract them from the list, see if you can figure one out to generate the Amphibia subtree:
 
 ``` r
-amphibia_families_subtree <- rotl::tol_induced_subtree(amphibia_families$Amphibia$ott_id)
+amphibia_families_subtree <- rotl::tol_induced_subtree(<insert ott ids here>)
 ```
 
 &nbsp;
 
 **Questions:** 
 
-4. What is the structure of `amphibia_families`?
+4. What is the structure of `amphibia_families`? Explain. 
 
 5. How many tips does the amphibian families phylo object (tree) have?
 
-6. Plot the amphibian families tree! Look at the arguments of function `tol_induced_subtree()` with `??tol_induced_subtree()` to plot with out OTT IDs in the tip labels. 
+6. Plot the amphibian families tree! Look at the arguments of function `tol_induced_subtree()` with `??tol_induced_subtree()` to plot without OTT IDs in the tip labels. 
 
 &nbsp;
 
@@ -400,18 +430,25 @@ In `rotl`, you can search the chronogram database to try and build a synthetic c
 
 #### Search the OpenTree chronogram database using datelife
 
-In the package `datelife`, we have implemented a workflow that extracts all studies containing information from at least two taxa.
+Let's build a synthetic chronogram of *Canis*.
 
-You can get all source chronograms from an induced subtree, as long as the tip labels are in the “name” format (and not the default “name_and_id”).
+First, we need to find the OTT ID of the most recent common ancestor (MRCA) of *Canis.*
+
+``` r
+canis_node_info <- rotl::tol_node_info(canis_ott_id$ott_id)
+canis_mrca <- canis_node_info[["node_id"]] # this will get us the actual ID itself rather than data frame or a list
+```
+
+&nbsp;
+
+In the package `datelife`, we have implemented a workflow that extracts all studies containing information from at least two taxa. You can get all source chronograms from an induced subtree, as long as the tip labels are in the “name” format (and not the default “name_and_id”).
 
 `datelife` takes as input either a tree with tip labels as scientific names (and not names and ids), or a vector of scientific names.
 
 Get a *Canis* subtree with tip labels that do not contain the OTT id.
 
-&nbsp;
-
 ``` r
-canis_node_subtree <- rotl::tol_subtree(node_id = canis_node_info$node_id, label = "name")
+canis_node_subtree <- rotl::tol_subtree(node_id = canis_mrca, label = "name")
 canis_node_subtree
 ```
 
@@ -422,12 +459,9 @@ Now, you can use that tree as input for the `get_datelife_result()` function.
 ``` r
 canis_dr <- datelife::get_datelife_result(canis_node_subtree)
 ```
+We have now a list of matrices storing time of lineage divergence data for all taxon pairs. Lists are named with the study citation, so we have that information handy at all times.
 
 &nbsp;
-
-We have now a list of matrices storing time of lineage divergence data for all taxon pairs.
-
-Lists are named with the study citation, so we have that information handy at all times.
 
 Let’s explore the output.
 
@@ -437,9 +471,9 @@ class(canis_dr)
 
 &nbsp;
 
-Notice `canis_dr` is clas *list*. Lists are very useful data formats in `R`! RStudio makes it easy to click around the list object and see what it contains. Try this:
+Notice `canis_dr` is class *list*. Lists are very useful data formats in `R`! RStudio makes it easy to click around the list object and see what it contains. Try this:
 
-``` r
+``` 
 View(canis_dr)
 ```
 
@@ -472,11 +506,20 @@ canis_phylo_all <-  datelife::summarize_datelife_result(canis_dr, summary_format
 
 &nbsp;
 
-To plot the resulting tree, you can use the plot.phylo() function from ape. You can also use datelifeplot functions, such as plot_phylo_all(), that adds the study citation as title, as well as a geo-chrono-stratigraphic axis for a time reference.
+To plot the resulting tree, you can use the `plot.phylo()` function from `ape.` You can also use `datelifeplot` functions, such as `plot_phylo_all()` in the Console for an interactive plot that adds the study citation as title, as well as a geo-chrono-stratigraphic axis for a time reference.
 
+Run the following in the console: 
+
+``` 
+datelifeplot::plot_phylo_all(chronograms = canis_phylo_all, plot_height = 4, plot_width = 6)
+```
+
+&nbsp;
+
+Plot each tree sparately using list indexing. 
 
 ``` r
-datelifeplot::plot_phylo_all(trees = canis_phylo_all)
+ape::plot.phylo(canis_phylo_all[<insert a number here>])
 ```
 
 &nbsp;
@@ -488,6 +531,8 @@ There is no consensus on the best way to do this, but the fastest one is using t
 ``` r
 canis_phylo_median <-  datelife::summarize_datelife_result(canis_dr, summary_format = "phylo_median")
 ```
+
+&nbsp;
 
 Now plot your chronogram!
 
@@ -505,20 +550,18 @@ graphics::mtext("Time (myrs)", side = 1, line = 2, at = max(get("last_plot.phylo
 
 **Questions:** 
 
-7. What is the approximate age of the ancestor of *Lycalopex*?
+7. What is the approximate age of the MRCA of *Lycalopex*?
 
-8. What is the approximate age of the ancestor of all the members of your *Canis* tree?
-
-&nbsp;
+8. What is the approximate age of the MRCA of all the members of your *Canis* tree?
 
 --------------------------------------------------------------------------------
 
-##### [ **Stop, Think, Do:**]{style="color:#66023C; font-size:100%; font-weight:600"} 
+##### [**Stop, Think, Do:**]{style="color:#66023C; font-size:100%; font-weight:600"} 
 
-Produce a chronogram, with italicized names on the tips, of a group of interest. This can be related to your study organism, or another organism, just for fun. 
+Produce a tree, with names on the tips, of a group of interest. This can be related to your resarch or any other organism you want. 
 
 - Play around with different taxon sets to find an appropriate group so that your tree is not too big or too small (aim for 20-60 tips or so). 
-- In a few sentences, describe some things you can learn about relationships in your figure. Explain why. 
+- In a few sentences, describe some things you can learn about relationships in your tree. Explain. 
 
 &nbsp;
 
