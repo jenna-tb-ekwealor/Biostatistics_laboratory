@@ -515,6 +515,7 @@ Notice that you are using the `xlab` and `ylab` arguments in your plot to label 
 &nbsp; 
 
 **Questions:**
+
 1. What does the histogram tell you?
 
 2. 
