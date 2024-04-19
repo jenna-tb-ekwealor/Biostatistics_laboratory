@@ -172,11 +172,7 @@ We’re using the DNA sequences for a set of different influenza strains collect
 This data can be downloaded from Genbank <a href="https://www.ncbi.nlm.nih.gov/genbank/">here</a>. The data is organized into two files: 1) the <a href="http://adegenet.r-forge.r-project.org/files/usflu.fasta">DNA sequences</a> and 2) the<a href="url">annotations</a>. We’ll start by loading the DNA sequences data using the function fasta2DNAbin() from the {adegenet} package. FASTA is a universally used sequence file format that we will later convert to the format used by the {phangorn} package. Let’s name this dataframe dna. We can call this dataframe and see that it is organized in a matrix in binary format and contains 80 DNA sequences…
 
 ``` r
-library(adegenet)
-```
-
-``` r
-dna <- fasta2DNAbin(file="http://adegenet.r-forge.r-project.org/files/usflu.fasta")
+dna <- adegenet::fasta2DNAbin(file="http://adegenet.r-forge.r-project.org/files/usflu.fasta")
 dna
 ```
 
@@ -194,7 +190,6 @@ We can read in the annotation file in R using the following code:
 
 ``` r
 annot <- read.csv("http://adegenet.r-forge.r-project.org/files/usflu.annot.csv", header=TRUE, row.names=1)
-annot
 ```
 
 &nbsp;
