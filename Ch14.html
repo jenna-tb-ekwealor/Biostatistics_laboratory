@@ -828,7 +828,7 @@ tiplabels(annot$year, bg = num2col(annot$year, col.pal = myPal), cex=.5)
 
 # set the boundaries between colors 
 breaks &lt;- pretty(1993:2008, 5)
-legend(&quot;bottomright&quot;, fill = num2col(breaks, col.pal = myPal), leg = temp, ncol = 2)</code></pre>
+legend(&quot;bottomright&quot;, fill = num2col(breaks, col.pal = myPal), leg = breaks, ncol = 2)</code></pre>
 <p>The tree is now easy to read with the color coding, but the location
 of some of the isolates can be misleading since the true is not actually
 rooted—we may not know the polarity of these changes.</p>
