@@ -1206,10 +1206,11 @@ at:</p>
                  ladderize = T) 
 plot</code></pre>
 <p> </p>
-<p>RevGadgets tree plots are compatible with the functions from the
-package <code>ggtree</code>, which has similar structure and syntax as
-<code>ggplot2</code>, which you are familiar with by now. Let’s use
-<code>ggtree</code> to add color-coded tip labels as before.</p>
+<p><code>RevGadgets</code> tree plots are compatible with the functions
+from the package <code>ggtree</code>, which has similar structure and
+syntax as <code>ggplot2</code>, which you are familiar with by now.
+Let’s use <code>ggtree</code> to add color-coded tip labels as
+before.</p>
 <p>First, we will add a column to <code>annot</code> that defines the
 color for each tip, as before:</p>
 <pre class="r"><code>hexcolors &lt;- unique(transp(num2col(annot$year, col.pal = myPal),.7))</code></pre>

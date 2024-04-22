@@ -803,7 +803,7 @@ plot
 
 &nbsp;
 
-RevGadgets tree plots are compatible with the functions from the package `ggtree`, which has similar structure and syntax as `ggplot2`, which you are familiar with by now. Let's use `ggtree` to add color-coded tip labels as before.
+`RevGadgets` tree plots are compatible with the functions from the package `ggtree`, which has similar structure and syntax as `ggplot2`, which you are familiar with by now. Let's use `ggtree` to add color-coded tip labels as before.
 
 First, we will add a column to `annot` that defines the color for each tip, as before:
 
