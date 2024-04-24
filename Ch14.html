@@ -850,9 +850,15 @@ can use the annot dataset again to find that.</p>
 <p><span style="color:#66023C; font-size:150%; font-weight:600">Challenge
 2</span></p>
 <p>View <code>annot</code> and find an old sample to root the tree with
-using the function <code>ape::root()</code>. Plot the tree, color-coded
-as above, but properly rooted. Use <code>axisPhylo()</code> to add an
-axis to your tree.</p>
+using the function <code>ape::root()</code> and save your tree as
+<code>tre2</code>. Plot the tree, color-coded as above, but properly
+rooted. Use <code>axisPhylo()</code> to add an axis to your tree.
+<em>Note:</em> By default <code>ape::root()</code> will not resolve the
+<strong>root</strong> of the tree, so running <code>is.rooted()</code>
+will still say it’s unrooted. If you plot it, you’ll see that it appears
+rooted! But actually, the root has a polytomy. include
+<code>resolve.root = T</code> in <code>ape::root()</code> to force the
+root to “resolve” into bifurcations.</p>
 <p> </p>
 </div>
 </div>
