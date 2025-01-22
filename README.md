@@ -3,7 +3,7 @@ A modified version of:
 
 Biostatistics Using R: A Laboratory Manual
 
-By Raisa HernÃ¡ndez-Pacheco, Alexis A Diaz
+By Raisa Hernandez-Pacheco, Alexis A Diaz
 
 Chapter 1 - Introduction to R and RStudio
 
