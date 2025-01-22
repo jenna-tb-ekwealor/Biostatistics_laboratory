@@ -9,7 +9,6 @@ output:
 
 ```{r load-packages, message=FALSE}
 library(tidyverse)
-library(openintro)
 ```
 
 # set working directory for all chunks in this file (default working directory is wherever Rmd file is)
