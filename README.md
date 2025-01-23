@@ -1,8 +1,9 @@
 # Biostatistics_laboratory
+
+eBook[here]([http://example.com](https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/index.html ))
+
 A modified version of: 
-
 Biostatistics Using R: A Laboratory Manual
-
 By Raisa Hernandez-Pacheco, Alexis A Diaz
 
 Chapter 1 - Introduction to R and RStudio
