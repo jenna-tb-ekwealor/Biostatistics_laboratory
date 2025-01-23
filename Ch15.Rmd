@@ -5,7 +5,7 @@ output:
 ---
 <p style="text-align: center;">[Phylogenetic tree construction in R]{style="font-size:250%; font-weight:400"}</p>
 
-<p style="text-align: center;">[*Chapter 14*]{style="font-size:120%; font-weight:400"}</p>
+<p style="text-align: center;">[*Chapter 15*]{style="font-size:120%; font-weight:400"}</p>
 
 &nbsp;
 

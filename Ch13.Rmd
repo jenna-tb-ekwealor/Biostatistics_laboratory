@@ -1,6 +1,6 @@
 <p style="text-align: center;">[Spatial Analyses]{style="font-size:250%; font-weight:400"}</p>
 
-<p style="text-align: center;">[*Chapter 12*]{style="font-size:120%; font-weight:400"}</p>
+<p style="text-align: center;">[*Chapter 13*]{style="font-size:120%; font-weight:400"}</p>
 
 &nbsp; 
 
