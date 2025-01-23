@@ -408,9 +408,8 @@ We can use the annot dataset again to find that.
 
 [Challenge 2]{style="color:#66023C; font-size:150%; font-weight:600"}
 
-View `annot` and find an old sample to root the tree with using the function `ape::root()` and save your tree as `tre2`. Plot the tree, color-coded as above, but properly rooted. 
+View `annot` and find an old sample to root the tree with using the function `ape::root()`. Plot the tree, color-coded as above, but properly rooted. 
 Use `axisPhylo()` to add an axis to your tree. 
-*Note:* By default `ape::root()` will not resolve the **root** of the tree, so running `is.rooted()` will still say it's unrooted. If you plot it, you'll see that it appears rooted! But actually, the root has a polytomy. include `resolve.root = T` in `ape::root()` to force the root to "resolve" into bifurcations. 
 
 &nbsp;
 
