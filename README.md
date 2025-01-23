@@ -1,9 +1,10 @@
 # Biostatistics_laboratory
+
+eBook [here](https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/index.html )
+
 A modified version of: 
-
 Biostatistics Using R: A Laboratory Manual
-
-By Raisa HernÃ¡ndez-Pacheco, Alexis A Diaz
+By Raisa Hernandez-Pacheco, Alexis A Diaz
 
 Chapter 1 - Introduction to R and RStudio
 
@@ -25,5 +26,15 @@ Chapter 9 - One-way analysis of variance
 
 Chapter 10 - Two-way analysis of variance
 
-Chapter 11 - Correlation and regression analyses
+Chapter 11 - Generalized Linear Models
+
+Chapter 12 - Correlation and regression analyses
+
+Chapter 13 - Spatial analyses
+
+Chapter 14 - Synthetic phylogenetic trees
+
+Chapter 15 - Phylogenetic tree construction
+
+
 
