@@ -3,190 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLM Analysis - Biostatistics Lab</title>
-    <style>
-        body {
-            text-align: justify;
-        }
-        div.creme {
-            background-color: #fff5e6;
-            border-radius: 5px;
-            padding: 20px;
-            font-size: 80%;
-        }
-        h1, h2 {
-            font-size: 150%;
-            font-weight: 600;
-            color: #ff4500;
-        }
-        h3 {
-            font-size: 120%;
-            color: #dc143c;
-        }
-        ol {
-            list-style-type: lower-alpha;
-        }
-        .math {
-            font-style: italic;
-            font-weight: bold;
-        }
-        pre.r {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .step-box {
-            background-color: #e7f4f8;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Generalized Linear Models (GLM) Chapter 11</title>
 </head>
 <body>
+    <h1>Generalized Linear Models (GLM) - Chapter 11</h1>
 
-<div class="container-fluid main-container">
+    <h2>Case Study: Predicting Plant Growth under Different Watering Regimes</h2>
+    <p>In this chapter, we will use Generalized Linear Models (GLMs) to explore how different watering regimes affect the growth of a plant species. The case study investigates whether the amount of water (as a continuous variable) and the frequency of watering (as a categorical variable) influence plant growth (measured as plant height). This biological scenario involves two types of predictors: one quantitative and one categorical.</p>
 
+    <h2>Introduction</h2>
+    <p>Generalized Linear Models (GLMs) provide a powerful framework for modeling biological data when the response variable is not normally distributed. Unlike traditional linear models, GLMs allow for response variables that follow different distributions such as binomial, Poisson, or Gaussian. The model is defined by three main components:</p>
+    <ul>
+        <li><strong>Random Component</strong>: Specifies the distribution of the response variable (e.g., normal, binomial, Poisson).</li>
+        <li><strong>Systematic Component</strong>: A linear predictor, which is a linear combination of explanatory variables.</li>
+        <li><strong>Link Function</strong>: A function that links the mean of the distribution to the linear predictor.</li>
+    </ul>
+    <p>In the case of plant growth, the response variable is continuous (plant height) and we hypothesize that watering frequency and volume can significantly influence plant growth. We will use a Poisson distribution for count data (if plant height categories are used) or Gaussian distribution if we treat height as a continuous variable.</p>
 
+    <h2>Formulating the GLM</h2>
+    <p>Our goal is to model plant height (Y) as a function of two predictors: watering volume (X1) and watering frequency (X2). The GLM could be expressed as:</p>
+    <pre>
+        Y = β0 + β1X1 + β2X2 + ε
+    </pre>
+    <p>Where:</p>
+    <ul>
+        <li><strong>Y</strong> is the plant height (response variable).</li>
+        <li><strong>X1</strong> is the amount of water applied (predictor, quantitative).</li>
+        <li><strong>X2</strong> is the frequency of watering (predictor, categorical).</li>
+        <li><strong>β0</strong>, <strong>β1</strong>, <strong>β2</strong> are model coefficients to be estimated.</li>
+        <li><strong>ε</strong> is the error term.</li>
+    </ul>
+    
+    <h2>Types of GLMs in Biological Studies</h2>
+    <p>Depending on the nature of the response variable, we may use different types of GLMs:</p>
+    <ul>
+        <li><strong>Poisson Distribution</strong>: Used for count data, such as counting the number of flowers per plant or plant deaths. This model uses a log link function.</li>
+        <li><strong>Gaussian Distribution</strong>: Used for continuous data, such as the plant height we are examining in this case study. The identity link function is commonly used for continuous data.</li>
+        <li><strong>Binomial Distribution</strong>: Used for binary outcomes (e.g., presence or absence of a disease), with the logit link function.</li>
+    </ul>
 
+    <h2>Applying GLMs: Modeling Plant Growth</h2>
+    <p>Let's consider a biological experiment where we apply different watering volumes (low, medium, high) and frequencies (daily, every 3 days, weekly) to a plant species and measure the plant height after a set period. The data we collect includes both continuous (water volume) and categorical (watering frequency) predictors. We hypothesize that both factors will influence plant growth:</p>
+    <ul>
+        <li><strong>Null hypothesis (H0)</strong>: Water volume and frequency do not affect plant growth.</li>
+        <li><strong>Alternative hypothesis (H1)</strong>: Water volume and frequency significantly affect plant growth.</li>
+    </ul>
+    <p>We will use a GLM with a Gaussian distribution to model the continuous response (plant height). The link function will be the identity link, which assumes the response variable is linearly related to the predictors.</p>
 
-<div class="fluid-row" id="header">
+    <h2>Estimating GLMs in R</h2>
+    <p>To estimate the GLM, we can use R’s <code>glm()</code> function. The syntax is as follows:</p>
+    <pre>
+        model <- glm(Height ~ Water_Volume + Water_Frequency, family = gaussian(link = "identity"), data = plant_data)
+    </pre>
+    <p>This model fits plant height as a function of watering volume and frequency. We will examine the coefficients to determine the relationship between these variables and plant growth.</p>
 
+    <h2>Interpreting GLM Output</h2>
+    <p>The output from the GLM will include:</p>
+    <ul>
+        <li><strong>Coefficients</strong>: Estimates for water volume and watering frequency, indicating their influence on plant height.</li>
+        <li><strong>Standard Errors</strong>: Measure of the variability in the coefficient estimates.</li>
+        <li><strong>z-values and p-values</strong>: These statistics help us test the significance of each predictor in the model. A small p-value indicates that the corresponding predictor significantly affects plant height.</li>
+    </ul>
 
+    <h2>Model Diagnostics</h2>
+    <p>To validate the GLM, we will conduct residual analysis and goodness-of-fit tests. These diagnostic checks ensure that the model appropriately represents the data.</p>
+    <ul>
+        <li><strong>Residual Analysis</strong>: Plot the residuals to check for any patterns. Patterns might indicate that the linear assumption between predictors and response is not valid.</li>
+        <li><strong>Goodness-of-Fit Test</strong>: Use tests such as the Akaike Information Criterion (AIC) or deviance to compare the fit of different models.</li>
+    </ul>
 
-<h1 class="title toc-ignore"><center>
-Generalized linear models </h1>
-<h4 class="author"><center>
-<em>Chapter 11</em></h4>
-
-
-
-<h1>Generalized linear models (GLMs)</h1>
-
-<p><strong>Overview:</strong></p>
-<p>Generalized Linear Models (GLMs) extend traditional linear regression to handle different types of outcome variables. In this lab, we’ll explore GLMs using logistic regression for binary outcomes and Poisson regression for count data. We’ll fit models, interpret results, and visualize the fit to make informed decisions in biostatistical analysis.</p>
-
-<div class="step-box">
-    <h2>Step 1: Understanding GLMs</h2>
-    <p><strong>GLMs consist of three components:</strong></p>
+    <h2>Example: Estimating Watering Effects on Plant Height</h2>
+    <p>For this case study, we will follow these steps in R:</p>
     <ol>
-        <li><strong>Random Component:</strong> Specifies the distribution of the outcome variable (e.g., binomial for binary data, Poisson for count data).</li>
-        <li><strong>Systematic Component:</strong> Represents the predictors (independent variables) in the model.</li>
-        <li><strong>Link Function:</strong> Connects the mean of the random component to the systematic component.</li>
+        <li><strong>Load the Data:</strong>
+            <pre>
+                plant_data <- read.csv("plant_growth.csv")
+            </pre>
+        </li>
+        <li><strong>Fit the GLM:</strong>
+            <pre>
+                model <- glm(Height ~ Water_Volume + Water_Frequency, family = gaussian(link = "identity"), data = plant_data)
+            </pre>
+        </li>
+        <li><strong>Summarize the Model:</strong>
+            <pre>
+                summary(model)
+            </pre>
+        </li>
+        <li><strong>Interpret the Coefficients:</strong>
+            <ul>
+                <li>Positive coefficients indicate that increasing water volume or frequency increases plant height.</li>
+                <li>Negative coefficients would suggest that more frequent watering reduces growth.</li>
+            </ul>
+        </li>
+        <li><strong>Diagnostic Checks:</strong>
+            <ul>
+                <li>Plot residuals to check if they exhibit any patterns.</li>
+                <li>Assess model fit using AIC or deviance.</li>
+            </ul>
+        </li>
     </ol>
-    <p>In this lab, we’ll focus on logistic regression (binary outcomes) and Poisson regression (count data). Both are forms of GLMs with different link functions: the logit for logistic regression and the log for Poisson regression.</p>
-</div>
 
-<div class="step-box">
-    <h2>Step 2: Fit a GLM (Logistic Regression)</h2>
-    <p>Let’s start by fitting a logistic regression model using <strong>glm()</strong> for a binary outcome (e.g., species presence/absence).</p>
-    <pre class="r"><code># Logistic regression for binary outcome
-glm_logit <- glm(species_presence ~ environmental_variable, data=your_data, family="binomial")
+    <h2>Conclusion</h2>
+    <p>Generalized Linear Models are a versatile tool for modeling various types of biological data. By applying GLMs to this plant growth case study, we were able to understand how different watering regimes influence plant height, considering both continuous and categorical predictors. The GLM framework provides the flexibility to handle complex biological data, making it an invaluable tool for ecological and experimental studies.</p>
 
-# View summary of the logistic regression model
-summary(glm_logit)</code></pre>
-
-    <p><strong>Key Concepts:</strong></p>
+    <h2>References</h2>
     <ul>
-        <li><strong>Coefficients:</strong> The estimates of the model parameters.</li>
-        <li><strong>p-values:</strong> Tests for the significance of each predictor in the model.</li>
-        <li><strong>Intercept:</strong> The baseline probability of the event occurring when predictors are zero.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Generalized_linear_model" target="_blank">Generalized Linear Model - Wikipedia</a></li>
     </ul>
-
-    <h3>Interpretation:</h3>
-    <p>The coefficient for <strong>environmental_variable</strong> tells us how the log-odds of species presence change with each unit change in the environmental variable. A positive coefficient indicates an increased probability of species presence as the predictor increases.</p>
-</div>
-
-<div class="step-box">
-    <h2>Step 3: Visualizing Model Predictions</h2>
-    <p>Once the model is fitted, it’s important to visualize the predicted probabilities. For logistic regression, we can plot the predicted probabilities against the predictor variable.</p>
-    <pre class="r"><code># Predicted probabilities from the logistic model
-pred_probs <- predict(glm_logit, type="response")
-
-# Plot predicted probabilities
-plot(your_data$environmental_variable, pred_probs, pch=19, 
-     xlab="Environmental Variable", ylab="Predicted Probability")
-lines(smooth.spline(your_data$environmental_variable, pred_probs), col="red")</code></pre>
-    <p>This plot helps visualize how the probability of the event changes with the predictor variable.</p>
-
-    <h3>Interpretation:</h3>
-    <p>The curve should show the relationship between the predictor and the outcome. For example, as environmental variable increases, does the probability of species presence increase or decrease?</p>
-</div>
-
-<div class="step-box">
-    <h2>Step 4: Poisson Regression for Count Data</h2>
-    <p>For count data (e.g., number of species in different plots), we’ll use Poisson regression, which assumes a Poisson distribution for the outcome variable.</p>
-    <pre class="r"><code># Poisson regression for count data
-glm_poisson <- glm(species_count ~ environmental_variable, data=your_data, family="poisson")
-
-# View summary of the Poisson regression model
-summary(glm_poisson)</code></pre>
-
-    <h3>Interpretation:</h3>
-    <p>The coefficient for the environmental variable shows how the expected count of species changes with each unit change in the predictor. Since Poisson regression uses a log link function, the coefficients represent the log of the expected count.</p>
-</div>
-
-<div class="step-box">
-    <h2>Step 5: Assessing Model Fit</h2>
-    <p>After fitting your GLM, it’s important to check the model fit. For Poisson regression, we can check for overdispersion, where the variance exceeds the mean.</p>
-    <pre class="r"><code># Check for overdispersion in Poisson regression model
-dispersion <- sum(residuals(glm_poisson, type="pearson")^2) / glm_poisson$df.residual
-dispersion</code></pre>
-    <p>If the dispersion statistic is greater than 1, overdispersion may be present, indicating that the Poisson model may not be the best fit.</p>
-</div>
-
-<div class="step-box">
-    <h2>Step 6: Likelihood Ratio Test</h2>
-    <p>To test the significance of predictors, you can perform a likelihood ratio test to compare nested models.</p>
-    <pre class="r"><code># Fit a reduced model without the environmental variable
-glm_simple <- glm(species_count ~ 1, data=your_data, family="poisson")
-
-# Likelihood ratio test
-anova(glm_simple, glm_poisson, test="Chisq")</code></pre>
-    <h3>Interpretation:</h3>
-    <p>The likelihood ratio test compares the full model (with predictors) to the reduced model (without predictors). A significant result suggests that the predictors significantly improve the model fit.</p>
-</div>
-
-<div class="step-box">
-    <h2>Step 7: Comparing GLM Results with Linear Regression</h2>
-    <p>It’s helpful to compare GLM results with linear regression to see the differences in assumptions. GLMs do not assume normal residuals, making them more appropriate for certain types of data.</p>
-    <pre class="r"><code># Fit a linear regression model for comparison
-lm_model <- lm(species_count ~ environmental_variable, data=your_data)
-
-# View summary of the linear regression model
-summary(lm_model)</code></pre>
-    <h3>Interpretation:</h3>
-    <p>Compare the coefficients, significance levels, and fit statistics (e.g., R-squared). While linear regression assumes normal errors, GLMs do not make such assumptions, making GLMs more flexible for a variety of data types.</p>
-</div>
-
-<div class="step-box">
-    <h2>Step 8: Model Evaluation and Next Steps</h2>
-    <p>After fitting and evaluating your GLMs, it's important to validate the assumptions and check for residual patterns. Additionally, you may need to experiment with different link functions or model types depending on the nature of your data.</p>
-    <p><strong>Next Steps:</strong></p>
-    <ul>
-        <li>Try fitting models with different predictors and assess their significance.</li>
-        <li>Explore other GLM families, such as Gaussian or Gamma, for different types of data.</li>
-    </ul>
-</div>
-
-<h3>Challenge Questions:</h3>
-<p><strong>Challenge 1:</strong> Fit a GLM for a binary outcome in your own dataset and interpret the coefficients. Visualize the predicted probabilities and discuss the relationship between the predictors and the outcome.</p>
-
-<p><strong>Challenge 2:</strong> For a count dataset, fit a Poisson regression model and check for overdispersion. If overdispersion is present, consider alternative models like Negative Binomial regression.</p>
-
-<h3>Discussion Questions:</h3>
-<ul>
-    <li>Why is it important to choose the correct family and link function for a GLM?</li>
-    <li>How do GLMs differ from traditional linear regression in terms of assumptions and flexibility?</li>
-    <li>What would you do if your GLM model shows signs of overdispersion?</li>
-</ul>
-
-<div class="creme">
-    <h3>Additional Resources</h3>
-    <ul>
-        <li><a href="https://www.rdocumentation.org/packages/stats/versions/latest/topics/glm">GLM Documentation in R</a></li>
-        <li><a href="https://www.statmethods.net/stats/glm.html">Statistical Methods for GLM</a></li>
-    </ul>
-</div>
-
 </body>
 </html>
