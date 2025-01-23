@@ -28,3 +28,11 @@ Chapter 10 - Two-way analysis of variance
 
 Chapter 11 - Correlation and regression analyses
 
+Chapter 12 - Spatial analyses
+
+Chapter 13 - Synthetic phylogenetic trees
+
+Chapter 14 - Phylogenetic tree construction
+
+
+
