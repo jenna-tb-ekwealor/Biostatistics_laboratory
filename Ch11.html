@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLM Analysis - Biostatistics Lab</title>
+    <style>
+        body {
+            text-align: justify;
+        }
+        div.creme {
+            background-color: #fff5e6;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 80%;
+        }
+        h1, h2 {
+            font-size: 150%;
+            font-weight: 600;
+            color: #ff4500;
+        }
+        h3 {
+            font-size: 120%;
+            color: #dc143c;
+        }
+        ol {
+            list-style-type: lower-alpha;
+        }
+        .math {
+            font-style: italic;
+            font-weight: bold;
+        }
+        pre.r {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .step-box {
+            background-color: #e7f4f8;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore"><center>
+Generalized linear models </h1>
+<h4 class="author"><center>
+<em>Chapter 11</em></h4>
+
+
+
+<h1>Generalized linear models (GLMs)</h1>
+
+<p><strong>Overview:</strong></p>
+<p>Generalized Linear Models (GLMs) extend traditional linear regression to handle different types of outcome variables. In this lab, we’ll explore GLMs using logistic regression for binary outcomes and Poisson regression for count data. We’ll fit models, interpret results, and visualize the fit to make informed decisions in biostatistical analysis.</p>
+
+<div class="step-box">
+    <h2>Step 1: Understanding GLMs</h2>
+    <p><strong>GLMs consist of three components:</strong></p>
+    <ol>
+        <li><strong>Random Component:</strong> Specifies the distribution of the outcome variable (e.g., binomial for binary data, Poisson for count data).</li>
+        <li><strong>Systematic Component:</strong> Represents the predictors (independent variables) in the model.</li>
+        <li><strong>Link Function:</strong> Connects the mean of the random component to the systematic component.</li>
+    </ol>
+    <p>In this lab, we’ll focus on logistic regression (binary outcomes) and Poisson regression (count data). Both are forms of GLMs with different link functions: the logit for logistic regression and the log for Poisson regression.</p>
+</div>
+
+<div class="step-box">
+    <h2>Step 2: Fit a GLM (Logistic Regression)</h2>
+    <p>Let’s start by fitting a logistic regression model using <strong>glm()</strong> for a binary outcome (e.g., species presence/absence).</p>
+    <pre class="r"><code># Logistic regression for binary outcome
+glm_logit <- glm(species_presence ~ environmental_variable, data=your_data, family="binomial")
+
+# View summary of the logistic regression model
+summary(glm_logit)</code></pre>
+
+    <p><strong>Key Concepts:</strong></p>
+    <ul>
+        <li><strong>Coefficients:</strong> The estimates of the model parameters.</li>
+        <li><strong>p-values:</strong> Tests for the significance of each predictor in the model.</li>
+        <li><strong>Intercept:</strong> The baseline probability of the event occurring when predictors are zero.</li>
+    </ul>
+
+    <h3>Interpretation:</h3>
+    <p>The coefficient for <strong>environmental_variable</strong> tells us how the log-odds of species presence change with each unit change in the environmental variable. A positive coefficient indicates an increased probability of species presence as the predictor increases.</p>
+</div>
+
+<div class="step-box">
+    <h2>Step 3: Visualizing Model Predictions</h2>
+    <p>Once the model is fitted, it’s important to visualize the predicted probabilities. For logistic regression, we can plot the predicted probabilities against the predictor variable.</p>
+    <pre class="r"><code># Predicted probabilities from the logistic model
+pred_probs <- predict(glm_logit, type="response")
+
+# Plot predicted probabilities
+plot(your_data$environmental_variable, pred_probs, pch=19, 
+     xlab="Environmental Variable", ylab="Predicted Probability")
+lines(smooth.spline(your_data$environmental_variable, pred_probs), col="red")</code></pre>
+    <p>This plot helps visualize how the probability of the event changes with the predictor variable.</p>
+
+    <h3>Interpretation:</h3>
+    <p>The curve should show the relationship between the predictor and the outcome. For example, as environmental variable increases, does the probability of species presence increase or decrease?</p>
+</div>
+
+<div class="step-box">
+    <h2>Step 4: Poisson Regression for Count Data</h2>
+    <p>For count data (e.g., number of species in different plots), we’ll use Poisson regression, which assumes a Poisson distribution for the outcome variable.</p>
+    <pre class="r"><code># Poisson regression for count data
+glm_poisson <- glm(species_count ~ environmental_variable, data=your_data, family="poisson")
+
+# View summary of the Poisson regression model
+summary(glm_poisson)</code></pre>
+
+    <h3>Interpretation:</h3>
+    <p>The coefficient for the environmental variable shows how the expected count of species changes with each unit change in the predictor. Since Poisson regression uses a log link function, the coefficients represent the log of the expected count.</p>
+</div>
+
+<div class="step-box">
+    <h2>Step 5: Assessing Model Fit</h2>
+    <p>After fitting your GLM, it’s important to check the model fit. For Poisson regression, we can check for overdispersion, where the variance exceeds the mean.</p>
+    <pre class="r"><code># Check for overdispersion in Poisson regression model
+dispersion <- sum(residuals(glm_poisson, type="pearson")^2) / glm_poisson$df.residual
+dispersion</code></pre>
+    <p>If the dispersion statistic is greater than 1, overdispersion may be present, indicating that the Poisson model may not be the best fit.</p>
+</div>
+
+<div class="step-box">
+    <h2>Step 6: Likelihood Ratio Test</h2>
+    <p>To test the significance of predictors, you can perform a likelihood ratio test to compare nested models.</p>
+    <pre class="r"><code># Fit a reduced model without the environmental variable
+glm_simple <- glm(species_count ~ 1, data=your_data, family="poisson")
+
+# Likelihood ratio test
+anova(glm_simple, glm_poisson, test="Chisq")</code></pre>
+    <h3>Interpretation:</h3>
+    <p>The likelihood ratio test compares the full model (with predictors) to the reduced model (without predictors). A significant result suggests that the predictors significantly improve the model fit.</p>
+</div>
+
+<div class="step-box">
+    <h2>Step 7: Comparing GLM Results with Linear Regression</h2>
+    <p>It’s helpful to compare GLM results with linear regression to see the differences in assumptions. GLMs do not assume normal residuals, making them more appropriate for certain types of data.</p>
+    <pre class="r"><code># Fit a linear regression model for comparison
+lm_model <- lm(species_count ~ environmental_variable, data=your_data)
+
+# View summary of the linear regression model
+summary(lm_model)</code></pre>
+    <h3>Interpretation:</h3>
+    <p>Compare the coefficients, significance levels, and fit statistics (e.g., R-squared). While linear regression assumes normal errors, GLMs do not make such assumptions, making GLMs more flexible for a variety of data types.</p>
+</div>
+
+<div class="step-box">
+    <h2>Step 8: Model Evaluation and Next Steps</h2>
+    <p>After fitting and evaluating your GLMs, it's important to validate the assumptions and check for residual patterns. Additionally, you may need to experiment with different link functions or model types depending on the nature of your data.</p>
+    <p><strong>Next Steps:</strong></p>
+    <ul>
+        <li>Try fitting models with different predictors and assess their significance.</li>
+        <li>Explore other GLM families, such as Gaussian or Gamma, for different types of data.</li>
+    </ul>
+</div>
+
+<h3>Challenge Questions:</h3>
+<p><strong>Challenge 1:</strong> Fit a GLM for a binary outcome in your own dataset and interpret the coefficients. Visualize the predicted probabilities and discuss the relationship between the predictors and the outcome.</p>
+
+<p><strong>Challenge 2:</strong> For a count dataset, fit a Poisson regression model and check for overdispersion. If overdispersion is present, consider alternative models like Negative Binomial regression.</p>
+
+<h3>Discussion Questions:</h3>
+<ul>
+    <li>Why is it important to choose the correct family and link function for a GLM?</li>
+    <li>How do GLMs differ from traditional linear regression in terms of assumptions and flexibility?</li>
+    <li>What would you do if your GLM model shows signs of overdispersion?</li>
+</ul>
+
+<div class="creme">
+    <h3>Additional Resources</h3>
+    <ul>
+        <li><a href="https://www.rdocumentation.org/packages/stats/versions/latest/topics/glm">GLM Documentation in R</a></li>
+        <li><a href="https://www.statmethods.net/stats/glm.html">Statistical Methods for GLM</a></li>
+    </ul>
+</div>
+
+</body>
+</html>
