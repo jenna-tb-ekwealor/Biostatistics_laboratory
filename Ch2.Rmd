@@ -114,7 +114,7 @@ canines
 
 **1. Digital image analysis**
 
-You will be assigned a set of images of one out of three different
+Choose one set of images of one out of three different
 carnivores; bob cat, coyote, and kangaroo rat, for digital analysis.
 
 - A. If you have not done so already, download Image J.
