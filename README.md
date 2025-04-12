@@ -6,7 +6,6 @@ Biostatistics Using R: A Laboratory Manual
 
 Authors include: Raisa Hernández-Pacheco, Alexis A Diaz, earthdatascience.org, Luna L. Sanchez Reyes, and Emily Jane McTavish, plus modifications and new chapters by Jenna TB Ekwealor for BIOL 710 at San Francisco State University.
 
-
 Chapter 1 - Introduction to R and RStudio
 
 Chapter 2 - Data sampling, accuracy, and precision
