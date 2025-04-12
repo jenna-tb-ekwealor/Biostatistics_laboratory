@@ -1,0 +1,123 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+<p style="text-align: center;">[Generalized Linear Models in Ecology]{style="font-size:250%; font-weight:400"}</p>
+
+<p style="text-align: center;">[*Chapter 11*]{style="font-size:120%; font-weight:400"}</p>
+
+&nbsp;
+
+# **Overview**
+
+In this lab, we will explore the use of Generalized Linear Models (GLMs) in plant ecology, focusing on how environmental variables like light and water availability can influence plant height. GLMs extend linear regression to handle different types of data, allowing us to analyze both continuous and count variables in a variety of ways. We will explore two types of GLMs: logistic regression for binary outcomes and Poisson regression for count data, while applying them to a dataset of plant heights.
+
+&nbsp;
+
+# **Step 1: Understanding GLMs**
+
+GLMs are useful because they allow us to model complex relationships between the predictors (such as light, soil moisture, and temperature) and the outcome (e.g., plant height). In this lab, we will look at how these variables influence plant growth.
+
+- **Random Component**: The distribution of the outcome variable (e.g., plant height or count).
+- **Systematic Component**: The predictors, such as soil moisture, light intensity, or temperature.
+- **Link Function**: The link connects the mean of the random component to the predictors. For logistic regression, we use the logit link, and for Poisson regression, the log link is typically used.
+
+In the following sections, we’ll use GLMs to examine how environmental factors influence plant height in a dataset of species.
+
+&nbsp;
+
+# **Step 2: GLM for Plant Height (Linear Regression)**
+
+Let’s start by exploring the relationship between plant height and environmental factors like light and water availability. We’ll use a linear regression model, which is a type of GLM with a Gaussian distribution and an identity link function. This will allow us to model plant height as a continuous outcome.
+
+```r
+# Example dataset: Simulated plant height data
+set.seed(42)
+n <- 100
+light <- rnorm(n, mean = 100, sd = 10)  # Light intensity in Lux
+water <- rnorm(n, mean = 50, sd = 5)  # Soil moisture (percentage)
+height <- 10 + 0.2 * light + 0.1 * water + rnorm(n, mean = 0, sd = 2)  # Plant height (cm)
+
+# Create a data frame
+plant_data <- data.frame(light = light, water = water, height = height)
+
+# Linear regression model (GLM)
+glm_height <- glm(height ~ light + water, data = plant_data, family = "gaussian")
+
+# View the summary of the GLM
+summary(glm_height)
+
+Key Concepts:
+Coefficients: The model estimates how each predictor (light, water) affects the outcome (plant height).
+Intercept: The baseline plant height when light and water are at their mean values.
+p-values: These show whether each predictor significantly affects plant height.
+Interpretation:
+The coefficients in the GLM tell us how plant height is expected to change with each unit increase in light and water availability. For example, a positive coefficient for light suggests that with increased light intensity, plant height tends to increase. The p-values tell us if the effects of light and water are statistically significant.
+ 
+Step 3: Visualizing Model Predictions
+
+Now, let's visualize the relationship between the predictors and the plant height predictions. This will help us better understand how light and water affect plant growth.
+
+# Predicted plant height based on the GLM
+predicted_height <- predict(glm_height, type = "response")
+
+# Plotting the predicted height vs. light and water
+par(mfrow = c(1, 2))  # Set up a two-panel plot
+
+# Plot predicted height against light
+plot(plant_data$light, predicted_height, pch = 19, 
+     xlab = "Light Intensity (Lux)", ylab = "Predicted Plant Height (cm)")
+lines(smooth.spline(plant_data$light, predicted_height), col = "red")
+
+# Plot predicted height against water
+plot(plant_data$water, predicted_height, pch = 19, 
+     xlab = "Soil Moisture (%)", ylab = "Predicted Plant Height (cm)")
+lines(smooth.spline(plant_data$water, predicted_height), col = "red")
+
+
+Interpretation:
+The red lines show the predicted plant heights based on the GLM for different levels of light and water. These plots give us a clear visual representation of how changes in these variables are associated with changes in plant height.
+ 
+Step 4: Poisson Regression for Count Data
+
+In some ecological studies, the outcome of interest may not be continuous but instead involve counts, such as the number of plants in a given area. Poisson regression is useful for modeling count data that follows a Poisson distribution.
+Let’s simulate a count dataset where we model the number of plants observed in different environments with varying levels of light and water availability.
+
+# Simulate count data: Number of plants observed (count)
+set.seed(42)
+count_data <- rpois(n, lambda = exp(0.05 * light + 0.02 * water))
+
+# Poisson regression model
+glm_count <- glm(count_data ~ light + water, data = plant_data, family = "poisson")
+
+# View the summary of the Poisson regression model
+summary(glm_count)
+
+Interpretation:
+The coefficients for the Poisson regression model tell us how the expected count of plants changes with each unit increase in light or water. For example, a positive coefficient for light suggests that as light intensity increases, the number of plants observed also tends to increase.
+ 
+Step 5: Model Evaluation
+
+After fitting our GLMs, it's important to check the model fit. We can look at residuals to ensure the model appropriately fits the data. For the Poisson regression, we should check for overdispersion, where the variance exceeds the mean.
+
+# Check for overdispersion in the Poisson regression model
+dispersion <- sum(residuals(glm_count, type = "pearson")^2) / glm_count$df.residual
+dispersion
+
+Interpretation:
+If the dispersion statistic is greater than 1, we may have overdispersion, suggesting that the Poisson model may not be the best fit. In such cases, we could consider using a Negative Binomial regression model.
+ 
+Step 6: Conclusion and Next Steps
+
+In this lab, we explored how GLMs can be applied to analyze plant height and count data in ecology. By modeling how environmental factors like light and water availability affect plant growth, we gain insights into the ecological processes influencing plant populations.
+Challenge Questions:
+Fit a GLM for a binary outcome in your own dataset and interpret the coefficients.
+Try fitting a Poisson regression model with a count dataset of your choice and assess the model fit.
+Discussion:
+How do GLMs help us account for different types of data in ecological studies?
+What are some potential limitations of GLMs in ecological data analysis?
+ 
+Additional Resources
+GLM Documentation in R
+Statistical Methods for GLM
