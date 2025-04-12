@@ -171,7 +171,7 @@ glm(bird_visits ~ temperature, family = "poisson", data = birds)</code></pre>
 </ul>
 <p style="text-align: justify;"><strong>Variable descriptions:</strong> In this lab, we focus on three variables from the dataset. <code>DIN_Bbsl</code> refers to the density of infected nymphs (ticks) carrying <em>Borrelia burgdorferi sensu lato</em>. <code>Rodent_Rich</code> is the number of different rodent species observed at a site. <code>Predator_Shannon_wCat</code> is the Shannon diversity index of predator species (including cats), and <code>Site</code> identifies each sampled location.</p>
 
-<hr> 
+<br> 
   
 <p style="text-align: justify;">Today’s activity on <em>rodent diversity and infected tick density</em> is organized into one main exercise that explores how rodent communities influence tick-borne pathogen dynamics. This exercise will help us apply GLMs to real ecological data, interpret R model outputs, and check model assumptions.</p>
 
@@ -190,6 +190,8 @@ glm(bird_visits ~ temperature, family = "poisson", data = birds)</code></pre>
     <li><em>What type of variable is the response (DIN_Bbsl)?</em></li>
 </ol>
 </div>
+
+<br> 
 
 <h4 style="margin-top: 35px;">2. Fit a Poisson GLM</h4>
 <p style="text-align: justify;">We are using a Poisson model here because our response variable(tick infection density)is a count. Poisson models are designed for count data that are non-negative integers and often right-skewed. In Poisson GLMs, the variance increases with the mean, which often fits ecological count data better than assuming constant variance and normality.</p>
@@ -240,6 +242,7 @@ ggplot(tick, aes(x = Rodent_Rich, y = DIN_Bbsl)) +
 </div>
 
 <br>
+
 <h4 style="margin-top: 35px;">4. Plot model diagnostics</h4>
 <p style="text-align: justify;">After fitting a model, it’s important to assess how well it fits the data. In this step, we’ll visualize the residuals and fitted values to check for overdispersion and other patterns that might indicate poor model fit.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Diagnostic plots for GLM</span>
@@ -295,7 +298,7 @@ AIC(tick_glm, tick_glm2)</code></pre>
 <span class="challenge-title">Challenge.</span> What if some unmeasured differences among sampling locations are influencing your results? Can you extend your GLM to account for grouping in your data? <strong>Hint:</strong> Look for a variable that identifies the locations where data were collected.
 </div>
 
-
+<br> 
   
 <div class="questions" style="margin-top: 30px;">
 <p><span class="discussion-title">Discussion questions</span></p>
