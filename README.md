@@ -2,9 +2,8 @@
 
 eBook [here](https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/index.html )
 
-A modified version of: 
-Biostatistics Using R: A Laboratory Manual
-By Raisa Hernandez-Pacheco, Alexis A Diaz
+A modified version of: Biostatistics Using R: A Laboratory Manual
+Chapter authors include Raisa Hernandez-Pacheco, Alexis A Diaz, and Jenna Ekwealor 
 
 Chapter 1 - Introduction to R and RStudio
 
