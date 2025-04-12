@@ -2,9 +2,10 @@
 
 eBook [here](https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/index.html )
 
-A modified version of: 
 Biostatistics Using R: A Laboratory Manual
-By Raisa Hernandez-Pacheco, Alexis A Diaz
+
+Authors include: Raisa Hernández-Pacheco, Alexis A Diaz, earthdatascience.org, Luna L. Sanchez Reyes, and Emily Jane McTavish, plus modifications and new chapters by Jenna TB Ekwealor for BIOL 710 at San Francisco State University.
+
 
 Chapter 1 - Introduction to R and RStudio
 
@@ -26,15 +27,15 @@ Chapter 9 - One-way analysis of variance
 
 Chapter 10 - Two-way analysis of variance
 
-Chapter 11 - Generalized Linear Models
+Chapter 11 - Generalized linear models
 
 Chapter 12 - Correlation and regression analyses
 
-Chapter 13 - Spatial analyses
+Chapter 13 - Phylogenetics
 
-Chapter 14 - Synthetic phylogenetic trees
+Chapter 14 - Population genetics
 
-Chapter 15 - Phylogenetic tree construction
+Chapter 15 - Spatial analyses
 
 
 
