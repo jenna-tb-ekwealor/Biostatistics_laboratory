@@ -1,151 +1,133 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Population Genetics - Chapter 14</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: auto;
-            max-width: 770px;
-            line-height: 1.4;
-            color: #000;
-            padding: 20px 30px 30px 30px;
-        }
-        h1 {
-            font-size: 38px;
-            text-align: center;
-            margin: 0;
-            font-weight: normal;
-        }
-        h2 {
-            font-size: 18px;
-            color: #000;
-            text-align: center;
-            font-style: italic;
-            font-weight: normal;
-            margin-top: 0;
-            margin-bottom: 40px;
-        }
-        h3 {
-            font-size: 150%;
-            color: #66023C;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 10px;
-        }
-        h4 {
-            margin-top: 30px;
-        }
-        hr {
-            border: none;
-            border-top: 1px solid #ddd;
-            margin: 25px 0;
-        }
-        .investigation {
-            background-color: rgba(214, 231, 251, 0.6);
-            padding: 20px 22px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-        pre {
-            background-color: #F2F2F2;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        .questions, .challenge {
-            margin: 15px 0;
-        }
-        .bonus {
-            font-weight: bold;
-        }
-        .challenge-title {
-            color: red;
-            font-size: 150%;
-            font-weight: 600;
-        }
-        .discussion-title {
-            color: #2724ed;
-            font-size: 150%;
-            font-weight: 600;
-        }
-        .figure {
-            margin: 25px 0;
-            text-align: center;
-        }
-        .figure-caption {
-            font-size: 0.9em;
-            color: #555;
-            margin-top: 5px;
-        }
-        div.creme {
-            background-color: #fff5e6;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 80%;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phylogenetics - Chapter 13</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: auto;
+      max-width: 770px;
+      line-height: 1.4;
+      color: #000;
+      padding: 20px 30px 30px 30px;
+    }
+    h1 { font-size: 38px; text-align: center; font-weight: normal; }
+    h2 { font-size: 18px; text-align: center; font-style: italic; font-weight: normal; margin-bottom: 40px; }
+    h3 { font-size: 150%; color: #66023C; font-weight: 600; margin-top: 40px; }
+    h4 { margin-top: 30px; }
+    .investigation {
+      background-color: rgba(214, 231, 251, 0.6);
+      padding: 20px 22px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    pre {
+      background-color: #F2F2F2;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .questions, .challenge {
+      margin: 15px 0;
+    }
+    .challenge-title {
+      color: red;
+      font-size: 150%;
+      font-weight: 600;
+    }
+    .discussion-title {
+      color: #2724ed;
+      font-size: 150%;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
-<h1>Population genetics</h1>
+<h1>Phylogenetics</h1>
 <h2>Chapter 14</h2>
-<div style="margin-bottom: 20px;"></div>
 
-<div class="investigation" style="text-align: justify; padding-top: 10px; padding-bottom: 10px;">
-<p><strong>Today’s investigation.</strong> Marine mammals provide a powerful system for studying gene flow across broad, dynamic seascapes. In this lab, we will explore how population genetic tools can uncover structure among breeding colonies of South American fur seals (<em>Arctocephalus australis</em>). Specifically, we will analyze microsatellite genotypes from multiple regions to test whether fur seal populations are genetically differentiated—and if so, how much.</p>
+<div class="investigation">
+  <p><strong>Today’s investigation.</strong> How do we infer evolutionary relationships using DNA sequence data? Today you’ll use mitochondrial and nuclear DNA to reconstruct a phylogeny of <em>Phyllodactylidae</em> geckos and interpret what the resulting tree tells us about their biogeographic history. You will concatenate real gene alignments from a published dataset and use them to build a tree in R.</p>
 </div>
 
-<hr style="border-top: 1px solid #eee; margin: 5px 0 10px 0;">
+<h3>Introduction</h3>
+<p style="text-align: justify;">Phylogenetic trees are hypotheses about evolutionary relationships. They help us test questions about common ancestry, trait evolution, and geographic history. In this lab, you'll explore a real example using sequence data from Western Hemisphere leaf-toed geckos (family <em>Phyllodactylidae</em>). The data come from the study by <a href="https://www.nature.com/articles/s41598-021-87255-2" target="_blank">Nydam et al. (2021)</a>, which used multiple mitochondrial and nuclear loci to reconstruct relationships among species and genera.</p>
 
-<h3 style="margin-top: 20px;">Worked example</h3>
-<p style="text-align: justify;">Imagine two populations of lizards living on neighboring islands: Island A and Island B. A single microsatellite locus has two alleles: A and a. You sample 10 lizards from each population and genotype them at this locus. Here are the results:</p>
+<p style="text-align: justify;">You will concatenate five gene alignments, identify shared taxa, and reconstruct a tree using maximum likelihood. Then you'll interpret the resulting tree and consider what it reveals about evolution and biogeography.</p>
 
-<table style="border-collapse: collapse; margin: 20px 0;">
-  <tr><th style="border-bottom: 1px solid #ccc; padding: 5px;">Population</th><th style="border-bottom: 1px solid #ccc; padding: 5px;">AA</th><th style="border-bottom: 1px solid #ccc; padding: 5px;">Aa</th><th style="border-bottom: 1px solid #ccc; padding: 5px;">aa</th></tr>
-  <tr><td style="padding: 5px;">Island A</td><td style="padding: 5px;">2</td><td style="padding: 5px;">6</td><td style="padding: 5px;">2</td></tr>
-  <tr><td style="padding: 5px;">Island B</td><td style="padding: 5px;">6</td><td style="padding: 5px;">4</td><td style="padding: 5px;">0</td></tr>
-</table>
-
-<h4>1. Count alleles</h4>
-<p>Each individual has 2 alleles. Count alleles in each population:</p>
+<h3>Learning goals</h3>
 <ul>
-<li><strong>Island A:</strong> A = 10, a = 10</li>
-<li><strong>Island B:</strong> A = 16, a = 4</li>
+  <li>Read multiple sequence alignments in R.</li>
+  <li>Concatenate alignments with shared taxa.</li>
+  <li>Infer a phylogenetic tree using maximum likelihood.</li>
+  <li>Visualize and interpret the resulting phylogeny.</li>
 </ul>
 
-<h4>2. Calculate allele frequencies</h4>
+<h3>Materials and Methods</h3>
 <ul>
-<li><strong>Island A:</strong> freq(A) = 0.50, freq(a) = 0.50</li>
-<li><strong>Island B:</strong> freq(A) = 0.80, freq(a) = 0.20</li>
+  <li>R and RStudio</li>
+  <li>Packages: <code>ape</code>, <code>phangorn</code>, <code>ggtree</code></li>
+  <li>Files: <code>T500_L1.phylip</code> to <code>T500_L5.phylip</code></li>
 </ul>
 
-<h4>3. Calculate H<sub>T</sub> and H<sub>S</sub></h4>
-<ul>
-<li>H<sub>T</sub> = 1 – (0.65² + 0.35²) = 0.455</li>
-<li>H<sub>S</sub> = (0.5 + 0.32) / 2 = 0.41</li>
-</ul>
+<h4>1. Load and inspect your alignments</h4>
+<pre><code>library(ape)
 
-<h4>4. Calculate F<sub>ST</sub></h4>
-<div class="creme">
-<p><strong>F<sub>ST</sub></strong> is a standardized measure of genetic differentiation between populations:</p>
-<p style="text-align: center;"><strong>F<sub>ST</sub> = (H<sub>T</sub> – H<sub>S</sub>) / H<sub>T</sub></strong></p>
+aln1 <- read.dna("T500_L1.phylip", format = "sequential")
+aln2 <- read.dna("T500_L2.phylip", format = "sequential")
+aln3 <- read.dna("T500_L3.phylip", format = "sequential")
+aln4 <- read.dna("T500_L4.phylip", format = "sequential")
+aln5 <- read.dna("T500_L5.phylip", format = "sequential")</code></pre>
+
+<div class="questions">
+  <p><strong>Questions:</strong></p>
+  <ol type="a">
+    <li>How many taxa are present in each alignment?</li>
+    <li>Are the taxon names consistent across alignments?</li>
+  </ol>
 </div>
 
-<p>F<sub>ST</sub> = (0.455 – 0.41) / 0.455 ≈ <strong>0.099</strong></p>
+<h4>2. Identify shared taxa and concatenate</h4>
+<pre><code>shared <- Reduce(intersect, list(rownames(aln1), rownames(aln2), rownames(aln3), rownames(aln4), rownames(aln5)))
+alist <- list(aln1[shared, ], aln2[shared, ], aln3[shared, ], aln4[shared, ], aln5[shared, ])
+concat <- do.call(cbind, alist)</code></pre>
 
-<h4>5. Interpret your result</h4>
-<p><strong>F<sub>ST</sub> ≈ 0.10</strong> suggests modest genetic differentiation. Most variation is still within populations, but allele frequencies differ enough between islands to detect some structure.</p>
+<div class="challenge">
+  <span class="challenge-title">Challenge.</span> How would you modify this code to concatenate only a subset of alignments? Try just the first three.
+</div>
 
-<h4>6. AMOVA concept</h4>
-<p>AMOVA partitions genetic variance within individuals, among individuals within populations, and among populations. In this case, most variation is within populations, but a portion is explained by population structure—what F<sub>ST</sub> captures.</p>
+<h4>3. Build a tree using distance and ML</h4>
+<pre><code>library(phangorn)
 
-<hr>
+dna <- as.phyDat(concat)
+dm <- dist.ml(dna)
+tree <- NJ(dm)  # starting tree
+fit <- pml(tree, data = dna)
+fit_opt <- optim.pml(fit, model = "GTR", optInv = TRUE, optGamma = TRUE)</code></pre>
 
-<p><strong>Coming up next:</strong> You’ll apply these concepts to real fur seal microsatellite data and use R packages like <code>adegenet</code>, <code>poppr</code>, and <code>hierfstat</code> to calculate F<sub>ST</sub>, run AMOVA, and visualize genetic clusters using DAPC.</p>
+<h4>4. Plot and interpret the tree</h4>
+<pre><code>library(ggtree)
+
+ggtree(fit_opt$tree) + geom_tiplab()</code></pre>
+
+<div class="questions">
+  <p><strong>Tree-thinking questions:</strong></p>
+  <ol type="a">
+    <li>Which clades are strongly supported and monophyletic?</li>
+    <li>What does this tree suggest about the geographic origin of these geckos?</li>
+    <li>What assumptions are we making by concatenating loci?</li>
+  </ol>
+</div>
+
+<h4>Bonus: Bootstrapping support values</h4>
+<p>If time allows, try estimating bootstrap support values:</p>
+<pre><code>bs <- bootstrap.pml(fit, bs = 100, optNni = TRUE)
+plotBS(fit$tree, bs)</code></pre>
+
+<p style="text-align: center; font-size: 16px; font-weight: bold; color: #000; margin-top: 40px; margin-bottom: 50px;">Great work, phylogeneticists!</p>
 
 </body>
 </html>

@@ -30,9 +30,9 @@ Chapter 11 - Correlation and regression analyses
 
 Chapter 12 - Generalized linear models
 
-Chapter 13 - Phylogenetics
+Chapter 13 - Population genetics
 
-Chapter 14 - Population genetics
+Chapter 14 - Phylogenetics
 
 Chapter 15 - Spatial analyses
 
