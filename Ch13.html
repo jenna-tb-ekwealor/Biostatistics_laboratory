@@ -1,9 +1,133 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phylogenetics - Chapter 13</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: auto;
+      max-width: 770px;
+      line-height: 1.4;
+      color: #000;
+      padding: 20px 30px 30px 30px;
+    }
+    h1 { font-size: 38px; text-align: center; font-weight: normal; }
+    h2 { font-size: 18px; text-align: center; font-style: italic; font-weight: normal; margin-bottom: 40px; }
+    h3 { font-size: 150%; color: #66023C; font-weight: 600; margin-top: 40px; }
+    h4 { margin-top: 30px; }
+    .investigation {
+      background-color: rgba(214, 231, 251, 0.6);
+      padding: 20px 22px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    pre {
+      background-color: #F2F2F2;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .questions, .challenge {
+      margin: 15px 0;
+    }
+    .challenge-title {
+      color: red;
+      font-size: 150%;
+      font-weight: 600;
+    }
+    .discussion-title {
+      color: #2724ed;
+      font-size: 150%;
+      font-weight: 600;
+    }
+  </style>
+</head>
 <body>
-UNDER CONSTRUCTION
+
+<h1>Phylogenetics</h1>
+<h2>Chapter 13</h2>
+
+<div class="investigation">
+  <p><strong>Today’s investigation.</strong> How do we infer evolutionary relationships using DNA sequence data? Today you’ll use mitochondrial and nuclear DNA to reconstruct a phylogeny of <em>Phyllodactylidae</em> geckos and interpret what the resulting tree tells us about their biogeographic history. You will concatenate real gene alignments from a published dataset and use them to build a tree in R.</p>
+</div>
+
+<h3>Introduction</h3>
+<p style="text-align: justify;">Phylogenetic trees are hypotheses about evolutionary relationships. They help us test questions about common ancestry, trait evolution, and geographic history. In this lab, you'll explore a real example using sequence data from Western Hemisphere leaf-toed geckos (family <em>Phyllodactylidae</em>). The data come from the study by <a href="https://www.nature.com/articles/s41598-021-87255-2" target="_blank">Nydam et al. (2021)</a>, which used multiple mitochondrial and nuclear loci to reconstruct relationships among species and genera.</p>
+
+<p style="text-align: justify;">You will concatenate five gene alignments, identify shared taxa, and reconstruct a tree using maximum likelihood. Then you'll interpret the resulting tree and consider what it reveals about evolution and biogeography.</p>
+
+<h3>Learning goals</h3>
+<ul>
+  <li>Read multiple sequence alignments in R.</li>
+  <li>Concatenate alignments with shared taxa.</li>
+  <li>Infer a phylogenetic tree using maximum likelihood.</li>
+  <li>Visualize and interpret the resulting phylogeny.</li>
+</ul>
+
+<h3>Materials and Methods</h3>
+<ul>
+  <li>R and RStudio</li>
+  <li>Packages: <code>ape</code>, <code>phangorn</code>, <code>ggtree</code></li>
+  <li>Files: <code>T500_L1.phylip</code> to <code>T500_L5.phylip</code></li>
+</ul>
+
+<h4>1. Load and inspect your alignments</h4>
+<pre><code>library(ape)
+
+aln1 <- read.dna("T500_L1.phylip", format = "sequential")
+aln2 <- read.dna("T500_L2.phylip", format = "sequential")
+aln3 <- read.dna("T500_L3.phylip", format = "sequential")
+aln4 <- read.dna("T500_L4.phylip", format = "sequential")
+aln5 <- read.dna("T500_L5.phylip", format = "sequential")</code></pre>
+
+<div class="questions">
+  <p><strong>Questions:</strong></p>
+  <ol type="a">
+    <li>How many taxa are present in each alignment?</li>
+    <li>Are the taxon names consistent across alignments?</li>
+  </ol>
+</div>
+
+<h4>2. Identify shared taxa and concatenate</h4>
+<pre><code>shared <- Reduce(intersect, list(rownames(aln1), rownames(aln2), rownames(aln3), rownames(aln4), rownames(aln5)))
+alist <- list(aln1[shared, ], aln2[shared, ], aln3[shared, ], aln4[shared, ], aln5[shared, ])
+concat <- do.call(cbind, alist)</code></pre>
+
+<div class="challenge">
+  <span class="challenge-title">Challenge.</span> How would you modify this code to concatenate only a subset of alignments? Try just the first three.
+</div>
+
+<h4>3. Build a tree using distance and ML</h4>
+<pre><code>library(phangorn)
+
+dna <- as.phyDat(concat)
+dm <- dist.ml(dna)
+tree <- NJ(dm)  # starting tree
+fit <- pml(tree, data = dna)
+fit_opt <- optim.pml(fit, model = "GTR", optInv = TRUE, optGamma = TRUE)</code></pre>
+
+<h4>4. Plot and interpret the tree</h4>
+<pre><code>library(ggtree)
+
+ggtree(fit_opt$tree) + geom_tiplab()</code></pre>
+
+<div class="questions">
+  <p><strong>Tree-thinking questions:</strong></p>
+  <ol type="a">
+    <li>Which clades are strongly supported and monophyletic?</li>
+    <li>What does this tree suggest about the geographic origin of these geckos?</li>
+    <li>What assumptions are we making by concatenating loci?</li>
+  </ol>
+</div>
+
+<h4>Bonus: Bootstrapping support values</h4>
+<p>If time allows, try estimating bootstrap support values:</p>
+<pre><code>bs <- bootstrap.pml(fit, bs = 100, optNni = TRUE)
+plotBS(fit$tree, bs)</code></pre>
+
+<p style="text-align: center; font-size: 16px; font-weight: bold; color: #000; margin-top: 40px; margin-bottom: 50px;">Great work, phylogeneticists!</p>
 
 </body>
 </html>

@@ -26,9 +26,9 @@ Chapter 9 - One-way analysis of variance
 
 Chapter 10 - Two-way analysis of variance
 
-Chapter 11 - Generalized linear models
+Chapter 11 - Correlation and regression analyses
 
-Chapter 12 - Correlation and regression analyses
+Chapter 12 - Generalized linear models
 
 Chapter 13 - Phylogenetics
 
