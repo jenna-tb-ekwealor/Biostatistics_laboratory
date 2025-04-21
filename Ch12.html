@@ -158,7 +158,12 @@ glm(bird_visits ~ temperature, family = "poisson", data = birds)</code></pre>
 
 <p style="text-align: justify;">Finally, what if we suspect that observations are grouped, and that there's unmeasured variation across those groups? This is where <strong>generalized linear mixed models (GLMMs)</strong> come in. GLMMs allow us to include <em>random effects</em>, such as variation by site or subject, which helps us avoid biased estimates. These models are especially useful for repeated measures or nested data; like multiple tick samples taken from the same location.</p>
 
+Now suppose you measured bird visits at multiple feeders, and you think counts might vary by location. You can use a GLMM to include location as a random effect:
 
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Fit a Poisson GLMM</span>
+library(glmmTMB)
+glmm(bird_visits ~ temperature + (1 | location), 
+     family = poisson, data = birds)</code></pre>
 <hr> 
 
 
@@ -295,7 +300,26 @@ AIC(tick_glm, tick_glm2)</code></pre>
 
 
 <div class="challenge" style="margin-top: 30px;">
-<span class="challenge-title">Challenge 2.</span> What if some unmeasured differences among sampling locations are influencing your results? Can you extend your GLM to account for grouping in your data? <strong>Hint:</strong> Look for a variable that identifies the locations where data were collected.
+<span class="challenge-title">Challenge 2.</span> What if some unmeasured differences among sampling locations are influencing your results? <strong>Hint:</strong> Try including <code>Site</code> as a <em>random effect</em> using <code>glmmTMB()</code> to account for repeated measures and location-specific variation.
+<p style="margin-top: 10px;">Once you've fit the model, compare it to your previous GLM using <code>AIC()</code>. Does accounting for site improve model fit? Interpret your results.</p>
+</div>
+</div>
+
+<div class="creme">
+<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> What does your GLMM tell you?</p>
+
+<ul>
+  <li><strong>Fixed effects</strong> show the average relationship between your predictors (e.g. rodent richness) and the response variable (e.g. infected tick density), across all sites and years.</li>
+  <li><strong>Random effects</strong> account for variation that comes from grouping variables like <code>Site</code> or <code>Year</code>. You can think of these as allowing each group to have its own baseline level of tick density.</li>
+  <li>Use <code>summary()</code> to interpret your fixed effects, and <code>VarCorr()</code> to see how much variation is explained by each random effect.</li>
+</ul>
+
+<p>Random effects are especially important when observations are not independent. Ignoring them can lead to overly confident p-values and biased estimates.</p>
+</div>
+
+
+<div class="challenge" style="margin-top: 30px;">
+<span class="challenge-title">Challenge 3.</span> Now try adding <code>Year</code> as another random effect. Does accounting for both <code>Site</code> and <code>Year</code> improve model fit? <strong>Hint:</strong> Model <code>summary()</code> may help you interpret your results. 
 </div>
 
 <br> 
