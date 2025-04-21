@@ -182,10 +182,10 @@ glmm(bird_visits ~ temperature + (1 | location),
 
 <p style="margin-top: 40px; margin-bottom: 20px;"><span style="color:darkblue; font-size:190%; font-weight:500">Rodent diversity and infected tick density</span></p>
 
-<p style="margin-bottom: 25px;"><div style="margin-bottom: 25px;"><p><strong>Research question 1:</strong> Does rodent richness predict the density of <em>Borrelia</em>-infected ticks in 2019?</p></div>
+<p style="margin-bottom: 25px;"><div style="margin-bottom: 25px;"><p><strong>Research question 1:</strong> Does rodent richness predict the density of <em>Borrelia</em>-infected ticks?</p></div>
 
-<p style="text-align: justify;">Before we begin fitting models, let’s load the dataset. It contains site-level summaries of tick density, rodent richness, predator diversity, and other ecological variables collected from forest fragments across Northern California. These data were collected repeatedly at each site for several years, but let's start just by looking one year in particular (2019).</p>
-<p style="margin-top: 30px;"><strong>1. Import the data</strong> Let’s import the <code>"tick.csv"</code> dataset and explore it. Filter the data set for the year 2019.</p>
+<p style="text-align: justify;">Before we begin fitting models, let’s load the dataset. It contains site-level summaries of tick density, rodent richness, predator diversity, and other ecological variables collected from forest fragments across Northern California. These data were collected repeatedly at each site across multiple years. We'll fit models that account for variation across both sites and years using random effects.</p>
+<p style="margin-top: 30px;"><strong>1. Import the data</strong> Let’s import the <code>"tick.csv"</code> dataset and explore it.</p>
 
 
 <div class="questions" style="margin-top: 30px;">
@@ -319,7 +319,7 @@ AIC(tick_glm, tick_glm2)</code></pre>
 
 
 <div class="challenge" style="margin-top: 30px;">
-<span class="challenge-title">Challenge 3.</span> Now try adding <code>Year</code> as another random effect. Does accounting for both <code>Site</code> and <code>Year</code> improve model fit? <strong>Hint:</strong> Model <code>summary()</code> may help you interpret your results. 
+<span class="challenge-title">Challenge 3.</span> Fit a new model with both <code>Site</code> and <code>Year</code> as random effects. Then use <code>AIC()</code> to compare it with your previous model. Does including both grouping variables improve model fit? Use <code>summary()</code> and <code>VarCorr()</code> to help interpret your results.
 </div>
 
 <br> 
