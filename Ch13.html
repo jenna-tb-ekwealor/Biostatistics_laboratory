@@ -145,34 +145,105 @@ H_exp <- 2 * p * q
 
 <h1 style="text-align: left; font-size: 30px; font-weight: normal; margin-top: 40px;">2. Spatial analysis</h1>
 
-<p>Now imagine you also recorded the location where each gorilla was sampled. Some individuals came from nearby groups, while others were farther apart. You want to know: <strong>Does genetic similarity decrease with geographic distance?</strong></p>
+<p>In the worked example above, you calculated genetic diversity at a single SNP. Now, we will explore how genetic similarity might change with geographic distance, by constructing two real distance matrices: one based on genotype differences, and one based on location.</p>
 
-<p>One way to test this is with a <strong>Mantel test</strong>. A Mantel test compares two distance matrices (one based on geography and one based on genetics) and checks whether individuals that are geographically farther apart are also more genetically different.</p>
+<p><strong>What is a distance matrix?</strong> A distance matrix is a table showing how different each pair of individuals is. Rows and columns represent individuals, and each cell shows their distance: 0 if identical, larger if different. Matrices are symmetric, and distances along the diagonal are always 0 (an individual is identical to itself).</p>
 
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Example: geographic distances (km)</span>
-geo_dist <- dist(matrix(c(0,0, 0,10, 10,0), ncol=2, byrow=TRUE))
+<h4 style="margin-top: 35px;">A. Genotype data</h4>
 
-<span style="color:#6a737d; font-style: italic;"># Example: genetic distances (made-up values)</span>
-gen_dist <- dist(c(0.1, 0.2, 0.15))
+<p>Suppose we have genotypes for four gorillas at one SNP locus:</p>
 
-<span style="color:#6a737d; font-style: italic;"># Run Mantel test</span>
-library(vegan)
-mantel_result <- mantel(gen_dist, geo_dist)
-mantel_result
+<table border="1" cellpadding="5">
+<tr><th>Gorilla</th><th>Genotype</th></tr>
+<tr><td>G1</td><td>AA</td></tr>
+<tr><td>G2</td><td>AG</td></tr>
+<tr><td>G3</td><td>GG</td></tr>
+<tr><td>G4</td><td>AG</td></tr>
+</table>
+
+<p>We can calculate genetic distance between individuals using a simple mismatch method:</p>
+<ul>
+<li>Distance = 0 if genotypes are identical</li>
+<li>Distance = 0.5 if one is heterozygous and the other is homozygous</li>
+<li>Distance = 1 if genotypes are opposite homozygotes</li>
+</ul>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Create genotype data</span>
+genotypes <- c("AA", "AG", "GG", "AG")
+names(genotypes) <- c("G1", "G2", "G3", "G4")
+
+<span style="color:#6a737d; font-style: italic;"># Function to calculate pairwise genetic distance</span>
+genetic_distance <- function(g1, g2) {
+  if (g1 == g2) {
+    return(0)
+  } else if (g1 == "AG" || g2 == "AG") {
+    return(0.5)
+  } else {
+    return(1)
+  }
+}
+
+<span style="color:#6a737d; font-style: italic;"># Build genetic distance matrix</span>
+gen_dist_matrix <- outer(genotypes, genotypes, Vectorize(genetic_distance))
+gen_dist_matrix
 </code></pre>
 
-<p>Running a Mantel test gives you a statistic (r) and a p-value. A significant p-value suggests that genetic distance and geographic distance are correlated, which would be consistent with a pattern of Isolation by Distance.</p>
+<br>
 
-<div class="questions" style="margin-top: 30px;">
-<p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop and Think:</strong> </span> <strong>Stop</strong> and consider: <em>What do heterozygosity and expected heterozygosity tell you about genetic diversity in a population? <strong>Think</strong> about how a Mantel test would help us detect spatial patterns in genetic structure.</em></p></div>    
+<p>This creates a genetic distance matrix:</p>
 
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> 
-Heterozygosity measures how much genetic variation exists at a locus. 
-A higher heterozygosity suggests more genetic diversity within the population. 
-The Mantel test compares two distance matrices (one based on <strong>geography</strong>, one based on <strong>genetics</strong>) to detect whether genetic similarity declines with geographic distance, a pattern expected under <strong><i>Isolation by Distance</i></strong>.
-</p>
+<table border="1" cellpadding="5">
+<tr><th></th><th>G1</th><th>G2</th><th>G3</th><th>G4</th></tr>
+<tr><td>G1</td><td>0</td><td>0.5</td><td>1</td><td>0.5</td></tr>
+<tr><td>G2</td><td>0.5</td><td>0</td><td>0.5</td><td>0</td></tr>
+<tr><td>G3</td><td>1</td><td>0.5</td><td>0</td><td>0.5</td></tr>
+<tr><td>G4</td><td>0.5</td><td>0</td><td>0.5</td><td>0</td></tr>
+</table>
+
+---
+
+<h4 style="margin-top: 35px;">B. Location data</h4>
+
+<p>Suppose these four gorillas were sampled at the following locations (in kilometers):</p>
+
+<table border="1" cellpadding="5">
+<tr><th>Gorilla</th><th>X</th><th>Y</th></tr>
+<tr><td>G1</td><td>0</td><td>0</td></tr>
+<tr><td>G2</td><td>0</td><td>10</td></tr>
+<tr><td>G3</td><td>10</td><td>0</td></tr>
+<tr><td>G4</td><td>10</td><td>10</td></tr>
+</table>
+
+<p>We can calculate their pairwise geographic distances:</p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Create coordinates</span>
+coords <- data.frame(
+  X = c(0, 0, 10, 10),
+  Y = c(0, 10, 0, 10)
+)
+rownames(coords) <- c("G1", "G2", "G3", "G4")
+
+<span style="color:#6a737d; font-style: italic;"># Calculate geographic distance matrix</span>
+geo_dist_matrix <- dist(coords)
+as.matrix(geo_dist_matrix)
+</code></pre>
+
+---
+
+<h4 style="margin-top: 35px;">C. Testing for Isolation by Distance</h4>
+
+<p>Now we can test whether gorillas who are farther apart geographically are also more genetically different.</p>
+
+<div class="challenge" style="margin-top: 30px;">
+<span class="challenge-title">Challenge.</span> 
+What kind of statistical method would you use to test whether genetic distance is correlated with geographic distance?  
+Hint: Think about how to formally compare two distance matrices.
 </div>
+
+<br>
+
+<p><strong>Hint:</strong> You encountered the Mantel test earlier. It tests the correlation between two distance matrices. If the p-value is small, it suggests a significant association between geographic and genetic distances.</p>
+
 
 <br> 
 <hr> 
