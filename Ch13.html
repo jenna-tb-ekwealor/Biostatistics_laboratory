@@ -161,6 +161,8 @@ H_exp <- 2 * p * q
 <tr><td>G4</td><td>AG</td></tr>
 </table>
 
+<br>
+
 <p>We can calculate genetic distance between individuals using a simple mismatch method:</p>
 <ul>
 <li>Distance = 0 if genotypes are identical</li>
@@ -200,7 +202,10 @@ gen_dist_matrix
 <tr><td>G4</td><td>0.5</td><td>0</td><td>0.5</td><td>0</td></tr>
 </table>
 
----
+<p>On larger datasets with many SNPs, we can also use other genetic distance metrics, such as F<sub>ST</sub> or Nei’s distance, which compare allele frequencies between populations more formally.</p>
+
+
+<br>
 
 <h4 style="margin-top: 35px;">B. Location data</h4>
 
@@ -228,24 +233,33 @@ geo_dist_matrix <- dist(coords)
 as.matrix(geo_dist_matrix)
 </code></pre>
 
----
+<br>
 
 <h4 style="margin-top: 35px;">C. Testing for Isolation by Distance</h4>
 
 <p>Now we can test whether gorillas who are farther apart geographically are also more genetically different.</p>
 
-<div class="challenge" style="margin-top: 30px;">
-<span class="challenge-title">Challenge.</span> 
-What kind of statistical method would you use to test whether genetic distance is correlated with geographic distance?  
-Hint: Think about how to formally compare two distance matrices.
-</div>
+<p><strong>What is the Mantel test?</strong> The Mantel test formally compares two distance matrices to test whether they are correlated. In our case, one matrix represents genetic distances between individuals and the other represents geographic distances. A significant p-value suggests that individuals farther apart geographically are also more genetically different; a pattern expected under <i>Isolation by Distance.</i></p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load the vegan package for the Mantel test</span>
+library(vegan)
+
+<span style="color:#6a737d; font-style: italic;"># Perform Mantel test between genetic and geographic distances</span>
+mantel_result <- mantel(gen_dist_matrix, geo_dist_matrix)
+
+<span style="color:#6a737d; font-style: italic;"># View the result</span>
+mantel_result
+</code></pre>
 
 <br>
 
-<p><strong>Hint:</strong> You encountered the Mantel test earlier. It tests the correlation between two distance matrices. If the p-value is small, it suggests a significant association between geographic and genetic distances.</p>
+<p>The output shows a correlation coefficient (r) and a p-value. If the p-value is small (typically &lt; 0.05), it suggests a significant association between geographic and genetic distances.</p>
+
+<p><strong>Important:</strong> The Mantel test is specifically designed for comparing two distance matrices, where each entry represents a pairwise comparison between individuals or populations.</p>
 
 
 <br> 
+
 <hr> 
 
 
@@ -320,9 +334,21 @@ summary(genind_obj)
 <div class="challenge" style="margin-top: 30px;">
 <span class="challenge-title">Challenge 1.</span> Create a plot showing the distribution of allele frequencies across all SNPs. What do you observe in the distribution? Hint: use <code>ggplot2::geom_histogram()</code>.
 </div>
+
+<br> 
+
 <h4 style="margin-top: 35px;">3. Calculate F<sub>ST</sub> among populations</h4>
 
-<p>Earlier in the worked example, you calculated allele frequencies and heterozygosity for one SNP across individuals. Now, we want to extend that logic to compare **entire populations** across many SNPs. F<sub>ST</sub> measures how different populations are in their allele frequencies.</p>
+<p>Earlier, you calculated F<sub>ST</sub> values for each SNP locus, which tell us how different populations are at individual points in the genome. Now, we want to summarize the overall genetic distances between populations based on all SNPs combined.</p>
+
+<p><strong>How do we do this?</strong> We treat the collection of per-locus F<sub>ST</sub> values as a profile for each population, and then calculate how different those profiles are from each other. This gives us a new distance matrix, where rows and columns are populations, and each cell shows how genetically distant two populations are based on all loci.</p>
+
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Extract the table of F<sub>ST</sub> values (<code>basic_stats$perloc.fst</code>).</li>
+<li>Turn it into a proper matrix format for distance calculation.</li>
+<li>Use <code>dist()</code> to calculate pairwise distances based on the F<sub>ST</sub> profiles.</li>
+</ul>
 
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load package for population genetics summaries</span>
 library(hierfstat)
@@ -363,10 +389,7 @@ basic_stats$perloc.fst
 
 <p>In the worked example, you thought about how genetic similarity might change with distance. Here, we calculate two types of distances across real populations: <strong>geographic distance</strong> (based on coordinates) and <strong>genetic distance</strong> (based on allele frequencies).</p>
 
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load tidyverse package (already loaded above)</span>
-library(tidyverse)
-
-<span style="color:#6a737d; font-style: italic;"># Create a pairwise geographic distance matrix (latitude and longitude)</span>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Create a pairwise geographic distance matrix (latitude and longitude)</span>
 dist_geo <- coords %>%
   select(Longitude, Latitude) %>%
   dist()
@@ -403,6 +426,11 @@ dist_gen <- basic_stats$perloc.fst %>%
 
 <br>
 
+<div class="challenge" style="margin-top: 30px;">
+  <span class="challenge-title">Challenge 5.</span> 
+ How might you test whether northern and southern populations are (genetically) significantly different? Hint: Start by grouping individuals by location. Would a t-test be appropriate? What assumptions would need to be checked before using a t-test on genetic distance data?
+</div>
+  
 <hr>
 
 <h3>Discussion questions</h3>
@@ -413,6 +441,17 @@ dist_gen <- basic_stats$perloc.fst %>%
 <li><em>How can geographic distance influence patterns of genetic structure?</em></li>
 <li><em>What ecological or historical factors might explain the patterns you observed?</em></li>
 </ul>
+
+<br> 
+
+<div class="creme" style="margin-top: 30px;">
+  <p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Look Ahead:</strong> </span> 
+  Next week, we will extend what you learned here to build phylogenetic trees.  
+  Instead of simply comparing distances, we will use those distances to infer the evolutionary relationships among populations and species.  
+  Start thinking about how patterns of genetic similarity and difference might be shaped by common ancestry over time!
+  </p>
+  </div>
+  
 
 <p style="text-align: center; font-size: 16px; font-weight: bold; color: #000; margin-top: 40px; margin-bottom: 50px;">Great work!</p>
 
