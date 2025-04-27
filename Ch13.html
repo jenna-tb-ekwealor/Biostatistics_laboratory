@@ -1,151 +1,354 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Population Genetics - Chapter 14</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: auto;
-            max-width: 770px;
-            line-height: 1.4;
-            color: #000;
-            padding: 20px 30px 30px 30px;
-        }
-        h1 {
-            font-size: 38px;
-            text-align: center;
-            margin: 0;
-            font-weight: normal;
-        }
-        h2 {
-            font-size: 18px;
-            color: #000;
-            text-align: center;
-            font-style: italic;
-            font-weight: normal;
-            margin-top: 0;
-            margin-bottom: 40px;
-        }
-        h3 {
-            font-size: 150%;
-            color: #66023C;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 10px;
-        }
-        h4 {
-            margin-top: 30px;
-        }
-        hr {
-            border: none;
-            border-top: 1px solid #ddd;
-            margin: 25px 0;
-        }
-        .investigation {
-            background-color: rgba(214, 231, 251, 0.6);
-            padding: 20px 22px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-        pre {
-            background-color: #F2F2F2;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        .questions, .challenge {
-            margin: 15px 0;
-        }
-        .bonus {
-            font-weight: bold;
-        }
-        .challenge-title {
-            color: red;
-            font-size: 150%;
-            font-weight: 600;
-        }
-        .discussion-title {
-            color: #2724ed;
-            font-size: 150%;
-            font-weight: 600;
-        }
-        .figure {
-            margin: 25px 0;
-            text-align: center;
-        }
-        .figure-caption {
-            font-size: 0.9em;
-            color: #555;
-            margin-top: 5px;
-        }
-        div.creme {
-            background-color: #fff5e6;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 80%;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Population Genetics - Chapter 13</title>
+<style>
+body { font-family: Arial, sans-serif; margin: auto; max-width: 770px; line-height: 1.4; color: #000; padding: 20px 30px 30px 30px; }
+h1 { font-size: 38px; text-align: center; font-weight: normal; }
+h2 { font-size: 18px; color: #000; text-align: center; font-style: italic; font-weight: normal; margin-bottom: 40px; }
+h3 { font-size: 150%; color: #66023C; font-weight: 600; margin-top: 40px; margin-bottom: 10px; }
+h4 { margin-top: 30px; }
+hr { border: none; border-top: 1px solid #ddd; margin: 25px 0; }
+.investigation { background-color: rgba(214, 231, 251, 0.6); padding: 20px 22px; margin-bottom: 20px; border-radius: 6px; }
+pre { background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px; border-radius: 5px; overflow-x: auto; }
+.questions, .challenge { margin: 15px 0; }
+.challenge-title { color: red; font-size: 150%; font-weight: 600; }
+.discussion-title { color: #2724ed; font-size: 150%; font-weight: 600; }
+.figure { margin: 25px 0; text-align: center; }
+.figure-caption { font-size: 0.9em; color: #555; margin-top: 5px; }
+div.creme { background-color: #fff5e6; border-radius: 5px; padding: 10px 20px; font-size: 80%; }
+</style>
 </head>
 <body>
 
-<h1>Population genetics</h1>
+<h1>Population Genetics</h1>
 <h2>Chapter 13</h2>
-<div style="margin-bottom: 20px;"></div>
 
-<div class="investigation" style="text-align: justify; padding-top: 10px; padding-bottom: 10px;">
-<p><strong>Today’s investigation.</strong> Marine mammals provide a powerful system for studying gene flow across broad, dynamic seascapes. In this lab, we will explore how population genetic tools can uncover structure among breeding colonies of South American fur seals (<em>Arctocephalus australis</em>). Specifically, we will analyze microsatellite genotypes from multiple regions to test whether fur seal populations are genetically differentiated—and if so, how much.</p>
+<div class="investigation">
+<p><strong>Today’s Investigation.</strong> In past labs, we learned how to describe variation in biological data, test hypotheses, and build models to explain patterns. Today, we shift our focus to the genetic variation that underlies many of those patterns. Every population carries a story written in its DNA, shaped by history, isolation, and chance. We will use real genomic data from dusky-footed woodrats (<em>Neotoma fuscipes</em>) across California, collected by Dr. Robert Boria’s lab at San Francisco State University, to explore how geography and history leave signatures in genetic diversity. You will calculate basic population genetic statistics and interpret what they reveal about how populations are structured across the landscape.</p>
 </div>
-
-<hr style="border-top: 1px solid #eee; margin: 5px 0 10px 0;">
-
-<h3 style="margin-top: 20px;">Worked example</h3>
-<p style="text-align: justify;">Imagine two populations of lizards living on neighboring islands: Island A and Island B. A single microsatellite locus has two alleles: A and a. You sample 10 lizards from each population and genotype them at this locus. Here are the results:</p>
-
-<table style="border-collapse: collapse; margin: 20px 0;">
-  <tr><th style="border-bottom: 1px solid #ccc; padding: 5px;">Population</th><th style="border-bottom: 1px solid #ccc; padding: 5px;">AA</th><th style="border-bottom: 1px solid #ccc; padding: 5px;">Aa</th><th style="border-bottom: 1px solid #ccc; padding: 5px;">aa</th></tr>
-  <tr><td style="padding: 5px;">Island A</td><td style="padding: 5px;">2</td><td style="padding: 5px;">6</td><td style="padding: 5px;">2</td></tr>
-  <tr><td style="padding: 5px;">Island B</td><td style="padding: 5px;">6</td><td style="padding: 5px;">4</td><td style="padding: 5px;">0</td></tr>
-</table>
-
-<h4>1. Count alleles</h4>
-<p>Each individual has 2 alleles. Count alleles in each population:</p>
-<ul>
-<li><strong>Island A:</strong> A = 10, a = 10</li>
-<li><strong>Island B:</strong> A = 16, a = 4</li>
-</ul>
-
-<h4>2. Calculate allele frequencies</h4>
-<ul>
-<li><strong>Island A:</strong> freq(A) = 0.50, freq(a) = 0.50</li>
-<li><strong>Island B:</strong> freq(A) = 0.80, freq(a) = 0.20</li>
-</ul>
-
-<h4>3. Calculate H<sub>T</sub> and H<sub>S</sub></h4>
-<ul>
-<li>H<sub>T</sub> = 1 – (0.65² + 0.35²) = 0.455</li>
-<li>H<sub>S</sub> = (0.5 + 0.32) / 2 = 0.41</li>
-</ul>
-
-<h4>4. Calculate F<sub>ST</sub></h4>
-<div class="creme">
-<p><strong>F<sub>ST</sub></strong> is a standardized measure of genetic differentiation between populations:</p>
-<p style="text-align: center;"><strong>F<sub>ST</sub> = (H<sub>T</sub> – H<sub>S</sub>) / H<sub>T</sub></strong></p>
-</div>
-
-<p>F<sub>ST</sub> = (0.455 – 0.41) / 0.455 ≈ <strong>0.099</strong></p>
-
-<h4>5. Interpret your result</h4>
-<p><strong>F<sub>ST</sub> ≈ 0.10</strong> suggests modest genetic differentiation. Most variation is still within populations, but allele frequencies differ enough between islands to detect some structure.</p>
-
-<h4>6. AMOVA concept</h4>
-<p>AMOVA partitions genetic variance within individuals, among individuals within populations, and among populations. In this case, most variation is within populations, but a portion is explained by population structure—what F<sub>ST</sub> captures.</p>
 
 <hr>
 
-<p><strong>Coming up next:</strong> You’ll apply these concepts to real fur seal microsatellite data and use R packages like <code>adegenet</code>, <code>poppr</code>, and <code>hierfstat</code> to calculate F<sub>ST</sub>, run AMOVA, and visualize genetic clusters using DAPC.</p>
+<h3>Introduction</h3>
+<p>Population genetics studies how genetic variation is distributed within and between populations. It helps us understand processes like gene flow, drift, and adaptation. Today you will explore genetic diversity across populations of dusky-footed woodrats, an important ecological species in California ecosystems.</p>
+
+<div class="figure">
+<img src="images/Woodrat-with-a-Leaf-IMG_7429.jpg" alt="Dusky-footed woodrat emerging from hole" style="max-width:85%; height:auto;">
+<div class="figure-caption">A dusky-footed woodrat (<em>Neotoma fuscipes</em>) emerges from its hole. (Photo by Jon Klein via <em>Bay Nature</em> Magazine.)</div>
+</div>
+
+<p><strong>Upon completion of this lab, you should be able to:</strong></p>
+<ul style="list-style-type: lower-alpha; margin-left: 20px;">
+  <li>Calculate observed and expected heterozygosity.</li>
+  <li>Interpret F<sub>ST</sub> values among populations.</li>
+  <li>Test for spatial patterns of genetic structure using a Mantel test.</li>
+  <li>Visualize and interpret genetic distance in relation to geography.</li>
+</ul>
+
+<p><strong>References:</p></strong>
+<ul>
+  <li><a href="https://doi.org/10.1038/s41437-020-00393-7" target="_blank">Boria et al. 2020</a></li>
+</ul>
+
+<hr>
+
+<h3 style="margin-top: 20px;">Worked example</h3>
+
+<p>In population genetics, a <strong>single nucleotide polymorphism (SNP)</strong> is a single base-pair position in the genome where individuals may differ. SNPs are the most common type of genetic marker and are widely used to study genetic diversity, population structure, and evolutionary history.</p>
+
+<p>Suppose you are studying populations of an endangered species, the mountain gorilla (<em>Gorilla beringei beringei</em>). You genotype individuals from three isolated parks at a single SNP locus. The genotype counts for each location are shown below:</p>
+
+<table border="1" cellpadding="5">
+<tr><th>Location</th><th>AA</th><th>AG</th><th>GG</th></tr>
+<tr><td>Park A</td><td>10</td><td>15</td><td>5</td></tr>
+<tr><td>Park B</td><td>6</td><td>8</td><td>16</td></tr>
+<tr><td>Park C</td><td>12</td><td>10</td><td>8</td></tr>
+</table>
+
+<p>At this SNP locus:</p>
+<ul>
+<li><strong>A</strong> and <strong>G</strong> represent two different alleles.</li>
+<li>Individuals can be homozygous (AA or GG) or heterozygous (AG).</li>
+</ul>
+
+
+<h1 style="text-align: left; font-size: 30px; font-weight: normal; margin-top: 40px;">1. Calculating heterozygosity</h1>
+
+<p>We want to calculate two key measures:</p>
+<ul>
+<li><strong>Observed heterozygosity (H<sub>obs</sub>):</strong> the proportion of individuals that are heterozygous (AG).</li>
+<li><strong>Expected heterozygosity (H<sub>exp</sub>):</strong> the probability of being heterozygous based on allele frequencies under Hardy-Weinberg equilibrium.</li>
+</ul>
+
+<p>Let's walk through the calculation for Park A.</p>
+
+<br>
+<p>First, calculate the total number of individuals sampled:</p>
+
+<center><span style="font-family: STIXGeneral, 'Times New Roman', serif; font-style: italic; font-size: 20px; ">Total individuals sampled: 10 + 15 + 5 = 30</span></center>
+
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Total number of individuals</span>
+total_individuals <- 10 + 15 + 5
+</code></pre>
+
+<br>
+
+<p>Next, calculate the observed heterozygosity:</p>
+
+<center><span style="font-family: STIXGeneral, 'Times New Roman', serif; font-style: italic; font-size: 20px;">H<sub>obs</sub> = 15 ÷ 30 = 0.5</span></center>
+
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Observed heterozygosity</span>
+H_obs <- 15 / total_individuals
+</code></pre>
+
+<br>
+
+<p>Now, calculate the allele frequencies. Each AA individual contributes two copies of allele A, each AG individual contributes one copy of A. So:</p>
+
+<center><span style="font-family: STIXGeneral, 'Times New Roman', serif; font-style: italic; font-size: 20px;">Copies of A: (2 × 10) + (1 × 15) = 35</span></center>
+
+<center><span style="font-family: STIXGeneral, 'Times New Roman', serif; font-style: italic; font-size: 20px;">Copies of A: (2 × 10) + (1 × 15) = 35</span></center>
+
+<center><span style="font-family: STIXGeneral, 'Times New Roman', serif; font-style: italic; font-size: 20px;">p = 35 ÷ 60 ≈ 0.583</span></center>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Frequency of allele A</span>
+p <- (2*10 + 15) / (2*total_individuals)
+</code></pre>
+
+<br>
+
+<p>The frequency of allele G is simply:</p>
+
+<center><span style="font-family: STIXGeneral, 'Times New Roman', serif; font-style: italic; font-size: 20px;">q = 1 − p = 0.417</span></center>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Frequency of allele G</span>
+q <- 1 - p
+</code></pre>
+
+<br>
+
+<p>Finally, calculate the expected heterozygosity under Hardy-Weinberg equilibrium:</p>
+
+<center><span style="font-family: STIXGeneral, 'Times New Roman', serif; font-style: italic; font-size: 20px;">H<sub>exp</sub> = 2 × p × q ≈ 2 × 0.583 × 0.417 ≈ 0.486</span></center>
+
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Expected heterozygosity</span>
+H_exp <- 2 * p * q
+</code></pre>
+
+<p>Thus, in Park A, the observed heterozygosity is 0.5 and the expected heterozygosity is about 0.486. These values are very close, suggesting the population may be near Hardy-Weinberg equilibrium at this locus.</p>
+
+<h1 style="text-align: left; font-size: 30px; font-weight: normal; margin-top: 40px;">2. Spatial analysis</h1>
+
+<p>Now imagine you also recorded the location where each gorilla was sampled. Some individuals came from nearby groups, while others were farther apart. You want to know: <strong>Does genetic similarity decrease with geographic distance?</strong></p>
+
+<p>One way to test this is with a <strong>Mantel test</strong>. A Mantel test compares two distance matrices — one based on geography and one based on genetics — and checks whether individuals that are geographically farther apart are also more genetically different.</p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Example: geographic distances (km)</span>
+geo_dist <- dist(matrix(c(0,0, 0,10, 10,0), ncol=2, byrow=TRUE))
+
+<span style="color:#6a737d; font-style: italic;"># Example: genetic distances (made-up values)</span>
+gen_dist <- dist(c(0.1, 0.2, 0.15))
+
+<span style="color:#6a737d; font-style: italic;"># Run Mantel test</span>
+library(vegan)
+mantel_result <- mantel(gen_dist, geo_dist)
+mantel_result
+</code></pre>
+
+<p>Running a Mantel test gives you a statistic (r) and a p-value. A significant p-value suggests that genetic distance and geographic distance are correlated, which would be consistent with a pattern of Isolation by Distance.</p>
+
+<div class="questions" style="margin-top: 30px;">
+  <p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop and Think:</strong> </span> <strong>Stop</strong> and consider: <em>What do heterozygosity and expected heterozygosity tell you about genetic diversity in a population? <strong>Think</strong> about how a Mantel test would help us detect spatial patterns in genetic structure.</em></p></div>    
+
+<div class="creme">
+<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> 
+Heterozygosity measures how much genetic variation exists at a locus. 
+A higher heterozygosity suggests more genetic diversity within the population. 
+The Mantel test compares two distance matrices (one based on <strong>geography</strong>, one based on <strong>genetics</strong>) to detect whether genetic similarity declines with geographic distance, a pattern expected under <strong><i>Isolation by Distance</i></strong>.
+</p>
+</div>
+
+<br> 
+<hr> 
+
+
+
+<h3>Materials and methods</h3>
+
+<ul style="margin-left: 20px;">
+  <li>R and RStudio</li>
+  <li>Packages: <code>tidyverse</code>, <code>adegenet</code>, <code>hierfstat</code>, <code>vegan</code></li>
+  <li>Files: <code>Neo_fus.csv</code> and <code>Neo_fus_loc.csv</code></li>
+</ul>
+
+<p style="text-align: justify;"><strong>Variable descriptions:</strong> In this lab, we focus on two datasets. <code>Neo_fus.csv</code> contains SNP genotype data for dusky-footed woodrats sampled across California. <code>Neo_fus_loc.csv</code> contains latitude, longitude, and location information for each sample.</p>
+
+<br>
+
+<p style="text-align: justify;">Today’s activity on <em>genetic variation and geographic structure</em> is organized into one main exercise that explores how isolation and movement shape genetic diversity among woodrat populations. This exercise will help us apply basic population genetic concepts, visualize genetic structure, and test hypotheses about isolation by distance.</p>
+
+<center>
+<p style="margin-top: 40px; margin-bottom: 20px;"><span style="color:darkblue; font-size:200%; font-weight:500">Genetic diversity and population structure in woodrats</span></p>
+</center>
+
+<p style="margin-bottom: 25px;"><div style="margin-bottom: 25px;"><p><strong>Research question 1:</strong> Does genetic differentiation increase with geographic distance among dusky-footed woodrat populations?</p></div>
+
+<p style="text-align: justify;">Before we begin analyzing genetic structure, let’s load the datasets. <code>Neo_fus.csv</code> contains SNP genotype data for dusky-footed woodrats sampled across California. <code>Neo_fus_loc.csv</code> contains latitude, longitude, and location information for each sample. We will use these data to calculate measures of genetic diversity and explore spatial patterns.</p>
+
+<p style="margin-top: 30px;"><strong>1. Import the data</strong> Let’s import the <code>"Neo_fus.csv"</code> and <code>"Neo_fus_loc.csv"</code> datasets and explore them.</p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code>library(tidyverse)
+
+<span style="color:#6a737d; font-style: italic;"># Load the genotype and coordinate datasets</span>
+neo_fus <- read_csv("Neo_fus.csv")
+coords <- read_csv("Neo_fus_loc.csv")
+
+<span style="color:#6a737d; font-style: italic;"># View the first few rows</span>
+head(neo_fus)
+head(coords)
+</code></pre>
+
+<div class="questions" style="margin-top: 30px;">
+<p><strong>Questions:</strong></p>
+<ol type="a">
+<li><em>How many woodrat individuals are included in the genotype dataset?</em></li>
+<li><em>What information is included in the coordinates dataset?</em></li>
+<li><em>Do the two datasets match in the number of individuals?</em></li>
+</ol>
+</div>
+
+<hr>
+
+
+<h4 style="margin-top: 35px;">2. Calculate heterozygosity</h4>
+
+<p>Now calculate observed and expected heterozygosity from the real woodrat data.</p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code>library(adegenet)
+
+<span style="color:#6a737d; font-style: italic;"># Convert genotype data to a genind object</span>
+genind_obj <- df2genind(neo_fus[, -1], pop = neo_fus$Pop)
+
+<span style="color:#6a737d; font-style: italic;"># View summary statistics</span>
+summary(genind_obj)
+</code></pre>
+
+<br>
+
+<div class="questions" style="margin-top: 30px;">
+<p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think:</strong> </span> <strong>Stop</strong> and examine: <em>What is the average observed heterozygosity across loci? How does it compare to the expected heterozygosity?</em></p>
+</div>
+
+<hr>
+
+<div class="challenge" style="margin-top: 30px;">
+  <span class="challenge-title">Challenge 1.</span> 
+  Plot a histogram of allele frequencies across all SNPs.  
+  Can you describe the shape of the distribution? Does it seem symmetric, skewed, or bimodal?
+  Hint: use <code>hist()</code> or <code>ggplot2::geom_histogram()</code> to explore.
+  </div>
+
+  
+<h4 style="margin-top: 35px;">3. Calculate F<sub>ST</sub> among populations</h4>
+
+<p>Next, estimate genetic differentiation among populations using F<sub>ST</sub>.</p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code>library(hierfstat)
+
+<span style="color:#6a737d; font-style: italic;"># Convert the genind object to hierfstat format</span>
+hf_data <- genind2hierfstat(genind_obj)
+
+<span style="color:#6a737d; font-style: italic;"># Calculate basic statistics including Fst</span>
+basic_stats <- basic.stats(hf_data)
+
+<span style="color:#6a737d; font-style: italic;"># View Fst per locus</span>
+basic_stats$perloc.fst
+</code></pre>
+
+<br>
+
+<div class="questions" style="margin-top: 30px;">
+<p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think:</strong> </span> <strong>Stop</strong> and consider: <em>What do the F<sub>ST</sub> values suggest about genetic differentiation among woodrat populations?</em></p>
+</div>
+<hr>
+
+<div class="challenge" style="margin-top: 30px;">
+  <span class="challenge-title">Challenge 2.</span> 
+  Create a barplot showing the F<sub>ST</sub> value for each SNP.  
+  Which loci show the highest differentiation among populations?
+  Hint: use <code>ggplot2::geom_bar()</code> with SNPs on the x-axis and F<sub>ST</sub> on the y-axis.
+  </div>
+  
+
+<h4 style="margin-top: 35px;">4. Spatial patterns of genetic structure</h4>
+
+<p>Finally, test whether genetic differentiation increases with geographic distance — a pattern known as Isolation by Distance.</p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code>library(tidyverse)
+
+<span style="color:#6a737d; font-style: italic;"># Load coordinate data</span>
+coords <- read_csv("Neo_fus_loc.csv")
+
+<span style="color:#6a737d; font-style: italic;"># Calculate geographic distance matrix</span>
+dist_geo <- dist(coords[, c("Longitude", "Latitude")])
+
+<span style="color:#6a737d; font-style: italic;"># Calculate genetic distance matrix (using per-locus Fst)</span>
+dist_gen <- dist(as.matrix(basic_stats$perloc.fst))
+</code></pre>
+
+<h4 style="margin-top: 30px;">Plot geographic vs genetic distance</h4>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code>plot(as.vector(dist_geo), as.vector(dist_gen),
+     xlab = "Geographic distance (km)",
+     ylab = "Genetic distance (Fst)",
+     main = "Isolation by Distance in Woodrats")
+</code></pre>
+
+<h4 style="margin-top: 30px;">Run a Mantel test</h4>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code>library(vegan)
+
+<span style="color:#6a737d; font-style: italic;"># Perform Mantel test</span>
+mantel_result <- mantel(dist_gen, dist_geo)
+mantel_result
+</code></pre>
+
+<div class="questions" style="margin-top: 30px;">
+<p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think:</strong> </span> <strong>Stop</strong> and consider: <em>What does a Mantel p-value tell you? What might cause genetic distance and geographic distance to be correlated?</em></p>
+</div>
+
+<br>
+
+<div class="challenge" style="margin-top: 30px;">
+  <span class="challenge-title">Challenge 3.</span> 
+  Add a regression line to your geographic vs genetic distance plot.  
+  Does the trend match the Mantel test result?
+  Hint: you can add a line with <code>abline(lm(...))</code> or create a new scatterplot using <code>ggplot2</code> with <code>geom_smooth()</code>.
+  </div>
+  
+
+<hr>
+
+<div class="questions" style="margin-top: 30px;">
+  <p><span class="discussion-title">Discussion questions</span></p>
+<ol type="a">
+<li><em>What does heterozygosity tell us about the genetic health of a population?</em></li>
+<li><em>What does F<sub>ST</sub> measure? What does a high F<sub>ST</sub> suggest about population structure?</em></li>
+<li><em>How can geographic distance influence patterns of genetic structure?</em></li>
+<li><em>What ecological or historical factors might explain the patterns you observed?</em></li>
+</ol>
+</div>
+
+<p style="text-align: center; font-size: 16px; font-weight: bold; color: #000; margin-top: 40px; margin-bottom: 50px;">Great work!</p>
+<hr>
 
 </body>
 </html>
+
+
