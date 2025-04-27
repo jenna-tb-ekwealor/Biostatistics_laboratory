@@ -1,38 +1,51 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Biostatistics Using R: A Laboratory Manual</title>
-		<link rel="stylesheet" type="text/css" href="/PrimatePopEcolTraining/css/main.css">
-	</head>
-	<body>
-
-		<div class="container">
-    		<div class="blurb">
-        		<h1>Biostatistics Using R: A Laboratory Manual</h1>
-			<h3>Authors include:</h3> Raisa Hernández-Pacheco, Alexis A Diaz, earthdatascience.org, Luna L. Sanchez Reyes, and Emily Jane McTavish, plus modifications and new chapters by Jenna T. B. Ekwealor for  BIOL 710 at San Francisco State University. 
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biostatistics Using R: A Laboratory Manual</title>
+<style>
+body { font-family: Arial, sans-serif; margin: auto; max-width: 770px; line-height: 1.4; color: #000; padding: 20px 30px 30px 30px; }
+h1 { font-size: 38px; text-align: center; font-weight: normal; }
+h2 { font-size: 18px; color: #000; text-align: center; font-style: italic; font-weight: normal; margin-bottom: 40px; }
+h3 { font-size: 150%; color: #66023C; font-weight: 600; margin-top: 40px; margin-bottom: 10px; }
+h4 { margin-top: 30px; }
+hr { border: none; border-top: 1px solid #ddd; margin: 25px 0; }
+.investigation { background-color: rgba(214, 231, 251, 0.6); padding: 20px 22px; margin-bottom: 20px; border-radius: 6px; }
+pre { background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px; border-radius: 5px; overflow-x: auto; }
+.questions, .challenge { margin: 15px 0; }
+.challenge-title { color: red; font-size: 150%; font-weight: 600; }
+.discussion-title { color: #2724ed; font-size: 150%; font-weight: 600; }
+.figure { margin: 25px 0; text-align: center; }
+.figure-caption { font-size: 0.9em; color: #555; margin-top: 5px; }
+div.creme { background-color: #fff5e6; border-radius: 5px; padding: 10px 20px; font-size: 80%; }
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="blurb">
+			<h1>Biostatistics Using R: A Laboratory Manual</h1>
+		<h3>Authors include:</h3> Raisa Hernandez-Pacheco, Alexis A Diaz, earthdatascience.org, Luna L. Sanchez Reyes, and Emily Jane McTavish, plus modifications and new chapters by Jenna T. B. Ekwealor for  BIOL 710 at San Francisco State University. 
 					
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch1.html">Chapter 1 - Introduction to R and RStudio</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch2_html.html">Chapter 2 - Data sampling, accuracy, and precision</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch3_html.html">Chapter 3 - Visualizing data</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch4_html.html">Chapter 4 - Probability distributions</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch5_html.html">Chapter 5 - Hypothesis testing</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch6_html.html">Chapter 6 - Population proportions and the binomial distribution</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch7_html.html">Chapter 7 - The normal distribution</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch8_html.html">Chapter 8 - Comparing two means: t-test</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch9_html.html">Chapter 9 - One-way analysis of variance</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch10_html.html">Chapter 10 - Two-way analysis of variance</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch11_html.html">Chapter 11 - Correlation and regression analyses</a></p>
-			<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch12.html">Chapter 12 - Generalized linear models</a></p>
-			<p> <a href="blank.html">Chapter 13 - Population genetics</a></p>
-			<p> <a href="blank.html">Chapter 14 - Phylogenetics</a></p>
-			<p> <a href="blank.html">Chapter 15 - Spatial analyses</a></p>
-
-
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch1.html">Chapter 1: Introduction to R and RStudio</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch2_html.html">Chapter 2: Data sampling, accuracy, and precision</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch3_html.html">Chapter 3: Visualizing data</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch4_html.html">Chapter 4: Probability distributions</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch5_html.html">Chapter 5: Hypothesis testing</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch6_html.html">Chapter 6: Population proportions and the binomial distribution</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch7_html.html">Chapter 7: The normal distribution</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch8_html.html">Chapter 8: Comparing two means: t-test</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch9_html.html">Chapter 9: One-way analysis of variance</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch10_html.html">Chapter 10: Two-way analysis of variance</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch11_html.html">Chapter 11: Correlation and regression analyses</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch12.html">Chapter 12: Generalized linear models</a></p>
+		<p> <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch13.html">Chapter 13: Population genetics</a></p>
+		<p> <a href="blank.html">Chapter 14: Phylogenetics</a></p>
 
 			<br>
 			
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
+    		</div><!-- /.blurb: ->
+		</div><!-- /.container: ->
 		<footer>
 			<br>
     		<ul>
