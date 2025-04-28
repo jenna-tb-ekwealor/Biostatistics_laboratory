@@ -290,12 +290,7 @@ mantel_result
 
 <h4 style="margin-top: 35px;">1. Import the data</h4>
 
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load required packages</span>
-library(tidyverse)
-library(vcfR)
-library(adegenet)
-
-<span style="color:#6a737d; font-style: italic;"># Load metadata (locations, coordinates)</span>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load metadata (locations, coordinates)</span>
 neo_fus_loc <- read_csv("Neo_fus.csv")
 
 <span style="color:#6a737d; font-style: italic;"># Load SNP genotype data from VCF file</span>
@@ -345,7 +340,7 @@ head(het_df)
 
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Plot observed vs expected heterozygosity</span>
 ggplot(het_df, aes(x = Hexp, y = Hobs)) +
-  geom_point(color = "blue") +
+  geom_point(color = "gray60") +
   geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "red") +
   theme_minimal() +
   labs(x = "Expected Heterozygosity", 
@@ -365,64 +360,38 @@ ggplot(het_df, aes(x = Hexp, y = Hobs)) +
 
 <h4 style="margin-top: 35px;">3. Calculate F<sub>ST</sub> among populations</h4>
 
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Assign populations from metadata</span>
+<p>Now we want to quantify genetic differentiation among populations using F<sub>ST</sub> statistics. F<sub>ST</sub> measures how much allele frequencies differ between populations.</p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Assign populations based on metadata</span>
 pop(genind_obj) <- as.factor(neo_fus_loc$location)
-  
+
 <span style="color:#6a737d; font-style: italic;"># Convert genind object to hierfstat format</span>
 hf_data <- genind2hierfstat(genind_obj)
 
-<span style="color:#6a737d; font-style: italic;"># Calculate basic statistics including per-locus Fst values</span>
+<span style="color:#6a737d; font-style: italic;"># Calculate basic statistics, including per-locus Fst values</span>
 basic_stats <- basic.stats(hf_data)
 
 <span style="color:#6a737d; font-style: italic;"># View per-locus Fst values</span>
-basic_stats$perloc.fst
+basic_stats$perloc$Fst
 </code></pre>
 
 <div class="questions" style="margin-top: 30px;">
 <p><strong>Questions:</strong></p>
 <ol type="a">
-<li><em>Which loci show the highest F<sub>ST</sub> values? What does that suggest about genetic differentiation?</em></li>
-<li><em>Are there loci with very low or near-zero F<sub>ST</sub> values? What might explain that?</em></li>
+<li><em>Which SNP loci show the highest F<sub>ST</sub> values? What does that suggest about genetic differentiation among woodrat populations?</em></li>
+<li><em>Are there loci with very low or near-zero F<sub>ST</sub> values? What biological or statistical factors might explain that?</em></li>
 </ol>
 </div>
 
 <br>
 
-<p>Next, we want to summarize the overall genetic distances between populations based on all SNPs combined. We do this by treating the per-locus F<sub>ST</sub> values as profiles for each population and calculating pairwise distances between them.</p>
-
-
-<p><strong>Steps:</strong></p>
-<ul>
-<li>Extract the table of F<sub>ST</sub> values (<code>basic_stats$perloc.fst</code>).</li>
-<li>Turn it into a proper matrix format.</li>
-<li>Use <code>dist()</code> to calculate pairwise distances between populations based on these profiles.</li>
-</ul>
-
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Extract Fst values</span>
-fst_values <- basic_stats$perloc.fst
-
-<span style="color:#6a737d; font-style: italic;"># Convert to a matrix</span>
-fst_matrix <- as.matrix(fst_values)
-
-<span style="color:#6a737d; font-style: italic;"># Calculate genetic distance matrix based on Fst profiles</span>
-dist_gen <- dist(fst_matrix)
-</code></pre>
-
-<br>
+<p>Next, let's visualize the variation in F<sub>ST</sub> values across SNPs using a bar plot.</p>
 
 <div class="challenge" style="margin-top: 30px;">
 <span class="challenge-title">Challenge 2.</span> Create a plot that shows F<sub>ST</sub> values for each SNP. Hint: use <code>ggplot2::geom_col()</code>.
 </div>
 
-<div class="questions" style="margin-top: 30px;">
-<p><strong>Questions:</strong></p>
-<ol type="a">
-<li><em>Which SNP shows the highest F<sub>ST</sub> value? What does this suggest about allele frequency differences across populations at that locus?</em></li>
-<li><em>Are there SNPs with very low or near-zero F<sub>ST</sub> values? What might explain why some loci show little differentiation?</em></li>
-</ol>
-</div>
 
-<br> 
 <h4 style="margin-top: 35px;">5. Spatial patterns of genetic structure</h4>
 
 <p>In the worked example, you thought about how genetic similarity might change with distance. Here, we calculate two types of distances across real populations: <strong>geographic distance</strong> (based on coordinates) and <strong>genetic distance</strong> (based on allele frequencies).</p>
