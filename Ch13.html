@@ -290,17 +290,27 @@ mantel_result
 
 <h4 style="margin-top: 35px;">1. Import the data</h4>
 
-<p>Load the genotype and coordinate datasets into R and explore them using <code>head()</code>.</p>
-
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># load package</span>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load required packages</span>
 library(tidyverse)
+library(vcfR)
+library(adegenet)
 
-<span style="color:#6a737d; font-style: italic;"># load data</span>
-neo_fus <- read_csv("Neo_fus.csv")
+<span style="color:#6a737d; font-style: italic;"># Load metadata (locations, coordinates)</span>
+neo_fus_loc <- read_csv("Neo_fus.csv")
 
-<span style="color:#6a737d; font-style: italic;"># view first rows</span>
-head(neo_fus)
+<span style="color:#6a737d; font-style: italic;"># Load SNP genotype data from VCF file</span>
+neo_fus_gen <- read.vcfR("Neo_fus.vcf")
 </code></pre>
+
+<h4 style="margin-top: 35px;">2. Create a genind object</h4>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Convert VCF data to a genind object</span>
+genind_obj <- vcfR2genind(neo_fus_gen)
+
+<span style="color:#6a737d; font-style: italic;"># View summary of the genetic data</span>
+summary(genind_obj)
+</code></pre>
+
 
 <div class="questions" style="margin-top: 30px;">
 <p><strong>Questions:</strong></p>
@@ -310,26 +320,14 @@ head(neo_fus)
 </ol>
 </div>
 
-<h4 style="margin-top: 35px;">2. Calculate heterozygosity</h4>
+<h4 style="margin-top: 35px;">3. Calculate heterozygosity</h4>
 
-<p>Now calculate observed and expected heterozygosity from the woodrat data.</p>
+<p>You can extract observed and expected heterozygosity from the summary of the woodrat data.</p>
 
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load the adegenet package for working with genetic data</span>
-library(adegenet)  
-
-<span style="color:#6a737d; font-style: italic;"># Remove the first column (individual IDs) to leave only genotype columns</span>
-neo_fus_genotypes <- neo_fus %>% 
-  dplyr::select(-ID)
-  
-<span style="color:#6a737d; font-style: italic;"># Create a genind object: this stores genetic data in a format used for population genetics analysis</span>
-genind_obj <- df2genind(
-  X = neo_fus_genotypes,    <span style="color:#6a737d; font-style: italic;"># genotype data (only SNPs)</span>
-  pop = neo_fus$Pop)          <span style="color:#6a737d; font-style: italic;"># population assignment for each individual</span>
-
-  
-<span style="color:#6a737d; font-style: italic;"># View a summary of the genind object to check number of loci, alleles, and populations</span>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Summarize the genind object</span>
 summary(genind_obj)
 </code></pre>
+
   
 
 <div class="questions" style="margin-top: 30px;">
@@ -344,7 +342,7 @@ summary(genind_obj)
 
 <br> 
 
-<h4 style="margin-top: 35px;">3. Calculate F<sub>ST</sub> among populations</h4>
+<h4 style="margin-top: 35px;">4. Calculate F<sub>ST</sub> among populations</h4>
 
 <p>Earlier, you calculated heterozygosity and allele frequencies at a single SNP. Now, we want to explore genetic differentiation across multiple populations by calculating F<sub>ST</sub> values at each SNP locus. F<sub>ST</sub> tells us how much allele frequencies differ between populations.</p>
 
@@ -406,7 +404,7 @@ dist_gen <- dist(fst_matrix)
 </div>
 
 <br> 
-<h4 style="margin-top: 35px;">4. Spatial patterns of genetic structure</h4>
+<h4 style="margin-top: 35px;">5. Spatial patterns of genetic structure</h4>
 
 <p>In the worked example, you thought about how genetic similarity might change with distance. Here, we calculate two types of distances across real populations: <strong>geographic distance</strong> (based on coordinates) and <strong>genetic distance</strong> (based on allele frequencies).</p>
 
