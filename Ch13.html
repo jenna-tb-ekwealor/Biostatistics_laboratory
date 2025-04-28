@@ -335,6 +335,8 @@ het_df <- tibble(
 head(het_df)
 </code></pre>
 
+<br>
+
 <h4 style="margin-top: 35px;">4. Plot observed and expected heterozygosity</h4>
 
 
@@ -388,9 +390,10 @@ basic_stats$perloc$Fst
 <p>Next, let's visualize the variation in F<sub>ST</sub> values across SNPs using a bar plot.</p>
 
 <div class="challenge" style="margin-top: 30px;">
-<span class="challenge-title">Challenge 2.</span> Create a plot that shows F<sub>ST</sub> values for each SNP. Hint: use <code>ggplot2::geom_col()</code>.
+<span class="challenge-title">Challenge 1.</span> Create a plot that shows F<sub>ST</sub> values for each SNP. Hint: use <code>ggplot2::geom_col()</code>.
 </div>
 
+<br>
 
 <h4 style="margin-top: 35px;">5. Spatial patterns of genetic structure</h4>
 
@@ -408,7 +411,7 @@ dist_gen <- dist(genind_obj)
 <br>
 
 <div class="challenge" style="margin-top: 30px;">
-<span class="challenge-title">Challenge 3.</span> Create a plot comparing genetic and geographic distance</h4> Add a regression line to your scatterplot to help visualize the trend. Hint: use <code>ggplot2::geom_smooth(method = "lm")</code>.
+<span class="challenge-title">Challenge 2.</span> Create a plot comparing genetic and geographic distance</h4> Add a regression line to your scatterplot to help visualize the trend. Hint: use <code>ggplot2::geom_smooth(method = "lm")</code>.
 
 <div class="questions" style="margin-top: 30px;">
 <p><span style="color:#66023C; font-size:100%; font-weight:600"><strong>Stop and Think:</strong></span> <strong>Stop</strong> and consider: <em>What would you expect the relationship to look like if there is isolation by distance?</em></p>
@@ -425,14 +428,14 @@ dist_gen <- dist(genind_obj)
 <br> 
 
 <div class="challenge" style="margin-top: 30px;">
-<span class="challenge-title">Challenge 4.</span> What kind of statistical methods could you use to formally test whether genetic distance increases with geographic distance? Justify the best method and statistically test the relationship. 
+<span class="challenge-title">Challenge 3.</span> What kind of statistical methods could you use to formally test whether genetic distance increases with geographic distance? Justify the best method and statistically test the relationship. 
 </div>
 
 
 <br>
 
 <div class="challenge" style="margin-top: 30px;">
-  <span class="challenge-title">Challenge 5.</span> 
+  <span class="challenge-title">Challenge 4.</span> 
  How might you test whether northern and southern populations are (genetically) significantly different? Hint: Start by grouping individuals by location. Would a t-test be appropriate? What assumptions would need to be checked before using a t-test on genetic distance data?
 </div>
   
