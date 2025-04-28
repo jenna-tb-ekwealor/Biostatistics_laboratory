@@ -269,10 +269,10 @@ mantel_result
 <ul style="margin-left: 20px;">
 <li>R and RStudio</li>
 <li>Packages: <code>tidyverse</code>, <code>adegenet</code>, <code>hierfstat</code>, <code>vegan</code></li>
-<li>Files: <code>Neo_fus.csv</code> and <code>Neo_fus_loc.csv</code></li>
+<li>File: <code>Neo_fus.csv</code></li>
 </ul>
 
-<p style="text-align: justify;"><strong>Variable descriptions:</strong> In this lab, we focus on two datasets. <code>Neo_fus.csv</code> contains SNP genotype data for dusky-footed woodrats sampled across California. <code>Neo_fus_loc.csv</code> contains latitude, longitude, and location information for each sample.</p>
+<p style="text-align: justify;"><strong>Variable descriptions:</strong> In this lab, we focus on two datasets. <code>Neo_fus_genotypes.csv</code> contains SNP genotype data for dusky-footed woodrats sampled across California. <code>Neo_fus_locations.csv</code> contains latitude, longitude, and location information for each sample.</p>
 
 <br>
 
@@ -286,7 +286,7 @@ mantel_result
 <p><strong>Research question 1:</strong> Does genetic differentiation increase with geographic distance among dusky-footed woodrat populations?</p>
 </div>
 
-<p style="text-align: justify;">Before we begin analyzing genetic structure, let’s load the datasets. <code>Neo_fus.csv</code> contains SNP genotype data for dusky-footed woodrats sampled across California. <code>Neo_fus_loc.csv</code> contains latitude, longitude, and location information for each sample. We will use these data to calculate measures of genetic diversity and explore spatial patterns.</p>
+<p style="text-align: justify;">Before we begin analyzing genetic structure, let’s load the dataset. <code>Neo_fus.csv</code> contains SNP genotype, latitude, longitude, and location information for data for dusky-footed woodrats sampled across California. We will use these data to calculate measures of genetic diversity and explore spatial patterns.</p>
 
 <h4 style="margin-top: 35px;">1. Import the data</h4>
 
@@ -297,33 +297,40 @@ library(tidyverse)
 
 <span style="color:#6a737d; font-style: italic;"># load data</span>
 neo_fus <- read_csv("Neo_fus.csv")
-coords <- read_csv("Neo_fus_loc.csv")
 
 <span style="color:#6a737d; font-style: italic;"># view first rows</span>
 head(neo_fus)
-head(coords)
 </code></pre>
 
 <div class="questions" style="margin-top: 30px;">
 <p><strong>Questions:</strong></p>
 <ol type="a">
 <li><em>How many woodrat individuals are included in the genotype dataset?</em></li>
-<li><em>What information is included in the coordinates dataset?</em></li>
-<li><em>Do the two datasets match in the number of individuals?</em></li>
+<li><em>What information is included in the dataset?</em></li>
 </ol>
 </div>
 
 <h4 style="margin-top: 35px;">2. Calculate heterozygosity</h4>
 
-<p>Now calculate observed and expected heterozygosity from the real woodrat data.</p>
+<p>Now calculate observed and expected heterozygosity from the woodrat data.</p>
 
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># load package</span>
-library(adegenet)
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load the adegenet package for working with genetic data</span>
+library(adegenet)  
 
-genind_obj <- df2genind(neo_fus[, -1], pop = neo_fus$Pop)
+<span style="color:#6a737d; font-style: italic;"># Remove the first column (individual IDs) to leave only genotype columns</span>
+neo_fus_genotypes <- neo_fus %>% 
+  dplyr::select(-ID)
+  
+<span style="color:#6a737d; font-style: italic;"># Create a genind object: this stores genetic data in a format used for population genetics analysis</span>
+genind_obj <- df2genind(
+  X = neo_fus_genotypes,    <span style="color:#6a737d; font-style: italic;"># genotype data (only SNPs)</span>
+  pop = neo_fus$Pop)          <span style="color:#6a737d; font-style: italic;"># population assignment for each individual</span>
 
+  
+<span style="color:#6a737d; font-style: italic;"># View a summary of the genind object to check number of loci, alleles, and populations</span>
 summary(genind_obj)
 </code></pre>
+  
 
 <div class="questions" style="margin-top: 30px;">
 <p><span style="color:#66023C; font-size:100%; font-weight:600"><strong>Stop, Think:</strong></span> <strong>Stop</strong> and examine: <em>What is the average observed heterozygosity across loci? How does it compare to the expected heterozygosity?</em></p>
