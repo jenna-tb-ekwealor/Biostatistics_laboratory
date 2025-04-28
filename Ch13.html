@@ -268,7 +268,7 @@ mantel_result
 
 <ul style="margin-left: 20px;">
 <li>R and RStudio</li>
-<li>Packages: <code>tidyverse</code>, <code>adegenet</code>, <code>hierfstat</code>, <code>vegan</code></li>
+<li>Packages: <code>tidyverse</code>, <code>adegenet</code>, <code>hierfstat</code>, <code>vegan</code>, <code>vcfR</code></li>
 <li>File: <code>Neo_fus.csv</code></li>
 </ul>
 
@@ -322,47 +322,67 @@ summary(genind_obj)
 
 <h4 style="margin-top: 35px;">3. Calculate heterozygosity</h4>
 
-<p>You can extract observed and expected heterozygosity from the summary of the woodrat data.</p>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Summarize the genind object to get basic statistics</span>
+genind_summary <- summary(genind_obj)
 
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Summarize the genind object</span>
-summary(genind_obj)
+<span style="color:#6a737d; font-style: italic;"># Extract observed and expected heterozygosity per SNP locus</span>
+observed_het <- genind_summary$Hobs
+expected_het <- genind_summary$Hexp
+
+<span style="color:#6a737d; font-style: italic;"># Combine into a tidy table</span>
+het_df <- tibble(
+  Locus = names(observed_het),
+  Hobs = observed_het,
+  Hexp = expected_het
+)
+
+<span style="color:#6a737d; font-style: italic;"># View first few rows</span>
+head(het_df)
 </code></pre>
 
-  
+<h4 style="margin-top: 35px;">4. Plot observed and expected heterozygosity</h4>
+
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Plot observed vs expected heterozygosity</span>
+ggplot(het_df, aes(x = Hexp, y = Hobs)) +
+  geom_point(color = "blue") +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  labs(x = "Expected Heterozygosity", 
+       y = "Observed Heterozygosity",
+       title = "Observed vs Expected Heterozygosity")
+</code></pre>
 
 <div class="questions" style="margin-top: 30px;">
-<p><span style="color:#66023C; font-size:100%; font-weight:600"><strong>Stop, Think:</strong></span> <strong>Stop</strong> and examine: <em>What is the average observed heterozygosity across loci? How does it compare to the expected heterozygosity?</em></p>
-</div>
-
-<br>
-
-<div class="challenge" style="margin-top: 30px;">
-<span class="challenge-title">Challenge 1.</span> Create a plot showing the distribution of allele frequencies across all SNPs. What do you observe in the distribution? Hint: use <code>ggplot2::geom_histogram()</code>.
-</div>
+  <p><strong>Questions:</strong></p>
+  <ol type="a">
+  <li><em>Do most loci have observed heterozygosity greater than, less than, or close to expected heterozygosity?</em></li>
+  <li><em>What might cause loci to deviate from Hardy-Weinberg expectations?</em></li>
+  </ol>
+  </div>
 
 <br> 
 
-<h4 style="margin-top: 35px;">4. Calculate F<sub>ST</sub> among populations</h4>
+<h4 style="margin-top: 35px;">3. Calculate F<sub>ST</sub> among populations</h4>
 
-<p>Earlier, you calculated heterozygosity and allele frequencies at a single SNP. Now, we want to explore genetic differentiation across multiple populations by calculating F<sub>ST</sub> values at each SNP locus. F<sub>ST</sub> tells us how much allele frequencies differ between populations.</p>
-
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load package for population genetics summaries</span>
-library(hierfstat)
-
-<span style="color:#6a737d; font-style: italic;"># Convert genotype data into hierfstat format</span>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Assign populations from metadata</span>
+pop(genind_obj) <- as.factor(neo_fus_loc$location)
+  
+<span style="color:#6a737d; font-style: italic;"># Convert genind object to hierfstat format</span>
 hf_data <- genind2hierfstat(genind_obj)
 
 <span style="color:#6a737d; font-style: italic;"># Calculate basic statistics including per-locus Fst values</span>
 basic_stats <- basic.stats(hf_data)
 
-<span style="color:#6a737d; font-style: italic;"># View Fst values for each SNP locus</span>
+<span style="color:#6a737d; font-style: italic;"># View per-locus Fst values</span>
 basic_stats$perloc.fst
 </code></pre>
 
 <div class="questions" style="margin-top: 30px;">
-<p><strong>Question:</strong></p>
+<p><strong>Questions:</strong></p>
 <ol type="a">
-<li><em>What do the F<sub>ST</sub> values suggest about genetic differentiation among woodrat populations?</em></li>
+<li><em>Which loci show the highest F<sub>ST</sub> values? What does that suggest about genetic differentiation?</em></li>
+<li><em>Are there loci with very low or near-zero F<sub>ST</sub> values? What might explain that?</em></li>
 </ol>
 </div>
 
@@ -370,7 +390,6 @@ basic_stats$perloc.fst
 
 <p>Next, we want to summarize the overall genetic distances between populations based on all SNPs combined. We do this by treating the per-locus F<sub>ST</sub> values as profiles for each population and calculating pairwise distances between them.</p>
 
-<br>
 
 <p><strong>Steps:</strong></p>
 <ul>
@@ -408,15 +427,13 @@ dist_gen <- dist(fst_matrix)
 
 <p>In the worked example, you thought about how genetic similarity might change with distance. Here, we calculate two types of distances across real populations: <strong>geographic distance</strong> (based on coordinates) and <strong>genetic distance</strong> (based on allele frequencies).</p>
 
-<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Create a pairwise geographic distance matrix (latitude and longitude)</span>
-dist_geo <- coords %>%
-  select(Longitude, Latitude) %>%
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Calculate pairwise geographic distances</span>
+dist_geo <- neo_fus_loc %>%
+  select(longitude, latitude) %>%
   dist()
 
-<span style="color:#6a737d; font-style: italic;"># Create a pairwise genetic distance matrix based on Fst values</span>
-dist_gen <- basic_stats$perloc.fst %>%
-  as.matrix() %>%
-  dist()
+<span style="color:#6a737d; font-style: italic;"># Calculate pairwise genetic distances between individuals</span>
+dist_gen <- dist(genind_obj)
 </code></pre>
 
 <br>
