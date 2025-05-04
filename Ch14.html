@@ -1,133 +1,389 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Phylogenetics - Chapter 13</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: auto;
-      max-width: 770px;
-      line-height: 1.4;
-      color: #000;
-      padding: 20px 30px 30px 30px;
-    }
-    h1 { font-size: 38px; text-align: center; font-weight: normal; }
-    h2 { font-size: 18px; text-align: center; font-style: italic; font-weight: normal; margin-bottom: 40px; }
-    h3 { font-size: 150%; color: #66023C; font-weight: 600; margin-top: 40px; }
-    h4 { margin-top: 30px; }
-    .investigation {
-      background-color: rgba(214, 231, 251, 0.6);
-      padding: 20px 22px;
-      margin-bottom: 20px;
-      border-radius: 6px;
-    }
-    pre {
-      background-color: #F2F2F2;
-      padding: 10px;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-    .questions, .challenge {
-      margin: 15px 0;
-    }
-    .challenge-title {
-      color: red;
-      font-size: 150%;
-      font-weight: 600;
-    }
-    .discussion-title {
-      color: #2724ed;
-      font-size: 150%;
-      font-weight: 600;
-    }
-  </style>
+<meta charset="utf-8"/>
+<title>Phylogenetics</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: auto;
+            max-width: 770px;
+            line-height: 1.4;
+            color: #000;
+            padding: 20px 30px;
+        }
+        h1 {
+            font-size: 38px;
+            text-align: center;
+            margin: 0;
+            font-weight: normal;
+        }
+        h2 {
+            font-size: 18px;
+            color: #000;
+            text-align: center;
+            font-style: italic;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+        h3 {
+            font-size: 150%;
+            color: #66023C;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        h4 {
+            margin-top: 30px;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 25px 0;
+        }
+        .investigation {
+            background-color: rgba(214, 231, 251, 0.6);
+            padding: 20px 22px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        pre {
+            background-color: #F2F2F2;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .questions, .challenge {
+            margin: 15px 0;
+        }
+        .bonus {
+            font-weight: bold;
+        }
+        .challenge-title {
+            color: red;
+            font-size: 150%;
+            font-weight: 600;
+        }
+        .discussion-title {
+            color: #2724ed;
+            font-size: 150%;
+            font-weight: 600;
+        }
+        .figure {
+            margin: 25px 0;
+            text-align: center;
+        }
+        .figure-caption {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+        }
+        div.creme {
+            background-color: #fff5e6;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 80%;
+        }
+    </style>
 </head>
 <body>
-
 <h1>Phylogenetics</h1>
 <h2>Chapter 14</h2>
-
 <div class="investigation">
-  <p><strong>Today’s investigation.</strong> How do we infer evolutionary relationships using DNA sequence data? Today you’ll use mitochondrial and nuclear DNA to reconstruct a phylogeny of <em>Phyllodactylidae</em> geckos and interpret what the resulting tree tells us about their biogeographic history. You will concatenate real gene alignments from a published dataset and use them to build a tree in R.</p>
+<p><strong>Today’s investigation.</strong> Understanding how species diverge is a central question in evolutionary biology. 
+In some cases, distinct evolutionary lineages may be morphologically indistinguishable; a phenomenon known as cryptic speciation. 
+These hidden patterns of biodiversity are especially common in marine invertebrates, where external morphology may not reflect underlying genetic structure. 
+Today, we will use mitochondrial COI sequence data from brooding <em>Leptasterias</em> sea stars, collected as part of research by the Cohen Lab at San Francisco State University, to investigate patterns of divergence using phylogenetic trees.</p>
 </div>
-
+<div class="figure" style="margin-top: 30px; margin-bottom: 30px;">
+<img alt="Leptasterias hexactis sea star" src="images/Leptasterias_hexactis.jpg" style="max-width:85%; height:auto;"/>
+<div class="figure-caption">Figure 1. <em>Leptasterias hexactis</em>, a six-rayed sea star. Evolutionary differences may not always be reflected in the morphology, leading to cryptic species. Photo: Matt Knoth via Flickr.</div>
+</div>
 <h3>Introduction</h3>
-<p style="text-align: justify;">Phylogenetic trees are hypotheses about evolutionary relationships. They help us test questions about common ancestry, trait evolution, and geographic history. In this lab, you'll explore a real example using sequence data from Western Hemisphere leaf-toed geckos (family <em>Phyllodactylidae</em>). The data come from the study by <a href="https://www.nature.com/articles/s41598-021-87255-2" target="_blank">Nydam et al. (2021)</a>, which used multiple mitochondrial and nuclear loci to reconstruct relationships among species and genera.</p>
-
-<p style="text-align: justify;">You will concatenate five gene alignments, identify shared taxa, and reconstruct a tree using maximum likelihood. Then you'll interpret the resulting tree and consider what it reveals about evolution and biogeography.</p>
-
-<h3>Learning goals</h3>
+<p>Along the Pacific coast of North America, tidepools are home to a group of small sea stars in the genus <em>Leptasterias</em>. These brooding species have limited dispersal and highly structured populations, making them ideal for studying gene flow and isolation. Previous research has found strong population structure across short geographic distances, consistent with limited larval movement. But just how deep is this divergence? Do these patterns reflect population-level structure, or something more?</p>
+<p>When organisms show deep genetic differences despite morphological similarity, biologists refer to them as cryptic species. These hidden patterns of diversity are especially common in marine invertebrates, where reproductive isolation and limited dispersal can lead to divergence over relatively small spatial scales. Detecting cryptic species requires molecular tools that can quantify genetic differences and reconstruct evolutionary relationships.</p>
+<p>In this lab, we’ll use sequences from the mitochondrial cytochrome c oxidase subunit I (COI) gene, a widely used marker in DNA barcoding and species delimitation. We’ll build and compare phylogenetic trees based on both nucleotide and amino acid alignments. These trees allow us to visualize patterns of divergence and assess whether some lineages may represent reproductively isolated species. Along the way, we’ll learn how to align sequences, build trees in R, and interpret phylogenetic results using maximum likelihood methods.</p>
+<br/>
+<p><strong>Upon completion of this lab, you should be able to:</strong></p>
 <ul>
-  <li>Read multiple sequence alignments in R.</li>
-  <li>Concatenate alignments with shared taxa.</li>
-  <li>Infer a phylogenetic tree using maximum likelihood.</li>
-  <li>Visualize and interpret the resulting phylogeny.</li>
+
+<li>Construct phylogenetic trees using maximum likelihood methods;</li>
+
+<li>Interpret tree topology and bootstrap support in the context of cryptic speciation.</li>
+</ul>
+<p style="font-size: 95%; font-weight: bold; margin-top: 40px; margin-bottom: 10px;">References:</p>
+<ul>
+<li><a href="https://doi.org/10.1002/ece3.7283" target="_blank">Melroy and Cohen (2021)</a></li>
 </ul>
 
+<hr>
+
+<h3>Worked example</h3>
+<p>Suppose you are studying whether five individuals belong to a single evolutionary group (i.e. a species) or whether they show evidence of divergence. You have DNA sequences from each individual, and you want to use those sequences to explore how closely related they are. We will explore how phylogenetic trees summarize genetic similarity and how maximum likelihood can be used to infer evolutionary relationships.</p>
+
+<h1 style="text-align: left; font-size: 30px; font-weight: normal; margin-top: 40px;">1. Organize your data</h1>
+
+<p>Here are the five sequences from the individuals in your study:</p>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># DNA sequences from five individuals</span>
+sequences &lt;- c(
+  ind1 = "ATGCCG",
+  ind2 = "ATGTCG",
+  ind3 = "ATGCCG",
+  ind4 = "ATGTCA",
+  ind5 = "TTGTCG")
+</code></pre>
+
+<h1 style="text-align: left; font-size: 30px; font-weight: normal; margin-top: 40px;">2. Align the sequences</h1>
+<p>The first step in phylogenetic analysis is to create a multiple sequence alignment. An alignment arranges the sequences so that homologous positions, or sites that share a common evolutionary origin, line up in columns. This allows us to compare characters (like bases or amino acids) across individuals. Sequence alignment algorithms like Needleman-Wunsch or ClustalW score matches, mismatches, and gaps to find an optimal alignment.</p>
+<div class="figure" style="margin-top: 30px; margin-bottom: 30px;">
+<img alt="Multiple sequence alignment example" src="images/alignment.png" style="max-width:65%; height:auto;"/>
+<div class="figure-caption">Figure 2. A multiple sequence alignment. Gaps are introduced to line up homologous positions across individuals, allowing comparisons across sites.</div>
+</div>
+
+<h1 style="text-align: left; font-size: 30px; font-weight: normal; margin-top: 40px;">3. Choose the alignment type</h1>
+<p>Alignments can be performed using either DNA or amino acid sequences. A nucleotide alignment compares the raw DNA bases directly, preserving all substitutions. A protein alignment translates the sequences and compares the resulting amino acids. This can reduce noise from silent mutations and may better reflect functional similarity when sequences are more divergent.</p>
+<div class="figure" style="margin-top: 30px; margin-bottom: 30px;">
+<img alt="Nucleotide vs. protein alignment" src="images/amino-acid-table.jpg" style="max-width:50%; height:auto;"/>
+<div class="figure-caption">Figure 3. The amino acids specified by each mRNA codon. Multiple codons can code for the same amino acid, and the third codon position is especially variable. From <a href="https://www.nature.com/scitable/topicpage/nucleic-acids-to-amino-acids-dna-specifies-935/" target="_blank">Smith (2008).</a></div> </div>
+</div>
+
+<h1 style="text-align: left; font-size: 30px; font-weight: normal; margin-top: 40px;">4. Infer a tree using maximum likelihood</h1>
+<p>Once the sequences are aligned, we estimate a tree using maximum likelihood. This is a statistical framework that evaluates many possible trees and asks which tree makes our observed alignment most likely, given a model of sequence evolution. A substitution model defines the probabilities of one base changing into another over time. Some models treat all changes as equally likely, while others assign different probabilities to different types of substitutions.</p>
+<p>To evaluate each tree, the algorithm calculates the probability of the observed alignment by summing over all possible ancestral states and combining the transition probabilities along each branch. This produces a likelihood score for each candidate tree.</p>
+<p style="text-align: center; font-size: 120%;">L = P(Data | Tree, Model)</p>
+<p>The tree with the highest likelihood is selected as the best estimate of the evolutionary relationships among the sequences. This method considers all sites in the alignment and accounts for both the branching pattern and the amount of change along each branch.</p>
+<div class="figure" style="margin-top: 30px; margin-bottom: 30px;">
+<img alt="Maximum likelihood tree search" src="images/ML_phylo.jpg" style="max-width:45%; height:auto;"/>
+<div class="figure-caption">Figure 4. Fundamentals of maximum likelihood method for constructing phylogenetic trees. The abbreviations in the figure are as follows: JC69, the Jukes and Cantor 1969 model; K80, the Kimura 1980 model; HKY85, the Hasegawa, Kishino, and Yano 1985 model; a, b, and c represent different species. Maximum likelihood selects the tree that makes the observed alignment most probable under a given model of sequence evolution. From <a href="https://www.mdpi.com/2306-5354/11/5/480" target="_blank">Zou et al. (2024).</a></div>
+</div>
+<hr style="margin-top: 40px; margin-bottom: 30px;"/>
 <h3>Materials and Methods</h3>
 <ul>
-  <li>R and RStudio</li>
-  <li>Packages: <code>ape</code>, <code>phangorn</code>, <code>ggtree</code></li>
-  <li>Files: <code>T500_L1.phylip</code> to <code>T500_L5.phylip</code></li>
+<li>R and RStudio</li>
+<li>Packages: <em>tidyverse</em>, <em>Biostrings</em>, <em>msa</em>, <em>phangorn</em>, <em>ggtree</em>, <em>ape</em>, <em>maps</em>,<em>ggspatial</em></li>
+<li>Files: coi_nucleotide.fasta, coi_protein.fasta, coi_metadata.csv</li>
 </ul>
+<p style="text-align: justify;"><strong>File descriptions:</strong> This lab uses mitochondrial sequence data from <em>Leptasterias</em> sea stars. The dataset includes:</p>
+<ul>
+<li>coi_nucleotide.fasta: DNA sequences from multiple individuals</li>
+<li>coi_protein.fasta: Translated amino acid sequences from the same gene</li>
+<li>coi_metadata.csv: Specimen information, including locality.</li>
+</ul>
+<br> 
 
-<h4>1. Load and inspect your alignments</h4>
-<pre><code>library(ape)
+<center><p style="margin-top: 40px; margin-bottom: 20px;"><span style="color:darkblue; font-size:190%; font-weight:500">Evolutionary divergence in <em>Leptasterias</em> with sequence data</span></p></center>
+<p style="margin-bottom: 25px;"><strong>Research question:</strong> Does sequence data show evidence of divergence within <em>Leptasterias</em>, and are divergence patterns consistent with geographic structure?</p>
 
-aln1 <- read.dna("T500_L1.phylip", format = "sequential")
-aln2 <- read.dna("T500_L2.phylip", format = "sequential")
-aln3 <- read.dna("T500_L3.phylip", format = "sequential")
-aln4 <- read.dna("T500_L4.phylip", format = "sequential")
-aln5 <- read.dna("T500_L5.phylip", format = "sequential")</code></pre>
+<br> 
 
-<div class="questions">
-  <p><strong>Questions:</strong></p>
-  <ol type="a">
-    <li>How many taxa are present in each alignment?</li>
-    <li>Are the taxon names consistent across alignments?</li>
-  </ol>
+<h4>1. Load and align sequences</h4>
+<p>Start by loading the DNA and protein sequences from the COI gene. These files contain sequence data from <em>Leptasterias</em> individuals collected along the California coast. We'll use R to align the sequences so that homologous sites line up in the same column. This is essential for any phylogenetic analysis: we can only compare changes if we're sure we're comparing the same positions.</p>
+
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load sequences</span>
+dna &lt;- readDNAStringSet("coi_nucleotide.fasta")
+
+<span style="color:#6a737d; font-style: italic;"># Align sequences</span>
+dna_aln &lt;- msa(dna, method = "ClustalW")
+</code></pre>
+
+<br>
+ 
+<div class="creme">
+<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> ClustalW is a progressive alignment algorithm. It begins by aligning the most similar sequences first, then adds others based on a guide tree. This means early errors can propagate, so quality depends on how divergent the sequences are.</p>
 </div>
 
-<h4>2. Identify shared taxa and concatenate</h4>
-<pre><code>shared <- Reduce(intersect, list(rownames(aln1), rownames(aln2), rownames(aln3), rownames(aln4), rownames(aln5)))
-alist <- list(aln1[shared, ], aln2[shared, ], aln3[shared, ], aln4[shared, ], aln5[shared, ])
-concat <- do.call(cbind, alist)</code></pre>
+<br>
 
-<div class="challenge">
-  <span class="challenge-title">Challenge.</span> How would you modify this code to concatenate only a subset of alignments? Try just the first three.
+<div class="questions" style="margin-top: 30px;">
+    <p><strong>Questions:</strong></p>
+    <ol type="a">
+    <li><em>How many COI DNA sequences are in this dataset?</em></li>
+    <li><em>What information is included in the metadata?</em></li>
+    <li><em>What does alignment assume about the sequences?</em></li>
+    <li><em>Why might some sequences be harder to align than others</li></em>
+    </ol>
+    </div>
+
+<br>
+
+<h4>2. Build and compare trees</h4>
+
+<p>Now that we’ve aligned the sequences, we can infer a phylogenetic tree. There are many methods, but here we'll be using maximum likelihood. First, we convert each alignment to a format that our downstream phylogenetic software can use. Our output here is a list of aligned sequences, which you can explore to confirm structure.</p>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Convert aligned sequences to phyDat format</span>
+dna_phy &lt;- as.phyDat(msaConvert(dna_aln, type = "seqinr"), type = "DNA")
+
+<span style="color:#6a737d; font-style: italic;"># View structure in the console</span>
+dna_phy
+</code></pre>
+<br>
+
+<p>Next, estimate pairwise distances and construct a starting tree using neighbor joining. This gives a rough estimate of relationships based on overall similarity and serves as a starting point for maximum likelihood inference. You encountered distance matrices last week in Chapter 13, where you compared genetic and geographic distances among populations using a Mantel test. Here, we use genetic distances again, this time to construct a tree that summarizes overall sequence similarity among individuals.</p>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Create initial tree</span>
+tree_dna &lt;- NJ(dist.ml(dna_phy))
+</code></pre>
+
+<br>
+<p>We then apply a model of sequence evolution to calculate the maximum likelihood tree. This model accounts for how different types of nucleotide substitutions occur over time. For DNA data, we use the GTR model (General Time Reversible), a widely used and flexible model that allows different substitution rates for each pair of nucleotides. This helps improve the accuracy of tree estimation, especially when sequences have evolved under complex patterns of change.</p>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Maximum likelihood optimization</span>
+fit_dna &lt;- optim.pml(pml(tree_dna, data = dna_phy), model = "GTR")
+</code></pre>
+
+<br>
+<p>Use <code>ggtree()</code> to visualize and explore the tree. This step is important for identifying patterns or clusters.</p>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Visualize tree</span>
+ggtree(fit_dna$tree) + 
+geom_tiplab() + 
+ggtitle("Maximum likelihood tree (DNA)")
+</code></pre>
+
+<hr> 
+<br>
+
+<h4>3. Add bootstrap support</h4>
+<p>We can assess confidence in the nucleotide tree by adding bootstrap support. Each bootstrap replicate samples the alignment with replacement and estimates a tree. High support (typically &gt;70%) suggests the grouping is consistently recovered.</p>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Add bootstrap values to tree object</span>
+bs_dna &lt;- bootstrap.pml(fit_dna, bs = 100, optNni = TRUE)
+tree_bs &lt;- plotBS(fit_dna$tree, bs_dna, type = "none")
+
+<span style="color:#6a737d; font-style: italic;"># Visualize in ggtree</span>
+ggtree(tree_bs) +
+  geom_tiplab() +
+  geom_text2(aes(label = label), hjust = -0.3) +
+  ggtitle("ML tree with bootstrap support (DNA)")
+
+</code></pre>
+
+<br>
+
+<div class="creme">
+<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> Bootstrap support quantifies how often a clade appears when the alignment is resampled. It gives us a way to distinguish strong signals from random noise.</p>
 </div>
 
-<h4>3. Build a tree using distance and ML</h4>
-<pre><code>library(phangorn)
+<hr>
+<br>
 
-dna <- as.phyDat(concat)
-dm <- dist.ml(dna)
-tree <- NJ(dm)  # starting tree
-fit <- pml(tree, data = dna)
-fit_opt <- optim.pml(fit, model = "GTR", optInv = TRUE, optGamma = TRUE)</code></pre>
+<div class="questions" style="margin-top: 30px;">
+    <p><strong>Question:</strong></p>
+    <ol type="a">
+        <li><em>What is your impression of the phylogeny? Be descriptive.</li></em>
+    </ol></div>
 
-<h4>4. Plot and interpret the tree</h4>
-<pre><code>library(ggtree)
+<hr>
+<br>
 
-ggtree(fit_opt$tree) + geom_tiplab()</code></pre>
 
-<div class="questions">
-  <p><strong>Tree-thinking questions:</strong></p>
-  <ol type="a">
-    <li>Which clades are strongly supported and monophyletic?</li>
-    <li>What does this tree suggest about the geographic origin of these geckos?</li>
-    <li>What assumptions are we making by concatenating loci?</li>
-  </ol>
+<h4>4. Root the tree using an outgroup</h4>
+<p>To interpret evolutionary direction, we need to root the tree. In this case, we’ll use sequences identified as <em>L. hexactis</em> as the outgroup. These tips should form a clade outside the main group of interest (<em>L. aequalis</em>).</p>
+<p>To root the tree, extract the tip labels corresponding to <em>L. hexactis</em>, and use the <code>root()</code> function from the <code>ape</code> package to re-root the tree accordingly.</p>
+<pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># View tip labels and identify L. hexactis samples</span>
+fit_dna$tree$tip.label
+
+<span style="color:#6a737d; font-style: italic;"># Re-root the tree on the most recent common ancestor of hexactis tips</span>
+rooted_dna &lt;- root(fit_dna$tree, outgroup = ?, resolve.root = TRUE)
+
+<span style="color:#6a737d; font-style: italic;"># Plot the rooted tree</span>
+ggtree(rooted_dna) +
+  geom_tiplab() +
+  ggtitle("Rooted tree using L. hexactis")
+</code></pre>
+
+<br> 
+
+<div class="creme">
+<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> Why root a tree?</p>
+<ul>
+<li>Rooting shows directionality (who is ancestral to whom)</li>
+<li>Outgroups help orient the tree when true ancestors are unknown</li>
+<li>In this dataset, <em>L. hexactis</em> originating from Alaska is used as a natural outgroup because we are confident that all  <em>L. aequalis</em> specimens in the ingroup are more closely related to each other than they are to Alaskan <em>L. hexactis</em>.</li>
+</ul>
 </div>
 
-<h4>Bonus: Bootstrapping support values</h4>
-<p>If time allows, try estimating bootstrap support values:</p>
-<pre><code>bs <- bootstrap.pml(fit, bs = 100, optNni = TRUE)
-plotBS(fit$tree, bs)</code></pre>
+<br>
+<hr>
 
-<p style="text-align: center; font-size: 16px; font-weight: bold; color: #000; margin-top: 40px; margin-bottom: 50px;">Great work, phylogeneticists!</p>
+<h4>5. Label clades and visualize structure</h4>
+<p>Once your tree is rooted, the next step is to explore its structure and annotate according to your research question. Each internal node in the tree represents a hypothetical common ancestor. To label clades, you must first identify internal nodes of interest and determine which tips descend from them.</p>
 
+<p>Start by displaying node numbers on your tree:</p>
+<pre><code>ggtree(rooted_dna) +
+  geom_tiplab(size = 2) +
+  geom_text2(aes(label = node), size = 2, hjust = -0.3) +
+  ggtitle("Rooted tree with node numbers")
+</code></pre>
+<br>
+
+<p>Use these node numbers to define clades. For example, to label all tips descending from node 113 as "Clade X":</p>
+<pre><code><span style="color:#6a737d; font-style: italic;"># Extract tips from node 113</span>
+tips_113 &lt;- tree_subset(rooted_dna, node = 113, levels_back = 0)$tip.label
+
+<span style="color:#6a737d; font-style: italic;"># Create a data frame that assigns clade to each tip</span>
+clade_df &lt;- tibble(tip = tips_113, Clade = "Clade X")
+
+<span style="color:#6a737d; font-style: italic;"># Plot with color</span>
+ggtree(rooted_dna) %&lt;+% clade_df +
+  geom_tiplab(size = 2) +
+  geom_tippoint(aes(color = Clade), size = 2) +
+  scale_color_brewer(palette = "Set1", na.translate = FALSE) +
+  ggtitle("Tree with Clade X")
+</code></pre>
+<div class="creme">
+<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> What makes a clade?</p>
+<ul>
+<li>A clade includes an ancestor and all of its descendants.</li>
+<li>You can use <code>tree_subset()</code> to extract all tips descended from a particular node.</li>
+<li>Labeling clades helps simplify complex trees and reveal structure.</li>
+</ul>
+</div>
+
+<br>
+
+<div class="challenge" style="margin-top: 30px;">
+    <span class="challenge-title">Challenge 1.</span> Identify the 3 major clades in the tree. Give them each a name (e.g. Clade A, B, C) and annotate them on the tree. Are the groups well-supported?
+    </div>
+    
+    <br>
+
+<div class="challenge" style="margin-top: 30px;">
+    <span class="challenge-title">Challenge 2.</span> Does the protein sequence data show the same pattern? <em>Hint:</em> Repeat steps above to build a rooted, labeled, bootstrap-annotated tree with protein sequence data and compare tree topology. 
+    </div>
+    
+    <br>
+    
+<div class="challenge" style="margin-top: 30px;">
+<span class="challenge-title">Challenge 3.</span> Each sequence corresponds to a known collection site, including coordinates and region labels. Incorporate spatial data into your analysis to assess whether genetic clusters align with geography. Interpret your results. If individuals from the same region form a clade, what evolutionary processes might explain that? What if they are spread across clades? <em>Hint:</em> You could approach this in a few different ways, one that involves building a phylogeny with location annotations, and another that involves plotting a map with phylogeny annotations. Choose your own adventure! See Materials and Methods above for mapping packages. 
+</div>
+
+<br>
+
+<div class="creme">
+    <p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> Why include geography?</p>
+    <ul>
+    <li>It helps us connect genetic divergence to potential barriers, dispersal, or historical events.</li>
+    <li>Coastal species with limited larval dispersal often show regional structure.</li>
+    <li>Unexpected patterns might point to cryptic diversity or recent movement.</li>
+    </ul>
+    </div>
+
+<br> 
+
+
+<div class="questions" style="margin-top: 30px;">
+    <p><span class="discussion-title">Discussion questions</span></p>
+    <ol type="a">
+<li><em>Do the major clades reflect geographic regions?</li></em>
+<li><em>Are there any sites where individuals appear in multiple clades?</li></em>
+<li><em>How would you test whether the genetic structure reflects isolation by distance?</li></em>
+<li><em>How does this analysis inform whether or not cryptic species are present?</li></em>
+</ol>
+</div>
+
+<br>
+<hr>
+
+
+
+<p style="text-align: center; font-size: 16px; font-weight: bold; color: #000; margin-top: 40px; margin-bottom: 50px;">Great Work!</p>
 </body>
 </html>
