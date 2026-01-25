@@ -199,8 +199,30 @@ add:</p>
 <p><strong>Note:</strong> Remember to do annotations before any line of
 code so that you or others can understand the meaning of the code.</p>
 </div>
+<div id="installing-and-loading-packages" class="section level3">
+<h3>4. Installing and loading packages</h3>
+<p>R uses packages to add new tools and functions.
+In this course, we will use the tidyverse package.</p>
+<h4>Installing a package</h4>
+<p>You only need to install a package one time per computer.
+
+In the Console in RStudio (not in a script or R Markdown file), run:</p>
+<pre class="r"><code>install.packages("tidyverse")</code></pre>
+</div>
 <div id="importing-data-files-to-r-using-rstudio" class="section level3">
-<h3>4. Importing data files to R using RStudio</h3>
+<p>Do not include install.packages() inside an R Markdown file that you will knit and submit.
+Installation only needs to happen once.</p>
+<h4>Loading a package</h4>
+<p>Each time you start working in R, you must load the packages you want to use.
+
+At the top of your script or R Markdown file, run:</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<p>This makes tidyverse functions (such as filter(), mutate(), and the pipe operator %>%) available for use.
+
+If you see an error like:</p>
+<pre class="r"><code>could not find function "filter"</code></pre>
+<p>it usually means the package has not been loaded.</p>
+<h3>5. Importing data files to R using RStudio</h3>
 <p>There are several ways to import data to R using RStudio and it
 depends on the type of file the data is (i.e., .csv, .RData). You may
 use the one that works best for you. Below are three ways to import
@@ -234,7 +256,7 @@ Environment window.</li>
 </ul>
 </div>
 <div id="exploring-the-imported-dataset" class="section level3">
-<h3>5. Exploring the imported dataset</h3>
+<h3>6. Exploring the imported dataset</h3>
 <p>Before any analysis, we first need to check the data and understand
 its attributes.</p>
 <p>Let’s start looking into the structure of “anole.csv” by using the
@@ -283,7 +305,7 @@ View(anole)</code></pre>
 </ol>
 </div>
 <div id="managing-data" class="section level3">
-<h3>6. Managing data</h3>
+<h3>7. Managing data</h3>
 <p>Many functions like <code>str()</code> come built into R. However, R
 packages give you additional useful functions. You will be using some
 functions from the package <em>tidyverse</em> to manage your data (e.g.,
@@ -331,7 +353,7 @@ femurs_10mm</code></pre>
 </ol>
 </div>
 <div id="descriptive-statistics" class="section level3">
-<h3>7. Descriptive statistics</h3>
+<h3>8. Descriptive statistics</h3>
 <p>Finally, keep in mind that R is a language in which we can define our
 own mathematical functions. Therefore, it also works as a calculator.
 Let’s employ descriptive stats functions for “Femur” in anole, including
