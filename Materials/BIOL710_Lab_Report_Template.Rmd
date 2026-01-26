@@ -11,10 +11,7 @@ output:
 library(tidyverse)
 ```
 
-# set working directory for all chunks in this file (default working directory is wherever Rmd file is)
-```{r, setup, include=FALSE}
-# knitr::opts_knit$set(root.dir = 'set/working/directory/here')
-```
+# your working directory is wherever this .Rmd is! No need to set it
 
 ### Question or Discussion Question or Challenge or Stop/Think/Do etc. 
 ### Outside a code chunk, ### indicates a header
