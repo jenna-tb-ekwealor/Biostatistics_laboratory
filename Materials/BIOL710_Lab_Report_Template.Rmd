@@ -18,6 +18,11 @@ library(tidyverse)
 
 Insert human-readable text here. This is where you can introduce a code chunk (following this) or sometimes the answer will not need code.
 
+Guidelines:
+1. Keep your data files and this .Rmd in the same folder (you can change the name of it).
+2. Keep chunks small (3-4 tasks max, generally) and oriented around a task (e.g. loading data, a single plot, etc.). 
+3. Do not put install lines, View(), or paste whole data frames into an .Rmd code chunk as they will either break your knitted pdf, or make it 60 pages long. You can either do those things in the console directly, or comment them out before knitting. 
+
 ```{r}
 # Insert code for Question 1 here
 # Inside a code chunk, a # indicates a comment and will not run
