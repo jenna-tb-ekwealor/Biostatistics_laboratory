@@ -150,38 +150,61 @@ island lizard. Nature, 560 (2018), pp.88-91</a></li>
 <hr />
 </div>
 </div>
-<div id="in-class-activity" class="section level2">
-<h2>In-class activity</h2>
-<p>This example should work as a step-by-step introduction to some basic
-skills you will be implementing in the following chapters. For this
-activity, we will be using the dataset “anole.csv” from <a href="https://cpb-us-w2.wpmucdn.com/sites.wustl.edu/dist/6/1127/files/2018/12/Donihue-et-al.-2018-2e1xqw4.pdf">Donihue
-et al. 2018</a>.</p>
 <div id="creating-and-setting-a-working-directory" class="section level3">
 <h3>1. Creating and setting a working directory</h3>
-<p>In your computer, create a folder named “working_directory” and save
-the downloaded file “anole.csv” in it. Open RStudio. Go to the
-Flies/Plots/Packages/Help window (usually in the bottom right pane) and
-search for your working_directory folder in Files. This window in
-RStudio allows you to navigate folders in your computer. Once in your
-working_directory folder, click the gear icon -&gt; Set As Working
-Directory. <strong>Note:</strong> for R to read the files of interest,
-you need to indicate where in your computer is the file (i.e., your
-working directory).</p>
-<p>Alternatively, you can go to Session (at the top) -&gt; Set Working
-Directory -&gt; Choose Directory.. and navigate to
-working_directory.</p>
+
+<p>
+In this course, you will primarily work in <strong>R Markdown (.Rmd)</strong> using a
+<strong>class-provided template</strong>. When working in R Markdown, you generally
+<strong>do not need to manually set a working directory</strong>. Instead, your
+<code>.Rmd</code> file and your data files (for example, <code>anole.csv</code>) should
+be saved in the <strong>same folder</strong>. R Markdown will then be able to find the
+files automatically.
+</p>
+
+<p>
+For this activity, create a folder on your computer named
+<strong>working_directory</strong> (or another clearly named folder for this class or
+week). Save the downloaded file <strong>anole.csv</strong> in this folder. This folder
+will also be where you save your class template <code>.Rmd</code> file.
+</p>
+
+<p>
+Although you will not usually set a working directory when using R Markdown,
+it is important to understand how working directories function—especially
+when working with regular <strong>R scripts (.R)</strong>.
+</p>
+
+<p>
+To manually set a working directory in RStudio:
+</p>
+
+<ol>
+  <li>
+    Open RStudio. In the <strong>Files / Plots / Packages / Help</strong> pane
+    (usually in the bottom-right), click the <strong>Files</strong> tab and navigate
+    to your <strong>working_directory</strong> folder.
+  </li>
+  <li>
+    Once inside the folder, click the <strong>gear icon</strong> and select
+    <strong>Set As Working Directory</strong>.
+  </li>
+</ol>
+
+<p>
+<strong>Note:</strong> Setting a working directory tells R where to look for files on
+your computer. This step is typically unnecessary when using R Markdown, as
+long as your <code>.Rmd</code> file and data files are stored in the same location.
+</p>
+
+<p>
+<strong>Alternative method:</strong> You can also set the working directory by going
+to <strong>Session</strong> &rarr; <strong>Set Working Directory</strong> &rarr;
+<strong>Choose Directory...</strong>, and then selecting your
+<strong>working_directory</strong> folder.
+</p>
 </div>
-<div id="creating-and-saving-your-r-script" class="section level3">
-<h3>2. Creating and saving your R script</h3>
-<p>An R script is where you will be saving your codes and the progress
-of your work. The first step when carrying out a new analysis is to open
-a new script and save it. We are going to be doing this in our custom
-“Lab Report” format. Download the file from Canvas and save it somewhere
-handy on your computer. This copy will serve as your template for each
-Lab this semester. Then, open it and File -&gt; Save As with a useful
-name in your working_directory folder, with a .Rmd file extension. This
-is the copy you can work with for today’s Lab Activity.</p>
-</div>
+
 <div id="annotating-your-r-script" class="section level3">
 <h3>3. Annotating your R script</h3>
 <p>Annotating your script is a very important step that helps you to
