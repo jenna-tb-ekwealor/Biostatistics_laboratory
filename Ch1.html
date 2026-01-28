@@ -205,23 +205,105 @@ to <strong>Session</strong> &rarr; <strong>Set Working Directory</strong> &rarr;
 </p>
 </div>
 
-<div id="annotating-your-r-script" class="section level3">
-<h3>3. Annotating your R script</h3>
-<p>Annotating your script is a very important step that helps you to
-keep track of your work and facilitates reproducibility. The R script
-serves as your notebook. There, you save your codes together with
-associated annotations indicating what those codes are for. In your
-script, write a description of the codes you will be employing in this
-activity. <strong>Use a “#” before any line of text you want R to
-interpret as an annotation and not as code</strong>. In Markdown, “#”
-outside a code chunk indicates a header. Click the “Knit” button at the
-top frequently to see how your document is looking.</p>
-<p>For example, in the beginning of this activity’s script, you may
-add:</p>
-<pre class="r"><code># Chapter 1: Intro to R and RStudio</code></pre>
-<p><strong>Note:</strong> Remember to do annotations before any line of
-code so that you or others can understand the meaning of the code.</p>
+<div id="creating-and-saving-your-rmd" class="section level3">
+<h3>2. Creating and saving your R Markdown file</h3>
+
+<p>
+In this course, you will complete your work using an
+<strong>R Markdown (.Rmd)</strong> file, which combines R code, text, and output
+in a single document. You will be provided with a
+<strong>class template R Markdown file</strong> to use for this activity.
+</p>
+
+<p>
+Open the class template <code>.Rmd</code> file in RStudio and immediately
+<strong>save it</strong> in your <strong>working_directory</strong> folder (the same folder
+that contains <code>anole.csv</code>). Use a clear and informative file name.
+</p>
+
+<p>
+As you work, you can click the <strong>Knit</strong> button at the top of the editor
+to preview how your document will look when rendered. Knitting allows you
+to check that your code runs correctly and that your text, figures, and
+tables appear as expected.
+</p>
+
+<p>
+Later in the course, you will knit your completed R Markdown files to
+<strong>PDF format</strong> for submission. For now, think of knitting as a way to
+frequently preview and troubleshoot your work.
+</p>
 </div>
+
+
+<div id="annotating-your-r-script" class="section level3">
+<h3>3. Annotating your R Markdown file</h3>
+
+<p>
+Annotating your work is a very important step that helps you keep track of
+your analysis and makes your work reproducible. In this course, your
+<strong>R Markdown (.Rmd)</strong> file serves as your lab notebook.
+</p>
+
+<p>
+An R Markdown file contains two main components:
+</p>
+
+<ul>
+  <li>
+    <strong>R code chunks</strong>, where your R code is written and executed
+  </li>
+  <li>
+    <strong>Markdown text</strong>, where you write explanations, titles,
+    captions, and interpretations of results
+  </li>
+</ul>
+
+<p>
+Annotating an R Markdown file therefore happens in two ways:
+</p>
+
+<ul>
+  <li>
+    <strong>Inside R code chunks:</strong> Use <code>#</code> to add brief comments
+    that explain what the code is doing. These comments are for clarifying
+    specific lines or blocks of code.
+  </li>
+  <li>
+    <strong>Outside R code chunks:</strong> Use regular text written in Markdown
+    to provide longer explanations, section headers, figure captions, and
+    interpretations of results.
+  </li>
+</ul>
+
+<p>
+For example, inside a code chunk you might write:
+</p>
+
+<pre class="r"><code># Load the anole dataset
+anole &lt;- read.csv("anole.csv")</code></pre>
+
+<p>
+Outside of code chunks, you might add a section header or description such as:
+</p>
+
+<pre><code># Chapter 1: Intro to R and RStudio
+
+In this section, we load the dataset and begin exploring its structure.</code></pre>
+
+<p>
+<strong>Note:</strong> In R code chunks, <code>#</code> indicates a comment.
+Outside of code chunks, <code>#</code> indicates a header in Markdown. Be sure
+you are typing in the appropriate location.
+</p>
+
+<p>
+Click the <strong>Knit</strong> button frequently to check how your document is
+rendering and to ensure that your code, text, and annotations appear as
+expected.
+</p>
+</div>
+
 <div id="installing-and-loading-packages" class="section level3">
 <h3>4. Installing and loading packages</h3>
 <p>R uses packages to add new tools and functions.
