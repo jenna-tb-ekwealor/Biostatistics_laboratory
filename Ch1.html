@@ -451,28 +451,36 @@ View(anole)</code></pre>
 
 <div id="managing-data" class="section level3">
 <h3>7. Managing data</h3>
-<p>Many functions like <code>str()</code> come built into R. However, R
-packages give you additional useful functions. You will be using some
-functions from the package <em>tidyverse</em> to manage your data (e.g.,
-filtering columns, selecting columns). Before you use a package for the
-first time you need to install it in R. After installation, you should
-load it using <code>library()</code> in every subsequent R session as
-needed.</p>
-<pre class="r"><code># installing tidyverse
-install.packages(&quot;tidyverse&quot;,repos=&quot;http://cran.us.r-project.org&quot;)
 
-# loading tidyverse
+<p>Many functions, such as <code>str()</code>, come built into R. However, additional
+functionality is provided through R packages. In this course, you will use
+functions from the <em>tidyverse</em> package to manage and manipulate data
+(e.g., selecting and filtering columns).</p>
+
+<p><strong>Installing and loading packages in R Markdown</strong></p>
+<p>You only need to <strong>install</strong> a package once on your computer. Do this
+by running the installation command in the <strong>Console</strong> (not inside an
+.Rmd code chunk). In your R Markdown document, you should then
+<strong>load</strong> the package using <code>library()</code> in the first (or an early)
+code chunk so it is available for the rest of the report.</p>
+
+<pre class="r"><code># run this ONCE in the Console (not in an .Rmd code chunk)
+install.packages("tidyverse")
+
+<pre class="r"><code># load tidyverse (after installing it in the Console)
 library(tidyverse)</code></pre>
-<p>Now, let’s say you are interested only in the column “Femur” within
-anole and you want to store such column in a new object named
-<em>femurs</em>. To select columns of a data frame, use
-<code>select()</code>. The first argument in this function is the data
-object, and the subsequent argument is the column to keep. Keep in min
-that <code>select()</code> is part of package tidyverse.</p>
-<pre class="r"><code># selecting the column femur
+
+<p>Now, suppose you are interested only in the column <code>Femur</code> from the
+dataset <code>anole</code>, and you want to store this column in a new object named
+<em>femurs</em>. To select columns from a data frame, use the
+<code>select()</code> function. The first argument is the data object, and the second
+argument specifies the column(s) to keep. Note that <code>select()</code> is part
+of the <em>tidyverse</em>.</p>
+
+<pre class="r"><code># selecting the Femur column
 femurs &lt;- select(anole, Femur)
 
-# checking the new object created
+# checking the new object
 femurs</code></pre>
 </div>
 
