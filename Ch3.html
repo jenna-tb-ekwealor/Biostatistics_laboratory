@@ -611,7 +611,7 @@ library(tidyverse)
 head(uca)
 
 # frequency of claw size classes
-p1 &lt;- ggplot(data=uca,aes(x=claw_size)) +
+p1 &lt;- ggplot(data = uca, aes(x = claw_size)) +
   geom_bar() 
 p1</code></pre>
 <p>A good practice is to order the bars by magnitude as it helps the
@@ -628,31 +628,31 @@ freq_t &lt;- as.data.frame(freq_t)
 freq_t
 
 # reordering the bars per magnitude using the new dataframe
-p1 &lt;- ggplot(data=freq_t,aes(x=reorder(Var1,-Freq),y=Freq)) +
-   geom_bar(stat=&quot;identity&quot;)
+p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
+   geom_bar(stat = &quot;identity&quot;)
 p1</code></pre>
 <p>Finally, let’s add some important aesthetics to <em>p1</em>.</p>
 <pre class="r"><code># adding y- and x-axis labels using ylab() and xlab()
-p1 &lt;- ggplot(data=freq_t,aes(x=reorder(Var1,-Freq),y=Freq)) +
-  geom_bar(stat=&quot;identity&quot;) +
+p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
+  geom_bar(stat = &quot;identity&quot;) +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw size class&quot;)
 p1
 
 # deleting the background color using theme_classic()
-p1 &lt;- ggplot(data=freq_t,aes(x=reorder(Var1,-Freq),y=Freq)) +
-  geom_bar(stat=&quot;identity&quot;) +
+p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
+  geom_bar(stat = &quot;identity&quot;) +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw size class&quot;) +
   theme_classic()
 p1
 
 # increasing the font size to &quot;18&quot;
-p1 &lt;- ggplot(data=freq_t,aes(x=reorder(Var1,-Freq),y=Freq)) +
-  geom_bar(stat=&quot;identity&quot;) +
+p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
+  geom_bar(stat = &quot;identity&quot;) +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw size class&quot;) +
-  theme_classic(18)
+  theme_classic() # you can change overall size of plot text elements here; insert a number to test
 p1</code></pre>
 </div>
 <div id="questions-1" class="section level3">
