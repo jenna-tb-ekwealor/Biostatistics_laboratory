@@ -678,17 +678,13 @@ large) using a bar graph. As we did in Chapter 1, before you use a
 package for the first time you need to install it, then you should load
 it using <strong>library()</strong> in every subsequent R session as
 needed.</p>
-<pre class="r"><code># installing ggplot2
-install.packages(&quot;ggplot2&quot;,repos=&quot;http://cran.us.r-project.org&quot;)
-
-# loading package ggplot2
-library(ggplot2)
-
+<pre class="r"><code># load tidyverse package (install in console if you haven't already done so)
+library(tidyverse)
 # checking the first rows of the dataframe 
 head(uca)
 
 # frequency of claw size classes
-p1 &lt;- ggplot(data=uca,aes(x=claw_size)) +
+p1 &lt;- ggplot(data = uca, aes(x = claw_size)) +
   geom_bar() 
 p1</code></pre>
 <p><br></p>
