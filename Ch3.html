@@ -535,7 +535,7 @@ temperatures during winter.</p>
 <h2>Materials and Methods</h2>
 <ul>
 <li>R and RStudio</li>
-<li>R packages <em>ggplot2</em> and <em>tidyverse</em></li>
+<li>R package <em>tidyverse</em> (which includes <em>ggplot2</em>)</li>
 <li>uca.csv</li>
 <li>micro.txt</li>
 </ul>
@@ -558,6 +558,8 @@ micro &lt;- read.table(&quot;micro.txt&quot;,stringsAsFactors = TRUE)
 View(micro)</code></pre>
 <p><br />
 </p>
+Note that "View()" is convenient in RStudio but it will not work in a knitted document (and will sometimes cause Knit failure).
+It is advised that you delete or comment out this line prior to knitting. 
 <div id="questions" class="section level3">
 <h3><em>Questions</em></h3>
 <ol style="list-style-type: lower-alpha">
@@ -566,7 +568,8 @@ View(micro)</code></pre>
 <li><em>How many variables and observations does “micro” have?</em></li>
 </ol>
 <p><strong>Info Box!</strong> To plot the data, we will use R package
-<em>ggplot2</em>. To have a preview of plots, click on “Plots” in the
+<em>ggplot2</em> (included with <em>tidyverse</em>). In and .Rmd document, your plots will appear under your code chunk. 
+In a regular R script, you'll see them under “Plots” in the
 bottom right window of RStudio. In <em>ggplot2</em>, we use the function
 <code>ggplot()</code> to generate the graphs. The basic template for
 ggplots is</p>
@@ -602,12 +605,8 @@ large) using a bar graph. As we did in Chapter 1, before you use a
 package for the first time you need to install it, then you should load
 it using <code>library()</code> in every subsequent R session as
 needed.</p>
-<pre class="r"><code># installing ggplot2
-install.packages(&quot;ggplot2&quot;,repos=&quot;http://cran.us.r-project.org&quot;)
-
-# loading package ggplot2
-library(ggplot2)
-
+<pre class="r"><code># load tidyverse package (install in console if you haven't already done so)
+library(tidyverse)
 # checking the first rows of the dataframe 
 head(uca)
 
