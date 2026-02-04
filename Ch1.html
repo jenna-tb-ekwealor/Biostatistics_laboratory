@@ -475,21 +475,29 @@ femurs &lt;- select(anole, Femur)
 # checking the new object created
 femurs</code></pre>
 </div>
-<div id="questions-2" class="section level3">
-<h3><em>Questions</em></h3>
-<ol style="list-style-type: lower-alpha">
-<li><em>Is the new object in the Global Environment?</em></li>
-</ol>
-<p>Now, say you are interested only in femurs of length higher than 10
+
+<div id="question-set-3">
+<h3><em>Question Set 3</em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>3a.</strong>
+      <em>Is the new object in the Global Environment?</em>
+    </p></li>
+
+
+<li><p>
+      <strong>3b.</strong>Now, say you are interested only in femurs of length higher than 10
 mm. To filter by row, use <code>filter()</code>. The first argument in
 this function is the data object, and the subsequent arguments are the
-column name and the condition.</p>
+column name and the condition.</em>
+    </p></li>
 <pre class="r"><code># filtering femurs by femur length &gt; 10mm
 femurs_10mm &lt;- filter(femurs, Femur&gt;10)
 
 # checking the new object created
 femurs_10mm</code></pre>
 </div>
+
 <div id="questions-3" class="section level3">
 <h3><em>Questions</em></h3>
 <ol style="list-style-type: lower-alpha">
