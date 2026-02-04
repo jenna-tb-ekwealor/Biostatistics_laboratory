@@ -391,18 +391,6 @@ Write your answer here.</code></pre>
 
 <p><br></p>
 
-<div id="questions" class="section level3">
-<h3><em>Questions</em></h3>
-<ol style="list-style-type: lower-alpha">
-<li><p><em>What is the class of the dataset “anole.csv” (e.g., data
-frame, table, tibble)?</em></p></li>
-<li><p><em>How many observations and variables does the dataset
-“anole.csv” have?</em></p></li>
-<li><p><em>What is the class of each variable in the dataset “anole.csv”
-(e.g., character, factor, numeric, integer)?</em></p></li>
-</ol>
-
-
 <div id="question-set-1">
 <h3><em>Question Set 1</em></h3>
   <ol style="list-style-type: none; padding-left: 1.2em;">
@@ -428,7 +416,7 @@ returns the unique values (levels) of a factor variable;
 <code>head()</code>, which returns the first rows in our dataset to
 explore the variables, and <code>View()</code> which opens the dataset
 as a spreadsheet. Note that R language is case-sensitive.</p>
-<pre class="r"><code># levels of the variable Sex, the $ sign means &quot;within&quot;
+<pre class="r"><code># levels of the variable Sex, the $ sign means &quot;within&quot;, or in other words the column
 levels(anole$Sex)
 
 # summary of each variable
@@ -439,6 +427,23 @@ head(anole)
 
 # viewing anole
 View(anole)</code></pre>
+</div>
+<div id="question-set-2">
+<h3><em>Question Set 2</em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>2a.</strong>
+      <em>How many levels does the variable Sex have?</em>
+    </p></li>
+    <li><p>
+      <strong>2b.</strong>
+      <em>What is the mean Femur length of “anole.csv”?</em>
+    </p></li>
+    <li><p>
+      <strong>2c.</strong>
+      <em>What are the first three variables in “anole.csv”?</em>
+   </p> </li>
+  </ol>
 </div>
 <div id="questions-1" class="section level3">
 <h3><em>Questions</em></h3>
