@@ -612,11 +612,11 @@ data</span>
 <p>Import both datasets to RStudio and check them out. <strong>Don’t
 forget to use the metadata file for reference.</strong></p>
 <pre class="r"><code># importing the uca data
-uca &lt;- read.csv(&quot;uca.csv&quot;,header=TRUE,stringsAsFactors = TRUE)
+uca &lt;- read.csv(&quot;uca.csv&quot;,header = TRUE, stringsAsFactors = TRUE)
 View(uca)
 
 # importing the microbial genomics data
-micro &lt;- read.table(&quot;micro.txt&quot;,stringsAsFactors = TRUE)
+micro &lt;- read.table(&quot;micro.txt&quot;, stringsAsFactors = TRUE)
 View(micro)</code></pre>
 Note that "View()" is convenient in RStudio but it will not work in a knitted document (and will sometimes cause Knit failure).
 It is advised that you delete or comment out this line prior to knitting. 
