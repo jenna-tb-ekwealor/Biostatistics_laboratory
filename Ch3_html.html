@@ -715,20 +715,22 @@ p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
 p1
 
 # deleting the background color using theme_classic()
-p1 &lt;- ggplot(data=freq_t,aes(x=reorder(Var1,-Freq),y=Freq)) +
-  geom_bar(stat=&quot;identity&quot;) +
+p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
+  geom_bar(stat = &quot;identity&quot;) +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw size class&quot;) +
   theme_classic()
 p1
 
 # increasing the font size to &quot;18&quot;
-p1 &lt;- ggplot(data=freq_t,aes(x=reorder(Var1,-Freq),y=Freq)) +
-  geom_bar(stat=&quot;identity&quot;) +
+p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
+  geom_bar(stat = &quot;identity&quot;) +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw size class&quot;) +
-  theme_classic(18)
+  theme_classic(18) # you can use any number here
 p1</code></pre>
+Note: The value in theme_classic() controls the base text size of the figure. 
+When knitting to PDF, the final appearance depends on the figure dimensions (fig.width and fig.height). Adjust this value as needed so axis labels and text are readable in the rendered PDF.
 <p><br></p>
 <p><strong>Questions</strong></p>
 <ol style="list-style-type: lower-alpha">
@@ -764,21 +766,21 @@ this way, histograms split the data values into intervals or
 <p>Let’s explore the claw length distribution of the <em>Uca</em>
 crab.</p>
 <pre class="r"><code># histogram for claw length distribution
-p2 &lt;- ggplot(uca,aes(x=claw_length)) +
+p2 &lt;- ggplot(uca, aes(x = claw_length)) +
   geom_histogram() 
 p2
 
 # changing the bin width
-p2 &lt;- ggplot(uca,aes(x=claw_length)) +
+p2 &lt;- ggplot(uca,aes(x = claw_length)) +
   geom_histogram(binwidth = 2)
 p2
 
 # adding aesthetics
-p2 &lt;- ggplot(uca,aes(x=claw_length)) +
+p2 &lt;- ggplot(uca,aes(x = claw_length)) +
   geom_histogram(binwidth = 2) +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw length (mm)&quot;) +
-  theme_classic(18)
+  theme_classic()
 p2</code></pre>
 <p><br></p>
 <p><strong>Questions</strong></p>
@@ -854,21 +856,21 @@ positioned in the <em>y</em>-axis.</p>
 <p>Let’s explore the association between <em>Uca</em>’s claw length and
 claw mass using <strong>geom_point()</strong>.</p>
 <pre class="r"><code># scatter plot for claw length and claw mass 
-p4 &lt;- ggplot(uca,aes(x=claw_mass,y=claw_length)) +
+p4 &lt;- ggplot(uca,aes(x = claw_mass, y = claw_length)) +
   geom_point()
 p4
 
 # differentiating by mass class adding the aesthetic of color=mass_class
-p4 &lt;- ggplot(uca,aes(x=claw_mass,y=claw_length,color=mass_class)) +
+p4 &lt;- ggplot(uca,aes(x=claw_mass, y = claw_length, color = mass_class)) +
   geom_point()
 p4
 
 # adding all aesthetics
-p4 &lt;- ggplot(uca,aes(x=claw_mass,y=claw_length,color=mass_class)) +
+p4 &lt;- ggplot(uca,aes(x = claw_mass, y = claw_length, color = mass_class)) +
   geom_point() +
   ylab(&quot;Claw length (mm)&quot;) +
   xlab(&quot;Claw mass (g)&quot;) +
-  theme_classic(18)
+  theme_classic()
 p4</code></pre>
 <p><br></p>
 <p><strong>Questions</strong></p>
@@ -929,16 +931,16 @@ Figure 9. Anatomy of a box plot.
 <p>Let’s explore the summaries of the frequency distributions of
 <em>Uca</em> crabs body mass across claw size classes.</p>
 <pre class="r"><code># box plot for body mass across claw size using geom_boxplot
-p5 &lt;- ggplot(uca,aes(x=claw_size,y=crab_mass)) +
+p5 &lt;- ggplot(uca, aes(x = claw_size, y = crab_mass)) +
    geom_boxplot()
 p5
 
 # adding aesthetics
-p5 &lt;- ggplot(uca,aes(x=claw_size,y=crab_mass,fill=claw_size)) +
+p5 &lt;- ggplot(uca, aes(x = claw_size, y = crab_mass, fill = claw_size)) +
    geom_boxplot() +
   ylab(&quot;Body mass (g)&quot;) +
   xlab(&quot;Claw size class&quot;) +
-  theme_classic(18)
+  theme_classic()
 p5</code></pre>
 <p><br></p>
 <p><strong>Question:</strong></p>
