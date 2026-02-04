@@ -978,19 +978,10 @@ div.creme { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 </style>
 <div class="creme">
 <p><span style="color:blue; font-size:120%; font-weight:600">
-<strong>Info-Box!</strong> </span> Exporting and presenting graphs:</p>
+<p><strong>Info-Box!</strong> Adding captions and exporting figures:</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Figure export</strong> - RStudio provides an easy way to
-export images using different formats, including .pdf files. This
-feature is located in the <strong>Plots</strong> window (bottom right
-window of RStudio). Note that here you may manipulate the size of the
-image.</p></li>
-<li><p><strong>Figure caption</strong> - All graphs in a report must be
-accompanied by a caption (a short title and description below the
-figure). Note that all the figures in this module have their own name
-and description. In this way, graphs are stand alone figures in the
-report. The name of the figure is useful when referencing it in the main
-text of a report.</p></li>
+<li><p><strong>Figure captions in .Rmd</strong> – When creating graphs in an R Markdown (.Rmd) file, figures appear directly below the code chunk that produces them. Captions should be added within the chunk options using <code>fig.cap</code>. This automatically places a caption below the figure in the rendered document and allows figures to be numbered and referenced consistently. A good caption includes a short title and a brief description so the figure can stand alone.</p></li>
+<li><p><strong>Exporting a single figure with <code>ggsave()</code></strong> – If you need to save a figure separately (e.g., to save a figure for a presentation or a paper), you can use the <code>ggsave()</code> function from the <strong>ggplot2</strong> package (part of the tidyverse). This function saves the most recent plot, or a specified plot object, directly to a file such as .png or .pdf. You can also control the size and resolution of the exported figure to meet specific formatting requirements.</p></li>
 </ol>
 </div>
 <p><br></p>
