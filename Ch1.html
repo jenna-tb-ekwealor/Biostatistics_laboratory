@@ -372,16 +372,39 @@ the <em>class</em> of the data object (i.e., “anole.csv”), what
 <pre class="r"><code># data structure
 str(anole)</code></pre>
 </div>
+
+<p><strong>Formatting Questions in Your R Markdown (.Rmd) Report</strong></p>
+<p>In this course, format each question as a header in your .Rmd file, and then write your answer as plain text immediately below it. You do not have to re-type the full question, but including it is recommended so your report is easy to understand later without needing to look back at the lab manual.</p>
+
+<pre><code>## Question Set 1: Descriptive title
+
+### Question 1a
+*Optional: write the question text here.*
+
+Write your answer here as plain text. You can include R code chunks, figures,
+and brief interpretation as needed.
+
+### Question 1b
+*Optional: write the question text here.*
+
+Write your answer here.</code></pre>
+
+<p><br></p>
+
 <div id="questions" class="section level3">
-<h3><em>Questions</em></h3>
-<ol style="list-style-type: lower-alpha">
-<li><p><em>What is the class of the dataset “anole.csv” (e.g., data
-frame, table, tibble)?</em></p></li>
-<li><p><em>How many observations and variables does the dataset
-“anole.csv” have?</em></p></li>
-<li><p><em>What is the class of each variable in the dataset “anole.csv”
-(e.g., character, factor, numeric, integer)?</em></p></li>
-</ol>
+  <h3><em>Question Set 1: Dataset structure</em></h3>
+
+  <h4>Question 1a</h4>
+  <p><em>What is the class of the dataset “anole.csv” (e.g., data frame, table, tibble)?</em></p>
+
+  <h4>Question 1b</h4>
+  <p><em>How many observations and variables does the dataset “anole.csv” have?</em></p>
+
+  <h4>Question 1c</h4>
+  <p><em>What is the class of each variable in the dataset “anole.csv” (e.g., character, factor, numeric, integer)?</em></p>
+</div>
+
+
 <p>Other useful exploratory functions are <code>levels()</code>, which
 returns the unique values (levels) of a factor variable;
 <code>summary()</code>, which summarizes each variable in the dataset;
