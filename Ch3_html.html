@@ -702,14 +702,14 @@ freq_t &lt;- as.data.frame(freq_t)
 freq_t
 
 # reordering the bars per magnitude using the new dataframe
-p1 &lt;- ggplot(data=freq_t,aes(x=reorder(Var1,-Freq),y=Freq)) +
-   geom_bar(stat=&quot;identity&quot;)
+p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
+   geom_bar(stat = &quot;identity&quot;)
 p1</code></pre>
 <p><br></p>
 <p>Finally, let’s add some important aesthetics to <em>p1</em>.</p>
 <pre class="r"><code># adding y- and x-axis labels using ylab() and xlab()
-p1 &lt;- ggplot(data=freq_t,aes(x=reorder(Var1,-Freq),y=Freq)) +
-  geom_bar(stat=&quot;identity&quot;) +
+p1 &lt;- ggplot(data = freq_t, aes(x = reorder(Var1, -Freq), y = Freq)) +
+  geom_bar(stat = &quot;identity&quot;) +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw size class&quot;)
 p1
