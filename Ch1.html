@@ -484,13 +484,13 @@ femurs</code></pre>
       <em>Is the new object in the Global Environment?</em>
     </p></li>
 
+<p><br></p>
 
-<li><p>
-      <strong>3b.</strong>Now, say you are interested only in femurs of length higher than 10
+Now, say you are interested only in femurs of length higher than 10
 mm. To filter by row, use <code>filter()</code>. The first argument in
 this function is the data object, and the subsequent arguments are the
-column name and the condition.</em>
-    </p></li>
+column name and the condition.
+
 <pre class="r"><code># filtering femurs by femur length &gt; 10mm
 femurs_10mm &lt;- filter(femurs, Femur&gt;10)
 
@@ -498,13 +498,22 @@ femurs_10mm &lt;- filter(femurs, Femur&gt;10)
 femurs_10mm</code></pre>
 </div>
 
-<div id="questions-3" class="section level3">
-<h3><em>Questions</em></h3>
-<ol style="list-style-type: lower-alpha">
-<li><em>What’s the longest femur length in femurs_10mm?</em></li>
-<li><em>How many observations does femurs_10mm have?</em></li>
-</ol>
+<div id="question-set-4">
+<h3><em>Question Set 4</em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>4a.</strong>
+      <em>What’s the longest femur length in femurs_10mm?</em>
+    </p></li>
+    <li><p>
+      <strong>4b.</strong>
+      <em>How many observations does femurs_10mm have?</em>
+    </p></li>
+  </ol>
 </div>
+
+<p><br></p>
+
 <div id="descriptive-statistics" class="section level3">
 <h3>8. Descriptive statistics</h3>
 <p>Finally, keep in mind that R is a language in which we can define our
@@ -528,6 +537,8 @@ max(anole$Femur)
 # range of values for femur length
 range(anole$Femur)</code></pre>
 </div>
+
+
 <div id="questions-4" class="section level3">
 <h3><em>Questions</em></h3>
 <ol style="list-style-type: lower-alpha">
