@@ -694,21 +694,21 @@ this way, histograms split the data values into intervals or
 <p>Let’s explore the claw length distribution of the <em>Uca</em>
 crab.</p>
 <pre class="r"><code># histogram for claw length distribution
-p2 &lt;- ggplot(uca,aes(x=claw_length)) +
+p2 &lt;- ggplot(uca, aes(x = claw_length)) +
   geom_histogram() 
 p2
 
 # changing the bin width
-p2 &lt;- ggplot(uca,aes(x=claw_length)) +
+p2 &lt;- ggplot(uca, aes(x = claw_length)) +
   geom_histogram(binwidth = 2)
 p2
 
 # adding aesthetics
-p2 &lt;- ggplot(uca,aes(x=claw_length)) +
+p2 &lt;- ggplot(uca, aes(x= claw_length)) +
   geom_histogram(binwidth = 2) +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw length (mm)&quot;) +
-  theme_classic(18)
+  theme_classic()
 p2</code></pre>
 <div id="questions-2" class="section level3">
 <h3><em>Questions</em></h3>
@@ -746,11 +746,11 @@ stacked on top of one another.</p>
 <p>Let’s explore associations between claw size class and crab mass
 using a mosaic plot.</p>
 <pre class="r"><code># mosaic plot for claw size and crab body mas
-p3 &lt;- ggplot(data=uca,aes(x=claw_size,fill=mass_class)) +
+p3 &lt;- ggplot(data = uca, aes(x = claw_size, fill = mass_class)) +
   geom_bar() +
   ylab(&quot;Number of individuals&quot;) +
   xlab(&quot;Claw size class&quot;) +
-  theme_classic(18)
+  theme_classic()
 p3</code></pre>
 <div id="questions-3" class="section level3">
 <h3><em>Questions</em></h3>
@@ -793,16 +793,16 @@ p4 &lt;- ggplot(uca,aes(x=claw_mass,y=claw_length)) +
 p4
 
 # differentiating by mass class adding the aesthetic of color=mass_class
-p4 &lt;- ggplot(uca,aes(x=claw_mass,y=claw_length,color=mass_class)) +
+p4 &lt;- ggplot(uca, aes(x = claw_mass, y = claw_length, color = mass_class)) +
   geom_point()
 p4
 
 # adding all aesthetics
-p4 &lt;- ggplot(uca,aes(x=claw_mass,y=claw_length,color=mass_class)) +
+p4 &lt;- ggplot(uca, aes(x = claw_mass, y = claw_length, color = mass_class)) +
   geom_point() +
   ylab(&quot;Claw length (mm)&quot;) +
   xlab(&quot;Claw mass (g)&quot;) +
-  theme_classic(18)
+  theme_classic()
 p4</code></pre>
 <div id="questions-4" class="section level3">
 <h3><em>Questions</em></h3>
@@ -863,12 +863,12 @@ from the rest.</li>
 <p>Let’s explore the summaries of the frequency distributions of
 <em>Uca</em> crabs body mass across claw size classes.</p>
 <pre class="r"><code># box plot for body mass across claw size using geom_boxplot
-p5 &lt;- ggplot(uca,aes(x=claw_size,y=crab_mass)) +
+p5 &lt;- ggplot(uca, aes(x = claw_size, y = crab_mass)) +
    geom_boxplot()
 p5
 
 # adding aesthetics
-p5 &lt;- ggplot(uca,aes(x=claw_size,y=crab_mass,fill=claw_size)) +
+p5 &lt;- ggplot(uca, aes(x = claw_size, y = crab_mass, fill = claw_size)) +
    geom_boxplot() +
   ylab(&quot;Body mass (g)&quot;) +
   xlab(&quot;Claw size class&quot;) +
