@@ -714,12 +714,30 @@ div.creme { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 <p><strong>Research question 1</strong> Does the presence of <em>L. Latifolium</em> affect the abundance of soil invertebrates?</p>
 <p><strong>1. Import the data</strong> Let’s start by importing the “marsh” dataset to RStudio and exploring it. <strong>Hint</strong>: review past R scripts and don’t forget to use the metadata file for reference.</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>How many variables and observations does “marsh” have?</em></li>
-<li><em>Considering the research question, what are the response and explanatory variables?</em></li>
-<li><em>Considering the experiment and research question, what is the treatment?</em></li>
-</ol>
+
+<div id="question-set-1">
+  <h3>
+    <span style="color:#3891A6;">
+      <em>Question set 1</em>
+    </span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>1a.</strong>
+      <em>How many variables and observations does “marsh” have?</em>
+    </p></li>
+    <li><p>
+      <strong>1b.</strong>
+      <em>Considering the research question, what are the response and explanatory variables?</em>
+    </p></li>
+    <li><p>
+      <strong>1c.</strong>
+      <em>Considering the experiment and research question, what is the treatment?</em>
+    </p></li>
+  </ol>
+</div>
+
+
 <p><br></p>
 <p><strong>2. State the null and alternative hypotheses</strong></p>
 <p>Here, we are interested in whether the presence of <em>L. latifolium</em> affects soil invertebrate abundance, that is, whether the presence of <em>L. latifolium</em> increases <em>or</em> decreases the abundance of invertebrates in a wetland ecosystem. Therefore, our alternative hypothesis should be two-sided.</p>
@@ -739,10 +757,22 @@ p1 &lt;- ggplot(soil,aes(x=plant,y=n)) +
 
 p1</code></pre>
 <p><br></p>
-<p><strong>Question:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>How would you interpret the boxplot?</em></li>
-</ol>
+
+<div id="question-set-2">
+  <h3>
+    <span style="color:#3891A6;">
+      <em>Question set 2</em>
+    </span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>2a.</strong>
+      <em>How would you interpret the boxplot?</em>
+    </p></li>
+  </ol>
+</div>
+
+
 <p><br></p>
 <p>Let’s check other potential features of <em>L. latifolium</em> that could be contributing to the observed data. For that, let’s add another categorical variable to our plot; “stage_lep” or the life history stage of the invasive plant.</p>
 <pre class="r"><code># boxplot for abundance across L. latifolium stages
@@ -757,11 +787,26 @@ p3 &lt;- ggplot(drop_na(soil),aes(x=stage_lep,y=n)) +
 
 p3</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>How do these boxplots differ from the previous one?</em></li>
-<li><em>What biological meaning could this data trend have?</em></li>
-</ol>
+
+<div id="question-set-3">
+  <h3>
+    <span style="color:#3891A6;">
+      <em>Question set 3</em>
+    </span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>3a.</strong>
+      <em>How do these boxplots differ from the previous one?</em>
+    </p></li>
+    <li><p>
+      <strong>3b.</strong>
+      <em>What biological meaning could this data trend have?</em>
+    </p></li>
+  </ol>
+</div>
+
+
 <p><br></p>
 <p>Keep in mind that data visualization can be more useful than this. Let’s plot all variables together!</p>
 <pre class="r"><code># all together!
@@ -789,10 +834,22 @@ se_s_lep &lt;- sd(s_lep$n)/sqrt(36)
 se_s_lep</code></pre>
 <p>In this case, we say that the test statistic is 31 soil invertebrates on average per plot.</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What is the test statistic and its precision? Write it using an appropriate format.</em></li>
-</ol>
+
+<div id="question-set-4">
+  <h3>
+    <span style="color:#3891A6;">
+      <em>Question set 4</em>
+    </span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>4a.</strong>
+      <em>What is the test statistic and its precision? Write it using an appropriate format.</em>
+    </p></li>
+  </ol>
+</div>
+
+
 <p><br></p>
 <p><strong>4. Estimate the null distribution and the <em>p</em>-value</strong></p>
 <p>In this case, we can use the plots in the presence of native plants as a control treatment and use it to build the null distribution below. For this, we follow the steps in Chapter 4 and randomly sample the observed number of soil invertebrates per plot in the presence of native plants and estimate the mean abundance. We repeat the process 10,000 times.</p>
@@ -1167,22 +1224,54 @@ Probability
 </div>
 </div>
 <p><br></p>
-<p><strong>Question:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What is the p-value?</em></li>
-<li><em>Do you reject the null hypothesis? Explain.</em></li>
-</ol>
+
+<div id="question-set-5">
+  <h3>
+    <span style="color:#3891A6;">
+      <em>Question set 5</em>
+    </span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>5a.</strong>
+      <em>What is the p-value?</em>
+    </p></li>
+    <li><p>
+      <strong>5b.</strong>
+      <em>Do you reject the null hypothesis? Explain.</em>
+    </p></li>
+  </ol>
+</div>
+
+
 <p><br></p>
 <p><strong>Research question 2</strong> Does the presence of <em>L. Latifolium</em> in the rosette stage affect the abundance of soil invertebrates?</p>
 <p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think, Do:</strong> </span> Now is your turn to test the null hypothesis against the alternative hypothesis that the presence of <em>L. latifolium</em> in rosette stage (circular arrangement of leaves before flowering) affects the abundance of soil invertebrates. <strong>Stop</strong> and review steps 3-4 you just did. <strong>Think</strong> about how to manage the “soil” dataset to obtain the data needed to address the research question. <strong>Do</strong> the analysis following the demonstration codes and test your hypothesis. <strong>Hint</strong>: Create a new data frame filtering “soil” by stage_lep==“rosette” and follow the steps above using the same null hypothesis.</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What is the p-value?</em></li>
-<li><em>Do you reject the null hypothesis? Explain.</em></li>
-</ol>
+
+<div id="question-set-6">
+  <h3>
+    <span style="color:#3891A6;">
+      <em>Question set 6</em>
+    </span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>6a.</strong>
+      <em>What is the p-value?</em>
+    </p></li>
+    <li><p>
+      <strong>6b.</strong>
+      <em>Do you reject the null hypothesis? Explain.</em>
+    </p></li>
+  </ol>
+</div>
+
+
 <p><br></p>
-<p><span style="color:#2724ed; font-size:150%; font-weight:600"> Discussion questions </span></p>
+
+<p><span style="color:#5FAD56; font-size:150%; font-weight:600">
+Discussion questions: </span></p>
 <ol style="list-style-type: lower-alpha">
 <li><em>Define the null and the alternative hypothesis.</em></li>
 <li><em>Why do we need to use a null distribution to test hypotheses?</em></li>
