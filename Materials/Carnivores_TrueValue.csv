@@ -1,8 +1,7 @@
 ﻿carnivore,tooth,TV
-Bobcat,left,1.3775
-Bobcat,right,1.2315
-Coyote,left,2.541
-Coyote,right,2.699
-Kangaroo_rat,left,0.6555
-Kangaroo_rat,right,0.637
-
+bobcat,left,1.3775
+bobcat,right,1.2315
+coyote,left,2.541
+coyote,right,2.699
+kangaroo_rat,left,0.6555
+kangaroo_rat,right,0.637
