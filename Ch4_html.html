@@ -1082,12 +1082,22 @@ age in females?</p>
 review past R scripts and don’t forget to use the metadata file for
 reference.</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>How many variables and observations does “cayo” have?</em></li>
-<li><em>Considering the research question, what are our variables of
-interest and what type of variables are they?</em></li>
-</ol>
+<div id="question-set-1">
+  <h3>
+    <span style="color:#3891A6;"><em><strong>Question set 1</strong></em></span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>1a.</strong>
+      <em>How many variables and observations does “cayo” have?</em>
+    </p></li>
+    <li><p>
+      <strong>1b.</strong>
+      <em>Considering the research question, what are our variables of interest and what type of variables are they?</em>
+    </p></li>
+  </ol>
+</div>
+
 <p><br></p>
 <p><strong>2. Infer population parameters from random
 samples</strong></p>
@@ -1121,12 +1131,22 @@ mu
 sigma &lt;- sd(cayo$age_at_death)
 sigma</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What ages experience more death?</em></li>
-<li><em>What do <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> represent and what are their
-values?</em></li>
-</ol>
+<div id="question-set-2">
+  <h3>
+    <span style="color:#3891A6;"><em><strong>Question set 2</strong></em></span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>2a.</strong>
+      <em>What ages experience more death?</em>
+    </p></li>
+    <li><p>
+      <strong>2b.</strong>
+      <em>What do <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> represent and what are their values?</em>
+    </p></li>
+  </ol>
+</div>
+
 <p><br></p>
 <p>Now, let’s explore the distribution of age at death for females. But
 first, do we have information for all females in the population? Let’s
@@ -1134,13 +1154,22 @@ check the levels of the variable “sex”.</p>
 <pre class="r"><code># checking the levels in the variable sex
 levels(as.factor(cayo$sex))</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What sex categories do we have?</em></li>
-<li><em>Considering the fact that we have unknown categories, what
-distribution (population or sampling) can we estimate and what average
-and spread measure can we get?</em></li>
-</ol>
+<div id="question-set-3">
+  <h3>
+    <span style="color:#3891A6;"><em><strong>Question set 3</strong></em></span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>3a.</strong>
+      <em>What sex categories do we have?</em>
+    </p></li>
+    <li><p>
+      <strong>3b.</strong>
+      <em>Considering the fact that we have unknown categories, what distribution (population or sampling) can we estimate and what average and spread measure can we get?</em>
+    </p></li>
+  </ol>
+</div>
+
 <p><br></p>
 <p>Let’s estimate the mean age at death and its standard deviation for
 females.</p>
@@ -1162,12 +1191,22 @@ s_fem</code></pre>
 <p><span style="color:red; font-size:150%; font-weight:600"> Challenge
 1. </span> Plot the distribution of age at death for females.</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What female ages experience more deaths?</em></li>
-<li><em>Is this pattern different from the entire population
-distribution?</em></li>
-</ol>
+<div id="question-set-4">
+  <h3>
+    <span style="color:#3891A6;"><em><strong>Question set 4</strong></em></span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>4a.</strong>
+      <em>What female ages experience more deaths?</em>
+    </p></li>
+    <li><p>
+      <strong>4b.</strong>
+      <em>Is this pattern different from the entire population distribution?</em>
+    </p></li>
+  </ol>
+</div>
+
 <p><br></p>
 <p><strong>3. Estimate the sampling distribution</strong></p>
 <p>From the random sample above (<em>n</em> = 737), we estimated a mean
@@ -1201,13 +1240,26 @@ p3 &lt;- ggplot(r500,aes(x = r500)) +
 
 p3</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Is the sampling distribution centered around <span class="math inline">\(\overline{y}\)</span>?</em></li>
-<li><em>What is the relationship between s_fem and the shape of the
-sampling distribution?</em></li>
-<li><em>What is your expectation for <span class="math inline">\(\overline{y}\)</span> and <span class="math inline">\(s\)</span> if you re-run the exercise with <span class="math inline">\(n\)</span> = 50?</em></li>
-</ol>
+<div id="question-set-5">
+  <h3>
+    <span style="color:#3891A6;"><em><strong>Question set 5</strong></em></span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>5a.</strong>
+      <em>Is the sampling distribution centered around <span class="math inline">\(\overline{y}\)</span>?</em>
+    </p></li>
+    <li><p>
+      <strong>5b.</strong>
+      <em>What is the relationship between s_fem and the shape of the sampling distribution?</em>
+    </p></li>
+    <li><p>
+      <strong>5c.</strong>
+      <em>What is your expectation for <span class="math inline">\(\overline{y}\)</span> and <span class="math inline">\(s\)</span> if you re-run the exercise with <span class="math inline">\(n\)</span> = 50?</em>
+    </p></li>
+  </ol>
+</div>
+
 <p><br></p>
 <p><strong>4. Estimate the standard error</strong></p>
 <p>Let’s use the formula in the worked example to estimate the standard
@@ -1217,10 +1269,18 @@ root.</p>
 se_fem &lt;- s_fem/sqrt(737)
 se_fem</code></pre>
 <p><br></p>
-<p><strong>Questions</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>How precise is your sample mean?</em></li>
-</ol>
+<div id="question-set-6">
+  <h3>
+    <span style="color:#3891A6;"><em><strong>Question set 6</strong></em></span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>6a.</strong>
+      <em>How precise is your sample mean?</em>
+    </p></li>
+  </ol>
+</div>
+
 <p><br></p>
 <p><strong>5. Plot the probability distribution of the mean age at
 death</strong></p>
@@ -1234,11 +1294,18 @@ p4 &lt;- ggplot(f, aes(age_at_death)) +
     ylab(&quot;Probability density&quot;)
 p4</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Is there any pattern in the figure? Interpret it
-“biologically”.</em></li>
-</ol>
+<div id="question-set-7">
+  <h3>
+    <span style="color:#3891A6;"><em><strong>Question set 7</strong></em></span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>7a.</strong>
+      <em>Is there any pattern in the figure? Interpret it “biologically”.</em>
+    </p></li>
+  </ol>
+</div>
+
 <p><br></p>
 <p><strong>6. Estimate the probability of two or more (survival)
 events</strong></p>
@@ -1272,13 +1339,22 @@ s1
 # probability of surviving from birth to 2 years of age 
 s0*s1</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Why did you multiply each probability s0 and s1 in the last
-step?</em></li>
-<li><em>What is the probability that a female will survive to 2 years of
-age?</em></li>
-</ol>
+<div id="question-set-8">
+  <h3>
+    <span style="color:#3891A6;"><em><strong>Question set 8</strong></em></span>
+  </h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p>
+      <strong>8a.</strong>
+      <em>Why did you multiply each probability s0 and s1 in the last step?</em>
+    </p></li>
+    <li><p>
+      <strong>8b.</strong>
+      <em>What is the probability that a female will survive to 2 years of age?</em>
+    </p></li>
+  </ol>
+</div>
+
 <p><br></p>
 <p><strong>Research question 2</strong>: Do hurricanes affect survival
 from birth to 2 years of age?</p>
@@ -1299,14 +1375,14 @@ the demonstration codes and answer the research question.
 6.</p>
 <p><br></p>
 <p><span style="color:#2724ed; font-size:150%; font-weight:600">
-Discussion questions </span></p>
+Discussion questions: </span></p>
 <ol style="list-style-type: lower-alpha">
-<li><em>Mention one example of a population distribution and one of a
-sampling distribution?</em></li>
-<li><em>Compare the measurement of precision carried out in Chapter 2
-and today’s measurement of precision.</em></li>
-<li><em>What assumptions do we need to make to apply the multiplication
-rule in our survival exercise?</em></li>
+  <li><p><em>Mention one example of a population distribution and one of a
+  sampling distribution?</em></p></li>
+  <li><p><em>Compare the measurement of precision carried out in Chapter 2
+  and today’s measurement of precision.</em></p></li>
+  <li><p><em>What assumptions do we need to make to apply the multiplication
+  rule in our survival exercise?</em></p></li>
 </ol>
 <p><br></p>
 <center>
