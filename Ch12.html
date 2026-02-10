@@ -208,7 +208,7 @@ summary(tick_glm)</code></pre>
 <br>
 
 <div class="questions" style="margin-top: 30px;">
-<p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think, Do:</strong> </span> <strong>Stop</strong> and consider: <em>What is the coefficient for rodent richness, and what does it mean? Is it statistically significant?</em></p>
+<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3> <strong>Stop</strong> and consider: <em>What is the coefficient for rodent richness, and what does it mean? Is it statistically significant?</em></p>
 </div>
 <br>
 </ul>
@@ -284,7 +284,7 @@ plot(tick_glm)</code></pre>
 <h4>5. Add another predictor</h4>
 <p style="text-align: justify;">In Chapter 10, we explored how using two explanatory variables together can help reveal interactions or explain more variation in a response. Here, we’ll test whether adding another biologically relevant predictor (predator diversity) improves our model of tick infection density. This step mirrors the idea of exploring multiple factors at once, just as we did with two-way ANOVA.</p>
 <div class="questions" style="margin-top: 30px;">
-<p><span style="color:#66023C; font-size:100%; font-weight:600"> <strong>Stop, Think:</strong> </span> <strong>Stop</strong> and consider the original research question and study design. <strong>Think</strong> about what other biological factors could influence tick infection density, and whether interactions among variables, like those you explored in two-way ANOVA, might reveal new insights.</p>
+<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3> <strong>Stop</strong> and consider the original research question and study design. <strong>Think</strong> about what other biological factors could influence tick infection density, and whether interactions among variables, like those you explored in two-way ANOVA, might reveal new insights.</p>
 </div>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Compare two GLMs with AIC</span>
 tick_glm2 &lt;- glm(DIN_Bbsl ~ Rodent_Rich + Predator_Shannon_wCat, family = \"poisson\", data = tick)

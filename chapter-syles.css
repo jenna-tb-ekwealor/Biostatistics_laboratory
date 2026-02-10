@@ -161,3 +161,75 @@ div.creme {
   padding: 20px;
   font-size: 90%;
 }
+
+/* =========================
+   Color tokens (single source of truth)
+   ========================= */
+:root{
+  --c-stopthinkdo: #fbc64c;
+  --c-question-set: #3891A6;        /* also chapter links if you want */
+  --c-discussion: #5FAD56;
+  --c-challenge: #fd6b42;
+  --c-info-header: #45bfd8;
+
+  --bg-info: #ffebc2;
+  --bg-investigation: #c8e8ed;
+}
+
+/* =========================
+   Links (chapter + question-set color choice)
+   ========================= */
+a {
+  color: var(--c-question-set);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+a:visited { color: var(--c-question-set); }
+
+/* =========================
+   Investigation box
+   ========================= */
+.investigation {
+  background-color: var(--bg-investigation);
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+/* =========================
+   Info box (formerly creme, if you want to standardize)
+   ========================= */
+.info-box {
+  background-color: var(--bg-info);
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 90%;
+}
+
+.info-box .info-title {
+  color: var(--c-info-header);
+  font-weight: 700;
+}
+
+/* =========================
+   Section headers / callouts
+   ========================= */
+.stop-think-do-title {
+  color: var(--c-stopthinkdo);
+  font-weight: 700;
+}
+
+.question-set-title {
+  color: var(--c-question-set);
+  font-weight: 700;
+}
+
+.discussion-questions-title {
+  color: var(--c-discussion);
+  font-weight: 700;
+}
+
+.challenge-title {
+  color: var(--c-challenge);
+  font-weight: 700;
+}
