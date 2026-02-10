@@ -167,13 +167,13 @@ div.creme {
    ========================= */
 :root{
   --c-stopthinkdo: #fbc64c;
-  --c-question-set: #3891A6;        /* also chapter links if you want */
+  --c-question-set: #3891A6;        /* also chapter links */
   --c-discussion: #5FAD56;
   --c-challenge: #fd6b42;
   --c-info-header: #45bfd8;
 
   --bg-info: #ffebc2;
-  --bg-investigation: #c8e8ed;
+  --bg-investigation: rgba(200, 232, 237, 0.6);
 }
 
 /* =========================
