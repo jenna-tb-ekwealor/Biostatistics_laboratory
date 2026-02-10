@@ -6,3 +6,8 @@
     "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
   document.getElementsByTagName("head")[0].appendChild(script);
 })();
+
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+}
