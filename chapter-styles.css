@@ -172,8 +172,8 @@ div.creme {
   --c-challenge: #fd6b42;
   --c-info-header: #45bfd8;
 
-  --bg-info: #ffebc2;
-  --bg-investigation: rgba(200, 232, 237, 0.6);
+  --bg-info: rgba(255, 235, 194, 0.4);
+  --bg-investigation: rgba(200, 232, 237, 0.4);
 }
 
 /* =========================
