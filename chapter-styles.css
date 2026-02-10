@@ -112,6 +112,23 @@ pre {
 }
 
 /* =========================
+   Pandoc syntax highlighting
+   ========================= */
+
+pre.sourceCode {
+  background-color: #f2f2f2;
+}
+
+code.sourceCode > span { color: inherit; }
+
+.sourceCode .kw { color: #007020; font-weight: 600; } /* keywords */
+.sourceCode .co { color: #6a737d; font-style: italic; } /* comments */
+.sourceCode .st { color: #a31515; } /* strings */
+.sourceCode .dv { color: #005cc5; } /* numbers */
+.sourceCode .fu { color: #6f42c1; } /* functions */
+.sourceCode .va { color: #24292e; } /* variables */
+
+/* =========================
    Syntax highlighting (Pandoc / R Markdown)
    ========================= */
 
