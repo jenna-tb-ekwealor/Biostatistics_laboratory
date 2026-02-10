@@ -195,6 +195,9 @@ a:visited { color: var(--c-question-set); }
   margin-bottom: 20px;
   border-radius: 6px;
 }
+.investigation strong {
+  margin-right: 0.25em;
+}
 
 /* =========================
    Info box (formerly creme, if you want to standardize)
