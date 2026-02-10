@@ -7,16 +7,7 @@
 <title>Ch. 4: Probability distributions</title>
 
 <link rel="stylesheet" href="chapter-styles.css">
-<script>
-(function () {
-  var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src =
-    "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-  document.getElementsByTagName("head")[0].appendChild(script);
-})();
-</script>
-
+<script src="site.js"></script>
 
 </head>
 <body>
@@ -631,6 +622,7 @@ a sampling distribution using a random sample of <em>n</em> = 500
 females. For this, we will employ the function <strong>sample()</strong>
 which allows us to randomly sample a dataframe. Because we want to
 repeat this process 10,000 times, we will use a loop in our coding.</p>
+
 <pre class="r"><code># creating a new object to add the 10,000 sample statistics
 r500 &lt;- NULL 
 
@@ -653,6 +645,7 @@ p3 &lt;- ggplot(r500,aes(x = r500)) +
   ylab(&quot;Probability&quot;)
 
 p3</code></pre>
+
 <p><br></p>
 <div id="question-set-5">
   <h3>
@@ -770,7 +763,7 @@ s0*s1</code></pre>
 </div>
 
 <p><br></p>
-<div class="research-question"><strong>Research question 2:</strong> Do hurricanes affect survival
+<div class="research-question">Research question 2: Do hurricanes affect survival
 from birth to 2 years of age?</div>
 
 <p>At this point, we have knowledge about mortality patterns in female
