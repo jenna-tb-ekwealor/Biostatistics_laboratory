@@ -112,6 +112,51 @@ pre {
 }
 
 /* =========================
+   Syntax highlighting (Pandoc / R Markdown)
+   ========================= */
+
+code {
+  font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+pre code {
+  color: #333;
+}
+
+/* Comments */
+.sourceCode .co {
+  color: #6a737d;
+  font-style: italic;
+}
+
+/* Keywords */
+.sourceCode .kw {
+  color: #005cc5;
+  font-weight: 600;
+}
+
+/* Strings */
+.sourceCode .st {
+  color: #a31515;
+}
+
+/* Numbers */
+.sourceCode .dv {
+  color: #005cc5;
+}
+
+/* Functions */
+.sourceCode .fu {
+  color: #6f42c1;
+}
+
+/* Variables */
+.sourceCode .va {
+  color: #24292e;
+}
+
+
+/* =========================
    Question / challenge blocks
    ========================= */
 
