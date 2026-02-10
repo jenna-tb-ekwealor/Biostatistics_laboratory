@@ -300,6 +300,10 @@ a:visited { color: var(--c-question-set); }
   font-weight: 600;
 }
 
+.section-intro {
+  margin-top: 20px;
+}
+
 /* =========================
    Research question (primary focal element)
    ========================= */
