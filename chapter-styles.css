@@ -94,8 +94,8 @@ a:visited {
    ========================= */
 
 .investigation {
-  background-color: rgba(214, 231, 251, 0.6);  
-  padding: 22px 22px;
+  background-color: rgba(214, 231, 251, 0.6); 
+  padding: 20px 22px;
   margin-bottom: 20px;
   border-radius: 6px;
 }
