@@ -237,3 +237,29 @@ a:visited { color: var(--c-question-set); }
   font-size: 150%;
   font-weight: 600;
 }
+
+/* =========================
+   Research question (primary focal element)
+   ========================= */
+
+.research-question {
+  font-size: 140%;
+  font-style: italic;
+  font-weight: 500;
+  color: #327527;
+  text-align: center;
+  margin: 40px 0 35px 0;
+}
+
+/* =========================
+   Section banner (large thematic headers)
+   ========================= */
+
+.section-banner {
+  font-size: 200%;
+  font-weight: 600;
+  color: #342a8c;          
+  text-align: center;
+  margin: 50px 0 30px 0;
+}
+
