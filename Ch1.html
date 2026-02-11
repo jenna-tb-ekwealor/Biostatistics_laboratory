@@ -3,9 +3,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ch. 1: Introduction to R and RStudio</title>
+    
+<title>Ch. 1: Introduction to R and RStudio</title>
     
 <link rel="stylesheet" href="chapter-styles.css">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="site.js"></script>
+
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
 
 </head>
 <body>
@@ -15,7 +32,6 @@
     ← Home
   </a>
 </div>
-
 
 <h1>Introduction to R and RStudio</h1>
 <h2>Chapter 1</h2>
@@ -495,8 +511,8 @@ range(anole$Femur)</code></pre>
   </ol>
 </div>
 
-<div id="stop-think-do" class="section level3">
-<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3>
+
+<div class="stop-think-do-title">Stop, Think, Do:</div>
 <p>Now, it is your turn to practice what we have done with dataset
 “lizards”. <strong>Stop</strong> and review the steps 1-7 you just did.
 <strong>Think</strong> about how you could manipulate such codes in
@@ -505,7 +521,7 @@ analysis and answer the questions! <em>Hint</em>: give an appropriate
 name to the new objects you will create for “lizards”. Such names should
 not overwrite the ones used for “anole.csv” in your script. Do the
 analysis and be ready to present it!</p>
-</div>
+
 <div id="discussion-questions" class="section level3">
 <h3><span class="discussion-questions-title">Discussion Questions</span></h3>
 <ol style="list-style-type: lower-alpha">
@@ -593,45 +609,3 @@ Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 
 </div>
 
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
-</body>
-</html>
