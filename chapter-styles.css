@@ -63,34 +63,37 @@ hr {
    ========================= */
 
 .chapter-navigation {
-  margin: 3em 0 2em 0;
+  margin-bottom: 2em;
 }
 
-/* Home centered above */
+/* Home stays left */
 .nav-home {
-  text-align: center;
-  margin-bottom: 1.5em;
-  font-weight: 600;
+  margin-bottom: 0.4em;
 }
 
-/* Row for prev/next */
+/* Previous + Next on same row */
 .nav-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Push Next fully to the right */
+.nav-next {
+  margin-left: auto;
+}
+
 /* Link styling */
 .chapter-navigation a {
   text-decoration: none;
-  font-weight: 600;
-  color: var(--c-info-header);
-  transition: opacity 0.2s ease;
+  font-weight: 500;
+  color: #183d14; /* or use your theme variable */
 }
 
 .chapter-navigation a:hover {
-  opacity: 0.7;
+  text-decoration: underline;
 }
+
 
 
 /* =========================
@@ -207,17 +210,6 @@ pre code {
   font-weight: bold;
 }
 
-.challenge-title {
-  color: red;
-  font-size: 150%;
-  font-weight: 600;
-}
-
-.discussion-title {
-  color: #2724ed;
-  font-size: 150%;
-  font-weight: 600;
-}
 
 /* =========================
    Figures
@@ -234,16 +226,6 @@ pre code {
   margin-top: 5px;
 }
 
-/* =========================
-   Creme / info boxes
-   ========================= */
-
-div.creme {
-  background-color: #fff5e6;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 100%;
-}
 
 /* =========================
    Color tokens (single source of truth)
