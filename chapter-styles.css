@@ -87,7 +87,6 @@ hr {
 .chapter-navigation a {
   text-decoration: none;
   font-weight: 500;
-  color: #183d14; /* or use your theme variable */
 }
 
 .chapter-navigation a:hover {
