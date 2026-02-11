@@ -327,7 +327,7 @@ SE &lt;- sqrt((p_hat*(1-p_hat))/n)
 SE</code></pre>
 <p>According to this, 0.30 ± 0.03 sentinel birds (mean±SE) produce an alarm call in the presence of raptors.</p>
 
-<p><strong>5. Test the hypothesis using the binomial test</strong>.</p>
+<h3>5. Test the hypothesis using the binomial test</h3>
 <p>We estimated the binomial probabilities given <em>X</em>, <em>n</em>, and <em>p</em>. This is different from testing a hypothesis, which requires a null probability of success <span class="math inline">\(p_0\)</span> and a <em>p</em>-value.</p>
 
 <h3><div class="stop-think-do-title">Stop, Think, Do:</div></h3> In this case, we have information about the proportion of sentinel birds producing an alarm call during a control trial. During a control trial, a researcher would stand at the same distance as in a raptor trial from the bird flock and carry out the same gesture as if he/she was releasing a trained raptor. However, there was no raptor involved in the trial. <strong>Stop</strong> and review the definition of a null hypothesis. <strong>Think</strong> about why the researcher would simulate the same gesture in a control trial.</p>
@@ -367,7 +367,8 @@ binom.test(X, n, p_null)</code></pre>
 <div class="research-question">Research question 2: Is raptor size a visual cue driving the proportion of sentinel birds producing alarm calls?</div>
 
 
-<div class="stop-think-do-title">Stop, Think, Do:</div> Now, it is your turn to test this hypothesis about raptor size. <strong>Stop</strong> and review the steps 2-5 you just did. <strong>Think</strong> about how to manage the “raptor” data set to obtain the data needed to address the research question. <strong>Do</strong> the analysis following the demonstration codes and answer the research question! <strong>Super Hint</strong>: Create a new dataframe filtering “raptor” by SIZE==“small” and follow the steps above using the same null hypothesis.</p>
+<div id="stop-think-do" class="section level3">
+<h3><div class="stop-think-do-title">Stop, Think, Do:</div></h3> <p>Now, it is your turn to test this hypothesis about raptor size. <strong>Stop</strong> and review the steps 2-5 you just did. <strong>Think</strong> about how to manage the “raptor” data set to obtain the data needed to address the research question. <strong>Do</strong> the analysis following the demonstration codes and answer the research question! <strong>Super Hint</strong>: Create a new dataframe filtering “raptor” by SIZE==“small” and follow the steps above using the same null hypothesis.</p>
 
 
 <div id="discussion-questions" class="section level3">
