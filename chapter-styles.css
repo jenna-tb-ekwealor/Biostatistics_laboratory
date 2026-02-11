@@ -59,32 +59,15 @@ hr {
 }
 
 /* =========================
-   Navigation (Home link)
+   Chapter Navigation
    ========================= */
 
 .chapter-navigation {
+  width: 100%;
   margin-bottom: 2em;
 }
 
-.nav-home a {
-  font-weight: 900;
-}
-
-.nav-row {
-  display: flex;
-  width: 100%;
-}
-
-.nav-prev {
-  text-align: left;
-}
-
-.nav-next {
-  margin-left: auto;   /* THIS is what pushes it right */
-  text-align: right;
-}
-
-/* Link styling */
+/* Base link styling */
 .chapter-navigation a {
   text-decoration: none;
   font-weight: 500;
@@ -94,6 +77,28 @@ hr {
   text-decoration: underline;
 }
 
+/* Home (bold) */
+.chapter-navigation .nav-home a {
+  font-weight: 900;
+}
+
+/* Layout row for Prev / Next */
+.nav-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+/* Left side */
+.nav-prev {
+  text-align: left;
+}
+
+/* Right side */
+.nav-next {
+  margin-left: auto;  /* pushes to right */
+  text-align: right;
+}
 
 
 /* =========================
