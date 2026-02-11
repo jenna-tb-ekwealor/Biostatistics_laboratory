@@ -1,98 +1,62 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Phylogenetics</title>
-<style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: auto;
-            max-width: 770px;
-            line-height: 1.4;
-            color: #000;
-            padding: 20px 30px;
-        }
-        h1 {
-            font-size: 38px;
-            text-align: center;
-            margin: 0;
-            font-weight: normal;
-        }
-        h2 {
-            font-size: 18px;
-            color: #000;
-            text-align: center;
-            font-style: italic;
-            font-weight: normal;
-            margin-top: 0;
-            margin-bottom: 40px;
-        }
-        h3 {
-            font-size: 150%;
-            color: #66023C;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 10px;
-        }
-        h4 {
-            margin-top: 30px;
-        }
-        hr {
-            border: none;
-            border-top: 1px solid #ddd;
-            margin: 25px 0;
-        }
-        .investigation {
-            background-color: rgba(214, 231, 251, 0.6);
-            padding: 20px 22px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-        pre {
-            background-color: #F2F2F2;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        .questions, .challenge {
-            margin: 15px 0;
-        }
-        .bonus {
-            font-weight: bold;
-        }
-        .challenge-title {
-            color: red;
-            font-size: 150%;
-            font-weight: 600;
-        }
-        .discussion-title {
-            color: #2724ed;
-            font-size: 150%;
-            font-weight: 600;
-        }
-        .figure {
-            margin: 25px 0;
-            text-align: center;
-        }
-        .figure-caption {
-            font-size: 0.9em;
-            color: #555;
-            margin-top: 5px;
-        }
-        div.creme {
-            background-color: #fff5e6;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 80%;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Ch. 14: Phylogenetics</title>
+
+<link rel="stylesheet" href="chapter-styles.css">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="site.js"></script>
+
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
 </head>
 <body>
+
+<div class="chapter-navigation">
+
+  <div class="nav-home">
+    <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/">
+      Home
+    </a>
+  </div>
+
+  <div class="nav-row">
+    <div class="nav-prev">
+    <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch13.html">
+        ← Previous Chapter
+      </a>
+    </div>
+
+    <div class="nav-next">
+    <a href="https://jenna-tb-ekwealor.github.io/Biostatistics_laboratory/Ch15.html">
+        Next Chapter →
+      </a>
+    </div>
+  </div>
+
+</div>
+
 <h1>Phylogenetics</h1>
 <h2>Chapter 14</h2>
 <div class="investigation">
-<p><strong>Today’s investigation.</strong> Understanding how species diverge is a central question in evolutionary biology. 
+  <p>
+    <strong>Today’s investigation.</strong>
+Understanding how species diverge is a central question in evolutionary biology. 
 In some cases, distinct evolutionary lineages may be morphologically indistinguishable; a phenomenon known as cryptic speciation. 
 These hidden patterns of biodiversity are especially common in marine invertebrates, where external morphology may not reflect underlying genetic structure. 
 Today, we will use mitochondrial COI sequence data from brooding <em>Leptasterias</em> sea stars, collected as part of research by the Cohen Lab at San Francisco State University, to investigate patterns of divergence using phylogenetic trees.</p>
