@@ -362,7 +362,7 @@ Probability
 
 <h3>2. State the null and alternative hypotheses</h3>
 <p>Here, we are interested in whether the presence of <em>L. latifolium</em> affects soil invertebrate abundance, that is, whether the presence of <em>L. latifolium</em> increases <em>or</em> decreases the abundance of invertebrates in a wetland ecosystem. Therefore, our alternative hypothesis should be two-sided.</p>
-<p><span style="color:#FE654F; font-size:150%; font-weight:600"> Challenge 1. </span> </span> State the null and the alternative hypothesis.</p>
+<p><span style="color:#FE654F; font-size:150%; font-weight:600"> Challenge 1: </span> </span> State the null and the alternative hypothesis.</p>
 
 <p>Now, let’s visualize the variables of interest before testing <span class="math inline">\(H_0\)</span>. Our explanatory variable (“plant”) is categorical and the response variable (“n”) is numerical. Thus, we use a boxplot.</p>
 <pre class="r"><code># loading packages
@@ -370,10 +370,10 @@ library(ggplot2)
 library(tidyverse)
 
 # filtering by invertebrate type
-soil &lt;- filter(marsh,invertebrate==&quot;soil&quot;)
+soil &lt;- filter(marsh,invertebrate == &quot;soil&quot;)
 
 # boxplot for abundance across treatment
-p1 &lt;- ggplot(soil,aes(x=plant,y=n)) +
+p1 &lt;- ggplot(soil, aes(x = plant, y = n)) +
   geom_boxplot()
 
 p1</code></pre>
@@ -431,7 +431,7 @@ p3</code></pre>
 
 <p>Keep in mind that data visualization can be more useful than this. Let’s plot all variables together!</p>
 <pre class="r"><code># all together!
-p4 &lt;- ggplot(soil,aes(x=plant,y=n,fill=stage_lep)) +
+p4 &lt;- ggplot(soil, aes(x = plant, y = n, fill = stage_lep)) +
   geom_boxplot()
 
 p4</code></pre>
@@ -442,7 +442,7 @@ p4</code></pre>
 <p>Let’s estimate the mean soil invertebrate abundance per plot per treatment.</p>
 <pre class="r"><code># filtering data by invertebrate type and treatment
 s_lep &lt;- filter(marsh,
-               invertebrate==&quot;soil&quot; &amp; plant==&quot;Lep&quot;)
+               invertebrate == &quot;soil&quot; &amp; plant == &quot;Lep&quot;)
 
 # mean abundance per plot
 m_s_lep &lt;- mean(s_lep$n)
