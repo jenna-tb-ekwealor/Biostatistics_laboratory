@@ -66,6 +66,11 @@ hr {
   margin-bottom: 2em;
 }
 
+.nav-home a {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
 .nav-row {
   display: flex;
   width: 100%;
