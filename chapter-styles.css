@@ -266,18 +266,31 @@ a:visited { color: var(--c-question-set); }
 }
 
 /* =========================
-   Info box (formerly creme, if you want to standardize)
+   Info Box Container 
    ========================= */
+
 .info-box {
-  background-color: var(--bg-info);
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 90%;
+  background-color: #fdf6ec; /* light creme tone */
+  border-left: 6px solid var(--c-info-header);
+  padding: 1.2em 1.4em;
+  margin: 1.5em 0;
+  border-radius: 6px;
 }
 
+/* Info Box Title */
 .info-box .info-title {
   color: var(--c-info-header);
   font-weight: 700;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.6em;
+}
+
+/* Optional: center formula text cleanly */
+.info-box .info-center {
+  text-align: center;
+  font-weight: 700;
+  margin: 0.8em 0;
 }
 
 /* =========================
