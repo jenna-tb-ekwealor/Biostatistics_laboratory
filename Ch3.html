@@ -102,8 +102,7 @@ Visualization</a></li>
 <li><a href="http://www.cookbook-r.com/Graphs/">Cookbook for R</a></li>
 </ul>
 <hr />
-<p><span style="color:#66023C; font-size:150%; font-weight:600"> Worked
-example </span> <br></p>
+<h3> Worked example </h3>
 <p>To get started, let’s remind ourselves the different variable
 types:</p>
 <ul>
@@ -248,12 +247,9 @@ main exercises using the relatively small <em>Uca</em> crab dataset
 followed by a challenge exercise using the larger microbial genomics
 dataset.</p>
 
-<center>
-<span style="color:darkblue; font-size:200%; font-weight:500">Visualizing
-data</span>
-</center>
+<div class="section-banner">Visualizing data</div>
 
-<p><strong>1. Import the data</strong></p>
+<h3>1. Import the data</h3>
 <p>Import both datasets to RStudio and check them out. <strong>Don’t
 forget to use the metadata file for reference.</strong></p>
 <pre class="r"><code># importing the uca data
@@ -285,9 +281,6 @@ It is advised that you delete or comment out this line prior to knitting.
   </ol>
 </div>
 
-
-
-
 <div class="creme">
 <p><span style="color:blue; font-size:120%; font-weight:600">
 <p><strong>Info Box!</strong> To plot the data, we will use R package
@@ -314,7 +307,7 @@ DATA, mapping = aes(MAPPINGS)) + GEOM_FUNCTION()</span>,
 for your reference such as the <a href="http://www.cookbook-r.com/Graphs/">Cookbook for R</a>.</p>
 </div>
 
-<p><strong>2. Displaying data for one variable</strong></p>
+<h3>2. Displaying data for one variable</h3>
 <p>To examine data for a single variable we use <strong>frequency
 distributions</strong> which are the number of occurrences of each value
 in the data.</p>
@@ -409,8 +402,7 @@ When knitting to PDF, the final appearance depends on the figure dimensions (fig
 
 
 
-<p><span style="color:#FE654F; font-size:150%; font-weight:600"> Challenge
-1. </span> Say we are interested in exploring biases in available
+<p><span class="challenge-title">Challenge 1:</span>  Say we are interested in exploring biases in available
 microbial sequenced genomes. Are there particular microbes that have
 been sequenced by scientists more than others? To answer this question
 we can generate a frequency distribution for different microbial
@@ -472,7 +464,7 @@ p2</code></pre>
   </ol>
 </div>
 
-<p><span style="color:#FE654F; font-size:150%; font-weight:600"> Challenge 2. </span> Now, let’s say we are interested in exploring the
+<p><span class="challenge-title">Challenge 2:</span>  Now, let’s say we are interested in exploring the
 genome length distribution of the available microbial sequenced genomes.
 <strong>Reproduce Figure 6 below showing the microbial genome length
 distribution across kingdoms</strong> using <em>p2</em> as an example.
@@ -526,7 +518,7 @@ p3</code></pre>
   </ol>
 </div>
 
-<p><span style="color:#FE654F; font-size:150%; font-weight:600"> Challenge 3. </span> Say we are interested in exploring associations between
+<p><span class="challenge-title">Challenge 3:</span>  Say we are interested in exploring associations between
 available sequenced genomes per kingdom and phylum. <strong>Reproduce
 Figure 7 below showing the number of microbial sequenced genome per
 kingdom and phylum</strong> using <em>p3</em> as an example.</p>
@@ -585,7 +577,7 @@ p4</code></pre>
   </ol>
 </div>
 
-<p><span style="color:#FE654F; font-size:150%; font-weight:600"> Challenge 4. </span> Say we are interested in exploring whether longer microbial
+<p><span class="challenge-title">Challenge 4:</span>  Say we are interested in exploring whether longer microbial
 genomes are associated to a larger number of genes in the genome.
 <strong>Reproduce Figure 8 below showing the association between the
 number of genes and the genome length for microbes across
