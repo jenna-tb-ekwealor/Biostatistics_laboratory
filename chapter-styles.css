@@ -66,21 +66,18 @@ hr {
   margin-bottom: 2em;
 }
 
-/* Home stays left */
-.nav-home {
-  margin-bottom: 0.4em;
-}
-
-/* Previous + Next on same row */
 .nav-row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
 }
 
-/* Push Next fully to the right */
+.nav-prev {
+  text-align: left;
+}
+
 .nav-next {
-  margin-left: auto;
+  margin-left: auto;   /* THIS is what pushes it right */
+  text-align: right;
 }
 
 /* Link styling */
