@@ -286,6 +286,7 @@ a:visited { color: var(--c-question-set); }
 .stop-think-do-title {
   color: var(--c-stopthinkdo);
   font-weight: 700;
+  margin-top: 10px;
 }
 
 .question-set-title {
