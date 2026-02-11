@@ -66,7 +66,7 @@ Figure 1. High marsh-terrestrial ecotone (transitional marsh) along margins of g
 <li><a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/ES13-00307.1">Wigginton et al. 2014</a></li>
 </ul>
 <hr />
-<p><span style="color:#66023C; font-size:150%; font-weight:600"> Worked example </span> <br></p>
+<h3> Worked example </h3>
 <p>In previous Chapters we have compared different estimates of variables of interest. With this, we have been asking ourselves how large is the effect of a particular treatment on the variable of interest (the response variable). On the other hand, hypothesis testing is used to answer whether there is an actual effect of the treatment on the variable of interest. That is, estimation can give us insights about the magnitude of the difference but only through hypothesis testing we can determine the probability of such difference being real or <em>significant</em> and not due to chance. Keep in mind that <em>treatment</em> may take many forms in biology and is not bounded to an actual lab treatment.</p>
 
 <p>To get started, let’s define hypothesis testing and differentiate between the null hypothesis and the alternative hypothesis:</p>
@@ -87,7 +87,7 @@ Figure 1. High marsh-terrestrial ecotone (transitional marsh) along margins of g
 <p>Let’s carry out the following four steps to answer our research question through hypothesis testing.</p>
 
 <div id="stating-the-null-and-alternative-hypotheses" class="section level2">
-<h2>1. Stating the null and alternative hypotheses</h2>
+<h3>1. Stating the null and alternative hypotheses</h3>
 <p>The null hypothesis should be specific and skeptical while the alternative hypothesis can be general but meaningful within the biological context. For our iguana example, the parameter of interest is the proportion of female offspring. Say this proportion is <em>p</em>, thus, our null hypothesis is <em>p</em> = 0.5 or the frequency of female offspring in the population is not different from that of males (50%) in a warm year:</p>
 
 <ul>
@@ -99,12 +99,12 @@ Figure 1. High marsh-terrestrial ecotone (transitional marsh) along margins of g
 
 </div>
 <div id="estimating-the-test-statistic" class="section level2">
-<h2>2. Estimating the test statistic</h2>
+<h3>2. Estimating the test statistic</h3>
 <p>For our example, the observed number of female offspring is our test statistic. According to <span class="math inline">\(H_0\)</span>, 50% of the offspring are expected to be females. Thus, we expect 8 out of the 16 offspring sampled to be females. However, our sample resulted in 13 females and 3 males. Thus, our test statistics is 13.</p>
 
 </div>
 <div id="estimating-the-null-distribution-and-the-p-value" class="section level2">
-<h2>3. Estimating the null distribution and the <em>p</em>-value</h2>
+<h3>3. Estimating the null distribution and the <em>p</em>-value</h3>
 <p>To evaluate our data under the null hypothesis we need to estimate the probability that the observed data (13 female and 3 male offspring iguanas) is explained by chance. That is, even though the expectation under the null hypothesis is 8 female and 8 male offspring iguanas (50% each), we may not observe exactly such distribution in our data even when <span class="math inline">\(H_0\)</span> is true just because of chance. Recall from Chapter 4 that a sample statistic is a <em>variable</em> that can take different values when sampling a population and such distribution of values is described by the sampling distribution (Chapter 4, Worked example). In the same way, our test statistic under the null hypothesis is a variable that can take a distribution of different values due to chance.</p>
 <p>For example, imagine you are tossing a coin 16 times in the air and counting the number of heads. We know that there is 50% chance of counting a head each of those 16 times (like our null hypothesis in the iguana example) but say that you counted 13 heads and 3 tails. The null expectation (50% chance of being head) is still true! We just got the observed data due to chance. Thus, to evaluate our data under the null hypothesis we need to estimate the group of values the test statistic can take under the null hypothesis and their associated probabilities. This is called the <em>null distribution</em>.</p>
 <p>For our example, we get the following null distribution:</p>
@@ -303,8 +303,8 @@ Probability
 <p>In this case, the probability of observing 13 female offspring iguanas, or a more extreme value, out of a random sample of 16 is 0.022, assuming the null hypothesis is true.</p>
 
 </div>
-<div id="drawing-a-conclusion" class="section level2">
-<h2>4. Drawing a conclusion</h2>
+
+<h3>4. Drawing a conclusion</h3>
 <p>By convention, we use the <em>p</em>-value of 0.05 to determine statistical significance. A <em>p</em>-value &lt; 0.05 indicates that we can reject the null hypothesis. In our example, if the null hypothesis is true the likelihood of finding the observed data by chance is just 0.02 or 2%. As this is so low, then <span class="math inline">\(H_0\)</span> most not be true. Here we conclude that, during a warm year, most iguana offspring are females.</p>
 
 
@@ -329,12 +329,11 @@ Probability
 </ul>
 <p>Today’s activity <em>Invasion of the marsh</em> is organized into two main exercises exploring the effects of <em>L. latifolium</em> on the abundance of soil invertebrates in California marsh ecosystems. These exercises will also motivate inferences about the role of invasive species as ecosystem engineers.</p>
 
-<center>
-<span style="color:darkblue; font-size:200%; font-weight:500">Invasion of the marsh</span>
-</center>
+<div class="section-banner">Invasion of the marsh</div>
 
-<p><strong>Research question 1</strong> Does the presence of <em>L. Latifolium</em> affect the abundance of soil invertebrates?</p>
-<p><strong>1. Import the data</strong> Let’s start by importing the “marsh” dataset to RStudio and exploring it. <strong>Hint</strong>: review past R scripts and don’t forget to use the metadata file for reference.</p>
+<div class="research-question"><strong>Research question 1</strong> Does the presence of <em>L. Latifolium</em> affect the abundance of soil invertebrates?</p></div>
+
+<h3>1. Import the data</h3> <p>Let’s start by importing the “marsh” dataset to RStudio and exploring it. <strong>Hint</strong>: review past R scripts and don’t forget to use the metadata file for reference.</p>
 
 
 <div id="question-set-1">
@@ -361,7 +360,7 @@ Probability
 
 
 
-<p><strong>2. State the null and alternative hypotheses</strong></p>
+<h3>2. State the null and alternative hypotheses</h3>
 <p>Here, we are interested in whether the presence of <em>L. latifolium</em> affects soil invertebrate abundance, that is, whether the presence of <em>L. latifolium</em> increases <em>or</em> decreases the abundance of invertebrates in a wetland ecosystem. Therefore, our alternative hypothesis should be two-sided.</p>
 <p><span style="color:#FE654F; font-size:150%; font-weight:600"> Challenge 1. </span> </span> State the null and the alternative hypothesis.</p>
 
@@ -439,7 +438,7 @@ p4</code></pre>
 
 <p>From this visual inspection, something most be going on with our treatment! Let’s formally test <span class="math inline">\(H_0\)</span>.</p>
 
-<p><strong>3. Estimate the test statistic and its precision</strong></p>
+<h3>3. Estimate the test statistic and its precision</h3>
 <p>Let’s estimate the mean soil invertebrate abundance per plot per treatment.</p>
 <pre class="r"><code># filtering data by invertebrate type and treatment
 s_lep &lt;- filter(marsh,
@@ -473,7 +472,7 @@ se_s_lep</code></pre>
 
 
 
-<p><strong>4. Estimate the null distribution and the <em>p</em>-value</strong></p>
+<h3>4. Estimate the null distribution and the <em>p</em>-value</h3>
 <p>In this case, we can use the plots in the presence of native plants as a control treatment and use it to build the null distribution below. For this, we follow the steps in Chapter 4 and randomly sample the observed number of soil invertebrates per plot in the presence of native plants and estimate the mean abundance. We repeat the process 10,000 times.</p>
 <style>
 body {
