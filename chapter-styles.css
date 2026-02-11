@@ -62,19 +62,36 @@ hr {
    Navigation (Home link)
    ========================= */
 
+.chapter-navigation {
+  margin: 3em 0 2em 0;
+}
+
+/* Home centered above */
 .nav-home {
-  margin-bottom: 8px;
-  font-size: 0.9em;
+  text-align: center;
+  margin-bottom: 1.5em;
+  font-weight: 600;
 }
 
-.nav-home a {
-  color: #45bfd8;          /* palette blue */
+/* Row for prev/next */
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Link styling */
+.chapter-navigation a {
   text-decoration: none;
+  font-weight: 600;
+  color: var(--c-info-header);
+  transition: opacity 0.2s ease;
 }
 
-.nav-home a:hover {
-  text-decoration: underline;
+.chapter-navigation a:hover {
+  opacity: 0.7;
 }
+
 
 /* =========================
    Links (global)
