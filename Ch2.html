@@ -238,7 +238,7 @@ rows</li>
 canine), let’s practice how to get summary statistics in R.
 <strong>Note:</strong> the example below follows the suggested heading
 of the data in Part A.</p>
-<p>A. Import your data to RStudio. For simplicity, let’s call the data
+<p><strong>A.</strong> Import your data to RStudio. For simplicity, let’s call the data
 object “canine”. <strong>Hint:</strong> review Chapter 1 script!</p>
 <pre class="r"><code># Importing data
 canine &lt;- read.csv(&quot;canine.csv&quot;, header = TRUE)
@@ -265,7 +265,7 @@ canine</code></pre>
 
 
 
-<p>B. Summarize each variable in your data. For that, we can use the
+<p><strong>B.</strong> Summarize each variable in your data. For that, we can use the
 function <strong>summary()</strong>.</p>
 <pre class="r"><code># summarizing the data
 s &lt;- summary(canine)
@@ -291,7 +291,7 @@ s</code></pre>
 
 
 
-<p>C. Summarize the data across teeth type. As any language, there are
+<p><strong>C.</strong> Summarize the data across teeth type. As any language, there are
 many different ways to “say the same”. That is, other functions exist to
 estimate the same data summary. For instances, to get the minimum value
 of a column in your data you can use the function <strong>min()</strong>
@@ -313,7 +313,7 @@ m3
 m4 &lt;- median(canine$length_cm)
 m4</code></pre>
 
-<p>D. Estimating accuracy and precision. Assuming a true value of mean
+<p><strong>D.</strong> Estimating accuracy and precision. Assuming a true value of mean
 canine length in the entire population, say the true value “TV”
 (provided by the instructor), an approximation of the accuracy of our
 estimates can be calculated as the absolute value of the difference
@@ -347,7 +347,7 @@ p</code></pre>
 
 
 
-<p>E. Estimating accuracy and precision for the left canine. To avoid
+<p><strong>E.</strong> Estimating accuracy and precision for the left canine. To avoid
 errors due to natural differences between teeth, let’s now carry out the
 data summary for the left tooth only. This involves a bit of data
 management. Let’s use the package <em>tidyverse</em> to filter by tooth
@@ -396,8 +396,6 @@ abs(mean(left$length_cm)-TV) </code></pre>
     </p></li>
   </ol>
 </div>
-
-
 
 
 <div id="stop-think-do" class="section level3">
