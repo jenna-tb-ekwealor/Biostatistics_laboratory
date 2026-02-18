@@ -577,7 +577,18 @@ sigma</code></pre>
   </ol>
 </div>
 
-<p></p>
+
+<p><strong>Note:</strong> If you experience knitting errors when using the Greek symbols μ or σ, 
+this is usually due to character encoding differences across computers. 
+You may simply write <code>mu</code> and <code>sigma</code> instead of using the symbols.</p>
+
+<p>If you would like to display the symbols correctly in R Markdown, use LaTeX-style math notation:</p>
+
+<ul>
+  <li>Type <code>$\mu$</code> to produce μ</li>
+  <li>Type <code>$\sigma$</code> to produce σ</li>
+</ul>
+
 <p>Now, let’s explore the distribution of age at death for females. But
 first, do we have information for all females in the population? Let’s
 check the levels of the variable “sex”.</p>
