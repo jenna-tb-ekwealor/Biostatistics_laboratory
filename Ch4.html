@@ -539,18 +539,22 @@ with it as a discrete variable.</p>
 library(ggplot2)
 
 # plotting counts
-p1 &lt;- ggplot(cayo,aes(x = floor(age_at_death))) +
+p1 &lt;- ggplot(cayo, aes(x = floor(age_at_death))) +
   geom_histogram(binwidth = 1) +
   xlab(&quot;Age at death (years)&quot;) +
   ylab(&quot;Frequency&quot;)
 p1
 
 # plotting proportions
-p2 &lt;- ggplot(cayo,aes(x = floor(age_at_death))) +
-   geom_histogram(aes(y = ..count../sum(..count..)), binwidth = 1) +
-   xlab(&quot;Age at death (years)&quot;) +
-   ylab(&quot;Frequency&quot;)
+p2 &lt;- ggplot(cayo, aes(x = floor(age_at_death))) +
+  geom_histogram(
+    aes(y = after_stat(count / sum(count))),
+    binwidth = 1
+  ) +
+  xlab(&quot;Age at death (years)&quot;) +
+  ylab(&quot;Proportion&quot;)
 p2</code></pre>
+
 <p></p>
 <p>Let’s now estimate the population parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> for age at death.</p>
 <pre class="r"><code># mean age at death
@@ -675,7 +679,10 @@ View(r500)
 
 # plotting the sampling distribution
 p3 &lt;- ggplot(r500, aes(x = r500)) +
-  geom_histogram(aes(y = ..count../sum(..count..)), binwidth = .1) +
+  geom_histogram(
+    aes(y = after_stat(count / sum(count))),
+    binwidth = .1
+  ) +
   xlab(&quot;Female age at death (years)&quot;) +
   ylab(&quot;Probability&quot;)
 
