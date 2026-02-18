@@ -742,35 +742,82 @@ p4</code></pre>
 
 <p>We will begin by examining the distribution of deaths by age.</p>
 
-<pre class="r"><code># frequency table of age at death of females age_table <- table(floor(f$age_at_death)) # add a clear label so we can see that the top row refers to Age names(age_table) <- paste("Age", names(age_table)) age_table </code></pre> 
+<pre class="r"><code># frequency table of age at death of females 
+age_table <- table(floor(f$age_at_death)) 
+
+# add a clear label so we can see that the top row refers to Age 
+names(age_table) <- paste("Age", names(age_table)) 
+
+age_table </code></pre> 
 
 <p>The object printed above shows the number of deaths at each integer age. If you prefer to see the information with explicit column names, you can convert the table into a data frame and rename the columns.</p> 
 
-<pre class="r"><code># convert table to a data frame age_df <- as.data.frame(age_table) # rename the columns to make them clearer colnames(age_df) <- c("Age", "Number of deaths") age_df </code></pre> 
+<pre class="r"><code># convert table to a data frame 
+age_df <- as.data.frame(age_table) 
+
+# rename the columns to make them clearer 
+colnames(age_df) <- c("Age", "Number of deaths") 
+
+age_df </code></pre> 
 
 <p>Now we will compute the probabilities step by step. First, we identify the total number of female deaths in the dataset and the number that occurred before age 1.</p>
 
-<pre class="r"><code># total number of female deaths N <- nrow(f) N # number of deaths before age 1 d0 <- sum(f$age_at_death < 1) d0 </code></pre> 
+<pre class="r"><code># total number of female deaths 
+N <- nrow(f) N 
+
+# number of deaths before age 1 
+d0 <- sum(f$age_at_death < 1) 
+
+d0 </code></pre> 
 
 <p>The probability of dying during the first year of life is the number of deaths before age 1 divided by the total number of individuals. (For example, this corresponds to 249 out of 737 in our dataset.)</p> 
 
-<pre class="r"><code># proportion of deaths during the first year of life m0 <- d0 / N m0 # survival during the first year of life s0 <- 1 - m0 s0 </code></pre> 
+<pre class="r"><code># proportion of deaths during the first year of life 
+m0 <- d0 / N 
+
+m0 
+
+# survival during the first year of life 
+s0 <- 1 - m0 
+
+s0 </code></pre> 
 
 <p>Next, we repeat this process for the second year of life (from age 1 to age 2). We first count the number of deaths that occurred during that interval and determine how many individuals were alive at age 1.</p> 
 
-<pre class="r"><code># number of deaths between ages 1 and 2 d1 <- sum(f$age_at_death >= 1 & f$age_at_death < 2) d1 # number alive at age 1 N1 <- N - d0 N1 </code></pre> 
+<pre class="r"><code># number of deaths between ages 1 and 2 
+d1 <- sum(f$age_at_death >= 1 & f$age_at_death < 2) d1 
+
+# number alive at age 1 
+N1 <- N - d0 
+
+N1 </code></pre> 
 
 <p>The probability of dying during the second year is the number of deaths in that interval divided by the number alive at the start of the interval. (For example, this corresponds to 120 out of 737 − 249.)</p> 
 
-<pre class="r"><code># proportion of deaths during the second year of life m1 <- d1 / N1 m1 # survival during the second year of life s1 <- 1 - m1 s1 </code></pre> 
+<pre class="r"><code># proportion of deaths during the second year of life 
+m1 <- d1 / N1 
+
+m1 
+
+# survival during the second year of life 
+s1 <- 1 - m1 
+
+s1 </code></pre> 
 
 <p>Finally, to survive from birth to age 2, a female must survive both age intervals. Therefore, we multiply the two survival probabilities.</p> 
 
-<pre class="r"><code># probability of surviving from birth to age 2 s0 * s1 </code></pre>
+<pre class="r"><code># probability of surviving from birth to age 2 
+ss0 * s1 </code></pre>
 
 <p>Notice that we used the <em>multiplication rule</em> because surviving to age 2 requires surviving two consecutive age intervals. However, we could also calculate the same probability directly by adding the deaths that occurred before age 2 and subtracting that proportion from 1. Both approaches should give the same result.</p> 
 
-<pre class="r"><code># total number of deaths before age 2 d_total_0_2 <- d0 + d1 d_total_0_2 # probability of surviving from birth to age 2 (direct method) 1 - (d_total_0_2 / N) </code></pre>
+<pre class="r"><code># total number of deaths before age 2 
+d_total_0_2 <- d0 + d1 
+
+d_total_0_2 
+
+# probability of surviving from birth to age 2 (direct method) 
+1 - (d_total_0_2 / N) </code></pre>
 
 <p>This result should match the value we obtained earlier using the multiplication rule (s0 * s1). The two approaches are mathematically equivalent, but the multiplication rule is especially useful when working with multiple sequential age intervals.</p>
 
