@@ -674,8 +674,11 @@ for(i in 1:10000){
 
 r500 &lt;- as.data.frame(r500)
 
-# viewing the new data frame created
-View(r500)
+# IMPORTANT:
+# View() works in the Console, but it might cause problems when knitting an R Markdown file.
+# Instead, use head() to display the first few rows safely in your knitted document.
+
+head(r500)
 
 # plotting the sampling distribution
 p3 &lt;- ggplot(r500, aes(x = r500)) +
