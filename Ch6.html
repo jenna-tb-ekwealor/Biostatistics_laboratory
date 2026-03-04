@@ -268,7 +268,8 @@ n &lt;- length(raptor$RAPTOR)
 X &lt;-sum(raptor$Alarm_Call)
 
 # observed proportion of successes in sample population p_hat
-p_hat &lt;- X/n</code></pre>
+p_hat &lt;- X/n
+p_hat</code></pre>
 
 <p>Now that we have all the variables needed to estimate binomial distributions, let’s use the function <strong>dbinom()</strong> to estimate the binomial formula. The first argument in this function is <em>X</em>, the second is <em>n</em>, and the third is <em>p_hat</em>.</p>
 <pre class="r"><code># example: the probability of getting exactly 100 alarm calls with n=337 and p_hat=0.303.
@@ -324,7 +325,7 @@ p1</code></pre>
 <pre class="r"><code># standard error of p
 SE &lt;- sqrt((p_hat*(1-p_hat))/n)
 SE</code></pre>
-<p>According to this, 0.30 ± 0.03 sentinel birds (mean±SE) produce an alarm call in the presence of raptors.</p>
+<p>According to this, p̂ = 0.3026 with SE = 0.025, meaning approximately 30.26% ± 2.5% of sentinel birds produce an alarm call in the presence of raptors.</p>
 
 <h3>5. Test the hypothesis using the binomial test</h3>
 <p>We estimated the binomial probabilities given <em>X</em>, <em>n</em>, and <em>p</em>. This is different from testing a hypothesis, which requires a null probability of success <span class="math inline">\(p_0\)</span> and a <em>p</em>-value.</p>
