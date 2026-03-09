@@ -297,7 +297,7 @@ geom_density()
 p1
 
 # fitting a normal distribution
-p2 &lt;- p1 + stat_function(fun = dnorm, n = 2427, args = list(mean = m, sd = sd),colour=&quot;red&quot;) 
+p2 &lt;- p1 + stat_function(fun = dnorm, n = 2427, args = list(mean = m, sd = sd), colour = &quot;red&quot;) 
 
 p2</code></pre>
 
@@ -324,13 +324,13 @@ p2</code></pre>
 <h3>4. Estimate the standard normal distribution for size</h3>
 <p>From the equation in Step 3 of the Worked example, we can easily standardize disc width. For this, let’s create a new column in our dataframe <em>ray</em> and add the standardized values. We use the “$” sign to create a new column. Let’s call this new column “z”.</p>
 <pre class="r"><code># estimating Z for disc width
-ray$z &lt;- (ray$disc_width-m)/sd
+ray$z &lt;- (ray$disc_width - m)/sd
 
 # checking the new column in &quot;ray&quot;
 head(ray)
 
 # plotting z
-p3 &lt;- ggplot(ray,aes(x=ray$z)) +
+p3 &lt;- ggplot(ray, aes(x = ray$z)) +
 geom_density()
 
 p3</code></pre>
