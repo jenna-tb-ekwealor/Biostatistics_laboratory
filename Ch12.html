@@ -175,8 +175,9 @@ summary(tick_glm)</code></pre>
 </ul>
 </div>
 
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> Let’s interpret R’s <strong>glm()</strong> summary output.</p>
+<div class="info-box">
+<span class="info-title">Info-Box!</span>
+<p>Let’s interpret R’s <strong>glm()</strong> summary output.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># GLM output</span>
 summary(tick_glm)</code></pre>
 <p style="text-align: justify;"><strong>Estimate:</strong> These are the model coefficients. The intercept gives the expected log count of ticks when rodent richness is zero. The coefficient for <code>rodent_richness</code> tells us how much the log of the expected count changes with each additional rodent species.</p>
@@ -228,8 +229,9 @@ plot(tick_glm)</code></pre>
 
 <br>
 
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> The four diagnostic plots from <code>plot()</code> can help you check how well your GLM fits the data. Each one gives you different clues about how your model behaves.</p>
+<div class="info-box">
+<span class="info-title">Info-Box!</span>
+<p>The four diagnostic plots from <code>plot()</code> can help you check how well your GLM fits the data. Each one gives you different clues about how your model behaves.</p>
 <ul>
   <li><strong>Residuals vs. Fitted:</strong> Look for patterns, curves, or spreading as values increase.</li>
   <li><strong>Normal Q-Q:</strong> Compare observed residuals to a normal distribution. Watch for points that stray from the line.</li>
@@ -270,8 +272,9 @@ AIC(tick_glm, tick_glm2)</code></pre>
 </div>
 </div>
 
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> What does your GLMM tell you?</p>
+<div class="info-box">
+<span class="info-title">Info-Box!</span>
+<p>What does your GLMM tell you?</p>
 
 <ul>
   <li><strong>Fixed effects</strong> show the average relationship between your predictors (e.g. rodent richness) and the response variable (e.g. infected tick density), across all sites and years.</li>

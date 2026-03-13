@@ -154,8 +154,9 @@ dna_aln &lt;- msa(dna, method = "ClustalW")
 
 <br>
  
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> ClustalW is a progressive alignment algorithm. It begins by aligning the most similar sequences first, then adds others based on a guide tree. This means early errors can propagate, so quality depends on how divergent the sequences are.</p>
+<div class="info-box">
+<span class="info-title">Info-Box!</span>
+<p>ClustalW is a progressive alignment algorithm. It begins by aligning the most similar sequences first, then adds others based on a guide tree. This means early errors can propagate, so quality depends on how divergent the sequences are.</p>
 </div>
 
 <br>
@@ -221,8 +222,9 @@ ggtree(tree_bs) +
 
 <br>
 
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> Bootstrap support quantifies how often a clade appears when the alignment is resampled. It gives us a way to distinguish strong signals from random noise.</p>
+<div class="info-box">
+<span class="info-title">Info-Box!</span>
+<p>Bootstrap support quantifies how often a clade appears when the alignment is resampled. It gives us a way to distinguish strong signals from random noise.</p>
 </div>
 
 <hr>
@@ -255,8 +257,9 @@ ggtree(rooted_dna) +
 
 <br> 
 
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> Why root a tree?</p>
+<div class="info-box">
+<span class="info-title">Info-Box!</span>
+<p>Why root a tree?</p>
 <ul>
 <li>Rooting shows directionality (who is ancestral to whom)</li>
 <li>Outgroups help orient the tree when true ancestors are unknown</li>
@@ -292,8 +295,9 @@ ggtree(rooted_dna) %&lt;+% clade_df +
   scale_color_brewer(palette = "Set1", na.translate = FALSE) +
   ggtitle("Tree with Clade X")
 </code></pre>
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> What makes a clade?</p>
+<div class="info-box">
+<span class="info-title">Info-Box!</span>
+<p>What makes a clade?</p>
 <ul>
 <li>A clade includes an ancestor and all of its descendants.</li>
 <li>You can use <code>tree_subset()</code> to extract all tips descended from a particular node.</li>
@@ -321,8 +325,9 @@ ggtree(rooted_dna) %&lt;+% clade_df +
 
 <br>
 
-<div class="creme">
-    <p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> Why include geography?</p>
+<div class="info-box">
+    <span class="info-title">Info-Box!</span>
+<p>Why include geography?</p>
     <ul>
     <li>It helps us connect genetic divergence to potential barriers, dispersal, or historical events.</li>
     <li>Coastal species with limited larval dispersal often show regional structure.</li>

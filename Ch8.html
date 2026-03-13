@@ -387,13 +387,9 @@ t.test(ResponseVariable~Factor, data=MYDATA, paired=TRUE)</code></pre>
 <p>We can easily test for equal variances in R using the function <strong>var.test()</strong>.The first argument in the function is the response variable followed by the explanatory variable (Factor).</p>
 <pre class="r"><code>var.test(ResponseVariable~Factor, data=MYDATA)</code></pre>
 
-<style>
-body {
-text-align: justify}
-div.creme { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
-</style>
-<div class="creme">
-<p><span style="color:blue; font-size:120%; font-weight:600"> <strong>Info-Box!</strong> </span> Let’s interpret the R <em>t</em> test model output for the one-sample <em>t</em>-test from the BMI data.</p>
+<div class="info-box">
+<span class="info-title">Info-Box!</span>
+<p>Let’s interpret the R <em>t</em> test model output for the one-sample <em>t</em>-test from the BMI data.</p>
 <pre class="r"><code># one sample t test
 t.test(bmi, mu=25, data=bmi)</code></pre>
 <pre><code>## 
