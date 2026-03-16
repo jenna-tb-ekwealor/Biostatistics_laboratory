@@ -478,7 +478,7 @@ sum &lt;- mydata %&gt;%
 library(ggplot2)
 
 # bar plot with error bars for standard error
-p1 &lt;- ggplot(sum, aes(x = sex, y = length)) +
+p1 &lt;- ggplot(sum, aes(x = sex, y = mean)) +
     geom_bar(stat = &quot;identity&quot;) +
     geom_errorbar(aes(min = mean - se, max = mean + se), width = 0.2) +
     theme_classic(15) +
