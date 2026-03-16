@@ -359,7 +359,7 @@ Figure 3. Cholesterol levels in hypercholesterolemia patients under treatment. E
 
 <p>We can easily compute this in R using the function <strong>t.test()</strong>.</p>
 <pre class="r"><code># two-sample t-test
-t.test(groupA~groupB,alternative = &quot;two.sided&quot;,var.equal = TRUE, data=mydataframe)</code></pre>
+t.test(groupA ~ groupB, alternative = &quot;two.sided&quot;, var.equal = TRUE, data = mydataframe)</code></pre>
 
 </div>
 
@@ -374,7 +374,7 @@ t.test(groupA~groupB,alternative = &quot;two.sided&quot;,var.equal = TRUE, data=
 
 <p>We can easily compute paired tests in R using the function <strong>t.test()</strong>. The first argument in the function is the response variable followed by the explanatory variable (Factor).</p>
 <pre class="r"><code># paired t-test
-t.test(ResponseVariable~Factor, data=MYDATA, paired=TRUE)</code></pre>
+t.test(ResponseVariable ~ Factor, data = MYDATA, paired = TRUE)</code></pre>
 
 </div>
 <h3>4. Equal variances</h3>
@@ -385,13 +385,13 @@ t.test(ResponseVariable~Factor, data=MYDATA, paired=TRUE)</code></pre>
 </ul>
 
 <p>We can easily test for equal variances in R using the function <strong>var.test()</strong>.The first argument in the function is the response variable followed by the explanatory variable (Factor).</p>
-<pre class="r"><code>var.test(ResponseVariable~Factor, data=MYDATA)</code></pre>
+<pre class="r"><code>var.test(ResponseVariable ~ Factor, data = MYDATA)</code></pre>
 
 <div class="info-box">
 <span class="info-title">Info-Box!</span>
 <p>Let’s interpret the R <em>t</em> test model output for the one-sample <em>t</em>-test from the BMI data.</p>
 <pre class="r"><code># one sample t test
-t.test(bmi, mu=25, data=bmi)</code></pre>
+t.test(bmi, mu = 25, data = bmi)</code></pre>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -470,9 +470,9 @@ sum &lt;- mydata %&gt;%
 library(ggplot2)
 
 # bar plot with error bars for standard error
-p1 &lt;- ggplot(sum,aes(x=sex,y=length)) +
-    geom_bar(stat=&quot;identity&quot;) +
-    geom_errorbar(aes(min=mean-se, max=mean+se), width=0.2) +
+p1 &lt;- ggplot(sum, aes(x = sex, y = length)) +
+    geom_bar(stat = &quot;identity&quot;) +
+    geom_errorbar(aes(min = mean - se, max = mean + se), width = 0.2) +
     theme_classic(15) +
     ylab(&quot;Body length (cm)&quot;) +
     xlab(&quot;Sex&quot;)
@@ -481,7 +481,7 @@ p1</code></pre>
 <h3>5. Check the model assumptions of normality</h3>
 <p>Let’s check the assumption that our data is normally distributed by plotting its frequency distribution. To test for normality we can use a histogram.</p>
 <pre class="r"><code># histogram of body lengths
-p2 &lt;- ggplot(mydata,aes(x=length)) +
+p2 &lt;- ggplot(mydata,aes(x = length)) +
   geom_histogram(binwidth = .5)
 p2</code></pre>
 <p>Recall that a small sample size is expected to have more deviations from a normal distribution, whether it is normally distributed or not.</p>
