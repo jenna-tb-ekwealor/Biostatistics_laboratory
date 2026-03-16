@@ -359,8 +359,7 @@ Figure 3. Cholesterol levels in hypercholesterolemia patients under treatment. E
 
 <p>We can easily compute this in R using the function <strong>t.test()</strong>.</p>
 <pre class="r"><code># two-sample t-test
-t.test(groupA ~ groupB, alternative = &quot;two.sided&quot;, var.equal = TRUE, data = mydataframe)</code></pre>
-
+t.test(groupA, groupB, alternative = &quot;two.sided&quot;, var.equal = TRUE, data = mydataframe)</code></pre>
 </div>
 
 <h3>3. Paired or unpaired?</h3>
