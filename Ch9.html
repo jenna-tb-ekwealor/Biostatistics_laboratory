@@ -398,7 +398,7 @@ summary(gene_aov)</code></pre>
 <p><br></p>
 <h3>3. Estimate the <span class="math inline">\(R^2\)</span></strong></h3>
 <pre class="r"><code># R squared
-gene_R2 &lt;- 10.32/(10.32+27.41)
+gene_R2 &lt;- 10.32/(10.32 + 27.41)
 gene_R2</code></pre>
 <p><br></p>
 <div id="question-set-2">
@@ -485,7 +485,7 @@ shapiro.test(gene_aov_res)</code></pre>
 <h3>6. Test for equal variances</h3>
 <p>Finally, we can use the Barlett’s test to test for <em>equal variances</em>. For this, we will use the function <strong>bartlett.test()</strong>. The first argument of the function is the response variable, followed by the explanatory variable (factor).</p>
 <pre class="r"><code># testing for equal variances
-bartlett.test(ct~treatment, data=gene)  </code></pre>
+bartlett.test(ct ~ treatment, data = gene)  </code></pre>
 <p><br></p>
 <p>If the test results in a p-value &gt; 0.05, then the data has equal variance (no difference in variance across factors). However, if the variances are significantly different across factors, then the we have to <em>transform</em> the data. Transforming data means applying some mathematical expression to the response variable in an attempt to meet the assumptions for the ANOVA. You can use the following general command.</p>
 <pre class="r"><code># transforming the data using the natural log
