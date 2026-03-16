@@ -488,10 +488,10 @@ p1 &lt;- ggplot(sum, aes(x = sex, y = length)) +
 p1</code></pre>
 
 <h3>5. Check the model assumptions of normality</h3>
-<p>Let’s check the assumption that our data is normally distributed by plotting its frequency distribution. To test for normality we can use a histogram.</p>
+<p>Let’s check the assumption that our data are normally distributed by plotting their frequency distribution. To visually assess whether the data are approximately normal, we can use a histogram. The appearance of a histogram depends on how the bins are defined, so this provides only a rough visual check of normality.</p>
 <pre class="r"><code># histogram of body lengths
 p2 &lt;- ggplot(mydata, aes(x = length)) +
-  geom_histogram(binwidth = .5)
+  geom_histogram(bins = 10)
 p2</code></pre>
 <p>Recall that a small sample size is expected to have more deviations from a normal distribution, whether it is normally distributed or not.</p>
 <div id="question-set-3">
