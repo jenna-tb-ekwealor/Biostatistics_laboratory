@@ -307,17 +307,13 @@ mantel_result
 
 <p style="text-align: justify;">Today’s activity on <em>genetic variation and geographic structure</em> is organized into one main exercise that explores how isolation and movement shape genetic diversity among woodrat populations. This exercise will help us apply basic population genetic concepts, visualize genetic structure, and test hypotheses about isolation by distance.</p>
 
-<center>
-<p style="margin-top: 40px; margin-bottom: 20px;"><span style="color:darkblue; font-size:200%; font-weight:500">Genetic diversity and population structure in woodrats</span></p>
-</center>
+<div class="section-banner">Genetic diversity and population structure in woodrats</div>
 
-<div style="margin-bottom: 25px;">
-<p><strong>Research question 1:</strong> Does genetic differentiation increase with geographic distance among dusky-footed woodrat populations?</p>
-</div>
+<div class="research-question">Research question 1: Does genetic differentiation increase with geographic distance among dusky-footed woodrat populations?</div>
 
 <p style="text-align: justify;">Before we begin analyzing genetic structure, let’s load the dataset. <code>Neo_fus.csv</code> contains SNP genotype, latitude, longitude, and location information for data for dusky-footed woodrats sampled across California. We will use these data to calculate measures of genetic diversity and explore spatial patterns.</p>
 
-<h4 style="margin-top: 35px;">1. Import the data</h4>
+<h3>1. Import the data</h3>
 
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load metadata (locations, coordinates)</span>
 neo_fus_loc <- read.csv("Neo_fus.csv")
@@ -326,7 +322,7 @@ neo_fus_loc <- read.csv("Neo_fus.csv")
 neo_fus_gen <- read.vcfR("Neo_fus.vcf")
 </code></pre>
 
-<h4 style="margin-top: 35px;">2. Create a genind object</h4>
+<h3>2. Create a genind object</h3>
 
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Convert VCF data to a genind object</span>
 genind_obj <- vcfR2genind(neo_fus_gen)
@@ -337,14 +333,16 @@ summary(genind_obj)
 
 
 <div class="questions" style="margin-top: 30px;">
-<p><strong>Questions:</strong></p>
-<ol type="a">
-<li><em>How many woodrat individuals are included in the genotype dataset?</em></li>
-<li><em>What information is included in the dataset?</em></li>
+<h3><em>
+    <span class="question-set-title">Question Set 1</span>
+  </em></h3>
+<ol style="list-style-type: none; padding-left: 1.2em;">
+<li><p><strong>1a.</strong> <em>How many woodrat individuals are included in the genotype dataset?</em></p></li>
+<li><p><strong>1b.</strong> <em>What information is included in the dataset?</em></p></li>
 </ol>
 </div>
 
-<h4 style="margin-top: 35px;">3. Calculate heterozygosity</h4>
+<h3>3. Calculate heterozygosity</h3>
 
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Summarize the genind object to get basic statistics</span>
 genind_summary <- summary(genind_obj)
@@ -366,7 +364,7 @@ head(het_df)
 
 <br>
 
-<h4 style="margin-top: 35px;">4. Plot observed and expected heterozygosity</h4>
+<h3>4. Plot observed and expected heterozygosity</h3>
 
 
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Plot observed vs expected heterozygosity</span>
@@ -380,16 +378,18 @@ ggplot(het_df, aes(x = Hexp, y = Hobs)) +
 </code></pre>
 
 <div class="questions" style="margin-top: 30px;">
-  <p><strong>Questions:</strong></p>
-  <ol type="a">
-  <li><em>Do most loci have observed heterozygosity greater than, less than, or close to expected heterozygosity?</em></li>
-  <li><em>What might cause loci to deviate from Hardy-Weinberg expectations?</em></li>
+  <h3><em>
+    <span class="question-set-title">Question Set 2</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+  <li><p><strong>2a.</strong> <em>Do most loci have observed heterozygosity greater than, less than, or close to expected heterozygosity?</em></p></li>
+  <li><p><strong>2b.</strong> <em>What might cause loci to deviate from Hardy-Weinberg expectations?</em></p></li>
   </ol>
   </div>
 
 <br> 
 
-<h4 style="margin-top: 35px;">3. Calculate F<sub>ST</sub> among populations</h4>
+<h3>3. Calculate F<sub>ST</sub> among populations</h3>
 
 <p>Now we want to quantify genetic differentiation among populations using F<sub>ST</sub> statistics. F<sub>ST</sub> measures how much allele frequencies differ between populations.</p>
 
@@ -410,10 +410,12 @@ basic_stats_perloc$locusID <- rownames(basic_stats_perloc)
 </code></pre>
 
 <div class="questions" style="margin-top: 30px;">
-<p><strong>Questions:</strong></p>
-<ol type="a">
-<li><em>Which SNP loci show the highest F<sub>ST</sub> values? What do these F<sub>ST</sub> values suggest about genetic differentiation among woodrat populations? </em></li>
-<li><em>Are there loci with very low or near-zero F<sub>ST</sub> values? What biological or statistical factors might explain that?</em></li>
+<h3><em>
+    <span class="question-set-title">Question Set 3</span>
+  </em></h3>
+<ol style="list-style-type: none; padding-left: 1.2em;">
+<li><p><strong>3a.</strong> <em>Which SNP loci show the highest F<sub>ST</sub> values? What do these F<sub>ST</sub> values suggest about genetic differentiation among woodrat populations? </em></p></li>
+<li><p><strong>3b.</strong> <em>Are there loci with very low or near-zero F<sub>ST</sub> values? What biological or statistical factors might explain that?</em></p></li>
 </ol>
 </div>
 
@@ -427,7 +429,7 @@ basic_stats_perloc$locusID <- rownames(basic_stats_perloc)
 
 <br>
 
-<h4 style="margin-top: 35px;">5. Spatial patterns of genetic structure</h4>
+<h3>5. Spatial patterns of genetic structure</h3>
 
 <p>In the worked example, you thought about how genetic similarity might change with distance. Here, we calculate two types of distances across real populations: <strong>geographic distance</strong> (based on coordinates) and <strong>genetic distance</strong> (based on allele frequencies).</p>
 
@@ -450,10 +452,12 @@ dist_gen <- dist(genind_obj)
 </div>
 
 <div class="questions" style="margin-top: 30px;">
-  <p><strong>Questions:</strong></p>
-  <ol type="a">
-  <li><em>Does your plot suggest a positive or negative relationship between geographic distance and genetic distance?</em></li>
-  <li><em>What biological processes could create a pattern where genetic distance increases with geographic distance?</em></li>
+  <h3><em>
+    <span class="question-set-title">Question Set 4</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+  <li><p><strong>4a.</strong> <em>Does your plot suggest a positive or negative relationship between geographic distance and genetic distance?</em></p></li>
+  <li><p><strong>4b.</strong> <em>What biological processes could create a pattern where genetic distance increases with geographic distance?</em></p></li>
   </ol>
   </div>  
 
@@ -469,13 +473,13 @@ dist_gen <- dist(genind_obj)
 <hr>
 
 <div class="questions" style="margin-top: 30px;">
-  <p><span class="discussion-title">Discussion Questions</span></p>
+  <h3><span class="discussion-questions-title">Discussion Questions</span></h3>
   <ol type="a">
 <li><em>What does heterozygosity measure, and how is it calculated from genotype data?</em></li>
 <li><em>Are the populations genetically distinct? Revisit <code>basic_stats</code> and include an appropriate statistic to support your answer.</em></li>
 <li><em>What does F<sub>ST</sub> quantify statistically? What does a high F<sub>ST</sub> indicate about variation among groups?</em></li>
 <li><em>When using a Mantel test, what does a significant p-value tell you about the association between two distance matrices?</em></li>
-</ul>
+</ol>
 
 <br> 
 
@@ -526,6 +530,3 @@ Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 
 </body>
 </html>
-
-
-

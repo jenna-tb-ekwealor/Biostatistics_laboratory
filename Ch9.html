@@ -325,7 +325,7 @@ R^2&amp;=\frac{SS_{groups}}{SS_{total}}=\frac{0.262}{0.309}=0.848.
 <p>Thus, 84.8% of the variation in the data is explained by differences among treatment groups.</p>
 <hr />
 <p><br></p>
-<p><span style="color:#66023C; font-size:150%; font-weight:600"> Materials and Methods</span></p>
+<h3>Materials and Methods</h3>
 <ul>
 <li>R and RStudio</li>
 <li>package <em>ggplot2</em> and <em>rstatix</em></li>
@@ -334,22 +334,24 @@ R^2&amp;=\frac{SS_{groups}}{SS_{total}}=\frac{0.262}{0.309}=0.848.
 <p><br></p>
 <p>Today’s activity <em>Toxic substances and gene regulation</em> is organized into one main exercise to describe how the toxic substance triclosan alters GnRH transcription which is involved in reproduction by regulating the Folicle Stimulating Hormone and the Leutinizing Hormone. These exercises will also help us familiarize and interpret R’s model output and model assumption diagnostics.</p>
 <p><br></p>
-<center>
-<span style="color:darkblue; font-size:200%; font-weight:500">Toxic substances and gene regulation</span>
-</center>
+<div class="section-banner">Toxic substances and gene regulation</div>
 <p><br></p>
-<p><strong>Research question 1</strong>: Does triclosan suppress gene expression in hypothalamic cells?</p>
-<p><strong>1. Import the data</strong></p>
+<div class="research-question">Research question 1: Does triclosan suppress gene expression in hypothalamic cells?</div>
+<h3>1. Import the data</h3>
 <p>Let’s import the “gene” dataset to RStudio and explore it.</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>How many variables and observations does “gene” have?</em></li>
-<li><em>Considering the research question, what are the variables of interest?</em></li>
-<li><em>How many groups will you compare?</em></li>
-</ol>
+<div id="question-set-1">
+<h3><em>
+    <span class="question-set-title">Question Set 1</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>1a.</strong> <em>How many variables and observations does “gene” have?</em></p></li>
+    <li><p><strong>1b.</strong> <em>Considering the research question, what are the variables of interest?</em></p></li>
+    <li><p><strong>1c.</strong> <em>How many groups will you compare?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
-<p><strong>2. Carry out a one-way analysis of variance</strong></p>
+<h3>2. Carry out a one-way analysis of variance</h3>
 <p>To estimate an analysis of variance in R, we use the function <strong>aov()</strong>. The first argument of the function is the response variable and the second argument is the explanatory variable. Lastly, we need to indicate the dataframe where such variables are located.</p>
 <p>Let’s fit an ANOVA to our data and check the model output.</p>
 <pre class="r"><code># ANOVA
@@ -359,7 +361,8 @@ gene_aov
 # ANOVA table
 summary(gene_aov)</code></pre>
 <p><br></p>
-<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3> Interpret the model output from R (ANOVA table). <strong>Stop</strong> and review the steps 1 to 5 of the Worked example. <strong>Think</strong> about how you can obtain each value in the model output.</p>
+<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3>
+<p>Interpret the model output from R (ANOVA table). <strong>Stop</strong> and review the steps 1 to 5 of the Worked example. <strong>Think</strong> about how you can obtain each value in the model output.</p>
 <p><br></p>
 <div class="info-box">
 <span class="info-title">Info-Box!</span>
@@ -398,10 +401,14 @@ summary(gene_aov)</code></pre>
 gene_R2 &lt;- 10.32/(10.32+27.41)
 gene_R2</code></pre>
 <p><br></p>
-<p><strong>Question:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>How much variation in the data is explained by differences among treatment groups?</em></li>
-</ol>
+<div id="question-set-2">
+<h3><em>
+    <span class="question-set-title">Question Set 2</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>2a.</strong> <em>How much variation in the data is explained by differences among treatment groups?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <p><span style="color:red; font-size:150%; font-weight:600"> Challenge.</span> Plot your data. Add all components for a good visualization.</p>
 <p><br></p>
@@ -415,12 +422,16 @@ t
 # Visualization of the Tukey test
 plot(t)</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Are all treatment groups different to each other?</em></li>
-<li><em>How can you interpret these results in terms of the effect of triclosan on gene expression?</em></li>
-<li><em>What are the assumptions of the ANOVA?</em></li>
-</ol>
+<div id="question-set-3">
+<h3><em>
+    <span class="question-set-title">Question Set 3</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>3a.</strong> <em>Are all treatment groups different to each other?</em></p></li>
+    <li><p><strong>3b.</strong> <em>How can you interpret these results in terms of the effect of triclosan on gene expression?</em></p></li>
+    <li><p><strong>3c.</strong> <em>What are the assumptions of the ANOVA?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <p><strong>5. Check model assumptions</strong></p>
 <p>To test for model assumptions, we will examine the model residuals using the function <strong>residuals()</strong>. In an ANOVA, the model residuals (the difference between each observation and the mean value) should be normally distributed.</p>
@@ -462,10 +473,14 @@ Let’s interpret the model checking plots.
 <pre class="r"><code># shapiro test
 shapiro.test(gene_aov_res)</code></pre>
 <p><br></p>
-<p><strong>Question:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Do you reject the null hypothesis of the shapiro test? Explain.</em></li>
-</ol>
+<div id="question-set-4">
+<h3><em>
+    <span class="question-set-title">Question Set 4</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>4a.</strong> <em>Do you reject the null hypothesis of the shapiro test? Explain.</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <p><strong>6. Test for equal variances</strong></p>
 <p>Finally, we can use the Barlett’s test to test for <em>equal variances</em>. For this, we will use the function <strong>bartlett.test()</strong>. The first argument of the function is the response variable, followed by the explanatory variable (factor).</p>
@@ -477,7 +492,7 @@ bartlett.test(ct~treatment, data=gene)  </code></pre>
 transformed &lt;- log(response_variable)  </code></pre>
 <p>Once transformed, you can use the function <strong>bartlett.test()</strong> to see if your transformed variable meets the assumptions.</p>
 <p><br></p>
-<p><span style="color:#2724ed; font-size:150%; font-weight:600"> Discussion Questions </span></p>
+<h3><span class="discussion-questions-title">Discussion Questions</span></h3>
 <ol style="list-style-type: lower-alpha">
 <li><em>Interpret the estimated F ratio.</em></li>
 <li><em>Interpret the estimated coefficient of determination, R-squared.</em></li>

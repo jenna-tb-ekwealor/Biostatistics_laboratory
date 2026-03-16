@@ -309,7 +309,7 @@ t=\frac{1.471-0}{0.154}=9.552
 <p>Using a statistical table for the <span class="math inline">\(t\)</span>-distribution <a href="http://statsexamples.com/table-t-distribution.html">(statsexamples.com)</a>, we can see that the null expectation for the critical value 0.025 is <span class="math inline">\(t=2.23\)</span> with 10 degrees of freedom. As our estimated <span class="math inline">\(t\)</span> is more extreme, <span class="math inline">\(p\)</span> is less than 0.05 and we reject the null hypothesis.</p>
 <hr />
 <p><br></p>
-<p><span style="color:#66023C; font-size:150%; font-weight:600"> Materials and Methods</span></p>
+<h3>Materials and Methods</h3>
 <ul>
 <li>R and RStudio</li>
 <li>package <em>ggplot2</em>, <em>corrplot</em>, and <em>rstatix</em></li>
@@ -318,33 +318,39 @@ t=\frac{1.471-0}{0.154}=9.552
 <p><br></p>
 <p>Today’s activity <em>Functional associations in the genome</em> is organized into one exercise and one challenge to determine associations between microbial genome lengths and the number of genes coding for essential enzymes. These exercises will help us familiarize and interpret R’s model output for correlation and linear regression.</p>
 <p><br></p>
-<center>
-<span style="color:darkblue; font-size:190%; font-weight:500">Functional associations in the genome</span>
-</center>
+<div class="section-banner">Functional associations in the genome</div>
 <p><br></p>
-<p><strong>Research question 1</strong>: Do large genomes have higher number of genes encoding DNA polymerase III alpha subunit?</p>
+<div class="research-question">Research question 1: Do large genomes have higher number of genes encoding DNA polymerase III alpha subunit?</div>
 <p>DNA polymerase III alpha subunit is an important enzyme for DNA replication. We would expect at least one copy of this gene per genome. If there is a lot of DNA to replicate (i.e., large genome), it would be expected to have multiple copies of this gene because more duplicated genes would produce more DNA polymerase, making the replication process faster. Let’s test whether there is an association between genome length and the number of genes encoding the DNA polymerase III alpha subunit.</p>
-<p><strong>1. Import the data</strong></p>
+<h3>1. Import the data</h3>
 <p>Let’s explore the “genomics” dataset.</p>
 <pre class="r"><code># importing the gene dataset
 gene &lt;- read.table(&quot;genomics.txt&quot;,header=TRUE,sep=&quot;\t&quot;,stringsAsFactors = TRUE)
 
 gene</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Considering the research question, what are the variables of interest?</em></li>
-<li><em>What type of variables are they and what visualization can be done?</em></li>
-</ol>
+<div id="question-set-1">
+<h3><em>
+    <span class="question-set-title">Question Set 1</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>1a.</strong> <em>Considering the research question, what are the variables of interest?</em></p></li>
+    <li><p><strong>1b.</strong> <em>What type of variables are they and what visualization can be done?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <p><strong>2. Plot the data</strong></p>
 <p><span style="color:red; font-size:150%; font-weight:600"> Challenge 1.</span> Plot the data with an appropriate visualization.</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Is there any pattern in the data?</em></li>
-<li><em>Make a prediction about a potential correlation in the data.</em></li>
-</ol>
+<div id="question-set-2">
+<h3><em>
+    <span class="question-set-title">Question Set 2</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>2a.</strong> <em>Is there any pattern in the data?</em></p></li>
+    <li><p><strong>2b.</strong> <em>Make a prediction about a potential correlation in the data.</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <p><strong>3. Estimate the correlation coefficient</strong></p>
 <p>We can estimate the correlation coefficient between the number of DNA polymerase III alpha subunit genes and the genome length using the function <strong>cor()</strong>, where the first two arguments are the variables of interest and the third argument is the method. Here, we will apply Pearson’s correlation coefficient.</p>
@@ -390,10 +396,14 @@ r_se</code></pre>
 <pre class="r"><code># t-test for correlation analysis
 gene1_cor</code></pre>
 <p><br></p>
-<p><strong>Question:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Do you reject the null hypothesis? Use a statistical table.</em></li>
-</ol>
+<div id="question-set-3">
+<h3><em>
+    <span class="question-set-title">Question Set 3</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>3a.</strong> <em>Do you reject the null hypothesis? Use a statistical table.</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <p><strong>6. Estimate the regression</strong></p>
 <p>We can also fit a linear regression to test whether the number of genes encoding DNA polymerase III alpha subunit can be predicted by the length of the genome. For this, we use the function <strong>lm()</strong> where the first argument is the response variable, followed by the explanatory variable (separated by “~”), and the dataframe.</p>
@@ -403,11 +413,15 @@ lm1 &lt;- lm(DNApol_III_a_sub~N_Gene_tot, data=gene)
 # summary of the model output
 summary(lm1)</code></pre>
 <p><br></p>
-<p><strong>Question:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Interpret the model output.</em></li>
-<li><em>Write down the linear equation using the model coefficients.</em></li>
-</ol>
+<div id="question-set-4">
+<h3><em>
+    <span class="question-set-title">Question Set 4</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>4a.</strong> <em>Interpret the model output.</em></p></li>
+    <li><p><strong>4b.</strong> <em>Write down the linear equation using the model coefficients.</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <p>Finally, we can visualize the linear regression using the function <strong>geom_smooth()</strong> in <em>ggplot2</em>. Let’s add the linear regression to our plot in Step 2.</p>
 <pre class="r"><code># fitting a line to p2 to visualize patterns 
@@ -415,10 +429,14 @@ p2 &lt;- p1 + geom_smooth(method=&quot;lm&quot;,se=TRUE)
 
 p2</code></pre>
 <p><br></p>
-<p><strong>Question:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What is the predicted change in the number of DNA polymerase III alpha subunit genes as the genome length changes?</em></li>
-</ol>
+<div id="question-set-5">
+<h3><em>
+    <span class="question-set-title">Question Set 5</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>5a.</strong> <em>What is the predicted change in the number of DNA polymerase III alpha subunit genes as the genome length changes?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <div class="info-box">
 <span class="info-title">Info-Box!</span>
@@ -472,13 +490,17 @@ t=\frac{b-\beta_0}{SE_b}=13.48
 <p><br></p>
 <p><span style="color:red; font-size:150%; font-weight:600"> Challenge 2.</span> Carry out your own analysis! The tRNA-synthetase are enzymes that attach amino acids to the tRNA. Amino acids are the building blocks of proteins and organisms need at least 20 of these enzymes; 1 for each of the 20 existent amino acids. However, some organisms have been described to have more than 20 tRNA-synthetases. Researchers suspect that having more than 20 tRNA-synthetases supports a “faster” protein production. (1) Generate a related research question and (2) test it with your new gained skills, and (3) plot your data!</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What is your research question?</em></li>
-<li><em>Does the data support your null hypothesis?</em></li>
-</ol>
+<div id="question-set-6">
+<h3><em>
+    <span class="question-set-title">Question Set 6</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>6a.</strong> <em>What is your research question?</em></p></li>
+    <li><p><strong>6b.</strong> <em>Does the data support your null hypothesis?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
-<p><span style="color:#2724ed; font-size:150%; font-weight:600"> Discussion Questions </span></p>
+<h3><span class="discussion-questions-title">Discussion Questions</span></h3>
 <ol style="list-style-type: lower-alpha">
 <li><em>Why would you want to fit a linear regression to your data?</em></li>
 <li><em>How would a scatter plot of two associated variables presenting a low standard error of r look like?</em></li>

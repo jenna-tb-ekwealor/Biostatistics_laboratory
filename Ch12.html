@@ -141,39 +141,37 @@ glmm(bird_visits ~ temperature + (1 | location),
   
 <p style="text-align: justify;">Today’s activity on <em>rodent diversity and infected tick density</em> is organized into one main exercise that explores how rodent communities influence tick-borne pathogen dynamics. This exercise will help us apply GLMs to real ecological data, interpret R model outputs, and check model assumptions.</p>
 
-<center>
-<p style="margin-top: 40px; margin-bottom: 20px;"><span style="color:darkblue; font-size:200%; font-weight:500">Rodent diversity and infected tick density</span></p>
-</center>
+<div class="section-banner">Rodent diversity and infected tick density</div>
 
-<p style="margin-bottom: 25px;"><div style="margin-bottom: 25px;"><p><strong>Research question 1:</strong> Does rodent richness predict the density of <em>Borrelia</em>-infected ticks?</p></div>
+<div class="research-question">Research question 1: Does rodent richness predict the density of <em>Borrelia</em>-infected ticks?</div>
 
 <p style="text-align: justify;">Before we begin fitting models, let’s load the dataset. It contains site-level summaries of tick density, rodent richness, predator diversity, and other ecological variables collected from forest fragments across Northern California. These data were collected repeatedly at each site across multiple years. We'll fit models that account for variation across both sites and years using random effects.</p>
-<p style="margin-top: 30px;"><strong>1. Import the data</strong> Let’s import the <code>"tick.csv"</code> dataset and explore it.</p>
+<h3>1. Import the data</h3>
+<p style="text-align: justify;">Let’s import the <code>"tick.csv"</code> dataset and explore it.</p>
 
 
 <div class="questions" style="margin-top: 30px;">
-<p><strong>Questions:</strong></p>
-<ol type="a">
-    <li><em>How many observations and variables?</em></li>
-    <li><em>What type of variable is the response (DIN_Bbsl)?</em></li>
+<h3><em>
+    <span class="question-set-title">Question Set 1</span>
+  </em></h3>
+<ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>1a.</strong> <em>How many observations and variables?</em></p></li>
+    <li><p><strong>1b.</strong> <em>What type of variable is the response (DIN_Bbsl)?</em></p></li>
 </ol>
 </div>
 
 <br> 
 
-<h4 style="margin-top: 35px;">2. Fit a Poisson GLM</h4>
+<h3>2. Fit a Poisson GLM</h3>
 <p style="text-align: justify;">We are using a Poisson model here because our response variable(tick infection density)is a count. Poisson models are designed for count data that are non-negative integers and often right-skewed. In Poisson GLMs, the variance increases with the mean, which often fits ecological count data better than assuming constant variance and normality.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Fit GLM with Poisson family</span>
 <span style="color:#000000;">tick_glm &lt;- glm(DIN_Bbsl ~ Rodent_Rich, family = &quot;poisson&quot;, data = tick)</span>
 summary(tick_glm)</code></pre>
 <br>
 
-<div class="questions" style="margin-top: 30px;">
-<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3> <strong>Stop</strong> and consider: <em>What is the coefficient for rodent richness, and what does it mean? Is it statistically significant?</em></p>
-</div>
+<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3>
+<p><strong>Stop</strong> and consider: <em>What is the coefficient for rodent richness, and what does it mean? Is it statistically significant?</em></p>
 <br>
-</ul>
-</div>
 
 <div class="info-box">
 <span class="info-title">Info-Box!</span>
@@ -189,7 +187,7 @@ summary(tick_glm)</code></pre>
 
 <br>
 
-<h4>3. Plot your GLM predictions</h4>
+<h3>3. Plot your GLM predictions</h3>
 <p style="text-align: justify;">After fitting a GLM, it’s useful to visualize the model predictions alongside your raw data. To do this, we can use the <code>predict()</code> function, which takes a fitted model and returns predicted values. These predictions can then be added as a new column in our dataset and plotted against the observed data to assess model fit and shape.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Add model predictions to the dataset</span>
 tick$predicted &lt;- predict(tick_glm, type = "response")
@@ -212,7 +210,7 @@ ggplot(tick, aes(x = Rodent_Rich, y = DIN_Bbsl)) +
 
 <br>
 
-<h4 style="margin-top: 35px;">4. Plot model diagnostics</h4>
+<h3>4. Plot model diagnostics</h3>
 <p style="text-align: justify;">After fitting a model, it’s important to assess how well it fits the data. In this step, we’ll visualize the residuals and fitted values to check for overdispersion and other patterns that might indicate poor model fit.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Diagnostic plots for GLM</span>
 plot(tick_glm)</code></pre>
@@ -220,9 +218,11 @@ plot(tick_glm)</code></pre>
 <p style="text-align: justify;"></p>
 
 <div class="questions" style="margin-top: 30px;">
-<p><strong>Questions:</strong></p>
-<ol type="a">
-<li><em>What do you see in your plots? Can you spot any trends, outliers, or points that stand out?</em></li>
+<h3><em>
+    <span class="question-set-title">Question Set 2</span>
+  </em></h3>
+<ol style="list-style-type: none; padding-left: 1.2em;">
+<li><p><strong>2a.</strong> <em>What do you see in your plots? Can you spot any trends, outliers, or points that stand out?</em></p></li>
 </ol>
 </ul>
 </div>
@@ -242,23 +242,24 @@ plot(tick_glm)</code></pre>
 
 <br>
 
-<p style="margin-bottom: 25px;"><div style="margin-bottom: 25px;"><p><strong>Research question 2:</strong> Does predator diversity improve our model of <em>Borrelia</em>-infected tick density?</p></div>
+<div class="research-question">Research question 2: Does predator diversity improve our model of <em>Borrelia</em>-infected tick density?</div>
 
-<h4>5. Add another predictor</h4>
+<h3>5. Add another predictor</h3>
 <p style="text-align: justify;">In Chapter 10, we explored how using two explanatory variables together can help reveal interactions or explain more variation in a response. Here, we’ll test whether adding another biologically relevant predictor (predator diversity) improves our model of tick infection density. This step mirrors the idea of exploring multiple factors at once, just as we did with two-way ANOVA.</p>
-<div class="questions" style="margin-top: 30px;">
-<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3> <strong>Stop</strong> and consider the original research question and study design. <strong>Think</strong> about what other biological factors could influence tick infection density, and whether interactions among variables, like those you explored in two-way ANOVA, might reveal new insights.</p>
-</div>
+<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3>
+<p><strong>Stop</strong> and consider the original research question and study design. <strong>Think</strong> about what other biological factors could influence tick infection density, and whether interactions among variables, like those you explored in two-way ANOVA, might reveal new insights.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Compare two GLMs with AIC</span>
 tick_glm2 &lt;- glm(DIN_Bbsl ~ Rodent_Rich + Predator_Shannon_wCat, family = \"poisson\", data = tick)
 AIC(tick_glm, tick_glm2)</code></pre>
   
 
 <div class="questions" style="margin-top: 30px;">
-<p><strong>Questions:</strong></p>
-<ol type="a">
-<li><em>Which model has the lower AIC?</em></li>
-<li><em>Does predator diversity add meaningful information?</em></li>
+<h3><em>
+    <span class="question-set-title">Question Set 3</span>
+  </em></h3>
+<ol style="list-style-type: none; padding-left: 1.2em;">
+<li><p><strong>3a.</strong> <em>Which model has the lower AIC?</em></p></li>
+<li><p><strong>3b.</strong> <em>Does predator diversity add meaningful information?</em></p></li>
 </ol>
 </ul>
 </div>
@@ -293,7 +294,7 @@ AIC(tick_glm, tick_glm2)</code></pre>
 <br> 
   
 <div class="questions" style="margin-top: 30px;">
-<p><span class="discussion-title">Discussion Questions</span></p>
+<h3><span class="discussion-questions-title">Discussion Questions</span></h3>
 <ol type="a">
 <li><em>What makes a GLM different from a linear model?</em></li>
 <li><em>Why does a Poisson GLM use a log link function?</em></li>

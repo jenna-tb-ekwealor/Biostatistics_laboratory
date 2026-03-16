@@ -137,12 +137,12 @@ sequences &lt;- c(
 </ul>
 <br> 
 
-<center><p style="margin-top: 40px; margin-bottom: 20px;"><span style="color:darkblue; font-size:190%; font-weight:500">Evolutionary divergence in <em>Leptasterias</em> with sequence data</span></p></center>
-<p style="margin-bottom: 25px;"><strong>Research question:</strong> Does sequence data show evidence of divergence within <em>Leptasterias</em>, and are divergence patterns consistent with geographic structure?</p>
+<div class="section-banner">Evolutionary divergence in <em>Leptasterias</em> with sequence data</div>
+<div class="research-question">Research question: Does sequence data show evidence of divergence within <em>Leptasterias</em>, and are divergence patterns consistent with geographic structure?</div>
 
 <br> 
 
-<h4>1. Load and align sequences</h4>
+<h3>1. Load and align sequences</h3>
 <p>Start by loading the DNA and protein sequences from the COI gene. These files contain sequence data from <em>Leptasterias</em> individuals collected along the California coast. We'll use R to align the sequences so that homologous sites line up in the same column. This is essential for any phylogenetic analysis: we can only compare changes if we're sure we're comparing the same positions.</p>
 
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Load sequences</span>
@@ -162,18 +162,20 @@ dna_aln &lt;- msa(dna, method = "ClustalW")
 <br>
 
 <div class="questions" style="margin-top: 30px;">
-    <p><strong>Questions:</strong></p>
-    <ol type="a">
-    <li><em>How many COI DNA sequences are in this dataset?</em></li>
-    <li><em>What information is included in the metadata?</em></li>
-    <li><em>What does alignment assume about the sequences?</em></li>
-    <li><em>Why might some sequences be harder to align than others</li></em>
+    <h3><em>
+    <span class="question-set-title">Question Set 1</span>
+  </em></h3>
+    <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>1a.</strong> <em>How many COI DNA sequences are in this dataset?</em></p></li>
+    <li><p><strong>1b.</strong> <em>What information is included in the metadata?</em></p></li>
+    <li><p><strong>1c.</strong> <em>What does alignment assume about the sequences?</em></p></li>
+    <li><p><strong>1d.</strong> <em>Why might some sequences be harder to align than others?</em></p></li>
     </ol>
     </div>
 
 <br>
 
-<h4>2. Build and compare trees</h4>
+<h3>2. Build and compare trees</h3>
 
 <p>Now that we’ve aligned the sequences, we can infer a phylogenetic tree. There are many methods, but here we'll be using maximum likelihood. First, we convert each alignment to a format that our downstream phylogenetic software can use. Our output here is a list of aligned sequences, which you can explore to confirm structure.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Convert aligned sequences to phyDat format</span>
@@ -206,7 +208,7 @@ ggtitle("Maximum likelihood tree (DNA)")
 <hr> 
 <br>
 
-<h4>3. Add bootstrap support</h4>
+<h3>3. Add bootstrap support</h3>
 <p>We can assess confidence in the nucleotide tree by adding bootstrap support. Each bootstrap replicate samples the alignment with replacement and estimates a tree. High support (typically &gt;70%) suggests the grouping is consistently recovered.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># Add bootstrap values to tree object</span>
 bs_dna &lt;- bootstrap.pml(fit_dna, bs = 100, optNni = TRUE)
@@ -231,16 +233,18 @@ ggtree(tree_bs) +
 <br>
 
 <div class="questions" style="margin-top: 30px;">
-    <p><strong>Question:</strong></p>
-    <ol type="a">
-        <li><em>What is your impression of the phylogeny? Be descriptive.</li></em>
+    <h3><em>
+    <span class="question-set-title">Question Set 2</span>
+  </em></h3>
+    <ol style="list-style-type: none; padding-left: 1.2em;">
+        <li><p><strong>2a.</strong> <em>What is your impression of the phylogeny? Be descriptive.</em></p></li>
     </ol></div>
 
 <hr>
 <br>
 
 
-<h4>4. Root the tree using an outgroup</h4>
+<h3>4. Root the tree using an outgroup</h3>
 <p>To interpret evolutionary direction, we need to root the tree. In this case, we’ll use sequences identified as <em>L. hexactis</em> as the outgroup. These tips should form a clade outside the main group of interest (<em>L. aequalis</em>).</p>
 <p>To root the tree, extract the tip labels corresponding to <em>L. hexactis</em>, and use the <code>root()</code> function from the <code>ape</code> package to re-root the tree accordingly.</p>
 <pre style="background-color: #f8f8f8; border: 1px solid #ccc; padding: 10px;"><code><span style="color:#6a737d; font-style: italic;"># View tip labels and identify L. hexactis samples</span>
@@ -270,7 +274,7 @@ ggtree(rooted_dna) +
 <br>
 <hr>
 
-<h4>5. Label clades and visualize structure</h4>
+<h3>5. Label clades and visualize structure</h3>
 <p>Once your tree is rooted, the next step is to explore its structure and annotate according to your research question. Each internal node in the tree represents a hypothetical common ancestor. To label clades, you must first identify internal nodes of interest and determine which tips descend from them.</p>
 
 <p>Start by displaying node numbers on your tree:</p>
@@ -339,12 +343,12 @@ ggtree(rooted_dna) %&lt;+% clade_df +
 
 
 <div class="questions" style="margin-top: 30px;">
-    <p><span class="discussion-title">Discussion Questions</span></p>
+    <h3><span class="discussion-questions-title">Discussion Questions</span></h3>
     <ol type="a">
-<li><em>Do the major clades reflect geographic regions?</li></em>
-<li><em>Are there any sites where individuals appear in multiple clades?</li></em>
-<li><em>How would you test whether the genetic structure reflects isolation by distance?</li></em>
-<li><em>How does this analysis inform whether or not cryptic species are present?</li></em>
+<li><em>Do the major clades reflect geographic regions?</em></li>
+<li><em>Are there any sites where individuals appear in multiple clades?</em></li>
+<li><em>How would you test whether the genetic structure reflects isolation by distance?</em></li>
+<li><em>How does this analysis inform whether or not cryptic species are present?</em></li>
 </ol>
 </div>
 

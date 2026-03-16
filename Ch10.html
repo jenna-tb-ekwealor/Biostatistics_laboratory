@@ -224,7 +224,7 @@ DIET*SEASON
 <p>From Table 1 we can conclude that the two factors, including the interaction term, affect significantly the territory size of reptiles. Thus, the most likely scenario is a combination of all three scenarios 1-3 above. We conclude that there is a difference between diet types in mean territory size, there is a difference between climatic seasons in mean territory size, and that the effect of diet type on mean territory size depends on climatic season (they interact with each other).</p>
 <hr />
 <p><br></p>
-<p><span style="color:#66023C; font-size:150%; font-weight:600"> Materials and Methods</span></p>
+<h3>Materials and Methods</h3>
 <ul>
 <li>R and RStudio</li>
 <li>package <em>ggplot2</em> and rstatix</li>
@@ -233,22 +233,25 @@ DIET*SEASON
 <p><br></p>
 <p>Today’s activity <em>Size-dependent temperature constraints in fiddler crabs</em> is organized into one main exercise to describe whether body size interacts with hydration state of the substrate to influence the thermal preferences of fiddler crabs. This exercise will also help us familiarized and interpret R’s model output and model assumption diagnostics.</p>
 <p><br></p>
-<center>
-<span style="color:darkblue; font-size:190%; font-weight:500">Size-dependent temperature constraints in fiddler crabs</span>
-</center>
+<div class="section-banner">Size-dependent temperature constraints in fiddler crabs</div>
 <p><br></p>
-<p><strong>Research question 1</strong>: Does body size interact with hydration state to influence the thermal preferences of fiddler crabs?</p>
+<div class="research-question">Research question 1: Does body size interact with hydration state to influence the thermal preferences of fiddler crabs?</div>
 <p><br></p>
-<p><strong>1. Import the data</strong> Let’s import the “crab” dataset to RStudio and explore it.</p>
+<h3>1. Import the data</h3>
+<p>Let’s import the “crab” dataset to RStudio and explore it.</p>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>How many variables and observations does “crab” have?</em></li>
-<li><em>Considering the research question, what are the variables of interest?</em></li>
-<li><em>How many groups/factors will you compare?</em></li>
-</ol>
+<div id="question-set-1">
+<h3><em>
+    <span class="question-set-title">Question Set 1</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>1a.</strong> <em>How many variables and observations does “crab” have?</em></p></li>
+    <li><p><strong>1b.</strong> <em>Considering the research question, what are the variables of interest?</em></p></li>
+    <li><p><strong>1c.</strong> <em>How many groups/factors will you compare?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
-<p><strong>2. Check model assumptions of equal variances</strong></p>
+<h3>2. Check model assumptions of equal variances</h3>
 <p>As in Chapter 9, we can use the Barlett’s test to test for equal variances. For this, we will use the function bartlett.test(). The first argument of the function is the response variable, followed by the explanatory variable (factor).</p>
 <pre class="r"><code># equal variances test between tb and size
 bartlett.test(tb~size, data=crab)
@@ -256,7 +259,7 @@ bartlett.test(tb~size, data=crab)
 # equal variances test between tb and sand
 bartlett.test(tb~sand, data=crab)</code></pre>
 <p><br></p>
-<p><strong>3. Carry out a two-way analysis of variance</strong></p>
+<h3>3. Carry out a two-way analysis of variance</h3>
 <p>To estimate an analysis of variance in R, we use the function <strong>aov()</strong>. The first argument of the function is the response variable and the second argument is the explanatory variable. Lastly, we need to indicate the dataframe where such variables are located.</p>
 <p>Let’s fit an ANOVA to our data and check the model output.</p>
 <pre class="r"><code># ANOVA
@@ -272,7 +275,8 @@ summary(crab_aov)</code></pre>
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p><br></p>
-<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3> Interpret the model output from R (ANOVA table). <strong>Stop</strong> and review the Worked example. <strong>Think</strong> about how you can obtain each value in the model output.</p>
+<h3><span class="stop-think-do-title">Stop, Think, Do:</span></h3>
+<p>Interpret the model output from R (ANOVA table). <strong>Stop</strong> and review the Worked example. <strong>Think</strong> about how you can obtain each value in the model output.</p>
 <p><br></p>
 <div class="info-box">
 <span class="info-title">Info-Box!</span>
@@ -333,23 +337,31 @@ Figure 3. Size-dependent body temperature across sand hydration state treatments
 t &lt;- TukeyHSD(crab_aov)
 t</code></pre>
 <p><br></p>
-<p><strong>Questions:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>Are all group means different from each other?</em></li>
-<li><em>What is the relationship between body temperature, body size and sand treatment?</em></li>
-</ol>
+<div id="question-set-2">
+<h3><em>
+    <span class="question-set-title">Question Set 2</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>2a.</strong> <em>Are all group means different from each other?</em></p></li>
+    <li><p><strong>2b.</strong> <em>What is the relationship between body temperature, body size and sand treatment?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
 <p><strong>6. Check model assumptions of normality</strong></p>
 <p><br></p>
 <p><span style="color:red; font-size:150%; font-weight:600"> Challenge.</span> Test the model assumptions of normality. Recall from Chapter 9 that in an ANOVA, the model residuals (the difference between each observation and the mean value) should be normally distributed. <strong>Hint</strong>: Review your Chapter 9 R script on model checking plots (residuals vs fitted values, a Q-Q plot, a scale-location plot, and the constant-leverage plot).</p>
 <p><br></p>
-<p><strong>Question:</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li><em>What are the assumptions of the ANOVA?</em></li>
-<li><em>Does your analysis follow the ANOVA assumptions of normality?</em></li>
-</ol>
+<div id="question-set-3">
+<h3><em>
+    <span class="question-set-title">Question Set 3</span>
+  </em></h3>
+  <ol style="list-style-type: none; padding-left: 1.2em;">
+    <li><p><strong>3a.</strong> <em>What are the assumptions of the ANOVA?</em></p></li>
+    <li><p><strong>3b.</strong> <em>Does your analysis follow the ANOVA assumptions of normality?</em></p></li>
+  </ol>
+</div>
 <p><br></p>
-<p><span style="color:#2724ed; font-size:150%; font-weight:600"> Discussion Questions </span></p>
+<h3><span class="discussion-questions-title">Discussion Questions</span></h3>
 <ol style="list-style-type: lower-alpha">
 <li><em>Differentiate between a one-way and a two-way ANOVA.</em></li>
 <li><em>In the linear formula, why do we multiply the two factors?</em></li>
