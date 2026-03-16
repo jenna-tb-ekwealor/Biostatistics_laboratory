@@ -490,7 +490,7 @@ p1</code></pre>
 <h3>5. Check the model assumptions of normality</h3>
 <p>Let’s check the assumption that our data is normally distributed by plotting its frequency distribution. To test for normality we can use a histogram.</p>
 <pre class="r"><code># histogram of body lengths
-p2 &lt;- ggplot(mydata,aes(x = length)) +
+p2 &lt;- ggplot(mydata, aes(x = length)) +
   geom_histogram(binwidth = .5)
 p2</code></pre>
 <p>Recall that a small sample size is expected to have more deviations from a normal distribution, whether it is normally distributed or not.</p>
