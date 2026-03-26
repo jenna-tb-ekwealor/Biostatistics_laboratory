@@ -108,7 +108,7 @@ Figure 1. Image of fluorescent stained DNA (blue) and protein (gree, left panel)
 <p>If the null hypothesis is true, the group and error mean squares are similar and thus <em>F</em> would be close to 1. We do not expect it to be exactly 1 because of sampling variability, we are just interested in knowing if they are consistent with 1.</p>
 <p><br></p>
 <div id="estimating-the-anova-step-by-step" class="section level2">
-<h2>1. Estimating the ANOVA, step-by-step</h2>
+<h3>1. Estimating the ANOVA, step-by-step</h3>
 <p>Say we want to know how much irrigation our plants should receive to increase monthly survival. For this, we setup an experiment with three treatments; plants with weekly irrigation, plants with weekly partial irrigation, and plants with no irrigation.</p>
 <p>See the results (mean, standard deviation, and sample size per treatment) in the table below:</p>
 <p><br></p>
@@ -308,12 +308,12 @@ F&amp;=\frac{0.131}{0.002}=65.5.\\\\
 <p><br></p>
 </div>
 <div id="estimating-the-p-value" class="section level2">
-<h2>2. Estimating the <em>p</em>-value</h2>
+<h3>2. Estimating the <em>p</em>-value</h3>
 <p>To estimate the <em>p</em>-value, we need the sampling distribution for the <em>F</em>-statistic under <span class="math inline">\(H_0\)</span> (the <em>F</em>-distribution). When examining the <em>F</em>-distribution in a statistical table <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3673.htm">(NIST)</a>, the critical value corresponding to the area 0.05 in the right tail under the curve of the distribution for <span class="math inline">\(df=26\)</span> and <span class="math inline">\(2\)</span> is 3.37. In other words, to the right of 3.37, the area under the curve is 0.05. As our <em>F</em>-ratio is larger than 3.37, it lies farther away in the right tail of the curve. Thus, we reject the null hypothesis; <em>p</em>-value &lt; 0.05. In other words, at least one group mean is different from the others.</p>
 <p><br></p>
 </div>
 <div id="estimating-the-r-squared" class="section level2">
-<h2>3. Estimating the <em>R</em>-squared</h2>
+<h3>3. Estimating the <em>R</em>-squared</h3>
 <p>Finally, we can estimate the contribution of group differences to the total variation in the data by dividing <span class="math inline">\(SS_{groups}\)</span> by <span class="math inline">\(SS_{total}\)</span>, where <span class="math inline">\(SS_{total}=SS_{error}+SS_{groups}\)</span>.</p>
 <p><br></p>
 <p>For our example, <span class="math display">\[
