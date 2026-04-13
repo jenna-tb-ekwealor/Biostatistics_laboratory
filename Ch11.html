@@ -339,7 +339,7 @@ gene</code></pre>
   </ol>
 </div>
 <p><br></p>
-<p><strong>2. Plot the data</strong></p>
+<h3>2. Plot the data</h3>
 <p><span style="color:red; font-size:150%; font-weight:600"> Challenge 1.</span> Plot the data with an appropriate visualization.</p>
 <p><br></p>
 <div id="question-set-2">
@@ -352,7 +352,7 @@ gene</code></pre>
   </ol>
 </div>
 <p><br></p>
-<p><strong>3. Estimate the correlation coefficient</strong></p>
+<h3>3. Estimate the correlation coefficient</h3>
 <p>We can estimate the correlation coefficient between the number of DNA polymerase III alpha subunit genes and the genome length using the function <strong>cor()</strong>, where the first two arguments are the variables of interest and the third argument is the method. Here, we will apply Pearson’s correlation coefficient.</p>
 <pre class="r"><code>
 # Pearson correlation
@@ -391,7 +391,7 @@ n
 r_se &lt;- sqrt((1-r^2)/(n-2))
 r_se</code></pre>
 <p><br></p>
-<p><strong>5. Test the hypothesis using the <span class="math inline">\(t\)</span>-test</strong></p>
+<h3>5. Test the hypothesis using the <span class="math inline">\(t\)</span>-test</h3>
 <p>Finally, let’s test our hypothesis with the student’s <em>t</em>-test using the previous correlation analysis done with the function <strong>cor_test()</strong>.</p>
 <pre class="r"><code># t-test for correlation analysis
 gene1_cor</code></pre>
@@ -405,7 +405,7 @@ gene1_cor</code></pre>
   </ol>
 </div>
 <p><br></p>
-<p><strong>6. Estimate the regression</strong></p>
+<h3>6. Estimate the regression</h3>
 <p>We can also fit a linear regression to test whether the number of genes encoding DNA polymerase III alpha subunit can be predicted by the length of the genome. For this, we use the function <strong>lm()</strong> where the first argument is the response variable, followed by the explanatory variable (separated by “~”), and the dataframe.</p>
 <pre class="r"><code># linear regression
 lm1 &lt;- lm(DNApol_III_a_sub~N_Gene_tot, data=gene) 
