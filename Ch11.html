@@ -98,7 +98,7 @@ Figure 1. Illustration of potential correlations between two numerical variables
 <p>Take for instances, Figure 2A. As <em>x</em> increases, <em>y</em> increases with a relatively low amount of “scatter”. Thus, scatter plot A shows a relatively <em>strong positive</em> correlation. Similarly, scatter plot B shows a relatively strong correlation but it is inverse. That is, as <em>x</em> increases, <em>y</em> decreases. Finally, scatter plot C shows a very weak or no correlation at all. That is, as <em>x</em> increases, <em>y</em> changes unpredictably, or at least not along a line. Of course, the correlation between variables can be quantified using the correlation coefficient <em>r</em>.</p>
 <p><br></p>
 <div id="estimating-the-correlation-coefficient-r" class="section level2">
-<h2>1. Estimating the correlation coefficient <span class="math inline">\(r\)</span></h2>
+<h3>1. Estimating the correlation coefficient <span class="math inline">\(r\)</span></h3>
 <p>The linear correlation coefficient, <em>r</em>, measures the tendency of two numerical variables to change together along a line and is defined as: <span class="math display">\[
 \begin{aligned}
 r=\frac{\sum_{i}(x_i-\overline{x})(y_i-\overline{y})}{\sqrt{\sum_{i}(x_i-\overline{x})^2}\sqrt{\sum_{i}(y_i-\overline{y})^2}},
@@ -162,7 +162,7 @@ r=\frac{46.618}{\sqrt{31.683}\sqrt{76.049}}=0.95
 <p><br></p>
 </div>
 <div id="estimating-the-standard-error-of-r" class="section level2">
-<h2>2. Estimating the standard error of <span class="math inline">\(r\)</span></h2>
+<h3>2. Estimating the standard error of <span class="math inline">\(r\)</span></h3>
 <p>To estimate how precise is our estimate of <span class="math inline">\(r\)</span>, we use the standard error.</p>
 <p><br></p>
 <p><span class="math display">\[
@@ -178,7 +178,7 @@ SE_r=\sqrt{\frac{1-(0.95)^2}{24-2}}=0.067
 <p><br></p>
 </div>
 <div id="testing-the-hypothesis-for-correlation" class="section level2">
-<h2>3. Testing the hypothesis for correlation</h2>
+<h3>3. Testing the hypothesis for correlation</h3>
 <p><br></p>
 <p>Finally, to test our null hypothesis, we can use the <span class="math inline">\(t\)</span>-statistic and the Student’s <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df=n-2\)</span>: <span class="math display">\[
 \begin{aligned}
@@ -194,7 +194,7 @@ t=\frac{0.95}{0.0667}=14.179
 <p><br></p>
 </div>
 <div id="estimating-the-linear-regression" class="section level2">
-<h2>4. Estimating the linear regression</h2>
+<h3>4. Estimating the linear regression</h3>
 <p>If we are interested in predicting the value of variable <span class="math inline">\(y\)</span> given a value of variable <span class="math inline">\(x\)</span> and quantify the rate of change in variable <span class="math inline">\(y\)</span> with <span class="math inline">\(x\)</span>, then we need to fit a linear regression to our data.</p>
 <p><br></p>
 <p>Here, our hypotheses are:</p>
@@ -257,7 +257,7 @@ a&amp;=8.34-(1.471)(5.425)=0.36
 </div>
 </div>
 <div id="estimating-the-standard-error-of-the-slope" class="section level2">
-<h2>5. Estimating the standard error of the slope</h2>
+<h3>5. Estimating the standard error of the slope</h3>
 <p>As learned in in previous chapters, the standard error tells us the precision of our estimate of <span class="math inline">\(b\)</span>. The standard error is defined as</p>
 <p><br></p>
 <p><span class="math display">\[
@@ -291,7 +291,7 @@ SE_b=\sqrt{\frac{0.747}{31.683}}=0.154
 <p><br></p>
 </div>
 <div id="testing-the-hypothesis-of-the-slope" class="section level2">
-<h2>6. Testing the hypothesis of the slope</h2>
+<h3>6. Testing the hypothesis of the slope</h3>
 <p>To test our null hypothesis, we can use the <span class="math inline">\(t\)</span>-statistic with <span class="math inline">\(df=n−2\)</span>:</p>
 <p><br></p>
 <p><span class="math display">\[
